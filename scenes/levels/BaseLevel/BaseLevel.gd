@@ -11,6 +11,8 @@ enum Layer {
 var hero_position: Vector2i
 var tilemap: TileMap
 var hero: Node2D
+var level_progress: int
+var level_items_count: int
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -21,6 +23,9 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 	tilemap.set_layer_enabled(Layer.BAD_ITEMS, false)
 	tilemap.set_layer_enabled(Layer.GOOD_ITEMS, false)
 	var bad_items = tilemap.get_used_cells(source)
+	if source == Layer.BAD_ITEMS:
+		level_progress = 0
+		level_items_count = bad_items.size()
 	for pos in bad_items:
 		tilemap.set_cell(Layer.ITEMS, pos, 0, tilemap.get_cell_atlas_coords(source, pos))
 
@@ -63,5 +68,6 @@ func navigate(direction: TileSet.CellNeighbor):
 			skip_step()
 			return
 		update_cell(neighbor_pos, good_neighbor_cell)
+		level_progress += 1
 	move_hero_to_position(neighbor_pos)
 		

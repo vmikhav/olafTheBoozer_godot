@@ -6,7 +6,7 @@ extends BaseLevel
 func _ready():
 	tilemap = $TileMap as TileMap
 	hero = $TileMap/Demolitonist
-	hero_position = Vector2i(3, 4)
+	hero_position = Vector2i(2, 2)
 	move_hero_to_position(hero_position)
 	init_map()
 
@@ -18,11 +18,11 @@ func _process(delta):
 func _input(event):
 	if event is InputEventKey: 
 		if event.is_action_released("ui_left"):
-			var dir = [
-				TileSet.CELL_NEIGHBOR_TOP_SIDE,
-				TileSet.CELL_NEIGHBOR_BOTTOM_SIDE,
-				TileSet.CELL_NEIGHBOR_LEFT_SIDE,
-				TileSet.CELL_NEIGHBOR_RIGHT_SIDE
-			]
-			navigate(dir[randi_range(0,3)])
-		#navigate(TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
+			navigate(TileSet.CELL_NEIGHBOR_LEFT_SIDE)
+		if event.is_action_released("ui_right"):
+			navigate(TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
+		if event.is_action_released("ui_up"):
+			navigate(TileSet.CELL_NEIGHBOR_TOP_SIDE)
+		if event.is_action_released("ui_down"):
+			navigate(TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
+		

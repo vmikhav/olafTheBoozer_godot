@@ -11,8 +11,11 @@ enum Layer {
 var hero_position: Vector2i
 var tilemap: TileMap
 var hero: Node2D
-var level_progress: int
 var level_items_count: int
+var level_progress: int
+var ghosts = []
+var ghosts_count: int
+var ghosts_progress: int
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -26,6 +29,13 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 	if source == Layer.BAD_ITEMS:
 		level_progress = 0
 		level_items_count = bad_items.size()
+		ghosts_progress = 0
+		ghosts_count = ghosts.size()
+		for i in ghosts.size():
+			ghosts[i].unit = hero.duplicate()
+			ghosts[i].unit.get_node("Sprite").modulate = Color8(100, 200, 255, 160)
+			tilemap.add_child(ghosts[i].unit)
+			move_unit_to_position(ghosts[i].unit, ghosts[i].position)
 	for pos in bad_items:
 		tilemap.set_cell(Layer.ITEMS, pos, 0, tilemap.get_cell_atlas_coords(source, pos))
 
@@ -69,5 +79,11 @@ func navigate(direction: TileSet.CellNeighbor):
 			return
 		update_cell(neighbor_pos, good_neighbor_cell)
 		level_progress += 1
+	for i in ghosts.size():
+		if neighbor_pos == ghosts[i].position:
+			ghosts_progress += 1
+			ghosts[i].unit.queue_free()
+			ghosts.remove_at(i)
+			break
 	move_hero_to_position(neighbor_pos)
 		

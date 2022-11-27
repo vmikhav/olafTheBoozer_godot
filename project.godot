@@ -1,0 +1,59 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "Node2D",
+"class": &"BaseLevel",
+"language": &"GDScript",
+"path": "res://scenes/levels/BaseLevel/BaseLevel.gd"
+}, {
+"base": "Node2D",
+"class": &"DemolitonistSprite",
+"language": &"GDScript",
+"path": "res://scenes/sprites/Demolitonist/Demolitonist.gd"
+}, {
+"base": "Node",
+"class": &"State",
+"language": &"GDScript",
+"path": "res://scripts/State.gd"
+}, {
+"base": "Node",
+"class": &"StateMachine",
+"language": &"GDScript",
+"path": "res://scripts/StateMachine.gd"
+}, {
+"base": "Node2D",
+"class": &"WorkerSprite",
+"language": &"GDScript",
+"path": "res://scenes/sprites/Worker/Worker.gd"
+}, {
+"base": "State",
+"class": &"WorkerState",
+"language": &"GDScript",
+"path": "res://scenes/sprites/Worker/WorkerState.gd"
+}]
+_global_script_class_icons={
+"BaseLevel": "",
+"DemolitonistSprite": "",
+"State": "",
+"StateMachine": "",
+"WorkerSprite": "",
+"WorkerState": ""
+}
+
+[application]
+
+config/name="OlafTheBoozer-ggo2022"
+config/features=PackedStringArray("4.0")
+config/icon="res://icon.png"
+
+[rendering]
+
+vulkan/rendering/back_end=1

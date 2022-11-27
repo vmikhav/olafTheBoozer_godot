@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://bx2syps2qmyxq"]
+
+[ext_resource type="Script" path="res://scenes/sprites/Demolitonist/Demolitonist.gd" id="1_6ytke"]
+[ext_resource type="Texture2D" uid="uid://bmnac0sq8kbk6" path="res://assets/sprites/MiniDwarfDemolitionist.png" id="1_vj30r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yhgh"]
+atlas = ExtResource("1_vj30r")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aibj8"]
+atlas = ExtResource("1_vj30r")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q3kd"]
+atlas = ExtResource("1_vj30r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dmb6"]
+atlas = ExtResource("1_vj30r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crv5l"]
+atlas = ExtResource("1_vj30r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bior"]
+atlas = ExtResource("1_vj30r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4ybha"]
+animations = [{
+"frames": [SubResource("AtlasTexture_8yhgh"), SubResource("AtlasTexture_aibj8")],
+"loop": true,
+"name": &"hit",
+"speed": 5.0
+}, {
+"frames": [SubResource("AtlasTexture_8q3kd"), SubResource("AtlasTexture_8dmb6"), SubResource("AtlasTexture_crv5l"), SubResource("AtlasTexture_0bior")],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]
+
+[node name="Demolitonist" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_6ytke")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+frames = SubResource("SpriteFrames_4ybha")
+animation = &"idle"
+playing = true

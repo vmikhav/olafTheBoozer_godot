@@ -1,0 +1,131 @@
+[gd_scene load_steps=27 format=3]
+
+[ext_resource type="Script" path="res://scenes/sprites/Worker/Worker.gd" id="1_hsl2y"]
+[ext_resource type="Texture2D" uid="uid://7h7glq24yk2c" path="res://assets/sprites/MiniWorker.png" id="2_tbvq4"]
+[ext_resource type="Script" path="res://scripts/StateMachine.gd" id="3_p22by"]
+[ext_resource type="Script" path="res://scenes/sprites/Worker/Idle.gd" id="4_sdk5s"]
+[ext_resource type="Script" path="res://scenes/sprites/Worker/Hit.gd" id="5_0fph4"]
+[ext_resource type="Script" path="res://scenes/sprites/Worker/Walk.gd" id="6_8obhi"]
+[ext_resource type="Script" path="res://scenes/sprites/Worker/Repair.gd" id="7_spict"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfi0s"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8amc"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ppyo"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ax8e"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnrbq"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icbcg"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxact"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dvqy4"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iotkc"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0se5"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ftlm"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7qvi"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vjgkk"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olmbw"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7gxp"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq4d8"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mx52"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2dj8"]
+atlas = ExtResource("2_tbvq4")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cgvkd"]
+animations = [{
+"frames": [SubResource("AtlasTexture_tfi0s"), SubResource("AtlasTexture_o8amc"), SubResource("AtlasTexture_0ppyo")],
+"loop": false,
+"name": &"hit",
+"speed": 7.0
+}, {
+"frames": [SubResource("AtlasTexture_0ax8e"), SubResource("AtlasTexture_cnrbq"), SubResource("AtlasTexture_icbcg"), SubResource("AtlasTexture_uxact")],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [SubResource("AtlasTexture_dvqy4"), SubResource("AtlasTexture_iotkc"), SubResource("AtlasTexture_w0se5"), SubResource("AtlasTexture_0ftlm"), SubResource("AtlasTexture_j7qvi")],
+"loop": false,
+"name": &"repair",
+"speed": 7.0
+}, {
+"frames": [SubResource("AtlasTexture_vjgkk"), SubResource("AtlasTexture_olmbw"), SubResource("AtlasTexture_u7gxp"), SubResource("AtlasTexture_qq4d8"), SubResource("AtlasTexture_0mx52"), SubResource("AtlasTexture_x2dj8")],
+"loop": true,
+"name": &"walk",
+"speed": 10.0
+}]
+
+[node name="WorkerSprite" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_hsl2y")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+y_sort_enabled = true
+frames = SubResource("SpriteFrames_cgvkd")
+animation = &"idle"
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_p22by")
+initial_state = NodePath("Hit")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("4_sdk5s")
+
+[node name="Hit" type="Node" parent="StateMachine"]
+script = ExtResource("5_0fph4")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("6_8obhi")
+
+[node name="Repair" type="Node" parent="StateMachine"]
+script = ExtResource("7_spict")

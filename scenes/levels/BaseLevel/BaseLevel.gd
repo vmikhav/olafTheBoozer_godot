@@ -33,8 +33,8 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 		ghosts_count = ghosts.size()
 		for i in ghosts.size():
 			ghosts[i].unit = hero.duplicate()
-			ghosts[i].unit.get_node("Sprite").modulate = Color8(100, 200, 255, 160)
 			tilemap.add_child(ghosts[i].unit)
+			ghosts[i].unit.make_ghost()
 			move_unit_to_position(ghosts[i].unit, ghosts[i].position)
 	for pos in bad_items:
 		tilemap.set_cell(Layer.ITEMS, pos, 0, tilemap.get_cell_atlas_coords(source, pos))

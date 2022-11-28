@@ -10,7 +10,7 @@ extends Camera2D
 @onready var target_zoom: float = self.zoom.x
 
 var zoom_sensitivity = 10
-var zoom_speed = 0.05
+var zoom_speed = 0.1
 
 var events = {}
 var last_drag_distance = 0
@@ -78,15 +78,21 @@ func update_zoom(delta: float):
 
 func go_to(pos: Vector2, ignore_drag: bool = false):
 	if ignore_drag:
-		disable_drag()
+		disable_drag(false)
 	position = pos
 	if ignore_drag:
 		get_tree().create_timer(0.5).timeout.connect(restore_drag)
 
-func disable_drag():
-	if drag_enabled:
+func disable_drag(smooth: bool = true):
+	if drag_enabled and drag_horizontal_enabled:
 		drag_horizontal_enabled = false
 		drag_vertical_enabled = false
+		if smooth:
+			position_smoothing_enabled = true
+			get_tree().create_timer(0.5).timeout.connect(
+				func():
+					position_smoothing_enabled = false
+			)
 
 func restore_drag():
 	if drag_enabled:

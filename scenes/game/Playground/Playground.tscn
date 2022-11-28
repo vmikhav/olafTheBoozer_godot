@@ -7,4 +7,11 @@
 script = ExtResource("1_4ts3o")
 
 [node name="TouchCamera" parent="." instance=ExtResource("2_ylx20")]
-current = true
+zoom = Vector2(2, 2)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.4
+drag_top_margin = 0.4
+drag_right_margin = 0.4
+drag_bottom_margin = 0.4
+editor_draw_drag_margin = true

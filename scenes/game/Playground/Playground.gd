@@ -29,4 +29,5 @@ func load_level(name: String):
 	var pack = load("res://scenes/levels/" + name + "/" + name + ".tscn") as PackedScene
 	level = pack.instantiate() as BaseLevel
 	add_child(level)
-	camera.position = level.hero_position
+	camera.target = level.hero
+	camera.go_to(level.hero.position, true)

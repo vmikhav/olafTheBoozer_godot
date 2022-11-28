@@ -57,6 +57,7 @@ func is_empty_cell(layer: Layer, position: Vector2i) -> bool:
 	return atlas_pos.x == -1
 
 func skip_step():
+	hero.hit()
 	print('blocked')
 
 func update_cell(pos: Vector2i, new_value: Vector2i):

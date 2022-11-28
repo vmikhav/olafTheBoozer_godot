@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3]
+[gd_scene load_steps=27 format=3 uid="uid://dkur4b14785b4"]
 
 [ext_resource type="Script" path="res://scenes/sprites/Worker/Worker.gd" id="1_hsl2y"]
 [ext_resource type="Texture2D" uid="uid://7h7glq24yk2c" path="res://assets/sprites/MiniWorker.png" id="2_tbvq4"]
@@ -85,7 +85,7 @@ animations = [{
 "frames": [SubResource("AtlasTexture_tfi0s"), SubResource("AtlasTexture_o8amc"), SubResource("AtlasTexture_0ppyo")],
 "loop": false,
 "name": &"hit",
-"speed": 7.0
+"speed": 10.0
 }, {
 "frames": [SubResource("AtlasTexture_0ax8e"), SubResource("AtlasTexture_cnrbq"), SubResource("AtlasTexture_icbcg"), SubResource("AtlasTexture_uxact")],
 "loop": true,
@@ -113,6 +113,7 @@ position = Vector2(0, -16)
 y_sort_enabled = true
 frames = SubResource("SpriteFrames_cgvkd")
 animation = &"idle"
+playing = true
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_p22by")

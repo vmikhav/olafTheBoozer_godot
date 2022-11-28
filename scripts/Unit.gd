@@ -17,3 +17,8 @@ func set_orientation(direction: String) -> void:
 	if direction == 'right' || direction == 'left':
 		orientation = direction
 		sprite.flip_h = direction == 'left'
+
+func hit():
+	sprite.play("hit")
+	await sprite.animation_finished
+	sprite.play("idle")

@@ -47,14 +47,14 @@ layer_5/enabled = true
 layer_5/modulate = Color(1, 1, 1, 1)
 layer_5/y_sort_enabled = false
 layer_5/y_sort_origin = 0
-layer_5/z_index = 0
+layer_5/z_index = 5
 layer_5/tile_data = PackedInt32Array(65539, 917504, 19, 196611, 1245184, 15, 131075, 524288, 14, 262149, 917504, 19, 262148, 917504, 19, 327685, 786432, 20)
 layer_6/name = "fixed_items"
 layer_6/enabled = true
 layer_6/modulate = Color(1, 1, 1, 1)
 layer_6/y_sort_enabled = false
 layer_6/y_sort_origin = 0
-layer_6/z_index = 0
+layer_6/z_index = 5
 layer_6/tile_data = PackedInt32Array(65539, 1310720, 17, 196611, 262144, 11, 262148, 786432, 18, 262149, 786432, 16, 327685, 851968, 20)
 
 [node name="Demolitonist" parent="TileMap" instance=ExtResource("3_g4qxb")]

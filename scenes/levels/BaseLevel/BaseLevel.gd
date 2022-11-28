@@ -18,10 +18,12 @@ var ghosts = []
 var ghosts_count: int
 var ghosts_progress: int
 var history = []
+var is_history_replay: bool = false
+var history_delay: float
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	process_history_replay(delta)
 
 func init_map(source: Layer = Layer.BAD_ITEMS):
 	tilemap.clear_layer(Layer.ITEMS)
@@ -30,6 +32,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 	var bad_items = tilemap.get_used_cells(source)
 	if source == Layer.BAD_ITEMS:
 		allow_input = true
+		is_history_replay = false
 		history = [{position = hero_position}]
 		level_progress = 0
 		level_items_count = bad_items.size()
@@ -105,22 +108,37 @@ func navigate(direction: TileSet.CellNeighbor):
 	move_hero_to_position(neighbor_pos)
 	history.push_back(history_item)
 	if ghosts_progress == ghosts_count:
-		replay()
-	
+		get_tree().create_timer(2).timeout.connect(replay)
+
+func step_back():
+	var history_item = history.pop_back()
+	if history_item.position.x > hero_position.x:
+		hero.set_orientation('right')
+	if history_item.position.x < hero_position.x:
+		hero.set_orientation('left')
+	move_hero_to_position(history_item.position)
+	if "bad_item" in history_item:
+		update_cell(history_item.position, history_item.bad_item)
+		level_progress -= 1
+	if "ghost" in history_item:
+		history_item.ghost.visible = true
+		ghosts.push_back({position = history_item.position, unit = history_item.ghost})
+		ghosts_progress -= 1
+	if not history.size():
+		history = [{position = hero_position}]
+		is_history_replay = false
 
 func replay():
-	history.reverse()
-	for history_item in history:
-		if history_item.position.x > hero_position.x:
-			hero.set_orientation('right')
-		if history_item.position.x < hero_position.x:
-			hero.set_orientation('left')
-		move_hero_to_position(history_item.position)
-		if "bad_item" in history_item:
-			update_cell(history_item.position, history_item.bad_item)
-			level_progress -= 1
-		if "ghost" in history_item:
-			history_item.ghost.visible = true
-			ghosts.push_back({position = history_item.position, unit = history_item.ghost})
-			ghosts_progress -= 1
-	history = [{position = hero_position}]
+	allow_input = false
+	is_history_replay = true
+	history_delay = 0
+	step_back()
+	step_back()
+
+
+func process_history_replay(delta: float):
+	if is_history_replay:
+		history_delay += delta
+		if history_delay > 0.3:
+			history_delay = 0
+			step_back()

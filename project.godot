@@ -20,6 +20,11 @@ _global_script_classes=[{
 "path": "res://scenes/sprites/Demolitonist/Demolitonist.gd"
 }, {
 "base": "Node",
+"class": &"SoundsMap",
+"language": &"GDScript",
+"path": "res://scripts/SoundsMap.gd"
+}, {
+"base": "Node",
 "class": &"State",
 "language": &"GDScript",
 "path": "res://scripts/State.gd"
@@ -52,6 +57,7 @@ _global_script_classes=[{
 _global_script_class_icons={
 "BaseLevel": "",
 "DemolitonistSprite": "",
+"SoundsMap": "",
 "State": "",
 "StateMachine": "",
 "TouchCamera": "",

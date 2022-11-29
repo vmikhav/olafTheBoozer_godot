@@ -8,6 +8,8 @@ enum Layer {
 	GROUND, FLOOR, WALLS, ITEMS, TREES, BAD_ITEMS, GOOD_ITEMS
 }
 
+@onready var sounds_map = SoundsMap.new() as SoundsMap
+
 var hero_position: Vector2i
 var tilemap: TileMap
 var hero: Node2D
@@ -19,11 +21,10 @@ var ghosts_count: int
 var ghosts_progress: int
 var history = []
 var is_history_replay: bool = false
-var history_delay: float
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	process_history_replay(delta)
+	pass
 
 func init_map(source: Layer = Layer.BAD_ITEMS):
 	tilemap.clear_layer(Layer.ITEMS)
@@ -61,7 +62,7 @@ func is_empty_cell(layer: Layer, position: Vector2i) -> bool:
 
 func skip_step():
 	hero.hit()
-	print('blocked')
+	play_sfx("bump")
 
 func update_cell(pos: Vector2i, new_value: Vector2i):
 	if new_value.x == -1:
@@ -107,6 +108,7 @@ func navigate(direction: TileSet.CellNeighbor):
 			break
 	move_hero_to_position(neighbor_pos)
 	history.push_back(history_item)
+	play_sfx_by_history(history_item)
 	if ghosts_progress == ghosts_count:
 		get_tree().create_timer(2).timeout.connect(replay)
 
@@ -115,6 +117,8 @@ func step_back():
 		is_history_replay = false
 		return
 	var history_item = history.pop_back()
+	if is_history_replay:
+		play_sfx_by_history(history_item)
 	var history_position_item = history[history.size() - 1]
 	if history_position_item.position.x > hero_position.x:
 		hero.set_orientation('right')
@@ -133,13 +137,25 @@ func step_back():
 func replay():
 	allow_input = false
 	is_history_replay = true
-	history_delay = 0
 	step_back()
+	while is_history_replay:
+		await get_tree().create_timer(0.2 + randf_range(0, 0.1)).timeout
+		step_back()
 
+func play_sfx(name: String):
+	var player = AudioStreamPlayer.new()
+	player.bus = "SFX"
+	player.stream = sounds_map.sounds[name]
+	add_child(player)
+	player.play()
+	await player.finished
+	player.queue_free()
 
-func process_history_replay(delta: float):
-	if is_history_replay:
-		history_delay += delta
-		if history_delay > 0.3:
-			history_delay = 0
-			step_back()
+func play_sfx_by_history(history_item):
+	if "ghost" in history_item:
+		play_sfx("pickup")
+		return
+	if "bad_item" in history_item:
+		play_sfx(sounds_map.get_sound(history_item.bad_item, history_item.good_item))
+		return
+	play_sfx("step")

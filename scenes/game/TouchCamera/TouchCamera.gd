@@ -16,6 +16,7 @@ var events = {}
 var last_drag_distance = 0
 var target: Node2D
 var zoom_tween: Tween
+var smoothing_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -89,7 +90,12 @@ func disable_drag(smooth: bool = true):
 		drag_vertical_enabled = false
 		if smooth:
 			position_smoothing_enabled = true
-			get_tree().create_timer(0.5).timeout.connect(
+			position_smoothing_speed = 10
+			if smoothing_tween:
+				smoothing_tween.kill()
+			smoothing_tween = create_tween()
+			smoothing_tween.tween_property(self, "position_smoothing_speed", 50, 1)
+			get_tree().create_timer(1).timeout.connect(
 				func():
 					position_smoothing_enabled = false
 			)

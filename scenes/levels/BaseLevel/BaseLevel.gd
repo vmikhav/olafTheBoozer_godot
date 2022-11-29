@@ -111,12 +111,16 @@ func navigate(direction: TileSet.CellNeighbor):
 		get_tree().create_timer(2).timeout.connect(replay)
 
 func step_back():
+	if history.size() <= 1:
+		is_history_replay = false
+		return
 	var history_item = history.pop_back()
-	if history_item.position.x > hero_position.x:
+	var history_position_item = history[history.size() - 1]
+	if history_position_item.position.x > hero_position.x:
 		hero.set_orientation('right')
-	if history_item.position.x < hero_position.x:
+	if history_position_item.position.x < hero_position.x:
 		hero.set_orientation('left')
-	move_hero_to_position(history_item.position)
+	move_hero_to_position(history_position_item.position)
 	if "bad_item" in history_item:
 		update_cell(history_item.position, history_item.bad_item)
 		level_progress -= 1
@@ -124,15 +128,12 @@ func step_back():
 		history_item.ghost.visible = true
 		ghosts.push_back({position = history_item.position, unit = history_item.ghost})
 		ghosts_progress -= 1
-	if not history.size():
-		history = [{position = hero_position}]
-		is_history_replay = false
+	
 
 func replay():
 	allow_input = false
 	is_history_replay = true
 	history_delay = 0
-	step_back()
 	step_back()
 
 

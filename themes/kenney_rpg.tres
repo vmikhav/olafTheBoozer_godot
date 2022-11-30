@@ -1,0 +1,6 @@
+[gd_resource type="Theme" format=3 uid="uid://yqpu1k43isuw"]
+
+[resource]
+BrownButton/base_type = &"Button"
+BrownButton/colors/font_color = Color(1, 1, 1, 1)
+BrownRoundButton/base_type = &"BrownButton"

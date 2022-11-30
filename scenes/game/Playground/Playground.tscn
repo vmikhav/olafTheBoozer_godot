@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4fp180mv1chx"]
+[gd_scene load_steps=12 format=3 uid="uid://b4fp180mv1chx"]
 
 [ext_resource type="Script" path="res://scenes/game/Playground/Playground.gd" id="1_4ts3o"]
 [ext_resource type="PackedScene" uid="uid://cxgwmebaaj6lt" path="res://scenes/game/TouchCamera/TouchCamera.tscn" id="2_ylx20"]
+[ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="3_fgile"]
+[ext_resource type="Texture2D" uid="uid://t2wyfqvvogsf" path="res://assets/images/buttonRound_brown_up_blue.png" id="4_68sq8"]
+[ext_resource type="Texture2D" uid="uid://b3vq4yk7ekapp" path="res://assets/images/buttonRound_brown_up_silver.png" id="5_6gboa"]
+[ext_resource type="Texture2D" uid="uid://2u57ruymehwh" path="res://assets/images/buttonRound_brown_left_blue.png" id="5_ahdhl"]
+[ext_resource type="Texture2D" uid="uid://ba4meks2nuw7g" path="res://assets/images/buttonRound_brown_right_blue.png" id="6_mo624"]
+[ext_resource type="Texture2D" uid="uid://c3o0ywxhaw88t" path="res://assets/images/buttonRound_brown_left_silver.png" id="7_qifg7"]
+[ext_resource type="Texture2D" uid="uid://65wrvrow4kc1" path="res://assets/images/buttonRound_brown_down_blue.png" id="7_xf00s"]
+[ext_resource type="Texture2D" uid="uid://drbmoxh7sob0r" path="res://assets/images/buttonRound_brown_right_silver.png" id="9_pc86e"]
+[ext_resource type="Texture2D" uid="uid://d0f47ov0tqvy8" path="res://assets/images/buttonRound_brown_down_silver.png" id="11_ate0l"]
 
 [node name="Playground" type="Node2D"]
 script = ExtResource("1_4ts3o")
@@ -15,3 +24,137 @@ drag_top_margin = 0.4
 drag_right_margin = 0.4
 drag_bottom_margin = 0.4
 editor_draw_drag_margin = true
+
+[node name="UiLayer" type="CanvasLayer" parent="."]
+
+[node name="Container" type="MarginContainer" parent="UiLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_fgile")
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/Container"]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 1127.0
+offset_bottom = 623.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/Container/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+offset_right = 1102.0
+offset_bottom = 200.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UiLayer/Container/VBoxContainer"]
+layout_mode = 2
+offset_top = 204.0
+offset_right = 1102.0
+offset_bottom = 598.0
+size_flags_vertical = 3
+alignment = 2
+
+[node name="NavigationContainer" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+offset_left = 902.0
+offset_top = 166.0
+offset_right = 1102.0
+offset_bottom = 394.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer2/NavigationContainer"]
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 228.0
+
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer2/NavigationContainer/VBoxContainer"]
+layout_mode = 2
+offset_left = 62.0
+offset_right = 137.0
+offset_bottom = 70.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = -10
+
+[node name="TextureButton" type="TextureButton" parent="UiLayer/Container/VBoxContainer/HBoxContainer2/NavigationContainer/VBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(75, 80)
+layout_mode = 2
+offset_right = 75.0
+offset_bottom = 80.0
+action_mode = 0
+texture_normal = ExtResource("4_68sq8")
+texture_pressed = ExtResource("5_6gboa")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer2/NavigationContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 74.0
+offset_right = 200.0
+offset_bottom = 154.0
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer2/NavigationContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 13.0
+offset_right = 108.0
+offset_bottom = 80.0
+theme_override_constants/margin_right = 20
+
+[node name="TextureButton" type="TextureButton" parent="UiLayer/Container/VBoxContainer/HBoxContainer2/NavigationContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(75, 80)
+layout_mode = 2
+offset_right = 75.0
+offset_bottom = 80.0
+action_mode = 0
+texture_normal = ExtResource("5_ahdhl")
+texture_pressed = ExtResource("7_qifg7")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer2/NavigationContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 112.0
+offset_right = 187.0
+offset_bottom = 80.0
+
+[node name="TextureButton" type="TextureButton" parent="UiLayer/Container/VBoxContainer/HBoxContainer2/NavigationContainer/VBoxContainer/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(75, 80)
+layout_mode = 2
+offset_right = 75.0
+offset_bottom = 80.0
+action_mode = 0
+texture_normal = ExtResource("6_mo624")
+texture_pressed = ExtResource("9_pc86e")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="MarginContainer2" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer2/NavigationContainer/VBoxContainer"]
+layout_mode = 2
+offset_left = 62.0
+offset_top = 158.0
+offset_right = 137.0
+offset_bottom = 228.0
+size_flags_horizontal = 4
+theme_override_constants/margin_top = -10
+
+[node name="TextureButton" type="TextureButton" parent="UiLayer/Container/VBoxContainer/HBoxContainer2/NavigationContainer/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(75, 80)
+layout_mode = 2
+offset_top = -10.0
+offset_right = 75.0
+offset_bottom = 70.0
+action_mode = 0
+texture_normal = ExtResource("7_xf00s")
+texture_pressed = ExtResource("11_ate0l")
+ignore_texture_size = true
+stretch_mode = 0

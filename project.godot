@@ -69,9 +69,13 @@ _global_script_class_icons={
 [application]
 
 config/name="OlafTheBoozer-ggo2022"
-run/main_scene="res://scenes/game/Playground/Playground.tscn"
+run/main_scene="res://scenes/game/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
+
+[autoload]
+
+SceneSwitcher="*res://scripts/SceneSwitcher.gd"
 
 [rendering]
 

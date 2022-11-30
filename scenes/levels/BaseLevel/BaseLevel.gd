@@ -25,6 +25,8 @@ var is_history_replay: bool = false
 
 signal items_progress_signal(items_count: int)
 signal ghosts_progress_signal(ghosts_count: int)
+signal level_finished
+signal playback_finished
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -120,11 +122,14 @@ func navigate(direction: TileSet.CellNeighbor):
 	history.push_back(history_item)
 	play_sfx_by_history(history_item)
 	if ghosts_progress == ghosts_count:
+		allow_input = false
+		level_finished.emit()
 		get_tree().create_timer(2).timeout.connect(replay)
 
 func step_back():
 	if history.size() <= 1:
 		is_history_replay = false
+		playback_finished.emit()
 		return
 	var history_item = history.pop_back()
 	if is_history_replay:

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://buprji1aequks"]
+
+[ext_resource type="Script" path="res://scenes/game/SceneTransition/SceneTransition.gd" id="1_25toq"]
+
+[node name="SceneTransitionRect" type="ColorRect"]
+modulate = Color(1, 1, 1, 0)
+offset_left = -4.0
+offset_top = -6.0
+offset_right = 1156.0
+offset_bottom = 654.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("1_25toq")

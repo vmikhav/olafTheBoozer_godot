@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://yqpu1k43isuw"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://yqpu1k43isuw"]
 
 [ext_resource type="Texture2D" uid="uid://bgsx4yjmah33k" path="res://assets/images/uipack.png" id="1_j6k72"]
 
@@ -9,6 +9,32 @@ margin_top = 7.0
 margin_right = 8.0
 margin_bottom = 7.0
 region_rect = Rect2(101, 200, 100, 100)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sxkux"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wds0e"]
+texture = ExtResource("1_j6k72")
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 7.0
+margin_bottom = 12.0
+region_rect = Rect2(0, 0, 190, 49)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_boc6w"]
+texture = ExtResource("1_j6k72")
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 7.0
+margin_bottom = 12.0
+region_rect = Rect2(0, 0, 190, 49)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2no17"]
+texture = ExtResource("1_j6k72")
+margin_left = 8.0
+margin_top = 12.0
+margin_right = 7.0
+margin_bottom = 8.0
+region_rect = Rect2(191, 0, 190, 49)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxmlm"]
 texture = ExtResource("1_j6k72")
@@ -61,6 +87,10 @@ region_rect = Rect2(111, 396, 36, 18)
 [resource]
 BeigePanel/base_type = &"Panel"
 BeigePanel/styles/panel = SubResource("StyleBoxTexture_udv0s")
+Button/styles/focus = SubResource("StyleBoxEmpty_sxkux")
+Button/styles/hover = SubResource("StyleBoxTexture_wds0e")
+Button/styles/normal = SubResource("StyleBoxTexture_boc6w")
+Button/styles/pressed = SubResource("StyleBoxTexture_2no17")
 GreenProgressBar/base_type = &"ProgressBar"
 GreenProgressBar/styles/fill = SubResource("StyleBoxTexture_uxmlm")
 Panel/styles/panel = SubResource("StyleBoxTexture_6x2vd")

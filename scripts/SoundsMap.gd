@@ -17,6 +17,7 @@ var sounds = {
 const sounds_map = {
 	"8,14" = "vomit",
 	"6,12" = "glass",
+	"9,18" = "glass",
 	"12,16" = "drink",
 	"13,16" = "drink",
 	"12,18" = "drink",

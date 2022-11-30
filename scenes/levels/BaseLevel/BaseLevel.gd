@@ -145,6 +145,8 @@ func replay():
 func play_sfx(name: String):
 	var player = AudioStreamPlayer.new()
 	player.bus = "SFX"
+	if name == "vomit":
+		player.volume_db = -3
 	player.stream = sounds_map.sounds[name]
 	add_child(player)
 	player.play()

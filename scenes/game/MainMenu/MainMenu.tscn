@@ -22,16 +22,19 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/MarginContainer"]
+layout_mode = 2
 offset_right = 1160.0
 offset_bottom = 660.0
 alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
 offset_top = 246.0
 offset_right = 1160.0
 offset_bottom = 279.0
 
 [node name="Label" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
 offset_left = 355.0
 offset_right = 805.0
 offset_bottom = 33.0
@@ -40,6 +43,7 @@ theme_override_font_sizes/font_size = 30
 text = "Olaf the Boozer"
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
 offset_left = 430.0
 offset_top = 283.0
 offset_right = 730.0
@@ -50,6 +54,7 @@ theme_override_constants/margin_top = 50
 
 [node name="Button" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
 offset_top = 50.0
 offset_right = 300.0
 offset_bottom = 130.0

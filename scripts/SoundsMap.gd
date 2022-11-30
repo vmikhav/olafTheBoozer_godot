@@ -11,6 +11,10 @@ var sounds = {
 	"bump" = load("res://assets/sounds/bump.wav"),
 	"pickup" = load("res://assets/sounds/pickup.wav"),
 	"water_step" = load("res://assets/sounds/water-step.wav"),
+	"fanfare" = load("res://assets/sounds/fanfare.mp3"),
+	"hrrng" = load("res://assets/sounds/hrrng.wav"),
+	"hiccup" = load("res://assets/sounds/hiccup.wav"),
+	"groan" = load("res://assets/sounds/groan.wav"),
 }
 
 

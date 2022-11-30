@@ -10,4 +10,4 @@ func _ready():
 
 
 func start_game():
-	scene_transaction.change_scene("res://scenes/game/Intro/Intro.tscn")
+	scene_transaction.change_scene("res://scenes/game/Playground/Playground.tscn")

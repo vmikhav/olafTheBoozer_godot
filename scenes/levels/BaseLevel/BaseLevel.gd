@@ -122,9 +122,13 @@ func navigate(direction: TileSet.CellNeighbor):
 	history.push_back(history_item)
 	play_sfx_by_history(history_item)
 	if ghosts_progress == ghosts_count:
-		allow_input = false
-		level_finished.emit()
-		get_tree().create_timer(2).timeout.connect(replay)
+		finish_level()
+
+func finish_level():
+	allow_input = false
+	level_finished.emit()
+	get_tree().create_timer(0.5).timeout.connect(play_sfx.bind("fanfare"))
+	get_tree().create_timer(1.5).timeout.connect(replay)
 
 func step_back():
 	if history.size() <= 1:

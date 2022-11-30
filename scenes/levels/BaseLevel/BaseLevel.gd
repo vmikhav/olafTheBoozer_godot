@@ -11,6 +11,7 @@ enum Layer {
 @onready var sounds_map = SoundsMap.new() as SoundsMap
 
 var hero_position: Vector2i
+var hero_start_position: Vector2i
 var tilemap: TileMap
 var hero: Node2D
 var allow_input: bool
@@ -21,6 +22,9 @@ var ghosts_count: int
 var ghosts_progress: int
 var history = []
 var is_history_replay: bool = false
+
+signal items_progress_signal(items_count: int)
+signal ghosts_progress_signal(ghosts_count: int)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -48,6 +52,10 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 			move_unit_to_position(ghosts[i].unit, ghosts[i].position)
 	for pos in bad_items:
 		tilemap.set_cell(Layer.ITEMS, pos, 0, tilemap.get_cell_atlas_coords(source, pos))
+
+func restart():
+	while history.size() > 1:
+		step_back()
 
 func move_unit_to_position(unit: Node2D, position: Vector2i):
 	unit.position = position * TILE_SIZE + TILE_OFFSET
@@ -99,9 +107,11 @@ func navigate(direction: TileSet.CellNeighbor):
 		history_item.bad_item = bad_neighbor_cell
 		history_item.good_item = good_neighbor_cell
 		level_progress += 1
+		items_progress_signal.emit(level_progress)
 	for i in ghosts.size():
 		if neighbor_pos == ghosts[i].position:
 			ghosts_progress += 1
+			ghosts_progress_signal.emit(ghosts_progress)
 			ghosts[i].unit.visible = false
 			history_item.ghost = ghosts[i].unit
 			ghosts.remove_at(i)
@@ -132,7 +142,9 @@ func step_back():
 		history_item.ghost.visible = true
 		ghosts.push_back({position = history_item.position, unit = history_item.ghost})
 		ghosts_progress -= 1
-	
+	if not is_history_replay:
+		ghosts_progress_signal.emit(ghosts_progress)
+		items_progress_signal.emit(level_progress)
 
 func replay():
 	allow_input = false

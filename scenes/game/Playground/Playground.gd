@@ -2,12 +2,14 @@ extends Node2D
 
 @onready var camera = $TouchCamera as TouchCamera
 @onready var nav_buttons = $UiLayer/Container/VBoxContainer/HBoxContainer2/NavButtons
+@onready var restart_button = $UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer3/TextureButton as TextureButton
 var level: BaseLevel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_level("Tutorial0")
 	nav_buttons.navigate.connect(move_hero)
+	restart_button.pressed.connect(level.restart)
 	pass # Replace with function body.
 
 

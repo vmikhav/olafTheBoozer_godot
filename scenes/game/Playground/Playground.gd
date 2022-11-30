@@ -1,11 +1,13 @@
 extends Node2D
 
 @onready var camera = $TouchCamera as TouchCamera
+@onready var nav_buttons = $UiLayer/Container/VBoxContainer/HBoxContainer2/NavButtons
 var level: BaseLevel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_level("Tutorial0")
+	nav_buttons.navigate.connect(move_hero)
 	pass # Replace with function body.
 
 
@@ -13,16 +15,26 @@ func _ready():
 func _process(delta):
 	pass
 
-func _input(event):
-	if event is InputEventKey: 
-		if event.is_action_released("ui_left"):
-			level.navigate(TileSet.CELL_NEIGHBOR_LEFT_SIDE)
-		if event.is_action_released("ui_right"):
-			level.navigate(TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
-		if event.is_action_released("ui_up"):
-			level.navigate(TileSet.CELL_NEIGHBOR_TOP_SIDE)
-		if event.is_action_released("ui_down"):
-			level.navigate(TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
+func move_hero(direction: String):
+	if direction == "left":
+		level.navigate(TileSet.CELL_NEIGHBOR_LEFT_SIDE)
+	if direction == "right":
+		level.navigate(TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
+	if direction == "up":
+		level.navigate(TileSet.CELL_NEIGHBOR_TOP_SIDE)
+	if direction == "down":
+		level.navigate(TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
+
+#func _input(event):
+#	if event is InputEventKey: 
+#		if event.is_action_released("ui_left"):
+#			level.navigate(TileSet.CELL_NEIGHBOR_LEFT_SIDE)
+#		if event.is_action_released("ui_right"):
+#			level.navigate(TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
+#		if event.is_action_released("ui_up"):
+#			level.navigate(TileSet.CELL_NEIGHBOR_TOP_SIDE)
+#		if event.is_action_released("ui_down"):
+#			level.navigate(TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
 
 
 func load_level(name: String):

@@ -6,15 +6,22 @@ var sprite: AnimatedSprite2D
 @onready var sounds_map = SoundsMap.new() as SoundsMap
 var can_produce_sounds = true
 var available_sounds = ["hiccup", "hrrng", "groan"]
+var last_sound = -1
 
 
 func init():
-	while can_produce_sounds:
-		await get_tree().create_timer(randf_range(4, 10)).timeout
-		if can_produce_sounds:
-			var sound = available_sounds[randi_range(0, available_sounds.size()-1)]
-			play_sfx(sound)
-	
+	get_tree().create_timer(3).timeout.connect(play_idle_sound)
+
+
+func play_idle_sound():
+	if can_produce_sounds:
+		var sound_index = randi_range(0, available_sounds.size()-1)
+		if last_sound == sound_index:
+			sound_index = randi_range(0, available_sounds.size()-1)
+		var sound = available_sounds[sound_index]
+		last_sound = sound_index
+		play_sfx(sound)
+		get_tree().create_timer(randf_range(4, 10)).timeout.connect(play_idle_sound)
 
 func make_ghost() -> void:
 	$Sprite.modulate = Color8(100, 200, 255, 160)

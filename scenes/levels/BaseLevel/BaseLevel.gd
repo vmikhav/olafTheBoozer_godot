@@ -162,12 +162,13 @@ func replay():
 	allow_input = false
 	is_history_replay = true
 	step_back()
-	while is_history_replay:
+	while is_history_replay and history.size() > 1:
 		await get_tree().create_timer(0.2 + randf_range(0, 0.1)).timeout
 		if is_history_replay:
 			step_back()
-	await get_tree().create_timer(0.5).timeout
-	playback_finished.emit()
+	await get_tree().create_timer(1.5).timeout
+	if is_history_replay:
+		playback_finished.emit()
 
 func play_sfx(name: String):
 	var player = AudioStreamPlayer.new()

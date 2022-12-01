@@ -10,6 +10,7 @@ var level: BaseLevel
 var level_index = 0
 var levels = [
 	"Tutorial0",
+	"Kitchen",
 ]
 
 # Called when the node enters the scene tree for the first time.

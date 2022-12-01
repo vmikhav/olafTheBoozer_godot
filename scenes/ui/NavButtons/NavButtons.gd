@@ -28,9 +28,9 @@ func _ready():
 func process_button_pressed(direction: String):
 	button_pressed[direction] = true
 	navigate.emit(direction)
-	var timer_check = await process_button_timer(direction, 0.75)
+	var timer_check = await process_button_timer(direction, 0.5)
 	while button_pressed[direction] and timer_check:
-		timer_check = await process_button_timer(direction, 0.3)
+		timer_check = await process_button_timer(direction, 0.2)
 
 func process_button_released(direction: String):
 	button_pressed[direction] = false

@@ -11,6 +11,7 @@ var level_index = 0
 var levels = [
 	"Tutorial0",
 	"Kitchen",
+	"Library",
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -50,6 +51,7 @@ func load_level(name: String):
 
 func load_next_level():
 	await transition_rect.fade_out()
+	level.queue_free()
 	level_index += 1
 	if levels.size() <= level_index:
 		SceneSwitcher.change_scene_to_file("res://scenes/game/MainMenu/MainMenu.tscn")

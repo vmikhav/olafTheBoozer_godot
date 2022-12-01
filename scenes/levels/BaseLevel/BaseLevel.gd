@@ -163,7 +163,7 @@ func replay():
 	is_history_replay = true
 	step_back()
 	while is_history_replay and history.size() > 1:
-		await get_tree().create_timer(0.2 + randf_range(0, 0.1)).timeout
+		await get_tree().create_timer(0.15 + randf_range(0, 0.075)).timeout
 		if is_history_replay:
 			step_back()
 	await get_tree().create_timer(1.5).timeout

@@ -17,7 +17,6 @@ var sounds = {
 	"groan" = load("res://assets/sounds/groan.wav"),
 }
 
-
 const sounds_map = {
 	"8,14" = "vomit",
 	"6,12" = "glass",
@@ -47,3 +46,4 @@ func get_sound(bad_item: Vector2i, good_item: Vector2i) -> String:
 	elif sounds_map.has(bad_item_key):
 		result = sounds_map[bad_item_key]
 	return result
+

@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://buprji1aequks"]
+[gd_scene load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://scenes/game/SceneTransition/SceneTransition.gd" id="1_25toq"]
+[ext_resource type="Script" path="res://scenes/ui/SceneTransition/SceneTransition.gd" id="1_25toq"]
 
 [node name="SceneTransitionRect" type="ColorRect"]
 modulate = Color(1, 1, 1, 0)

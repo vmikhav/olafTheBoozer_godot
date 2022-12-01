@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://dpidhjdgt3xrj"]
+[gd_scene load_steps=18 format=3]
 
-[ext_resource type="Script" path="res://scenes/game/NavButtons/NavButtons.gd" id="1_l48oc"]
+[ext_resource type="Script" path="res://scenes/ui/NavButtons/NavButtons.gd" id="1_l48oc"]
 [ext_resource type="Texture2D" uid="uid://t2wyfqvvogsf" path="res://assets/images/buttonRound_brown_up_blue.png" id="1_pwq26"]
 [ext_resource type="Texture2D" uid="uid://b3vq4yk7ekapp" path="res://assets/images/buttonRound_brown_up_silver.png" id="2_k22j2"]
 [ext_resource type="Texture2D" uid="uid://2u57ruymehwh" path="res://assets/images/buttonRound_brown_left_blue.png" id="3_kr2ce"]

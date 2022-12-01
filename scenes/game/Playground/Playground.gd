@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var camera = $TouchCamera as TouchCamera
 @onready var nav_buttons = $UiLayer/Container/VBoxContainer/HBoxContainer2/NavButtons
+@onready var progress_panel = $UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer/ProgressPanel
 @onready var restart_button = $UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer3/TextureButton as TextureButton
 @onready var transition_rect = $UiLayer/SceneTransitionRect
 var level: BaseLevel
@@ -41,6 +42,10 @@ func load_level(name: String):
 	camera.target = level.hero
 	camera.go_to(level.hero.position, true)
 	level.playback_finished.connect(load_next_level)
+	progress_panel.set_items_count(level.level_items_count)
+	progress_panel.set_ghosts_count(level.ghosts_count)
+	level.items_progress_signal.connect(progress_panel.items_progress)
+	level.ghosts_progress_signal.connect(progress_panel.ghosts_progress)
 
 func load_next_level():
 	await transition_rect.fade_out()

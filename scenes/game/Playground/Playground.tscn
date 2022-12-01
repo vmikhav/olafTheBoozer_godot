@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4fp180mv1chx"]
+[gd_scene load_steps=11 format=3 uid="uid://bju6d0dltxeah"]
 
 [ext_resource type="Script" path="res://scenes/game/Playground/Playground.gd" id="1_4ts3o"]
 [ext_resource type="PackedScene" uid="uid://cxgwmebaaj6lt" path="res://scenes/game/TouchCamera/TouchCamera.tscn" id="2_ylx20"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="3_fgile"]
 [ext_resource type="Texture2D" uid="uid://dysd3t3vacti6" path="res://assets/images/button_reset.png" id="4_4j3n4"]
-[ext_resource type="PackedScene" uid="uid://dpidhjdgt3xrj" path="res://scenes/game/NavButtons/NavButtons.tscn" id="4_70ndd"]
+[ext_resource type="PackedScene" uid="uid://ehd8l4wredkr" path="res://scenes/ui/ProgressPanel/ProgressPanel.tscn" id="4_47ar2"]
+[ext_resource type="PackedScene" path="res://scenes/ui/NavButtons/NavButtons.tscn" id="4_70ndd"]
 [ext_resource type="Texture2D" uid="uid://nty1se8whswd" path="res://assets/images/button_reset_pressed.png" id="5_ws7ji"]
-[ext_resource type="PackedScene" uid="uid://buprji1aequks" path="res://scenes/game/SceneTransition/SceneTransition.tscn" id="7_fw1t5"]
+[ext_resource type="PackedScene" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="7_w6wfa"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_68k73"]
 keycode = 82
@@ -66,6 +67,19 @@ offset_right = 1035.0
 offset_bottom = 75.0
 size_flags_horizontal = 3
 
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer2"]
+layout_mode = 2
+offset_left = 430.0
+offset_right = 600.0
+offset_bottom = 50.0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="ProgressPanel" parent="UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer" instance=ExtResource("4_47ar2")]
+custom_minimum_size = Vector2(170, 50)
+layout_mode = 2
+offset_right = 170.0
+
 [node name="MarginContainer3" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 offset_left = 1039.0
@@ -99,4 +113,4 @@ layout_mode = 2
 offset_top = 291.0
 offset_bottom = 519.0
 
-[node name="SceneTransitionRect" parent="UiLayer" instance=ExtResource("7_fw1t5")]
+[node name="SceneTransitionRect" parent="UiLayer" instance=ExtResource("7_w6wfa")]

@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cayd4f58xgjk6"]
+[gd_scene load_steps=5 format=3 uid="uid://crsddxeiw4iqv"]
 
 [ext_resource type="Script" path="res://scenes/game/Intro/Intro.gd" id="1_kwo4f"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="2_6bi6x"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="3_ssmyr"]
-[ext_resource type="PackedScene" uid="uid://buprji1aequks" path="res://scenes/game/SceneTransition/SceneTransition.tscn" id="4_iuka3"]
+[ext_resource type="PackedScene" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="4_iuka3"]
 
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_kwo4f")
@@ -18,11 +18,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/MarginContainer"]
+layout_mode = 2
 offset_right = 1152.0
 offset_bottom = 648.0
 alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
 offset_top = 153.0
 offset_right = 1152.0
 offset_bottom = 361.0
@@ -30,6 +32,7 @@ theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
 
 [node name="RichTextLabel" type="RichTextLabel" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
 offset_left = 100.0
 offset_right = 1052.0
 offset_bottom = 208.0
@@ -39,11 +42,11 @@ theme_override_font_sizes/normal_font_size = 16
 text = "“A drink is shorter than a tale.” — Scottish proverb
 
 
-
-Olaf always liked to hape a drink, as any self-honoring dwarf. But after latest drink session he woked up in unknow place with no memory about last event. Help him to remind what happeden."
+Olaf always liked to have a drink, as any self-respecting dwarf. But after the last drink session, he woke up in an unknown place with no memory of recent events. Your target is to restore all broken items to restore Olaf's path and help him to remember what happened."
 fit_content_height = true
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
 offset_left = 426.0
 offset_top = 365.0
 offset_right = 726.0
@@ -54,6 +57,7 @@ theme_override_constants/margin_top = 50
 
 [node name="Button" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
 offset_top = 50.0
 offset_right = 300.0
 offset_bottom = 130.0

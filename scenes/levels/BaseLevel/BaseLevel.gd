@@ -56,8 +56,12 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 		tilemap.set_cell(Layer.ITEMS, pos, 0, tilemap.get_cell_atlas_coords(source, pos))
 
 func restart():
+	is_history_replay = false
+	allow_input = true
 	while history.size() > 1:
 		step_back()
+	ghosts_progress_signal.emit(ghosts_progress)
+	items_progress_signal.emit(level_progress)
 
 func move_unit_to_position(unit: Node2D, position: Vector2i):
 	unit.position = position * TILE_SIZE + TILE_OFFSET
@@ -133,7 +137,6 @@ func finish_level():
 func step_back():
 	if history.size() <= 1:
 		is_history_replay = false
-		playback_finished.emit()
 		return
 	var history_item = history.pop_back()
 	if is_history_replay:
@@ -161,7 +164,10 @@ func replay():
 	step_back()
 	while is_history_replay:
 		await get_tree().create_timer(0.2 + randf_range(0, 0.1)).timeout
-		step_back()
+		if is_history_replay:
+			step_back()
+	await get_tree().create_timer(0.5).timeout
+	playback_finished.emit()
 
 func play_sfx(name: String):
 	var player = AudioStreamPlayer.new()

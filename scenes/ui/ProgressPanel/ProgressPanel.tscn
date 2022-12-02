@@ -48,7 +48,7 @@ offset_bottom = 15.0
 theme_override_fonts/font = ExtResource("1_x04sf")
 theme_override_font_sizes/font_size = 12
 text = "10/10"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 15)
@@ -80,7 +80,7 @@ offset_bottom = 15.0
 theme_override_fonts/font = ExtResource("1_x04sf")
 theme_override_font_sizes/font_size = 12
 text = "5/5"
-horizontal_alignment = 2
+horizontal_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(0, 15)

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ehd8l4wredkr" path="res://scenes/ui/ProgressPanel/ProgressPanel.tscn" id="4_47ar2"]
 [ext_resource type="PackedScene" path="res://scenes/ui/NavButtons/NavButtons.tscn" id="4_70ndd"]
 [ext_resource type="Texture2D" uid="uid://nty1se8whswd" path="res://assets/images/button_reset_pressed.png" id="5_ws7ji"]
-[ext_resource type="PackedScene" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="7_w6wfa"]
+[ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="7_w6wfa"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_68k73"]
 keycode = 82

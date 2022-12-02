@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/game/Intro/Intro.gd" id="1_kwo4f"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="2_6bi6x"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="3_ssmyr"]
-[ext_resource type="PackedScene" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="4_iuka3"]
+[ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="4_iuka3"]
 
 [node name="Intro" type="Node2D"]
 script = ExtResource("1_kwo4f")

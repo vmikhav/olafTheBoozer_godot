@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ehd8l4wredkr"]
 
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="1_kruus"]
-[ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="1_x04sf"]
 [ext_resource type="Script" path="res://scenes/ui/ProgressPanel/ProgressPanel.gd" id="2_ju3js"]
+[ext_resource type="PackedScene" uid="uid://car4s7r20herb" path="res://scenes/ui/LabeledProgressBar/LabeledProgressBar.tscn" id="3_17xl7"]
 
 [node name="Panel" type="Panel"]
 custom_minimum_size = Vector2(150, 50)
@@ -29,64 +29,12 @@ offset_top = 8.0
 offset_right = 235.0
 offset_bottom = 45.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Items" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_17xl7")]
 offset_right = 230.0
 offset_bottom = 15.0
-alignment = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-offset_right = 70.0
-offset_bottom = 15.0
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer/MarginContainer"]
-custom_minimum_size = Vector2(60, 0)
-offset_left = 5.0
-offset_right = 65.0
-offset_bottom = 15.0
-theme_override_fonts/font = ExtResource("1_x04sf")
-theme_override_font_sizes/font_size = 12
-text = "10/10"
-horizontal_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(0, 15)
-offset_left = 74.0
-offset_right = 230.0
-offset_bottom = 15.0
-size_flags_horizontal = 3
-theme_type_variation = &"GreenProgressBar"
-value = 30.0
-show_percentage = false
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Ghosts" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_17xl7")]
 offset_top = 19.0
 offset_right = 230.0
 offset_bottom = 34.0
-alignment = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-offset_right = 70.0
-offset_bottom = 15.0
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_right = 5
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
-custom_minimum_size = Vector2(60, 0)
-offset_left = 5.0
-offset_right = 65.0
-offset_bottom = 15.0
-theme_override_fonts/font = ExtResource("1_x04sf")
-theme_override_font_sizes/font_size = 12
-text = "5/5"
-horizontal_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(0, 15)
-offset_left = 74.0
-offset_right = 230.0
-offset_bottom = 15.0
-size_flags_horizontal = 3
-value = 80.0
-show_percentage = false
+style = "BlueProgressBar"

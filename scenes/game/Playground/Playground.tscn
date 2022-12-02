@@ -44,7 +44,6 @@ theme_override_constants/margin_bottom = 25
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/Container"]
-layout_mode = 2
 offset_left = 25.0
 offset_top = 25.0
 offset_right = 1127.0
@@ -52,23 +51,19 @@ offset_bottom = 623.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/Container/VBoxContainer"]
 custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
 offset_right = 1102.0
 offset_bottom = 75.0
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_bottom = 75.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_left = 4.0
 offset_right = 1035.0
 offset_bottom = 75.0
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer2"]
-layout_mode = 2
 offset_left = 430.0
 offset_right = 600.0
 offset_bottom = 50.0
@@ -77,11 +72,9 @@ size_flags_vertical = 0
 
 [node name="ProgressPanel" parent="UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer" instance=ExtResource("4_47ar2")]
 custom_minimum_size = Vector2(170, 50)
-layout_mode = 2
 offset_right = 170.0
 
 [node name="MarginContainer3" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_left = 1039.0
 offset_right = 1102.0
 offset_bottom = 75.0
@@ -89,7 +82,6 @@ size_flags_horizontal = 8
 
 [node name="TextureButton" type="TextureButton" parent="UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer3"]
 custom_minimum_size = Vector2(63, 0)
-layout_mode = 2
 offset_right = 63.0
 offset_bottom = 75.0
 focus_mode = 0
@@ -101,7 +93,6 @@ ignore_texture_size = true
 stretch_mode = 4
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UiLayer/Container/VBoxContainer"]
-layout_mode = 2
 offset_top = 79.0
 offset_right = 1102.0
 offset_bottom = 598.0
@@ -109,7 +100,6 @@ size_flags_vertical = 3
 alignment = 2
 
 [node name="NavButtons" parent="UiLayer/Container/VBoxContainer/HBoxContainer2" instance=ExtResource("4_70ndd")]
-layout_mode = 2
 offset_top = 291.0
 offset_bottom = 519.0
 

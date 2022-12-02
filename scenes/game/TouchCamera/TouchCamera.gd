@@ -9,11 +9,13 @@ extends Camera2D
 @onready var drag_enabled = self.drag_horizontal_enabled
 @onready var target_zoom: float = self.zoom.x
 
-var zoom_sensitivity = 10
+var zoom_sensitivity = 400
 var zoom_speed = 0.1
 
 var events = {}
 var last_drag_distance = 0
+var after_zoom = false
+var touch_events = false
 var target: Node2D
 var zoom_tween: Tween
 var smoothing_tween: Tween
@@ -36,25 +38,39 @@ func _process(delta):
 
 func _unhandled_input(event):
 	if event is InputEventScreenTouch:
+		touch_events = true
 		if event.pressed:
 			events[event.index] = event
-			disable_drag()
+			after_zoom = false
+			if events.size() == 1:
+				disable_drag()
+			else:
+				last_drag_distance = events[0].position.distance_squared_to(events[1].position)
 		else:
 			events.erase(event.index)
+			if events.size() > 0:
+				if 1 in events:
+					events[0] = events[1]
+					events.erase(1)
+				last_drag_distance = 0
+				after_zoom = true
 			#restore_drag()
 
 	if event is InputEventScreenDrag:
 		events[event.index] = event
 		if events.size() == 1:
-			position -= event.relative.rotated(rotation) / zoom.x
+			if after_zoom:
+				after_zoom = false
+			else:
+				position -= event.relative.rotated(rotation) / zoom.x
 		elif events.size() == 2:
-			var drag_distance = events[0].position.distance_to(events[1].position)
+			var drag_distance = events[0].position.distance_squared_to(events[1].position)
 			if abs(drag_distance - last_drag_distance) > zoom_sensitivity:
+				var delta = (zoom_speed) if drag_distance > last_drag_distance else (-zoom_speed)
 				last_drag_distance = drag_distance 
-				var delta = (zoom_speed) if drag_distance < last_drag_distance else (-zoom_speed)
 				update_zoom(delta)
 
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and not touch_events:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
 				events[event.button_index] = event
@@ -66,8 +82,8 @@ func _unhandled_input(event):
 			var delta = (zoom_speed) if event.button_index == MOUSE_BUTTON_WHEEL_UP else (-zoom_speed)
 			update_zoom(delta)
 
-	if event is InputEventMouseMotion:
-		if events.size():
+	if event is InputEventMouseMotion and not touch_events:
+		if events.size() == 1:
 			position -= event.relative.rotated(rotation) / zoom.x
 
 func update_zoom(delta: float):

@@ -5,6 +5,7 @@ extends Node2D
 @onready var progress_panel = $UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer/ProgressPanel
 @onready var restart_button = $UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer3/TextureButton as TextureButton
 @onready var transition_rect = $UiLayer/SceneTransitionRect
+@onready var nav_controller = $NavController
 var level: BaseLevel
 
 var level_index = 0
@@ -17,10 +18,13 @@ var levels = [
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	load_level(levels[level_index])
-	nav_buttons.navigate.connect(move_hero)
+	nav_buttons.actions.connect(imitate_input)
+	nav_controller.actions.connect(move_hero)
 	restart_button.pressed.connect(restart)
 	transition_rect.fade_in()
 
+func imitate_input(input: InputEvent):
+	nav_controller._input(input)
 
 func restart():
 	await transition_rect.fade_out()
@@ -28,13 +32,14 @@ func restart():
 	transition_rect.fade_in()
 
 func move_hero(direction: String):
-	if direction == "left":
+	print(direction)
+	if direction == "ui_left":
 		level.navigate(TileSet.CELL_NEIGHBOR_LEFT_SIDE)
-	if direction == "right":
+	if direction == "ui_right":
 		level.navigate(TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
-	if direction == "up":
+	if direction == "ui_up":
 		level.navigate(TileSet.CELL_NEIGHBOR_TOP_SIDE)
-	if direction == "down":
+	if direction == "ui_down":
 		level.navigate(TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
 
 func load_level(name: String):

@@ -84,7 +84,7 @@ func update_cell(pos: Vector2i, new_value: Vector2i):
 	else:
 		tilemap.set_cell(Layer.ITEMS, pos, 0, new_value)
 
-func navigate(direction: TileSet.CellNeighbor):
+func navigate(direction):#: TileSet.CellNeighbor):
 	if not allow_input:
 		return
 

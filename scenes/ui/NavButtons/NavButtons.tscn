@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3]
+[gd_scene load_steps=10 format=3 uid="uid://p41vq4676q75"]
 
 [ext_resource type="Script" path="res://scenes/ui/NavButtons/NavButtons.gd" id="1_l48oc"]
 [ext_resource type="Texture2D" uid="uid://t2wyfqvvogsf" path="res://assets/images/buttonRound_brown_up_blue.png" id="1_pwq26"]
@@ -9,30 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://drbmoxh7sob0r" path="res://assets/images/buttonRound_brown_right_silver.png" id="6_q7si7"]
 [ext_resource type="Texture2D" uid="uid://65wrvrow4kc1" path="res://assets/images/buttonRound_brown_down_blue.png" id="7_m7qgl"]
 [ext_resource type="Texture2D" uid="uid://d0f47ov0tqvy8" path="res://assets/images/buttonRound_brown_down_silver.png" id="8_54deh"]
-
-[sub_resource type="InputEventKey" id="InputEventKey_5vhtx"]
-physical_keycode = 4194320
-
-[sub_resource type="Shortcut" id="Shortcut_l6je3"]
-events = [SubResource("InputEventKey_5vhtx")]
-
-[sub_resource type="InputEventKey" id="InputEventKey_dih8p"]
-physical_keycode = 4194319
-
-[sub_resource type="Shortcut" id="Shortcut_224mf"]
-events = [SubResource("InputEventKey_dih8p")]
-
-[sub_resource type="InputEventKey" id="InputEventKey_iy6c6"]
-physical_keycode = 4194321
-
-[sub_resource type="Shortcut" id="Shortcut_r2h06"]
-events = [SubResource("InputEventKey_iy6c6")]
-
-[sub_resource type="InputEventKey" id="InputEventKey_ntij5"]
-physical_keycode = 4194322
-
-[sub_resource type="Shortcut" id="Shortcut_46exa"]
-events = [SubResource("InputEventKey_ntij5")]
 
 [node name="NavigationContainer" type="MarginContainer"]
 custom_minimum_size = Vector2(200, 150)
@@ -45,12 +21,10 @@ size_flags_vertical = 8
 script = ExtResource("1_l48oc")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 2
 offset_right = 200.0
 offset_bottom = 228.0
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
 offset_left = 62.0
 offset_right = 137.0
 offset_bottom = 70.0
@@ -60,26 +34,22 @@ theme_override_constants/margin_bottom = -10
 
 [node name="UpButton" type="TextureButton" parent="VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(75, 80)
-layout_mode = 2
 offset_right = 75.0
 offset_bottom = 80.0
 shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource("Shortcut_l6je3")
 texture_normal = ExtResource("1_pwq26")
 texture_pressed = ExtResource("2_k22j2")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
 offset_top = 74.0
 offset_right = 200.0
 offset_bottom = 154.0
 alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_left = 13.0
 offset_right = 108.0
 offset_bottom = 80.0
@@ -87,38 +57,32 @@ theme_override_constants/margin_right = 20
 
 [node name="LeftButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(75, 80)
-layout_mode = 2
 offset_right = 75.0
 offset_bottom = 80.0
 shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource("Shortcut_224mf")
 texture_normal = ExtResource("3_kr2ce")
 texture_pressed = ExtResource("4_slorq")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
 offset_left = 112.0
 offset_right = 187.0
 offset_bottom = 80.0
 
 [node name="RightButton" type="TextureButton" parent="VBoxContainer/HBoxContainer/MarginContainer2"]
 custom_minimum_size = Vector2(75, 80)
-layout_mode = 2
 offset_right = 75.0
 offset_bottom = 80.0
 shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource("Shortcut_r2h06")
 texture_normal = ExtResource("5_eghns")
 texture_pressed = ExtResource("6_q7si7")
 ignore_texture_size = true
 stretch_mode = 0
 
 [node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer"]
-layout_mode = 2
 offset_left = 62.0
 offset_top = 158.0
 offset_right = 137.0
@@ -128,13 +92,11 @@ theme_override_constants/margin_top = -10
 
 [node name="DownButton" type="TextureButton" parent="VBoxContainer/MarginContainer2"]
 custom_minimum_size = Vector2(75, 80)
-layout_mode = 2
 offset_top = -10.0
 offset_right = 75.0
 offset_bottom = 70.0
 shortcut_in_tooltip = false
 action_mode = 0
-shortcut = SubResource("Shortcut_46exa")
 texture_normal = ExtResource("7_m7qgl")
 texture_pressed = ExtResource("8_54deh")
 ignore_texture_size = true

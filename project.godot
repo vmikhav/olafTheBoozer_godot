@@ -37,7 +37,7 @@ _global_script_classes=[{
 "base": "Camera2D",
 "class": &"TouchCamera",
 "language": &"GDScript",
-"path": "res://scenes/game/TouchCamera/TouchCamera.gd"
+"path": "res://scenes/ui/TouchCamera/TouchCamera.gd"
 }, {
 "base": "Node2D",
 "class": &"Unit",

@@ -1,13 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bju6d0dltxeah"]
+[gd_scene load_steps=12 format=3 uid="uid://b71ry63srqrdy"]
 
 [ext_resource type="Script" path="res://scenes/game/Playground/Playground.gd" id="1_4ts3o"]
-[ext_resource type="PackedScene" uid="uid://cxgwmebaaj6lt" path="res://scenes/game/TouchCamera/TouchCamera.tscn" id="2_ylx20"]
+[ext_resource type="PackedScene" path="res://scenes/ui/TouchCamera/TouchCamera.tscn" id="2_ylx20"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="3_fgile"]
 [ext_resource type="Texture2D" uid="uid://dysd3t3vacti6" path="res://assets/images/button_reset.png" id="4_4j3n4"]
 [ext_resource type="PackedScene" uid="uid://ehd8l4wredkr" path="res://scenes/ui/ProgressPanel/ProgressPanel.tscn" id="4_47ar2"]
-[ext_resource type="PackedScene" path="res://scenes/ui/NavButtons/NavButtons.tscn" id="4_70ndd"]
+[ext_resource type="PackedScene" uid="uid://p41vq4676q75" path="res://scenes/ui/NavButtons/NavButtons.tscn" id="4_70ndd"]
 [ext_resource type="Texture2D" uid="uid://nty1se8whswd" path="res://assets/images/button_reset_pressed.png" id="5_ws7ji"]
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="7_w6wfa"]
+[ext_resource type="PackedScene" uid="uid://c78sgpd3kkbu2" path="res://scenes/ui/NavController/NavController.tscn" id="9_o631k"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_68k73"]
 keycode = 82
@@ -44,46 +45,35 @@ theme_override_constants/margin_bottom = 25
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/Container"]
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 1127.0
-offset_bottom = 623.0
+layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/Container/VBoxContainer"]
 custom_minimum_size = Vector2(0, 75)
-offset_right = 1102.0
-offset_bottom = 75.0
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer"]
-offset_bottom = 75.0
+layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer"]
-offset_left = 4.0
-offset_right = 1035.0
-offset_bottom = 75.0
+layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer2"]
-offset_left = 430.0
-offset_right = 600.0
-offset_bottom = 50.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="ProgressPanel" parent="UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer" instance=ExtResource("4_47ar2")]
 custom_minimum_size = Vector2(170, 50)
-offset_right = 170.0
+layout_mode = 2
 
 [node name="MarginContainer3" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer"]
-offset_left = 1039.0
-offset_right = 1102.0
-offset_bottom = 75.0
+layout_mode = 2
 size_flags_horizontal = 8
 
 [node name="TextureButton" type="TextureButton" parent="UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer3"]
 custom_minimum_size = Vector2(63, 0)
-offset_right = 63.0
-offset_bottom = 75.0
+layout_mode = 2
 focus_mode = 0
 shortcut_in_tooltip = false
 shortcut = SubResource("Shortcut_wg68p")
@@ -93,14 +83,14 @@ ignore_texture_size = true
 stretch_mode = 4
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UiLayer/Container/VBoxContainer"]
-offset_top = 79.0
-offset_right = 1102.0
-offset_bottom = 598.0
+layout_mode = 2
 size_flags_vertical = 3
 alignment = 2
 
 [node name="NavButtons" parent="UiLayer/Container/VBoxContainer/HBoxContainer2" instance=ExtResource("4_70ndd")]
-offset_top = 291.0
-offset_bottom = 519.0
+layout_mode = 2
 
 [node name="SceneTransitionRect" parent="UiLayer" instance=ExtResource("7_w6wfa")]
+
+[node name="NavController" parent="." instance=ExtResource("9_o631k")]
+actions_to_track = ["ui_up", "ui_left", "ui_right", "ui_down"]

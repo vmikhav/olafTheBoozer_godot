@@ -5,42 +5,29 @@ extends MarginContainer
 @onready var right_button = $VBoxContainer/HBoxContainer/MarginContainer2/RightButton as TextureButton
 @onready var down_button = $VBoxContainer/MarginContainer2/DownButton as TextureButton
 @onready var buttons = {
-	"up" = self.up_button,
-	"left" = self.left_button,
-	"right" = self.right_button,
-	"down" = self.down_button,
+	"ui_up" = self.up_button,
+	"ui_left" = self.left_button,
+	"ui_right" = self.right_button,
+	"ui_down" = self.down_button,
 }
 
-var button_pressed = {}
-var button_timers = {}
-
-signal navigate(direction: String)
+signal actions(action: InputEventAction)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var keys = buttons.keys()
 	for key in keys:
-		button_pressed[key] = false
-		button_timers[key] = 0
 		buttons[key].button_down.connect(process_button_pressed.bind(key))
 		buttons[key].button_up.connect(process_button_released.bind(key))
 
 func process_button_pressed(direction: String):
-	button_pressed[direction] = true
-	navigate.emit(direction)
-	var timer_check = await process_button_timer(direction, 0.5)
-	while button_pressed[direction] and timer_check:
-		timer_check = await process_button_timer(direction, 0.2)
+	var input = InputEventAction.new()
+	input.action = direction
+	input.pressed = true
+	actions.emit(input)
 
 func process_button_released(direction: String):
-	button_pressed[direction] = false
-
-func process_button_timer(direction: String, delay: float):
-	button_timers[direction] += 1
-	await get_tree().create_timer(delay).timeout
-	button_timers[direction] -= 1
-	if button_timers[direction] > 0:
-		return false
-	if button_pressed[direction]:
-		navigate.emit(direction)
-	return button_pressed[direction]
+	var input = InputEventAction.new()
+	input.action = direction
+	input.pressed = false
+	actions.emit(input)

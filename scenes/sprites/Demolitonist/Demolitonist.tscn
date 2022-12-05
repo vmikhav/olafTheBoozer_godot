@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bx2syps2qmyxq"]
+[gd_scene load_steps=11 format=3 uid="uid://bx2syps2qmyxq"]
 
 [ext_resource type="Script" path="res://scenes/sprites/Demolitonist/Demolitonist.gd" id="1_6ytke"]
 [ext_resource type="Texture2D" uid="uid://bmnac0sq8kbk6" path="res://assets/sprites/MiniDwarfDemolitionist.png" id="1_vj30r"]
+[ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="3_ovde4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8yhgh"]
 atlas = ExtResource("1_vj30r")
@@ -50,3 +51,25 @@ position = Vector2(0, -16)
 frames = SubResource("SpriteFrames_4ybha")
 animation = &"idle"
 playing = true
+
+[node name="Label" type="Label" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -11.0
+offset_right = 35.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.431373)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_fonts/font = ExtResource("3_ovde4")
+theme_override_font_sizes/font_size = 6
+text = "* hiccup *"
+horizontal_alignment = 1

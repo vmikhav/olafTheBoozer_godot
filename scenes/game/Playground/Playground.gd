@@ -32,7 +32,6 @@ func restart():
 	transition_rect.fade_in()
 
 func move_hero(direction: String):
-	print(direction)
 	if direction == "ui_left":
 		level.navigate(TileSet.CELL_NEIGHBOR_LEFT_SIDE)
 	if direction == "ui_right":

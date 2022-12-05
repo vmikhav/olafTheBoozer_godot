@@ -8,9 +8,6 @@ var action_timers: Array[int] = []
 
 signal actions(action: String)
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
 func _set_actions(actions):
 	actions_to_track = actions

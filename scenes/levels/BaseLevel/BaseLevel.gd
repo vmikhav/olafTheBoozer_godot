@@ -18,6 +18,7 @@ var allow_input: bool
 var level_items_count: int
 var level_progress: int
 var ghosts = []
+var teleports = []
 var ghosts_count: int
 var ghosts_progress: int
 var history = []
@@ -94,14 +95,21 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		hero.set_orientation('left')
 	
 	var neighbor_pos = tilemap.get_neighbor_cell(hero_position, direction)
+	var history_item = {position = neighbor_pos}	
 	if is_empty_cell(Layer.GROUND, neighbor_pos):
 		skip_step()
 		return
 	if not is_empty_cell(Layer.WALLS, neighbor_pos):
-		skip_step()
-		return
+		for teleport in teleports:
+			if teleport.start == neighbor_pos:
+				history_item.teleported = true
+				neighbor_pos = teleport.end
+				history_item.position = neighbor_pos
+				break
+		if not 'teleported' in history_item:
+			skip_step()
+			return
 	
-	var history_item = {position = neighbor_pos}
 	var neighbor_cell = tilemap.get_cell_atlas_coords(Layer.ITEMS, neighbor_pos) 
 	var bad_neighbor_cell = tilemap.get_cell_atlas_coords(Layer.BAD_ITEMS, neighbor_pos) 
 	var good_neighbor_cell = tilemap.get_cell_atlas_coords(Layer.GOOD_ITEMS, neighbor_pos) 

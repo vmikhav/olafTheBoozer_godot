@@ -123,7 +123,7 @@ func navigate(direction):#: TileSet.CellNeighbor):
 			ghosts.remove_at(i)
 			break
 	move_hero_to_position(neighbor_pos)
-	history.push_back(history_item)
+	save_history_item(history_item)
 	play_sfx_by_history(history_item)
 	if ghosts_progress == ghosts_count:
 		finish_level()
@@ -189,3 +189,14 @@ func play_sfx_by_history(history_item):
 		play_sfx(sounds_map.get_sound(history_item.bad_item, history_item.good_item))
 		return
 	play_sfx("step")
+
+func save_history_item(item):
+	var size = history.size()
+	if is_simple_step(item) and size >= 2:
+		if is_simple_step(history[size-1]) and history[size-2].position == item.position:
+			history.pop_back()
+			return
+	history.push_back(item)
+
+func is_simple_step(history_item) -> bool:
+	return not "bad_item" in history_item and not "ghost" in history_item

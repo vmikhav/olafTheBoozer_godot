@@ -26,7 +26,8 @@ func play_idle_sound():
 		emote.modulate.a8 = 0
 		var tween = create_tween()
 		tween.tween_property(emote, "modulate", Color8(255, 255, 255, 255), 0.25)
-		tween.tween_property(emote, "modulate", Color8(255, 255, 255, 0), 0.5)
+		tween.tween_property(emote, "modulate", Color8(255, 255, 255, 255), 0.1)
+		tween.tween_property(emote, "modulate", Color8(255, 255, 255, 0), 0.4)
 		tween.tween_callback(func():
 			emote.visible = false
 		)

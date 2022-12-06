@@ -84,8 +84,8 @@ func update_cell(pos: Vector2i, new_value: Vector2i):
 	else:
 		tilemap.set_cell(Layer.ITEMS, pos, 0, new_value)
 
-func navigate(direction):#: TileSet.CellNeighbor):
-	if not allow_input:
+func navigate(direction: TileSet.CellNeighbor, skip_check = false):
+	if not allow_input and not skip_check:
 		return
 
 	if direction == TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
@@ -106,7 +106,7 @@ func navigate(direction):#: TileSet.CellNeighbor):
 	var bad_neighbor_cell = tilemap.get_cell_atlas_coords(Layer.BAD_ITEMS, neighbor_pos) 
 	var good_neighbor_cell = tilemap.get_cell_atlas_coords(Layer.GOOD_ITEMS, neighbor_pos) 
 	if neighbor_cell.x != -1:
-		if neighbor_cell != bad_neighbor_cell:
+		if neighbor_cell != bad_neighbor_cell or not process_trail(neighbor_pos):
 			skip_step()
 			return
 		update_cell(neighbor_pos, good_neighbor_cell)
@@ -200,3 +200,51 @@ func save_history_item(item):
 
 func is_simple_step(history_item) -> bool:
 	return not "bad_item" in history_item and not "ghost" in history_item
+
+func process_trail(position: Vector2i) -> bool:
+	var directions = {
+		side = [
+			TileSet.CELL_NEIGHBOR_BOTTOM_SIDE,
+			TileSet.CELL_NEIGHBOR_TOP_SIDE,
+			TileSet.CELL_NEIGHBOR_LEFT_SIDE,
+			TileSet.CELL_NEIGHBOR_RIGHT_SIDE
+		],
+		#5,19 up 6,19 down 5,20 right 6,20 left		
+		backward_tile = ["5,19", "6,19", "5,20", "6,20"],
+		forward_tile = ["6,19", "5,19", "6,20", "5,20"],
+	}
+	var cell = tilemap.get_cell_atlas_coords(Layer.ITEMS, position)
+	var cell_value = str(cell.x) + "," + str(cell.y)
+	var cell_index = directions.forward_tile.find(cell_value)
+	if cell_index == -1:
+		# not trail
+		return true
+	
+	cell = tilemap.get_cell_atlas_coords(
+		Layer.ITEMS,
+		tilemap.get_neighbor_cell(position, directions.side[cell_index])
+	)
+	cell_value = str(cell.x) + "," + str(cell.y)
+	if directions.forward_tile.has(cell_value):
+		# not first item of trail
+		return false
+	var next_direction = null
+	for i in directions.side.size():
+		cell = tilemap.get_cell_atlas_coords(
+			Layer.ITEMS,
+			tilemap.get_neighbor_cell(position, directions.side[i])
+		)
+		cell_value = str(cell.x) + "," + str(cell.y)
+		if directions.backward_tile[i] == cell_value:
+			next_direction = directions.side[i]
+			break
+	
+	if next_direction != null:
+		allow_input = false
+		var timer = get_tree().create_timer(0.175 + randf_range(0, 0.075))
+		timer.timeout.connect(func():
+			navigate(next_direction, true)
+		)
+	else:
+		allow_input = true
+	return true

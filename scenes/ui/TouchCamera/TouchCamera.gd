@@ -26,7 +26,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if target and target_return_enabled and events.size() == 0:
 		if position == target.position:
 			return

@@ -15,10 +15,10 @@ func _ready():
 	_set_min_label_size(min_label_size)
 	_set_style(style)
 
-func _set_min_label_size(size):
-	custom_minimum_size = size
+func _set_min_label_size(new_size: Vector2i):
+	custom_minimum_size = new_size
 	if label:
-		label.custom_minimum_size = size
+		label.custom_minimum_size = new_size
 
 func _set_style(new_style):
 	style = new_style
@@ -46,8 +46,8 @@ func _set_progress(new_progress):
 		bar_tween.tween_property(progressbar, "value", progress, 0.5)
 	
 
-func prepare_label(progress: int, total:int, add_offset: bool = false)-> String:
-	var text = "%d/%d" % [progress, total]
-	if add_offset and total >= 10 and progress < 10:
+func prepare_label(current: int, _total: int, add_offset: bool = false)-> String:
+	var text = "%d/%d" % [current, _total]
+	if add_offset and _total >= 10 and current < 10:
 		text = " " + text
 	return text

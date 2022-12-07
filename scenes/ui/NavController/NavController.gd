@@ -9,8 +9,8 @@ var action_timers: Array[int] = []
 signal actions(action: String)
 
 
-func _set_actions(actions):
-	actions_to_track = actions
+func _set_actions(new_actions):
+	actions_to_track = new_actions
 	actions_pressed = []
 	action_timers = []
 	for i in actions_to_track.size():

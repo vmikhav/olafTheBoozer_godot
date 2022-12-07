@@ -11,9 +11,9 @@ func change_scene_to_packed(next_scene: PackedScene, params = null):
 	get_tree().change_scene_to_packed(next_scene)
 
 # In the newly opened scene, you can get the parameters by name
-func get_param(name):
-	if not name:
+func get_param(param_name):
+	if not param_name:
 		return _params
-	if _params != null and _params.has(name):
-		return _params[name]
+	if _params != null and _params.has(param_name):
+		return _params[param_name]
 	return null

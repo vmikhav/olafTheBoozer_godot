@@ -49,12 +49,12 @@ func hit():
 	await sprite.animation_finished
 	sprite.play("idle")
 
-func play_sfx(name: String):
+func play_sfx(sfx_name: String):
 	var player = AudioStreamPlayer.new()
 	player.bus = "SFX"
 	if name == "vomit":
 		player.volume_db = -3
-	player.stream = sounds_map.sounds[name]
+	player.stream = sounds_map.sounds[sfx_name]
 	add_child(player)
 	player.play()
 	await player.finished

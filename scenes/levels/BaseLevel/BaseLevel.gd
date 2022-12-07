@@ -29,9 +29,6 @@ signal ghosts_progress_signal(ghosts_count: int)
 signal level_finished
 signal playback_finished
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func init_map(source: Layer = Layer.BAD_ITEMS):
 	tilemap.clear_layer(Layer.ITEMS)
@@ -64,15 +61,15 @@ func restart():
 	ghosts_progress_signal.emit(ghosts_progress)
 	items_progress_signal.emit(level_progress)
 
-func move_unit_to_position(unit: Node2D, position: Vector2i):
-	unit.position = position * TILE_SIZE + TILE_OFFSET
+func move_unit_to_position(unit: Node2D, new_position: Vector2i):
+	unit.position = new_position * TILE_SIZE + TILE_OFFSET
 
-func move_hero_to_position(position: Vector2i):
-	hero_position = position
-	move_unit_to_position(hero, position)
+func move_hero_to_position(new_position: Vector2i):
+	hero_position = new_position
+	move_unit_to_position(hero, new_position)
 
-func is_empty_cell(layer: Layer, position: Vector2i) -> bool:
-	var atlas_pos = tilemap.get_cell_atlas_coords(layer, position)
+func is_empty_cell(layer: Layer, cell_position: Vector2i) -> bool:
+	var atlas_pos = tilemap.get_cell_atlas_coords(layer, cell_position)
 	return atlas_pos.x == -1
 
 func skip_step():
@@ -178,12 +175,12 @@ func replay():
 	if is_history_replay:
 		playback_finished.emit()
 
-func play_sfx(name: String):
+func play_sfx(sfx_name: String):
 	var player = AudioStreamPlayer.new()
 	player.bus = "SFX"
-	if name == "vomit":
+	if sfx_name == "vomit":
 		player.volume_db = -3
-	player.stream = sounds_map.sounds[name]
+	player.stream = sounds_map.sounds[sfx_name]
 	add_child(player)
 	player.play()
 	await player.finished
@@ -209,7 +206,7 @@ func save_history_item(item):
 func is_simple_step(history_item) -> bool:
 	return not "bad_item" in history_item and not "ghost" in history_item
 
-func process_trail(position: Vector2i) -> bool:
+func process_trail(trail_position: Vector2i) -> bool:
 	var directions = {
 		side = [
 			TileSet.CELL_NEIGHBOR_BOTTOM_SIDE,
@@ -221,7 +218,7 @@ func process_trail(position: Vector2i) -> bool:
 		backward_tile = ["5,19", "6,19", "5,20", "6,20"],
 		forward_tile = ["6,19", "5,19", "6,20", "5,20"],
 	}
-	var cell = tilemap.get_cell_atlas_coords(Layer.ITEMS, position)
+	var cell = tilemap.get_cell_atlas_coords(Layer.ITEMS, trail_position)
 	var cell_value = str(cell.x) + "," + str(cell.y)
 	var cell_index = directions.forward_tile.find(cell_value)
 	if cell_index == -1:
@@ -230,7 +227,7 @@ func process_trail(position: Vector2i) -> bool:
 	
 	cell = tilemap.get_cell_atlas_coords(
 		Layer.ITEMS,
-		tilemap.get_neighbor_cell(position, directions.side[cell_index])
+		tilemap.get_neighbor_cell(trail_position, directions.side[cell_index])
 	)
 	cell_value = str(cell.x) + "," + str(cell.y)
 	if directions.forward_tile.has(cell_value):
@@ -240,7 +237,7 @@ func process_trail(position: Vector2i) -> bool:
 	for i in directions.side.size():
 		cell = tilemap.get_cell_atlas_coords(
 			Layer.ITEMS,
-			tilemap.get_neighbor_cell(position, directions.side[i])
+			tilemap.get_neighbor_cell(trail_position, directions.side[i])
 		)
 		cell_value = str(cell.x) + "," + str(cell.y)
 		if directions.backward_tile[i] == cell_value:

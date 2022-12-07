@@ -41,8 +41,8 @@ func move_hero(direction: String):
 	if direction == "ui_down":
 		level.navigate(TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
 
-func load_level(name: String):
-	var pack = load("res://scenes/levels/" + name + "/" + name + ".tscn") as PackedScene
+func load_level(level_name: String):
+	var pack = load("res://scenes/levels/" + level_name + "/" + level_name + ".tscn") as PackedScene
 	level = pack.instantiate() as BaseLevel
 	add_child(level)
 	camera.target = level.hero

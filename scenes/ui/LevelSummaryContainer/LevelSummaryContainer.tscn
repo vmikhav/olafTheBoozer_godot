@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://di116jnep8f6t"]
+
+[ext_resource type="Script" path="res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.gd" id="1_kunkm"]
+[ext_resource type="PackedScene" uid="uid://c8v6chl2e1ync" path="res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn" id="1_smt0o"]
+
+[node name="SummaryContainer" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kunkm")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.235294)
+
+[node name="LevelSummaryPanel" parent="." instance=ExtResource("1_smt0o")]
+offset_left = 376.0
+offset_right = 776.0
+offset_bottom = 250.0
+size_flags_horizontal = 4
+size_flags_vertical = 0

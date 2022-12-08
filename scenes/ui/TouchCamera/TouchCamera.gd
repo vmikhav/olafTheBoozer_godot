@@ -4,7 +4,8 @@ extends Camera2D
 @export var min_zoom: float = 1
 @export var max_zoom: float = 4
 @export var target_return_enabled: bool = true
-@export var target_return_rate = 0.02
+@export var target_return_rate: float = 0.02
+@export var can_restore_drag: bool = true
 
 @onready var drag_enabled = self.drag_horizontal_enabled
 @onready var target_zoom: float = self.zoom.x
@@ -32,7 +33,8 @@ func _process(_delta):
 			return
 		if  position.distance_squared_to(target.position) < 1000:
 			position = target.position
-			restore_drag()
+			if can_restore_drag:
+				restore_drag()
 		else:
 			position = position.lerp(target.position, target_return_rate)
 

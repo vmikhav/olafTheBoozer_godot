@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b71ry63srqrdy"]
+[gd_scene load_steps=13 format=3 uid="uid://b71ry63srqrdy"]
 
 [ext_resource type="Script" path="res://scenes/game/Playground/Playground.gd" id="1_4ts3o"]
 [ext_resource type="PackedScene" path="res://scenes/ui/TouchCamera/TouchCamera.tscn" id="2_ylx20"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://p41vq4676q75" path="res://scenes/ui/NavButtons/NavButtons.tscn" id="4_70ndd"]
 [ext_resource type="Texture2D" uid="uid://nty1se8whswd" path="res://assets/images/button_reset_pressed.png" id="5_ws7ji"]
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="7_w6wfa"]
+[ext_resource type="PackedScene" uid="uid://di116jnep8f6t" path="res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.tscn" id="8_70vhg"]
 [ext_resource type="PackedScene" uid="uid://c78sgpd3kkbu2" path="res://scenes/ui/NavController/NavController.tscn" id="9_o631k"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_68k73"]
@@ -31,7 +32,7 @@ editor_draw_drag_margin = true
 
 [node name="UiLayer" type="CanvasLayer" parent="."]
 
-[node name="Container" type="MarginContainer" parent="UiLayer"]
+[node name="HudContainer" type="MarginContainer" parent="UiLayer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -44,34 +45,34 @@ theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/Container"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/HudContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/Container/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/HudContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/HudContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="MarginContainer2" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="UiLayer/HudContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="ProgressPanel" parent="UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer" instance=ExtResource("4_47ar2")]
+[node name="ProgressPanel" parent="UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer" instance=ExtResource("4_47ar2")]
 custom_minimum_size = Vector2(170, 50)
 layout_mode = 2
 
-[node name="MarginContainer3" type="MarginContainer" parent="UiLayer/Container/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="UiLayer/HudContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 
-[node name="TextureButton" type="TextureButton" parent="UiLayer/Container/VBoxContainer/HBoxContainer/MarginContainer3"]
+[node name="TextureButton" type="TextureButton" parent="UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer3"]
 custom_minimum_size = Vector2(63, 0)
 layout_mode = 2
 focus_mode = 0
@@ -82,13 +83,16 @@ texture_pressed = ExtResource("5_ws7ji")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="UiLayer/Container/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UiLayer/HudContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 2
 
-[node name="NavButtons" parent="UiLayer/Container/VBoxContainer/HBoxContainer2" instance=ExtResource("4_70ndd")]
+[node name="NavButtons" parent="UiLayer/HudContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("4_70ndd")]
 layout_mode = 2
+
+[node name="SummaryContainer" parent="UiLayer" instance=ExtResource("8_70vhg")]
+visible = false
 
 [node name="SceneTransitionRect" parent="UiLayer" instance=ExtResource("7_w6wfa")]
 

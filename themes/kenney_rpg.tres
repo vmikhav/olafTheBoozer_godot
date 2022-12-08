@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://yqpu1k43isuw"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://yqpu1k43isuw"]
 
 [ext_resource type="Texture2D" uid="uid://bgsx4yjmah33k" path="res://assets/images/uipack.png" id="1_j6k72"]
+[ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="2_802f4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_udv0s"]
 texture = ExtResource("1_j6k72")
@@ -9,6 +10,14 @@ margin_top = 7.0
 margin_right = 8.0
 margin_bottom = 7.0
 region_rect = Rect2(101, 200, 100, 100)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_euta5"]
+texture = ExtResource("1_j6k72")
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 5.0
+margin_bottom = 3.0
+region_rect = Rect2(94, 301, 93, 94)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sxkux"]
 
@@ -76,6 +85,14 @@ margin_right = 8.0
 margin_bottom = 3.0
 region_rect = Rect2(74, 396, 36, 18)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wkjdp"]
+texture = ExtResource("1_j6k72")
+margin_left = 4.0
+margin_top = 6.0
+margin_right = 4.0
+margin_bottom = 3.0
+region_rect = Rect2(188, 301, 93, 94)
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_07kj2"]
 texture = ExtResource("1_j6k72")
 margin_left = 8.0
@@ -85,8 +102,11 @@ margin_bottom = 3.0
 region_rect = Rect2(111, 396, 36, 18)
 
 [resource]
+default_font = ExtResource("2_802f4")
 BeigePanel/base_type = &"Panel"
 BeigePanel/styles/panel = SubResource("StyleBoxTexture_udv0s")
+BeigePaperPanel/base_type = &"Panel"
+BeigePaperPanel/styles/panel = SubResource("StyleBoxTexture_euta5")
 Button/styles/focus = SubResource("StyleBoxEmpty_sxkux")
 Button/styles/hover = SubResource("StyleBoxTexture_wds0e")
 Button/styles/normal = SubResource("StyleBoxTexture_boc6w")
@@ -98,5 +118,7 @@ ProgressBar/styles/background = SubResource("StyleBoxTexture_m7enw")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_ndpdk")
 RedProgressBar/base_type = &"ProgressBar"
 RedProgressBar/styles/fill = SubResource("StyleBoxTexture_ahc87")
+WhitePaperPanel/base_type = &"Panel"
+WhitePaperPanel/styles/panel = SubResource("StyleBoxTexture_wkjdp")
 YellowProgressBar/base_type = &"ProgressBar"
 YellowProgressBar/styles/fill = SubResource("StyleBoxTexture_07kj2")

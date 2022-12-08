@@ -106,7 +106,9 @@ func disable_drag(smooth: bool = true):
 	if drag_enabled and drag_horizontal_enabled:
 		drag_horizontal_enabled = false
 		drag_vertical_enabled = false
-		if smooth:
+		if not smooth:
+			position_smoothing_enabled = false
+		else:
 			position_smoothing_enabled = true
 			position_smoothing_speed = 10
 			if smoothing_tween:
@@ -122,3 +124,11 @@ func restore_drag():
 	if drag_enabled:
 		drag_horizontal_enabled = true
 		drag_vertical_enabled = true
+		enable_smooth()
+
+func enable_smooth(speed: float = 4.0):
+	position_smoothing_enabled = true
+	position_smoothing_speed = speed
+
+func disable_smooth():
+	position_smoothing_enabled = false

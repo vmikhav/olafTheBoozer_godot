@@ -67,7 +67,7 @@ func prepare_ui_for_level():
 func on_level_finished():
 	$UiLayer/HudContainer.visible = false
 	summary_container.show()
-	camera.drag_top_margin = 0
+	camera.drag_top_margin = -0.2
 	camera.drag_bottom_margin = 0.6
 
 func load_next_level():

@@ -5,13 +5,13 @@ func fade_in():
 	modulate.a8 = 255
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate", Color8(255, 255, 255, 0), 0.5)
-	return tween
+	return tween.finished
 
 func fade_out():
 	modulate.a8 = 0
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "modulate", Color8(255, 255, 255, 255), 0.5)
-	return tween
+	return tween.finished
 
 func change_scene(scene: String, params = null):
 	var tween = fade_out()

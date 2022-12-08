@@ -52,7 +52,6 @@ func load_level(level_name: String):
 	camera.target = level.hero
 	camera.go_to(level.hero.position, true)
 	level.level_finished.connect(on_level_finished)
-	#level.playback_finished.connect(load_next_level)
 	progress_panel.set_items_count(level.level_items_count)
 	progress_panel.set_ghosts_count(level.ghosts_count)
 	level.items_progress_signal.connect(progress_panel.items_progress)
@@ -73,6 +72,7 @@ func on_level_finished():
 
 func load_next_level():
 	await summary_container.hide_panel()
+	level.is_history_replay = false
 	await transition_rect.fade_out()
 	level.queue_free()
 	level_index += 1

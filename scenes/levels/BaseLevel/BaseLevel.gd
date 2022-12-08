@@ -27,7 +27,6 @@ var is_history_replay: bool = false
 signal items_progress_signal(items_count: int)
 signal ghosts_progress_signal(ghosts_count: int)
 signal level_finished
-signal playback_finished
 
 
 func init_map(source: Layer = Layer.BAD_ITEMS):
@@ -171,9 +170,6 @@ func replay():
 		await get_tree().create_timer(0.15 + randf_range(0, 0.075)).timeout
 		if is_history_replay:
 			step_back()
-	await get_tree().create_timer(1.5).timeout
-	if is_history_replay:
-		playback_finished.emit()
 
 func play_sfx(sfx_name: String):
 	var player = AudioStreamPlayer.new()

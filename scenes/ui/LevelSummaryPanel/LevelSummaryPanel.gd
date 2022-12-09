@@ -1,8 +1,8 @@
 class_name LevelSummaryPanel
 extends MarginContainer
 
-@onready var restart_button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RestartButton as Button
-@onready var next_button = $Panel/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/NextButton as Button
+@onready var restart_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RestartButton as Button
+@onready var next_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/NextButton as Button
 
 signal restart
 signal next

@@ -9,6 +9,9 @@ extends Node2D
 @onready var nav_controller = $NavController
 var level: BaseLevel
 
+var is_level_finished: bool = false
+var level_progress_report: LevelProgressReport
+
 var level_index = 0
 var levels = [
 	"Tutorial0",
@@ -30,7 +33,10 @@ func imitate_input(input: InputEvent):
 	nav_controller._input(input)
 
 func restart():
+	if not is_level_finished:
+		prepare_report()
 	await transition_rect.fade_out()
+	is_level_finished = false
 	level.restart()
 	prepare_ui_for_level()
 	transition_rect.fade_in()
@@ -46,6 +52,7 @@ func move_hero(direction: String):
 		level.navigate(TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
 
 func load_level(level_name: String):
+	is_level_finished = false
 	var pack = load("res://scenes/levels/" + level_name + "/" + level_name + ".tscn") as PackedScene
 	level = pack.instantiate() as BaseLevel
 	add_child(level)
@@ -65,6 +72,8 @@ func prepare_ui_for_level():
 	summary_container.hide(false)
 
 func on_level_finished():
+	prepare_report()
+	is_level_finished = true
 	$UiLayer/HudContainer.visible = false
 	summary_container.show()
 	camera.drag_top_margin = -0.2
@@ -81,3 +90,8 @@ func load_next_level():
 	else:
 		load_level(levels[level_index])
 		transition_rect.fade_in()
+
+func prepare_report():
+	level_progress_report = level.fill_progress_report()
+	level_progress_report.level = levels[level_index]
+	level_progress_report.log_report()

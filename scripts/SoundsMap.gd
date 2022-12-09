@@ -1,5 +1,5 @@
 class_name SoundsMap
-extends Node
+extends RefCounted
 
 var sounds = {
 	"drink" = load("res://assets/sounds/drink.wav"),

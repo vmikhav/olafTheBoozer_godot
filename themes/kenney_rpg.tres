@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=16 format=3 uid="uid://yqpu1k43isuw"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://yqpu1k43isuw"]
 
 [ext_resource type="Texture2D" uid="uid://bgsx4yjmah33k" path="res://assets/images/uipack.png" id="1_j6k72"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="2_802f4"]
@@ -18,6 +18,30 @@ margin_top = 6.0
 margin_right = 5.0
 margin_bottom = 3.0
 region_rect = Rect2(94, 301, 93, 94)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c16s8"]
+texture = ExtResource("1_j6k72")
+margin_left = 5.0
+margin_top = 6.0
+margin_right = 5.0
+margin_bottom = 3.0
+region_rect = Rect2(94, 301, 93, 94)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lwg0r"]
+texture = ExtResource("1_j6k72")
+margin_left = 6.0
+margin_top = 7.0
+margin_right = 6.0
+margin_bottom = 11.0
+region_rect = Rect2(0, 150, 190, 49)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_benkb"]
+texture = ExtResource("1_j6k72")
+margin_left = 6.0
+margin_top = 11.0
+margin_right = 6.0
+margin_bottom = 7.0
+region_rect = Rect2(191, 150, 190, 49)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sxkux"]
 
@@ -59,6 +83,14 @@ margin_left = 8.0
 margin_top = 7.0
 margin_right = 8.0
 margin_bottom = 7.0
+region_rect = Rect2(0, 200, 100, 100)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_chmck"]
+texture = ExtResource("1_j6k72")
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 7.0
+margin_bottom = 6.0
 region_rect = Rect2(0, 200, 100, 100)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_m7enw"]
@@ -107,6 +139,11 @@ BeigePanel/base_type = &"Panel"
 BeigePanel/styles/panel = SubResource("StyleBoxTexture_udv0s")
 BeigePaperPanel/base_type = &"Panel"
 BeigePaperPanel/styles/panel = SubResource("StyleBoxTexture_euta5")
+BeigePaperPanelContainer/base_type = &"PanelContainer"
+BeigePaperPanelContainer/styles/panel = SubResource("StyleBoxTexture_c16s8")
+BlueButton/base_type = &"Button"
+BlueButton/styles/normal = SubResource("StyleBoxTexture_lwg0r")
+BlueButton/styles/pressed = SubResource("StyleBoxTexture_benkb")
 Button/styles/focus = SubResource("StyleBoxEmpty_sxkux")
 Button/styles/hover = SubResource("StyleBoxTexture_wds0e")
 Button/styles/normal = SubResource("StyleBoxTexture_boc6w")
@@ -114,6 +151,7 @@ Button/styles/pressed = SubResource("StyleBoxTexture_2no17")
 GreenProgressBar/base_type = &"ProgressBar"
 GreenProgressBar/styles/fill = SubResource("StyleBoxTexture_uxmlm")
 Panel/styles/panel = SubResource("StyleBoxTexture_6x2vd")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_chmck")
 ProgressBar/styles/background = SubResource("StyleBoxTexture_m7enw")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_ndpdk")
 RedProgressBar/base_type = &"ProgressBar"

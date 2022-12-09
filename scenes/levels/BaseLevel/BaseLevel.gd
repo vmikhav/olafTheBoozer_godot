@@ -10,19 +10,23 @@ enum Layer {
 
 @onready var sounds_map = SoundsMap.new() as SoundsMap
 
-var hero_position: Vector2i
-var hero_start_position: Vector2i
+# parameters from an implemented scene
 var tilemap: TileMap
 var hero: Node2D
-var allow_input: bool
-var level_items_count: int
-var level_progress: int
+var hero_start_position: Vector2i
 var ghosts = []
 var teleports = []
+
+# local variables
+var hero_position: Vector2i
+var allow_input: bool
+var level_items_count: int
+var level_items_progress: int
 var ghosts_count: int
 var ghosts_progress: int
 var history = []
 var is_history_replay: bool = false
+var progress_report: LevelProgressReport
 
 signal items_progress_signal(items_count: int)
 signal ghosts_progress_signal(ghosts_count: int)
@@ -38,10 +42,11 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 		allow_input = true
 		is_history_replay = false
 		history = [{position = hero_position}]
-		level_progress = 0
+		level_items_progress = 0
 		level_items_count = bad_items.size()
 		ghosts_progress = 0
 		ghosts_count = ghosts.size()
+		init_progress_report()
 		for i in ghosts.size():
 			if "unit" in ghosts[i] and ghosts[i].unit:
 				ghosts[i].unit.queue_free()
@@ -55,10 +60,11 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 func restart():
 	is_history_replay = false
 	allow_input = true
+	init_progress_report()
 	while history.size() > 1:
 		step_back()
 	ghosts_progress_signal.emit(ghosts_progress)
-	items_progress_signal.emit(level_progress)
+	items_progress_signal.emit(level_items_progress)
 
 func move_unit_to_position(unit: Node2D, new_position: Vector2i):
 	unit.position = new_position * TILE_SIZE + TILE_OFFSET
@@ -91,7 +97,7 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		hero.set_orientation('left')
 	
 	var neighbor_pos = tilemap.get_neighbor_cell(hero_position, direction)
-	var history_item = {position = neighbor_pos}	
+	var history_item = {position = neighbor_pos, direction = direction}
 	if is_empty_cell(Layer.GROUND, neighbor_pos):
 		skip_step()
 		return
@@ -116,8 +122,8 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		update_cell(neighbor_pos, good_neighbor_cell)
 		history_item.bad_item = bad_neighbor_cell
 		history_item.good_item = good_neighbor_cell
-		level_progress += 1
-		items_progress_signal.emit(level_progress)
+		level_items_progress += 1
+		items_progress_signal.emit(level_items_progress)
 	for i in ghosts.size():
 		if neighbor_pos == ghosts[i].position:
 			ghosts_progress += 1
@@ -153,14 +159,14 @@ func step_back():
 	move_hero_to_position(history_position_item.position)
 	if "bad_item" in history_item:
 		update_cell(history_item.position, history_item.bad_item)
-		level_progress -= 1
+		level_items_progress -= 1
 	if "ghost" in history_item:
 		history_item.ghost.visible = true
 		ghosts.push_back({position = history_item.position, unit = history_item.ghost})
 		ghosts_progress -= 1
 	if not is_history_replay:
 		ghosts_progress_signal.emit(ghosts_progress)
-		items_progress_signal.emit(level_progress)
+		items_progress_signal.emit(level_items_progress)
 
 func replay():
 	allow_input = false
@@ -249,3 +255,15 @@ func process_trail(trail_position: Vector2i) -> bool:
 	else:
 		allow_input = true
 	return true
+
+func init_progress_report():
+	progress_report = LevelProgressReport.new()
+	progress_report.total_items = level_items_count
+	progress_report.total_ghosts = ghosts_count
+
+func fill_progress_report() -> LevelProgressReport:
+	progress_report.mark_as_filled(history)
+	progress_report.progress_items = level_items_progress
+	progress_report.progress_ghosts = ghosts_progress
+	progress_report.finished = ghosts_progress == ghosts_count
+	return progress_report

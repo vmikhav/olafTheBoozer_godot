@@ -8,8 +8,6 @@ enum Layer {
 	GROUND, FLOOR, WALLS, ITEMS, TREES, BAD_ITEMS, GOOD_ITEMS
 }
 
-@onready var sounds_map = SoundsMap.new() as SoundsMap
-
 # parameters from an implemented scene
 var tilemap: TileMap
 var hero: Node2D
@@ -79,7 +77,7 @@ func is_empty_cell(layer: Layer, cell_position: Vector2i) -> bool:
 
 func skip_step():
 	hero.hit()
-	play_sfx("bump")
+	AudioController.play_sfx("bump")
 
 func update_cell(pos: Vector2i, new_value: Vector2i):
 	if new_value.x == -1:
@@ -141,8 +139,7 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 func finish_level():
 	allow_input = false
 	level_finished.emit()
-	get_tree().create_timer(0.5).timeout.connect(play_sfx.bind("fanfare"))
-	get_tree().create_timer(1.5).timeout.connect(replay)
+	get_tree().create_timer(0.5).timeout.connect(AudioController.play_sfx.bind("fanfare"))
 
 func step_back():
 	if history.size() <= 1:
@@ -177,25 +174,14 @@ func replay():
 		if is_history_replay:
 			step_back()
 
-func play_sfx(sfx_name: String):
-	var player = AudioStreamPlayer.new()
-	player.bus = "SFX"
-	if sfx_name == "vomit":
-		player.volume_db = -3
-	player.stream = sounds_map.sounds[sfx_name]
-	add_child(player)
-	player.play()
-	await player.finished
-	player.queue_free()
-
 func play_sfx_by_history(history_item):
 	if "ghost" in history_item:
-		play_sfx("pickup")
+		AudioController.play_sfx("pickup")
 		return
 	if "bad_item" in history_item:
-		play_sfx(sounds_map.get_sound(history_item.bad_item, history_item.good_item))
+		AudioController.play_sfx_by_tiles(history_item.bad_item, history_item.good_item)
 		return
-	play_sfx("step")
+	AudioController.play_sfx("step")
 
 func save_history_item(item):
 	var size = history.size()
@@ -266,4 +252,8 @@ func fill_progress_report() -> LevelProgressReport:
 	progress_report.progress_items = level_items_progress
 	progress_report.progress_ghosts = ghosts_progress
 	progress_report.finished = ghosts_progress == ghosts_count
+	progress_report.score = calc_score()
 	return progress_report
+
+func calc_score() -> int:
+	return ceili((progress_report.progress_items * 1.0 / progress_report.total_items) * 100)

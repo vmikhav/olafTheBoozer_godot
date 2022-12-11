@@ -1,5 +1,4 @@
-class_name SoundsMap
-extends RefCounted
+extends Node
 
 var sounds = {
 	"drink" = load("res://assets/sounds/drink.wav"),
@@ -47,3 +46,16 @@ func get_sound(bad_item: Vector2i, good_item: Vector2i) -> String:
 		result = sounds_map[bad_item_key]
 	return result
 
+func play_sfx_by_tiles(bad_item: Vector2i, good_item: Vector2i):
+	play_sfx(get_sound(bad_item, good_item))
+
+func play_sfx(sfx_name: String):
+	var player = AudioStreamPlayer.new()
+	player.bus = "SFX"
+	if name == "vomit":
+		player.volume_db = -3
+	player.stream = sounds[sfx_name]
+	add_child(player)
+	player.play()
+	await player.finished
+	player.queue_free()

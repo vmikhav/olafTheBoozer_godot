@@ -6,6 +6,7 @@ var is_showed = false
 
 signal restart
 signal next
+signal progress_filled
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,10 +18,15 @@ func _ready():
 		if is_showed:
 			next.emit()
 	)
+	panel.progress_filled.connect(func():
+		if is_showed:
+			progress_filled.emit()
+	)
 
-func show():
+func show(level_report: LevelProgressReport = null):
 	if is_showed:
 		return
+	panel.level_report = level_report
 	is_showed = true
 	visible = true
 	$ColorRect.color.a8 = 0

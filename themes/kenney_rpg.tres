@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=20 format=3 uid="uid://yqpu1k43isuw"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://yqpu1k43isuw"]
 
 [ext_resource type="Texture2D" uid="uid://bgsx4yjmah33k" path="res://assets/images/uipack.png" id="1_j6k72"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="2_802f4"]
@@ -8,6 +8,14 @@ texture = ExtResource("1_j6k72")
 margin_left = 8.0
 margin_top = 7.0
 margin_right = 8.0
+margin_bottom = 7.0
+region_rect = Rect2(101, 200, 100, 100)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6yoix"]
+texture = ExtResource("1_j6k72")
+margin_left = 7.0
+margin_top = 7.0
+margin_right = 7.0
 margin_bottom = 7.0
 region_rect = Rect2(101, 200, 100, 100)
 
@@ -137,6 +145,8 @@ region_rect = Rect2(111, 396, 36, 18)
 default_font = ExtResource("2_802f4")
 BeigePanel/base_type = &"Panel"
 BeigePanel/styles/panel = SubResource("StyleBoxTexture_udv0s")
+BeigePanelContainer/base_type = &"PanelContainer"
+BeigePanelContainer/styles/panel = SubResource("StyleBoxTexture_6yoix")
 BeigePaperPanel/base_type = &"Panel"
 BeigePaperPanel/styles/panel = SubResource("StyleBoxTexture_euta5")
 BeigePaperPanelContainer/base_type = &"PanelContainer"

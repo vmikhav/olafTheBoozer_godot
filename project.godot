@@ -29,11 +29,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.gd"
 }, {
-"base": "RefCounted",
-"class": &"SoundsMap",
-"language": &"GDScript",
-"path": "res://scripts/SoundsMap.gd"
-}, {
 "base": "Node",
 "class": &"State",
 "language": &"GDScript",
@@ -69,7 +64,6 @@ _global_script_class_icons={
 "DemolitonistSprite": "",
 "LevelProgressReport": "",
 "LevelSummaryPanel": "",
-"SoundsMap": "",
 "State": "",
 "StateMachine": "",
 "TouchCamera": "",
@@ -88,6 +82,12 @@ config/icon="res://icon.png"
 [autoload]
 
 SceneSwitcher="*res://scripts/SceneSwitcher.gd"
+AudioController="*res://scripts/AudioController.gd"
+
+[editor]
+
+movie_writer/mjpeg_quality=0.9
+movie_writer/movie_file="H:/godot/OlafTheBoozer-ggo2022/records/record.avi"
 
 [rendering]
 

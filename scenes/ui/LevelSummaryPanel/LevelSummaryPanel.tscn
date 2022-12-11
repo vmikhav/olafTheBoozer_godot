@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8v6chl2e1ync"]
+[gd_scene load_steps=5 format=3 uid="uid://c8v6chl2e1ync"]
 
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="1_ugcap"]
 [ext_resource type="Script" path="res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.gd" id="2_xstww"]
+[ext_resource type="PackedScene" uid="uid://c1ognd1rd5rw5" path="res://scenes/sprites/Cup/Cup.tscn" id="3_sshju"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ajdow"]
+shadow_color = Color(0, 0, 0, 0.54902)
 
 [node name="LevelSummaryPanel" type="MarginContainer"]
 custom_minimum_size = Vector2(400, 250)
@@ -24,8 +28,6 @@ offset_left = 5.0
 offset_top = 6.0
 offset_right = 395.0
 offset_bottom = 247.0
-grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
@@ -39,12 +41,60 @@ offset_bottom = 226.0
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 offset_right = 360.0
+offset_bottom = 19.0
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer"]
+offset_right = 360.0
+offset_bottom = 19.0
+text = "Level Complete!"
+label_settings = SubResource("LabelSettings_ajdow")
+horizontal_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
-offset_top = 4.0
+offset_top = 23.0
 offset_right = 360.0
 offset_bottom = 162.0
 size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2"]
+offset_top = 59.0
+offset_right = 360.0
+offset_bottom = 79.0
+size_flags_vertical = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer"]
+offset_right = 360.0
+offset_bottom = 10.0
+size_flags_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="Cup" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/MarginContainer" instance=ExtResource("3_sshju")]
+position = Vector2(90, 0)
+scale = Vector2(2, 2)
+
+[node name="Cup2" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/MarginContainer" instance=ExtResource("3_sshju")]
+position = Vector2(216, 0)
+scale = Vector2(2, 2)
+type = 1
+
+[node name="Cup3" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/MarginContainer" instance=ExtResource("3_sshju")]
+position = Vector2(325, 0)
+scale = Vector2(2, 2)
+type = 6
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer"]
+offset_right = 360.0
+offset_bottom = 20.0
+theme_override_constants/margin_top = 5
+
+[node name="ProgressBar" type="ProgressBar" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/MarginContainer2"]
+custom_minimum_size = Vector2(0, 15)
+offset_top = 5.0
+offset_right = 360.0
+offset_bottom = 20.0
+theme_type_variation = &"YellowProgressBar"
+value = 50.0
+show_percentage = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 offset_top = 166.0

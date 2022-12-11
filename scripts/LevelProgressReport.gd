@@ -16,6 +16,7 @@ var total_ghosts: int
 var progress_ghosts: int
 var steps = []
 var steps_count: int
+var score: int = 0
 var finished: bool
 
 func mark_as_filled(history):
@@ -43,9 +44,11 @@ func to_json():
 		progress_ghosts = progress_ghosts,
 		steps_count = steps_count,
 		steps = steps,
+		score = score,
 		finished = finished,
 	}
 	return JSON.stringify(data)
 
 func log_report():
+	print(to_json())
 	pass

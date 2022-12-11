@@ -27,6 +27,7 @@ func _ready():
 	restart_button.pressed.connect(restart)
 	summary_container.restart.connect(restart)
 	summary_container.next.connect(load_next_level)
+	summary_container.progress_filled.connect(start_replay)
 	transition_rect.fade_in()
 
 func imitate_input(input: InputEvent):
@@ -40,6 +41,9 @@ func restart():
 	level.restart()
 	prepare_ui_for_level()
 	transition_rect.fade_in()
+
+func start_replay():
+	level.replay()
 
 func move_hero(direction: String):
 	if direction == "ui_left":
@@ -75,7 +79,7 @@ func on_level_finished():
 	prepare_report()
 	is_level_finished = true
 	$UiLayer/HudContainer.visible = false
-	summary_container.show()
+	summary_container.show(level_progress_report)
 	camera.drag_top_margin = -0.2
 	camera.drag_bottom_margin = 0.6
 

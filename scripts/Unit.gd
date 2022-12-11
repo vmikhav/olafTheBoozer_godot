@@ -4,7 +4,6 @@ extends Node2D
 var orientation: String = 'right'
 var sprite: AnimatedSprite2D
 var emote: Sprite2D
-@onready var sounds_map = SoundsMap.new() as SoundsMap
 var can_produce_sounds = true
 var available_sounds = ["hiccup", "hrrng", "groan"]
 var texts = ["hiccup", "hrrng", "groan"]
@@ -31,7 +30,7 @@ func play_idle_sound():
 		tween.tween_callback(func():
 			emote.visible = false
 		)
-		play_sfx(sound)
+		AudioController.play_sfx(sound)
 		get_tree().create_timer(randf_range(4, 10)).timeout.connect(play_idle_sound)
 
 func make_ghost() -> void:
@@ -49,13 +48,4 @@ func hit():
 	await sprite.animation_finished
 	sprite.play("idle")
 
-func play_sfx(sfx_name: String):
-	var player = AudioStreamPlayer.new()
-	player.bus = "SFX"
-	if name == "vomit":
-		player.volume_db = -3
-	player.stream = sounds_map.sounds[sfx_name]
-	add_child(player)
-	player.play()
-	await player.finished
-	player.queue_free()
+

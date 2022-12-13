@@ -79,11 +79,11 @@ func skip_step():
 	hero.hit()
 	AudioController.play_sfx("bump")
 
-func update_cell(pos: Vector2i, new_value: Vector2i):
+func update_cell(pos: Vector2i, new_value: Vector2i, alternative: int):
 	if new_value.x == -1:
 		tilemap.erase_cell(Layer.ITEMS, pos)
 	else:
-		tilemap.set_cell(Layer.ITEMS, pos, 0, new_value)
+		tilemap.set_cell(Layer.ITEMS, pos, 0, new_value, alternative)
 
 func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 	if not allow_input and not skip_check:
@@ -110,16 +110,20 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 			skip_step()
 			return
 	
-	var neighbor_cell = tilemap.get_cell_atlas_coords(Layer.ITEMS, neighbor_pos) 
-	var bad_neighbor_cell = tilemap.get_cell_atlas_coords(Layer.BAD_ITEMS, neighbor_pos) 
-	var good_neighbor_cell = tilemap.get_cell_atlas_coords(Layer.GOOD_ITEMS, neighbor_pos) 
+	var neighbor_cell = tilemap.get_cell_atlas_coords(Layer.ITEMS, neighbor_pos)
+	var bad_neighbor_cell = tilemap.get_cell_atlas_coords(Layer.BAD_ITEMS, neighbor_pos)
+	var bad_neighbor_alt = tilemap.get_cell_alternative_tile(Layer.BAD_ITEMS, neighbor_pos)
+	var good_neighbor_cell = tilemap.get_cell_atlas_coords(Layer.GOOD_ITEMS, neighbor_pos)
+	var good_neighbor_alt = tilemap.get_cell_alternative_tile(Layer.GOOD_ITEMS, neighbor_pos)
 	if neighbor_cell.x != -1:
 		if neighbor_cell != bad_neighbor_cell or not process_trail(neighbor_pos):
 			skip_step()
 			return
-		update_cell(neighbor_pos, good_neighbor_cell)
+		update_cell(neighbor_pos, good_neighbor_cell, good_neighbor_alt)
 		history_item.bad_item = bad_neighbor_cell
+		history_item.bad_item_alt = bad_neighbor_alt
 		history_item.good_item = good_neighbor_cell
+		history_item.good_item_alt = good_neighbor_alt
 		level_items_progress += 1
 		items_progress_signal.emit(level_items_progress)
 	for i in ghosts.size():
@@ -155,7 +159,7 @@ func step_back():
 		hero.set_orientation('left')
 	move_hero_to_position(history_position_item.position)
 	if "bad_item" in history_item:
-		update_cell(history_item.position, history_item.bad_item)
+		update_cell(history_item.position, history_item.bad_item, history_item.bad_item_alt)
 		level_items_progress -= 1
 	if "ghost" in history_item:
 		history_item.ghost.visible = true

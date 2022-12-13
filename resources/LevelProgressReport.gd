@@ -1,5 +1,5 @@
 class_name LevelProgressReport
-extends RefCounted
+extends JsonResource
 
 var start_time = Time.get_datetime_string_from_system()
 var _start_timestamp = Time.get_ticks_msec()
@@ -23,6 +23,7 @@ func mark_as_filled(history):
 	if filled:
 		return
 	filled = true
+	uid = SettingsManager.settings.uid
 	end_time = Time.get_datetime_string_from_system()
 	duration = Time.get_ticks_msec() - _start_timestamp
 	for item in history:
@@ -30,24 +31,6 @@ func mark_as_filled(history):
 			steps.push_back(item.direction)
 	steps_count = steps.size() 
 
-func to_json():
-	var data = {
-		level = level,
-		uid = uid,
-		os_name = os_name,
-		start_time = start_time,
-		end_time = end_time,
-		duration = duration,
-		total_items = total_items,
-		progress_items = progress_items,
-		total_ghosts = total_ghosts,
-		progress_ghosts = progress_ghosts,
-		steps_count = steps_count,
-		steps = steps,
-		score = score,
-		finished = finished,
-	}
-	return JSON.stringify(data)
 
 func log_report():
 	print(to_json())

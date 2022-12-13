@@ -1,10 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8v6chl2e1ync"]
+[gd_scene load_steps=6 format=3 uid="uid://c8v6chl2e1ync"]
 
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="1_ugcap"]
 [ext_resource type="Script" path="res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.gd" id="2_xstww"]
 [ext_resource type="PackedScene" uid="uid://c1ognd1rd5rw5" path="res://scenes/sprites/Cup/Cup.tscn" id="3_sshju"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ajdow"]
+shadow_color = Color(0, 0, 0, 0.54902)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ivfkv"]
 shadow_color = Color(0, 0, 0, 0.54902)
 
 [node name="LevelSummaryPanel" type="MarginContainer"]
@@ -50,16 +53,32 @@ text = "Level Complete!"
 label_settings = SubResource("LabelSettings_ajdow")
 horizontal_alignment = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 offset_top = 23.0
+offset_right = 360.0
+offset_bottom = 57.0
+size_flags_vertical = 4
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HighscoreLabel" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer3"]
+offset_top = 10.0
+offset_right = 360.0
+offset_bottom = 29.0
+text = "New Highscore!"
+label_settings = SubResource("LabelSettings_ivfkv")
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+offset_top = 61.0
 offset_right = 360.0
 offset_bottom = 162.0
 size_flags_vertical = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2"]
-offset_top = 59.0
+offset_top = 40.0
 offset_right = 360.0
-offset_bottom = 79.0
+offset_bottom = 60.0
 size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer"]

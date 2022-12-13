@@ -19,15 +19,30 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scenes/sprites/Demolitonist/Demolitonist.gd"
 }, {
+"base": "JsonResource",
+"class": &"GameProgressResource",
+"language": &"GDScript",
+"path": "res://resources/GameProgressResource.gd"
+}, {
 "base": "RefCounted",
+"class": &"JsonResource",
+"language": &"GDScript",
+"path": "res://resources/JsonResource.gd"
+}, {
+"base": "JsonResource",
 "class": &"LevelProgressReport",
 "language": &"GDScript",
-"path": "res://scripts/LevelProgressReport.gd"
+"path": "res://resources/LevelProgressReport.gd"
 }, {
 "base": "MarginContainer",
 "class": &"LevelSummaryPanel",
 "language": &"GDScript",
 "path": "res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.gd"
+}, {
+"base": "JsonResource",
+"class": &"SettingsResource",
+"language": &"GDScript",
+"path": "res://resources/SettingsResource.gd"
 }, {
 "base": "Node",
 "class": &"State",
@@ -62,8 +77,11 @@ _global_script_classes=[{
 _global_script_class_icons={
 "BaseLevel": "",
 "DemolitonistSprite": "",
+"GameProgressResource": "",
+"JsonResource": "",
 "LevelProgressReport": "",
 "LevelSummaryPanel": "",
+"SettingsResource": "",
 "State": "",
 "StateMachine": "",
 "TouchCamera": "",
@@ -83,6 +101,7 @@ config/icon="res://icon.png"
 
 SceneSwitcher="*res://scripts/SceneSwitcher.gd"
 AudioController="*res://scripts/AudioController.gd"
+SettingsManager="*res://scripts/SettingsManager.gd"
 
 [editor]
 

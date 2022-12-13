@@ -27,6 +27,8 @@ func show(level_report: LevelProgressReport = null):
 	if is_showed:
 		return
 	panel.level_report = level_report
+	panel.is_highscore = SettingsManager.is_new_highscore(level_report.level, level_report)
+	SettingsManager.update_highscore(level_report.level, level_report)
 	is_showed = true
 	visible = true
 	$ColorRect.color.a8 = 0

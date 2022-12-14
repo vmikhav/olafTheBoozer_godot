@@ -30,6 +30,10 @@ func update_music_mute(value: bool):
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("Music"), settings.music_muted)
 	save_settings()
 
+func update_burp_mute(value: float):
+	settings.burps_muted = value
+	save_settings()
+
 func update_sfx_volume(value: float):
 	settings.sfx_volume = clampf(value, -48, -0.1)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), settings.sfx_volume)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://66hcm3seogib"]
+
+[ext_resource type="TileSet" uid="uid://cgewcnf3rw1kt" path="res://tilesets/overworld_tileset.tres" id="1_2887y"]
+
+[node name="WorldMap" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+texture_filter = 1
+tile_set = ExtResource("1_2887y")
+format = 2

@@ -1,0 +1,163 @@
+[gd_scene load_steps=3 format=3 uid="uid://qbwqcgn7su0n"]
+
+[ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="1_83s70"]
+[ext_resource type="Script" path="res://scenes/ui/SettingsMenu/SettingsMenu.gd" id="2_m7qoo"]
+
+[node name="SettingsMenu" type="MarginContainer"]
+process_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_m7qoo")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 0.235294)
+
+[node name="SettingsPanel" type="PanelContainer" parent="."]
+offset_left = 458.0
+offset_top = 262.0
+offset_right = 821.0
+offset_bottom = 458.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_83s70")
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPanel"]
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 356.0
+offset_bottom = 190.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/MarginContainer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 344.0
+offset_bottom = 178.0
+
+[node name="PanelContainer" type="PanelContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+offset_right = 339.0
+offset_bottom = 118.0
+theme_type_variation = &"BeigePaperPanelContainer"
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer"]
+offset_left = 5.0
+offset_top = 6.0
+offset_right = 334.0
+offset_bottom = 115.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
+offset_left = 5.0
+offset_right = 324.0
+offset_bottom = 104.0
+
+[node name="SoundsContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+offset_right = 319.0
+offset_bottom = 30.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SoundsContainer"]
+custom_minimum_size = Vector2(120, 30)
+offset_right = 120.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
+text = "Sounds:"
+vertical_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SoundsContainer"]
+offset_left = 130.0
+offset_top = 7.0
+offset_right = 319.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.02
+value = 0.5
+
+[node name="MusicContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+offset_top = 34.0
+offset_right = 319.0
+offset_bottom = 64.0
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
+custom_minimum_size = Vector2(120, 30)
+offset_right = 120.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
+text = "Music:"
+vertical_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
+offset_left = 130.0
+offset_top = 7.0
+offset_right = 319.0
+offset_bottom = 23.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.05
+
+[node name="DrinkContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+offset_top = 68.0
+offset_right = 319.0
+offset_bottom = 104.0
+theme_override_constants/separation = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DrinkContainer"]
+offset_right = 120.0
+offset_bottom = 36.0
+
+[node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DrinkContainer/MarginContainer"]
+custom_minimum_size = Vector2(120, 0)
+offset_top = 8.0
+offset_right = 120.0
+offset_bottom = 27.0
+theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
+text = "Drink:"
+
+[node name="DrinkOptionButton" type="OptionButton" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DrinkContainer"]
+offset_left = 130.0
+offset_right = 319.0
+offset_bottom = 36.0
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.823529, 0.698039, 0.564706, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0.823529, 0.698039, 0.564706, 1)
+item_count = 2
+selected = 0
+popup/item_0/text = "Beer"
+popup/item_0/id = 0
+popup/item_1/text = "Ginger Ale"
+popup/item_1/id = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
+offset_top = 122.0
+offset_right = 339.0
+offset_bottom = 173.0
+theme_override_constants/margin_top = 15
+
+[node name="CloseButton" type="Button" parent="SettingsPanel/MarginContainer/VBoxContainer/MarginContainer"]
+offset_left = 122.0
+offset_top = 15.0
+offset_right = 216.0
+offset_bottom = 51.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_type_variation = &"BlueButton"
+theme_override_colors/font_color = Color(0.831373, 0.847059, 0.913725, 1)
+text = "Close"

@@ -1,7 +1,8 @@
 extends Node
 
-var settings: SettingsResource = SettingsResource.new()
-var game_progress: GameProgressResource = GameProgressResource.new()
+
+var settings: SettingsResource = SettingsResource.new() as SettingsResource
+var game_progress: GameProgressResource = GameProgressResource.new() as GameProgressResource
 var skip_save: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -35,12 +36,12 @@ func update_burp_mute(value: float):
 	save_settings()
 
 func update_sfx_volume(value: float):
-	settings.sfx_volume = clampf(value, -48, -0.1)
+	settings.sfx_volume = clampf(value, -60, -0.1)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), settings.sfx_volume)
 	save_settings()
 
 func update_music_volume(value: float):
-	settings.music_volume = clampf(value, -48, -0.1)
+	settings.music_volume = clampf(value, -60, -0.1)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Music"), settings.music_volume)
 	save_settings()
 
@@ -51,7 +52,7 @@ func get_highscore(level: String) -> Dictionary:
 		return game_progress._highscore_stub
 
 func is_new_highscore(level: String, report: LevelProgressReport):
-	var old = game_progress.levels[level] if (level in game_progress.levels) else game_progress._highscore_stub
+	var old = get_highscore(level)
 	return old.score < report.score or (old.score == report.score and old.steps < report.steps)
 
 func update_highscore(level: String, report: LevelProgressReport):
@@ -59,7 +60,8 @@ func update_highscore(level: String, report: LevelProgressReport):
 		game_progress.levels[level] = {
 			score = report.score,
 			time = report.duration,
-			steps = report.steps
+			steps = report.steps,
+			tries = 1
 		}
 		save_progress()
 
@@ -73,5 +75,35 @@ func save_progress():
 		return
 	game_progress.save_to_file(game_progress._filename)
 
-func generate_uuid():
-	return "5"
+func generate_uuid() -> String:
+	var b = [
+		getRandomInt(), getRandomInt(), getRandomInt(), getRandomInt(),
+		getRandomInt(), getRandomInt(), ((getRandomInt()) & 0x0f) | 0x40, getRandomInt(),
+		((getRandomInt()) & 0x3f) | 0x80, getRandomInt(), getRandomInt(), getRandomInt(),
+		getRandomInt(), getRandomInt(), getRandomInt(), getRandomInt(),
+	]
+
+	return '%02x%02x%02x%02x-%02x%02x-%02x%02x-%02x%02x-%02x%02x%02x%02x%02x%02x' % [
+		# low
+		b[0], b[1], b[2], b[3],
+
+		# mid
+		b[4], b[5],
+
+		# hi
+		b[6], b[7],
+
+		# clock
+		b[8], b[9],
+
+		# clock
+		b[10], b[11], b[12], b[13], b[14], b[15]
+	]
+
+
+
+func getRandomInt() -> int:
+	# Randomize every time to minimize the risk of collisions
+	randomize()
+
+	return randi() % 256

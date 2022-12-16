@@ -103,6 +103,14 @@ SceneSwitcher="*res://scripts/SceneSwitcher.gd"
 AudioController="*res://scripts/AudioController.gd"
 SettingsManager="*res://scripts/SettingsManager.gd"
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/subwindows/embed_subwindows=false
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [editor]
 
 movie_writer/mjpeg_quality=0.9

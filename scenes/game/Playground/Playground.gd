@@ -4,6 +4,7 @@ extends Node2D
 @onready var nav_buttons = $UiLayer/HudContainer/VBoxContainer/HBoxContainer2/NavButtons
 @onready var progress_panel = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer/ProgressPanel
 @onready var restart_button = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer3/TextureButton as TextureButton
+@onready var menu_button = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/TextureButton as TextureButton
 @onready var transition_rect = $UiLayer/SceneTransitionRect
 @onready var summary_container = $UiLayer/SummaryContainer
 @onready var nav_controller = $NavController
@@ -25,6 +26,7 @@ func _ready():
 	nav_buttons.actions.connect(imitate_input)
 	nav_controller.actions.connect(move_hero)
 	restart_button.pressed.connect(restart)
+	menu_button.pressed.connect(show_menu)
 	summary_container.restart.connect(restart)
 	summary_container.next.connect(load_next_level)
 	summary_container.progress_filled.connect(start_replay)
@@ -99,3 +101,18 @@ func prepare_report():
 	level_progress_report = level.fill_progress_report()
 	level_progress_report.level = levels[level_index]
 	level_progress_report.log_report()
+
+func show_menu():
+	level.process_mode = PROCESS_MODE_PAUSABLE
+	get_tree().paused = true
+	var settings_menu = $UiLayer/SettingsMenu
+	settings_menu.visible = true
+	settings_menu.init_background()
+	settings_menu.close.connect(close_menu)
+
+func close_menu():
+	print('unpause')
+	get_tree().paused = false
+	var settings_menu = $UiLayer/SettingsMenu
+	settings_menu.close.disconnect(close_menu)
+	settings_menu.visible = false

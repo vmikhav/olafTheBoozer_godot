@@ -22,27 +22,37 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/MarginContainer"]
-layout_mode = 2
+offset_right = 1288.0
+offset_bottom = 732.0
 alignment = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+offset_top = 282.0
+offset_right = 1288.0
+offset_bottom = 315.0
 
 [node name="Label" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer"]
-layout_mode = 2
+offset_left = 419.0
+offset_right = 869.0
+offset_bottom = 33.0
 theme_override_fonts/font = ExtResource("1_87rnb")
 theme_override_font_sizes/font_size = 30
 text = "Olaf the Boozer"
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
-layout_mode = 2
+offset_left = 494.0
+offset_top = 319.0
+offset_right = 794.0
+offset_bottom = 449.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = 50
 
 [node name="Button" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(300, 80)
-layout_mode = 2
+offset_top = 50.0
+offset_right = 300.0
+offset_bottom = 130.0
 theme = ExtResource("3_awe0n")
 theme_override_fonts/font = ExtResource("1_87rnb")
 theme_override_font_sizes/font_size = 40

@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://crjdn0mn8tw68"]
+
+[ext_resource type="Texture2D" uid="uid://bgsx4yjmah33k" path="res://assets/images/uipack.png" id="1_in68k"]
+
+[resource]
+texture = ExtResource("1_in68k")
+margin_left = 7.0
+margin_top = 8.0
+margin_right = 7.0
+margin_bottom = 12.0
+region_rect = Rect2(0, 150, 190, 49)

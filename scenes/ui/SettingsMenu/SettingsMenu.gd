@@ -8,7 +8,7 @@ extends MarginContainer
 @onready var close_button = $SettingsPanel/MarginContainer/VBoxContainer/MarginContainer/CloseButton as Button
 @onready var background = $ColorRect
 
-
+var timer_mark
 
 signal close
 
@@ -35,6 +35,11 @@ func update_sfx_volume(value: float):
 	var mute = value <= 0.05
 	SettingsManager.update_sfx_volume(linear_to_db(value))
 	SettingsManager.update_sfx_mute(mute)
+	var local_timer_mark = Time.get_ticks_msec()
+	timer_mark = local_timer_mark
+	await get_tree().create_timer(1).timeout
+	if timer_mark == local_timer_mark:
+		AudioController.play_sfx("hiccup")
 
 func update_music_volume(value: float):
 	var mute = value <= 0.05

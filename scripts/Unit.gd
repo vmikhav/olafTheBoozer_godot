@@ -31,7 +31,7 @@ func play_idle_sound():
 			emote.visible = false
 		)
 		AudioController.play_sfx(sound)
-		get_tree().create_timer(randf_range(4, 10)).timeout.connect(play_idle_sound)
+		get_tree().create_timer(randf_range(4, 10), false).timeout.connect(play_idle_sound)
 
 func make_ghost() -> void:
 	sprite.modulate = Color8(100, 200, 255, 160)

@@ -46,7 +46,7 @@ func restart_level():
 	restart.emit()
 	close_modal()
 
-func close_modal(aux_signal = null):
+func close_modal():
 	var tween = create_tween()
 	tween.tween_property(self, "modulate", Color8(255, 255, 255, 0), 0.25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	tween.parallel().tween_property(background, "color", Color8(0, 0, 0, 0), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)

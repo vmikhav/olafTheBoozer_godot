@@ -32,7 +32,7 @@ func init_modal():
 		tween.parallel().tween_property(background, "color", Color8(0, 0, 0, 60), 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 func update_sfx_volume(value: float):
-	var mute = value <= 0.05
+	var mute = value < 0.02
 	SettingsManager.update_sfx_volume(linear_to_db(value))
 	SettingsManager.update_sfx_mute(mute)
 	var local_timer_mark = Time.get_ticks_msec()

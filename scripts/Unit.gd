@@ -11,7 +11,7 @@ var last_sound = -1
 
 
 func init():
-	get_tree().create_timer(3).timeout.connect(play_idle_sound)
+	get_tree().create_timer(randf_range(2.5, 4), false).timeout.connect(play_idle_sound)
 
 
 func play_idle_sound():

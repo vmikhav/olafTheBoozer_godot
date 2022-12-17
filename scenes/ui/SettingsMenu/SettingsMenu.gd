@@ -20,17 +20,16 @@ func _ready():
 	sfx_slider.value_changed.connect(update_sfx_volume)
 	music_slider.value_changed.connect(update_music_volume)
 	drink_selector.item_selected.connect(update_drink)
-	close_button.pressed.connect(close_settings)
-	init_background()
+	close_button.pressed.connect(close_modal)
 
-func init_background():
-	$ColorRect.visible = with_background
+func init_modal():
+	background.visible = with_background
 	modulate.a8 = 0
 	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color8(255, 255, 255, 255), 1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "modulate", Color8(255, 255, 255, 255), 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	if with_background:
-		$ColorRect.color.a8 = 0
-		tween.parallel().tween_property($ColorRect, "color", Color8(0, 0, 0, 60), 1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		background.color.a8 = 0
+		tween.parallel().tween_property(background, "color", Color8(0, 0, 0, 60), 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 func update_sfx_volume(value: float):
 	var mute = value <= 0.05
@@ -45,10 +44,11 @@ func update_music_volume(value: float):
 func update_drink(value: int):
 	SettingsManager.update_burp_mute(value > 0)
 
-func close_settings():
+func close_modal():
 	var tween = create_tween()
-	tween.tween_property(self, "modulate", Color8(255, 255, 255, 0), 1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.tween_property(self, "modulate", Color8(255, 255, 255, 0), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	if with_background:
-		tween.parallel().tween_property($ColorRect, "color", Color8(0, 0, 0, 0), 1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		tween.parallel().tween_property(background, "color", Color8(0, 0, 0, 0), 0.25).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
 	await tween.finished
+	visible = false
 	close.emit()

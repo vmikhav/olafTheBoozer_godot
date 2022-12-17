@@ -117,5 +117,4 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_type_variation = &"BlueButton"
-theme_override_colors/font_color = Color(0.831373, 0.847059, 0.913725, 1)
 text = "Close"

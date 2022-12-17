@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="7_w6wfa"]
 [ext_resource type="PackedScene" uid="uid://di116jnep8f6t" path="res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.tscn" id="8_70vhg"]
 [ext_resource type="PackedScene" uid="uid://c78sgpd3kkbu2" path="res://scenes/ui/NavController/NavController.tscn" id="9_o631k"]
-[ext_resource type="PackedScene" uid="uid://qbwqcgn7su0n" path="res://scenes/ui/SettingsMenu/SettingsMenu.tscn" id="11_gujpx"]
+[ext_resource type="PackedScene" uid="uid://4j3ebc64sxog" path="res://scenes/ui/LevelMenu/LevelMenu.tscn" id="11_ji8ts"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_68k73"]
 keycode = 82
@@ -109,7 +109,8 @@ layout_mode = 2
 [node name="SummaryContainer" parent="UiLayer" instance=ExtResource("8_70vhg")]
 visible = false
 
-[node name="SettingsMenu" parent="UiLayer" instance=ExtResource("11_gujpx")]
+[node name="LevelMenu" parent="UiLayer" instance=ExtResource("11_ji8ts")]
+process_mode = 2
 visible = false
 
 [node name="SceneTransitionRect" parent="UiLayer" instance=ExtResource("7_w6wfa")]

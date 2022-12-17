@@ -8,6 +8,7 @@ extends Node2D
 @onready var transition_rect = $UiLayer/SceneTransitionRect
 @onready var summary_container = $UiLayer/SummaryContainer
 @onready var nav_controller = $NavController
+@onready var menu = $UiLayer/LevelMenu
 var level: BaseLevel
 
 var is_level_finished: bool = false
@@ -30,6 +31,12 @@ func _ready():
 	summary_container.restart.connect(restart)
 	summary_container.next.connect(load_next_level)
 	summary_container.progress_filled.connect(start_replay)
+	menu.close.connect(close_menu)
+	menu.restart.connect(restart)
+	menu.exit.connect(func():
+		close_menu()
+		exit_levels()
+	)
 	transition_rect.fade_in()
 
 func imitate_input(input: InputEvent):
@@ -62,6 +69,7 @@ func load_level(level_name: String):
 	var pack = load("res://scenes/levels/" + level_name + "/" + level_name + ".tscn") as PackedScene
 	level = pack.instantiate() as BaseLevel
 	add_child(level)
+	level.process_mode = PROCESS_MODE_PAUSABLE	
 	camera.target = level.hero
 	camera.go_to(level.hero.position, true)
 	level.level_finished.connect(on_level_finished)
@@ -92,10 +100,13 @@ func load_next_level():
 	level.queue_free()
 	level_index += 1
 	if levels.size() <= level_index:
-		SceneSwitcher.change_scene_to_file("res://scenes/game/MainMenu/MainMenu.tscn")
+		exit_levels()
 	else:
 		load_level(levels[level_index])
 		transition_rect.fade_in()
+
+func exit_levels():
+	SceneSwitcher.change_scene_to_file("res://scenes/game/MainMenu/MainMenu.tscn")
 
 func prepare_report():
 	level_progress_report = level.fill_progress_report()
@@ -103,16 +114,10 @@ func prepare_report():
 	level_progress_report.log_report()
 
 func show_menu():
-	level.process_mode = PROCESS_MODE_PAUSABLE
 	get_tree().paused = true
-	var settings_menu = $UiLayer/SettingsMenu
-	settings_menu.visible = true
-	settings_menu.init_background()
-	settings_menu.close.connect(close_menu)
+	menu.visible = true
+	menu.init_modal()
 
 func close_menu():
-	print('unpause')
+	menu.visible = false
 	get_tree().paused = false
-	var settings_menu = $UiLayer/SettingsMenu
-	settings_menu.close.disconnect(close_menu)
-	settings_menu.visible = false

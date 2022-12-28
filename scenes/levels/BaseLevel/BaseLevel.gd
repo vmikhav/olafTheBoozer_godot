@@ -11,6 +11,10 @@ enum Layer {
 # parameters from an implemented scene
 var tilemap: TileMap
 var hero: Node2D
+var hero_play_type: Array = ["demolitonist", true]
+var hero_replay_type: Array = ["demolitonist", true]
+var hero_play_hiccup: bool = true
+var hero_replay_hiccuo: bool = true
 var hero_start_position: Vector2i
 var ghosts = []
 var teleports = []
@@ -39,6 +43,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 	if source == Layer.BAD_ITEMS:
 		allow_input = true
 		is_history_replay = false
+		hero.mode = hero_play_type
 		history = [{position = hero_position}]
 		level_items_progress = 0
 		level_items_count = bad_items.size()
@@ -50,6 +55,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 				ghosts[i].unit.queue_free()
 			ghosts[i].unit = hero.duplicate()
 			tilemap.add_child(ghosts[i].unit)
+			ghosts[i].unit.mode = hero_replay_type
 			ghosts[i].unit.make_ghost()
 			move_unit_to_position(ghosts[i].unit, ghosts[i].position)
 	for pos in bad_items:
@@ -61,6 +67,7 @@ func restart():
 	init_progress_report()
 	while history.size() > 1:
 		step_back()
+	hero.mode = hero_play_type
 	ghosts_progress_signal.emit(ghosts_progress)
 	items_progress_signal.emit(level_items_progress)
 
@@ -143,7 +150,10 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 func finish_level():
 	allow_input = false
 	level_finished.emit()
-	get_tree().create_timer(0.5).timeout.connect(AudioController.play_sfx.bind("fanfare"))
+	get_tree().create_timer(0.5).timeout.connect(func():
+		AudioController.play_sfx("fanfare")
+		hero.mode = hero_replay_type
+	)
 
 func step_back():
 	if history.size() <= 1:

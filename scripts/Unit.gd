@@ -1,18 +1,31 @@
 class_name Unit
 extends Node2D
 
+
 var orientation: String = 'right'
 var sprite: AnimatedSprite2D
 var emote: Sprite2D
 var can_produce_sounds = true
 var available_sounds = ["hiccup", "hrrng", "groan"]
-var texts = ["hiccup", "hrrng", "groan"]
 var last_sound = -1
+var mode: String = "demolitonist": set = set_mode 
 
+func _ready():
+	sprite.play(mode + "_idle")
+
+func set_mode(params):
+	mode = params[0]
+	sprite.play(mode + "_idle")
+	var sounds_old = can_produce_sounds
+	can_produce_sounds = params[1]
+	if not sounds_old and can_produce_sounds:
+		play_idle_sound()
 
 func init():
-	get_tree().create_timer(randf_range(2.5, 4), false).timeout.connect(play_idle_sound)
+	init_sounds()
 
+func init_sounds():
+	get_tree().create_timer(randf_range(2.5, 4), false).timeout.connect(play_idle_sound)
 
 func play_idle_sound():
 	if can_produce_sounds:
@@ -44,8 +57,8 @@ func set_orientation(direction: String) -> void:
 		sprite.flip_h = direction == 'left'
 
 func hit():
-	sprite.play("hit")
+	sprite.play(mode + "_hit")
 	await sprite.animation_finished
-	sprite.play("idle")
+	sprite.play(mode + "_idle")
 
 

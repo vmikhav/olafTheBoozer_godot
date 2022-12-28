@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://bx2syps2qmyxq"]
+[gd_scene load_steps=24 format=3 uid="uid://bx2syps2qmyxq"]
 
 [ext_resource type="Script" path="res://scenes/sprites/Demolitonist/Demolitonist.gd" id="1_6ytke"]
 [ext_resource type="Texture2D" uid="uid://bmnac0sq8kbk6" path="res://assets/sprites/MiniDwarfDemolitionist.png" id="1_vj30r"]
+[ext_resource type="Texture2D" uid="uid://7h7glq24yk2c" path="res://assets/sprites/MiniWorker.png" id="3_o8753"]
 [ext_resource type="Texture2D" uid="uid://dq0dhawb6l8t6" path="res://assets/sprites/emotes_pixel_style1.png" id="3_vl4hx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8yhgh"]
@@ -28,16 +29,79 @@ region = Rect2(64, 0, 32, 32)
 atlas = ExtResource("1_vj30r")
 region = Rect2(96, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_y0iyd"]
+atlas = ExtResource("3_o8753")
+region = Rect2(0, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kofcy"]
+atlas = ExtResource("3_o8753")
+region = Rect2(32, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkkny"]
+atlas = ExtResource("3_o8753")
+region = Rect2(64, 160, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rpep"]
+atlas = ExtResource("3_o8753")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ia38y"]
+atlas = ExtResource("3_o8753")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ryg2w"]
+atlas = ExtResource("3_o8753")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14t4u"]
+atlas = ExtResource("3_o8753")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qqs4x"]
+atlas = ExtResource("3_o8753")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5brnp"]
+atlas = ExtResource("3_o8753")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ycb8"]
+atlas = ExtResource("3_o8753")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3x4m"]
+atlas = ExtResource("3_o8753")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nislw"]
+atlas = ExtResource("3_o8753")
+region = Rect2(128, 128, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_4ybha"]
 animations = [{
 "frames": [SubResource("AtlasTexture_8yhgh"), SubResource("AtlasTexture_aibj8")],
 "loop": false,
-"name": &"hit",
+"name": &"demolitonist_hit",
 "speed": 10.0
 }, {
 "frames": [SubResource("AtlasTexture_8q3kd"), SubResource("AtlasTexture_8dmb6"), SubResource("AtlasTexture_crv5l"), SubResource("AtlasTexture_0bior")],
 "loop": true,
-"name": &"idle",
+"name": &"demolitonist_idle",
+"speed": 6.0
+}, {
+"frames": [SubResource("AtlasTexture_y0iyd"), SubResource("AtlasTexture_kofcy"), SubResource("AtlasTexture_fkkny")],
+"loop": false,
+"name": &"worker_hit",
+"speed": 10.0
+}, {
+"frames": [SubResource("AtlasTexture_7rpep"), SubResource("AtlasTexture_ia38y"), SubResource("AtlasTexture_ryg2w"), SubResource("AtlasTexture_14t4u")],
+"loop": true,
+"name": &"worker_idle",
+"speed": 6.0
+}, {
+"frames": [SubResource("AtlasTexture_qqs4x"), SubResource("AtlasTexture_5brnp"), SubResource("AtlasTexture_3ycb8"), SubResource("AtlasTexture_x3x4m"), SubResource("AtlasTexture_nislw")],
+"loop": true,
+"name": &"worker_repair",
 "speed": 6.0
 }]
 
@@ -49,7 +113,7 @@ script = ExtResource("1_6ytke")
 texture_filter = 1
 position = Vector2(0, -16)
 frames = SubResource("SpriteFrames_4ybha")
-animation = &"idle"
+animation = &"worker_repair"
 playing = true
 
 [node name="Emote" type="Sprite2D" parent="."]

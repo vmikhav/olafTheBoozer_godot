@@ -63,16 +63,6 @@ _global_script_classes=[{
 "class": &"Unit",
 "language": &"GDScript",
 "path": "res://scripts/Unit.gd"
-}, {
-"base": "Unit",
-"class": &"WorkerSprite",
-"language": &"GDScript",
-"path": "res://scenes/sprites/Worker/Worker.gd"
-}, {
-"base": "State",
-"class": &"WorkerState",
-"language": &"GDScript",
-"path": "res://scenes/sprites/Worker/WorkerState.gd"
 }]
 _global_script_class_icons={
 "BaseLevel": "",
@@ -85,9 +75,7 @@ _global_script_class_icons={
 "State": "",
 "StateMachine": "",
 "TouchCamera": "",
-"Unit": "",
-"WorkerSprite": "",
-"WorkerState": ""
+"Unit": ""
 }
 
 [application]

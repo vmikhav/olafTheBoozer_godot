@@ -1,12 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://dkur4b14785b4"]
+[gd_scene load_steps=23 format=3 uid="uid://dkur4b14785b4"]
 
 [ext_resource type="Script" path="res://scenes/sprites/Worker/Worker.gd" id="1_hsl2y"]
 [ext_resource type="Texture2D" uid="uid://7h7glq24yk2c" path="res://assets/sprites/MiniWorker.png" id="2_tbvq4"]
-[ext_resource type="Script" path="res://scripts/StateMachine.gd" id="3_p22by"]
-[ext_resource type="Script" path="res://scenes/sprites/Worker/Idle.gd" id="4_sdk5s"]
-[ext_resource type="Script" path="res://scenes/sprites/Worker/Hit.gd" id="5_0fph4"]
-[ext_resource type="Script" path="res://scenes/sprites/Worker/Walk.gd" id="6_8obhi"]
-[ext_resource type="Script" path="res://scenes/sprites/Worker/Repair.gd" id="7_spict"]
+[ext_resource type="Texture2D" uid="uid://dq0dhawb6l8t6" path="res://assets/sprites/emotes_pixel_style1.png" id="3_uy84b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tfi0s"]
 atlas = ExtResource("2_tbvq4")
@@ -108,25 +104,18 @@ y_sort_enabled = true
 script = ExtResource("1_hsl2y")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
+y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, -16)
-y_sort_enabled = true
 frames = SubResource("SpriteFrames_cgvkd")
 animation = &"idle"
 playing = true
 
-[node name="StateMachine" type="Node" parent="."]
-script = ExtResource("3_p22by")
-initial_state = NodePath("Hit")
-
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("4_sdk5s")
-
-[node name="Hit" type="Node" parent="StateMachine"]
-script = ExtResource("5_0fph4")
-
-[node name="Walk" type="Node" parent="StateMachine"]
-script = ExtResource("6_8obhi")
-
-[node name="Repair" type="Node" parent="StateMachine"]
-script = ExtResource("7_spict")
+[node name="Emote" type="Sprite2D" parent="."]
+visible = false
+z_index = 3
+texture_filter = 1
+position = Vector2(0, -24)
+texture = ExtResource("3_uy84b")
+region_enabled = true
+region_rect = Rect2(128, 16, 16, 16)

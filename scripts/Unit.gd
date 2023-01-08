@@ -1,6 +1,10 @@
 class_name Unit
 extends Node2D
 
+enum Ghost_type {
+	MEMORY,
+	ENEMY,
+}
 
 var orientation: String = 'right'
 var sprite: AnimatedSprite2D
@@ -46,7 +50,7 @@ func play_idle_sound():
 		AudioController.play_sfx(sound)
 		get_tree().create_timer(randf_range(4, 10), false).timeout.connect(play_idle_sound)
 
-func make_ghost() -> void:
+func make_ghost(type: Ghost_type = Ghost_type.MEMORY) -> void:
 	sprite.modulate = Color8(100, 200, 255, 160)
 	set_orientation("left" if randi_range(0, 1) else "right")
 	can_produce_sounds = false

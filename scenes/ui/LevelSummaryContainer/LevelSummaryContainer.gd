@@ -23,7 +23,7 @@ func _ready():
 			progress_filled.emit()
 	)
 
-func show(level_report: LevelProgressReport = null):
+func display(level_report: LevelProgressReport = null):
 	if is_showed:
 		return
 	panel.level_report = level_report
@@ -35,18 +35,18 @@ func show(level_report: LevelProgressReport = null):
 	var tween = create_tween()
 	tween.tween_property($ColorRect, "color", Color8(0, 0, 0, 60), 1).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	await get_tree().create_timer(0.5).timeout
-	panel.show()
+	panel.display()
 
-func hide(with_tween = true):
+func dismiss(with_tween = true):
 	if not is_showed:
 		visible = false
 		return
 	is_showed = false
 	if with_tween:
-		await hide_panel()
+		await dismiss_panel()
 	else:
-		panel.hide()
+		panel.dismiss()
 	visible = false
 
-func hide_panel():
-	await panel.hide_tween()
+func dismiss_panel():
+	await panel.dismiss_tween()

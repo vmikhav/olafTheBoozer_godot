@@ -83,18 +83,18 @@ func prepare_ui_for_level():
 	camera.drag_top_margin = 0.4
 	camera.drag_bottom_margin = 0.4
 	$UiLayer/HudContainer.visible = true
-	summary_container.hide(false)
+	summary_container.dismiss(false)
 
 func on_level_finished():
 	prepare_report()
 	is_level_finished = true
 	$UiLayer/HudContainer.visible = false
-	summary_container.show(level_progress_report)
+	summary_container.display(level_progress_report)
 	camera.drag_top_margin = -0.2
 	camera.drag_bottom_margin = 0.6
 
 func load_next_level():
-	await summary_container.hide_panel()
+	await summary_container.dismiss_panel()
 	level.is_history_replay = false
 	await transition_rect.fade_out()
 	level.queue_free()

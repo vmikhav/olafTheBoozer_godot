@@ -8,76 +8,6 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Node2D",
-"class": &"BaseLevel",
-"language": &"GDScript",
-"path": "res://scenes/levels/BaseLevel/BaseLevel.gd"
-}, {
-"base": "Unit",
-"class": &"DemolitonistSprite",
-"language": &"GDScript",
-"path": "res://scenes/sprites/Demolitonist/Demolitonist.gd"
-}, {
-"base": "JsonResource",
-"class": &"GameProgressResource",
-"language": &"GDScript",
-"path": "res://resources/GameProgressResource.gd"
-}, {
-"base": "RefCounted",
-"class": &"JsonResource",
-"language": &"GDScript",
-"path": "res://resources/JsonResource.gd"
-}, {
-"base": "JsonResource",
-"class": &"LevelProgressReport",
-"language": &"GDScript",
-"path": "res://resources/LevelProgressReport.gd"
-}, {
-"base": "MarginContainer",
-"class": &"LevelSummaryPanel",
-"language": &"GDScript",
-"path": "res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.gd"
-}, {
-"base": "JsonResource",
-"class": &"SettingsResource",
-"language": &"GDScript",
-"path": "res://resources/SettingsResource.gd"
-}, {
-"base": "Node",
-"class": &"State",
-"language": &"GDScript",
-"path": "res://scripts/State.gd"
-}, {
-"base": "Node",
-"class": &"StateMachine",
-"language": &"GDScript",
-"path": "res://scripts/StateMachine.gd"
-}, {
-"base": "Camera2D",
-"class": &"TouchCamera",
-"language": &"GDScript",
-"path": "res://scenes/ui/TouchCamera/TouchCamera.gd"
-}, {
-"base": "Node2D",
-"class": &"Unit",
-"language": &"GDScript",
-"path": "res://scripts/Unit.gd"
-}]
-_global_script_class_icons={
-"BaseLevel": "",
-"DemolitonistSprite": "",
-"GameProgressResource": "",
-"JsonResource": "",
-"LevelProgressReport": "",
-"LevelSummaryPanel": "",
-"SettingsResource": "",
-"State": "",
-"StateMachine": "",
-"TouchCamera": "",
-"Unit": ""
-}
-
 [application]
 
 config/name="OlafTheBoozer-ggo2022"
@@ -106,4 +36,5 @@ movie_writer/movie_file="H:/godot/OlafTheBoozer-ggo2022/records/record.avi"
 
 [rendering]
 
+renderer/rendering_method="mobile"
 vulkan/rendering/back_end=1

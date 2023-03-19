@@ -33,7 +33,7 @@ func _ready():
 	)
 
 
-func show():
+func display():
 	is_visible = true
 	progress_bar.value = 0
 	highscore_label.modulate = Color8(255, 255, 255, 0)
@@ -45,13 +45,13 @@ func show():
 	get_tree().create_timer(1.4).timeout.connect(fill_progress_bar)
 	await tween.finished
 
-func hide_tween():
+func dismiss_tween():
 	var tween = create_tween()
 	tween.tween_property(self, "theme_override_constants/margin_top", -400, 1).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	reset_progress()
 	await tween.finished
 
-func hide():
+func dismiss():
 	add_theme_constant_override("margin_top", -400)
 	reset_progress()
 

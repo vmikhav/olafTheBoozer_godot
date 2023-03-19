@@ -37,5 +37,5 @@ func reset():
 	is_empty = false
 	modulate = Color8(0, 0, 0, 80)
 	sprite.animation = animations[type]
-	sprite.playing = false
+	sprite.stop()
 	sprite.frame = 2

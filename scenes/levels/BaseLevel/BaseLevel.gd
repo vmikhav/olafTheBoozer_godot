@@ -13,8 +13,6 @@ var tilemap: TileMap
 var hero: Node2D
 var hero_play_type: Array = ["demolitonist", true]
 var hero_replay_type: Array = ["demolitonist", true]
-var hero_play_hiccup: bool = true
-var hero_replay_hiccuo: bool = true
 var hero_start_position: Vector2i
 var ghosts = []
 var teleports = []
@@ -43,7 +41,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 	if source == Layer.BAD_ITEMS:
 		allow_input = true
 		is_history_replay = false
-		hero.mode = hero_play_type
+		hero.set_mode(hero_play_type)
 		history = [{position = hero_position}]
 		level_items_progress = 0
 		level_items_count = bad_items.size()
@@ -55,11 +53,11 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 				ghosts[i].unit.queue_free()
 			ghosts[i].unit = hero.duplicate()
 			tilemap.add_child(ghosts[i].unit)
-			ghosts[i].unit.mode = hero_replay_type
+			ghosts[i].unit.set_mode(hero_replay_type)
 			ghosts[i].unit.make_ghost()
 			move_unit_to_position(ghosts[i].unit, ghosts[i].position)
 	for pos in bad_items:
-		tilemap.set_cell(Layer.ITEMS, pos, 0, tilemap.get_cell_atlas_coords(source, pos))
+		update_cell(pos, tilemap.get_cell_atlas_coords(source, pos), tilemap.get_cell_alternative_tile(source, pos))
 
 func restart():
 	is_history_replay = false
@@ -67,7 +65,7 @@ func restart():
 	init_progress_report()
 	while history.size() > 1:
 		step_back()
-	hero.mode = hero_play_type
+	hero.set_mode(hero_play_type)
 	ghosts_progress_signal.emit(ghosts_progress)
 	items_progress_signal.emit(level_items_progress)
 
@@ -152,7 +150,7 @@ func finish_level():
 	level_finished.emit()
 	get_tree().create_timer(0.5).timeout.connect(func():
 		AudioController.play_sfx("fanfare")
-		hero.mode = hero_replay_type
+		hero.set_mode(hero_replay_type)
 	)
 
 func step_back():
@@ -216,7 +214,7 @@ func process_trail(trail_position: Vector2i) -> bool:
 			TileSet.CELL_NEIGHBOR_LEFT_SIDE,
 			TileSet.CELL_NEIGHBOR_RIGHT_SIDE
 		],
-		#5,19 up 6,19 down 5,20 right 6,20 left		
+		#5,19 up 6,19 down 5,20 right 6,20 left
 		backward_tile = ["5,19", "6,19", "5,20", "6,20"],
 		forward_tile = ["6,19", "5,19", "6,20", "5,20"],
 	}

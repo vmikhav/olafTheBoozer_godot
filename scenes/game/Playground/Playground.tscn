@@ -63,8 +63,8 @@ layout_mode = 2
 custom_minimum_size = Vector2(63, 0)
 layout_mode = 2
 focus_mode = 0
-shortcut_in_tooltip = false
 shortcut = SubResource("Shortcut_wg68p")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("4_k61c5")
 texture_pressed = ExtResource("5_s87kq")
 ignore_texture_size = true
@@ -91,8 +91,8 @@ size_flags_horizontal = 8
 custom_minimum_size = Vector2(63, 0)
 layout_mode = 2
 focus_mode = 0
-shortcut_in_tooltip = false
 shortcut = SubResource("Shortcut_wg68p")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("4_4j3n4")
 texture_pressed = ExtResource("5_ws7ji")
 ignore_texture_size = true
@@ -116,4 +116,4 @@ visible = false
 [node name="SceneTransitionRect" parent="UiLayer" instance=ExtResource("7_w6wfa")]
 
 [node name="NavController" parent="." instance=ExtResource("9_o631k")]
-actions_to_track = ["ui_up", "ui_left", "ui_right", "ui_down"]
+actions_to_track = Array[String](["ui_up", "ui_left", "ui_right", "ui_down"])

@@ -12,7 +12,7 @@ var emote: Sprite2D
 var can_produce_sounds = true
 var available_sounds = ["hiccup", "hrrng", "groan"]
 var last_sound = -1
-var mode: String = "demolitonist": set = set_mode 
+var mode: String = "demolitonist"
 
 func _ready():
 	sprite.play(mode + "_idle")

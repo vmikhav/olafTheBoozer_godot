@@ -4,7 +4,7 @@ extends Node
 # Emitted when transitioning to a new state.
 signal transitioned(state_name)
 
-@export_node_path(Node)
+@export_node_path("Node")
 var initial_state = NodePath()
 
 @onready

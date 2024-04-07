@@ -1,5 +1,5 @@
 extends Node2D
-enum Layers {GROUND, FLOOR, WALLS, ITEMS, TREES}
+
 #     1
 #    2 4
 #16|  8  |24
@@ -15,17 +15,21 @@ const wood_walls = [
 ]
 
 @onready var map = $TileMap as TileMap
+@onready var editor = %Editor
 
 
-var start_pos: Vector2i
-var end_pos: Vector2i
+var start_pos: Vector2i = Vector2i(-999, -999)
+var end_pos: Vector2i = Vector2i(-999, -999)
+var is_edit_pressed = false
+var is_preview_shown = false
 
-var rooms: Array = []
+var rooms: Array[Array] = []
 
+var Layers = LevelDefinitions.Layers
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	editor.map = map
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,36 +37,60 @@ func _process(delta):
 	pass
 
 func _input(event):
+	if event is InputEventMouseMotion:
+		var _tmp_pos = map.local_to_map(get_global_mouse_position())
+		if is_edit_pressed:
+			if end_pos != _tmp_pos:
+				end_pos = _tmp_pos
+				if is_preview_shown:
+					editor.undo()
+				draw_room()
+				is_preview_shown = true
+		else:
+			if start_pos != _tmp_pos:
+				start_pos = _tmp_pos
+				end_pos = start_pos
+				if is_preview_shown:
+					editor.undo()
+				draw_room()
+				is_preview_shown = true
 	if Input.is_action_just_pressed("editor_click"):
-		start_pos = map.local_to_map(get_global_mouse_position())
 		get_viewport().set_input_as_handled()
+		is_edit_pressed = true
 	if Input.is_action_just_released("editor_click"):
 		end_pos = map.local_to_map(get_global_mouse_position())
 		get_viewport().set_input_as_handled()
-		var sector = Rect2i(
-			min(start_pos.x, end_pos.x), min(start_pos.y, end_pos.y),
-			absi(start_pos.x - end_pos.x) + 1, absi(start_pos.y - end_pos.y) + 1 
-		)
-		for x in range(sector.position.x, sector.end.x):
-			for y in range(sector.position.y, sector.end.y):
-				map.set_cell(Layers.GROUND, Vector2i(x, y), 0, Vector2i(21, 1), 0)
-				map.set_cell(Layers.FLOOR, Vector2i(x, y), 0, Vector2i(21, 1), 0)
-				map.set_cell(Layers.WALLS, Vector2i(x, y), -1)
-		var pos: Vector2i
-		for y in range(sector.position.y - 1, sector.end.y + 1):
-			pos = Vector2i(sector.position.x - 1, y)
-			if map.get_cell_source_id(Layers.FLOOR, pos) == -1:
-				add_wall(pos)
-			pos = Vector2i(sector.end.x, y)
-			if map.get_cell_source_id(Layers.FLOOR, pos) == -1:
-				add_wall(pos)
-		for x in range(sector.position.x - 1, sector.end.x + 1):
-			pos = Vector2i(x, sector.position.y - 1)
-			if map.get_cell_source_id(Layers.FLOOR, pos) == -1:
-				add_wall(pos)
-			pos = Vector2i(x, sector.end.y)
-			if map.get_cell_source_id(Layers.FLOOR, pos) == -1:
-				add_wall(pos)
+		is_edit_pressed = false
+		is_preview_shown = false
+
+func draw_room():
+	var sector = Rect2i(
+		min(start_pos.x, end_pos.x), min(start_pos.y, end_pos.y),
+		absi(start_pos.x - end_pos.x) + 1, absi(start_pos.y - end_pos.y) + 1 
+	)
+	rooms.push_back([sector])
+	editor.begin_transaction()
+	for x in range(sector.position.x, sector.end.x):
+		for y in range(sector.position.y, sector.end.y):
+			editor.set_cell(Layers.GROUND, Vector2i(x, y), 0, Vector2i(21, 1), 0)
+			editor.set_cell(Layers.FLOOR, Vector2i(x, y), 0, Vector2i(21, 1), 0)
+			editor.set_cell(Layers.WALLS, Vector2i(x, y), -1)
+	var pos: Vector2i
+	for y in range(sector.position.y - 1, sector.end.y + 1):
+		pos = Vector2i(sector.position.x - 1, y)
+		if map.get_cell_source_id(Layers.FLOOR, pos) == -1:
+			add_wall(pos)
+		pos = Vector2i(sector.end.x, y)
+		if map.get_cell_source_id(Layers.FLOOR, pos) == -1:
+			add_wall(pos)
+	for x in range(sector.position.x - 1, sector.end.x + 1):
+		pos = Vector2i(x, sector.position.y - 1)
+		if map.get_cell_source_id(Layers.FLOOR, pos) == -1:
+			add_wall(pos)
+		pos = Vector2i(x, sector.end.y)
+		if map.get_cell_source_id(Layers.FLOOR, pos) == -1:
+			add_wall(pos)
+	editor.commit()
 
 func update_wall(pos: Vector2i):
 	if map.get_cell_source_id(Layers.WALLS, pos) == -1:
@@ -81,10 +109,12 @@ func update_wall(pos: Vector2i):
 		var right_floor = map.get_cell_source_id(Layers.FLOOR, pos + Vector2i(1, y_offset)) != -1 or map.get_cell_source_id(Layers.WALLS, pos + Vector2i(1, y_offset)) != -1
 		if left_floor != right_floor:
 			mask += 8 if left_floor else 16 # +8
-	map.set_cell(Layers.WALLS, pos, 0, wood_walls[mask], 0)
+	editor.set_cell(Layers.WALLS, pos, 0, wood_walls[mask], 0)
 
 func add_wall(pos: Vector2i):
-	map.set_cell(Layers.WALLS, pos, 0, wood_walls[0], 0)
+	editor.set_cell(Layers.GROUND, pos, -1)
+	editor.set_cell(Layers.FLOOR, pos, -1)
+	editor.set_cell(Layers.WALLS, pos, 0, wood_walls[0], 0)
 	update_wall(pos + Vector2i(0, -1))
 	update_wall(pos + Vector2i(-1, 0))
 	update_wall(pos + Vector2i(1, 0))

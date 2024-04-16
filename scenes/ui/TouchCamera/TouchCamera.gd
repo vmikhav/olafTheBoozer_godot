@@ -6,6 +6,7 @@ extends Camera2D
 @export var target_return_enabled: bool = true
 @export var target_return_rate: float = 0.02
 @export var can_restore_drag: bool = true
+@export var ignore_input: bool = false
 
 @onready var drag_enabled = self.drag_horizontal_enabled
 @onready var target_zoom: float = self.zoom.x
@@ -39,6 +40,9 @@ func _process(_delta):
 			position = position.lerp(target.position, target_return_rate)
 
 func _unhandled_input(event):
+	if ignore_input:
+		return
+	
 	if event is InputEventScreenTouch:
 		touch_events = true
 		if event.pressed:

@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwf0wgoepkkwa"]
+[gd_scene load_steps=10 format=3 uid="uid://bwf0wgoepkkwa"]
 
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="1_a42vd"]
 [ext_resource type="Script" path="res://scenes/game/LevelEditor/LevelEditor.gd" id="1_rhkdu"]
 [ext_resource type="PackedScene" path="res://scenes/ui/TouchCamera/TouchCamera.tscn" id="2_ensd1"]
 [ext_resource type="Script" path="res://scenes/game/LevelEditor/Map.gd" id="3_g4yh0"]
 [ext_resource type="Script" path="res://scenes/game/LevelEditor/Editor.gd" id="4_4e2o8"]
+[ext_resource type="Texture2D" uid="uid://1v4peqir3aa1" path="res://assets/images/Village_Tileset.png" id="6_dq2yq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wvmsx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fnhg2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2kkm"]
+atlas = ExtResource("6_dq2yq")
+region = Rect2(0, 144, 16, 16)
 
 [node name="LevelEditor" type="Node2D"]
 script = ExtResource("1_rhkdu")
@@ -69,6 +78,7 @@ size_flags_vertical = 3
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 0
 
 [node name="TabContainer" type="TabContainer" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 200)
@@ -106,12 +116,25 @@ custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="TileMap" type="TileMap" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Walls/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/MarginContainer"]
+[node name="WallsTileMap" type="TileMap" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Walls/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/MarginContainer"]
+unique_name_in_owner = true
 texture_filter = 1
 scale = Vector2(2, 2)
 tile_set = ExtResource("1_a42vd")
 format = 2
 layer_0/tile_data = PackedInt32Array(131073, 0, 9, 131076, 3342336, 0, 131079, 3670016, 0, 131082, 3342336, 4, 131085, 524288, 9, 131088, 917504, 9)
+
+[node name="Button" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer/TabContainer/Walls/PanelContainer/MarginContainer/ScrollContainer/HBoxContainer/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wvmsx")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fnhg2")
+toggle_mode = true
+icon = SubResource("AtlasTexture_y2kkm")
+expand_icon = true
 
 [node name="Floor" type="TabBar" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer/TabContainer"]
 visible = false

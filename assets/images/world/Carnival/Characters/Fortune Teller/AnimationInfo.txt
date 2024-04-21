@@ -1,0 +1,12 @@
+*Frame size* 
+
+- 32x32px: For all* the animations
+
+* Except for Special which is 24x24px
+
+
+*Frame Duration*
+
+- 100ms: Die and Dmg.
+
+- 200ms: Idle, Special and Walk.

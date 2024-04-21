@@ -1,0 +1,115 @@
+[gd_scene load_steps=17 format=3 uid="uid://cdbpjy0hc8kgu"]
+
+[ext_resource type="Texture2D" uid="uid://bj7eb1tgad1yo" path="res://assets/images/world/Harvesting/Characters/Minifantasy_CraftingAndProfessionsHarvestAnimationShadow.png" id="1_rlmtt"]
+[ext_resource type="Texture2D" uid="uid://b4em0v245f1du" path="res://assets/images/world/Harvesting/Characters/Minifantasy_CraftingAndProfessionsHarvestAnimation_goblin.png" id="2_iv75f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ejv7"]
+atlas = ExtResource("1_rlmtt")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_satut"]
+atlas = ExtResource("1_rlmtt")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_of2oo"]
+atlas = ExtResource("1_rlmtt")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4culj"]
+atlas = ExtResource("1_rlmtt")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3w7j"]
+atlas = ExtResource("1_rlmtt")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xax1e"]
+atlas = ExtResource("1_rlmtt")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfc48"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ejv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_satut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_of2oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4culj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w3w7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xax1e")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u6cw"]
+atlas = ExtResource("2_iv75f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uljof"]
+atlas = ExtResource("2_iv75f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikn3b"]
+atlas = ExtResource("2_iv75f")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfbes"]
+atlas = ExtResource("2_iv75f")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vcwi"]
+atlas = ExtResource("2_iv75f")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qoyw2"]
+atlas = ExtResource("2_iv75f")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3lhvg"]
+animations = [{
+"frames": [{
+"duration": 4.0,
+"texture": SubResource("AtlasTexture_5u6cw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uljof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikn3b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfbes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vcwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qoyw2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Harvesting" type="Node2D"]
+texture_filter = 1
+
+[node name="Shadow" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xfc48")
+autoplay = "default"
+
+[node name="Character" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3lhvg")
+autoplay = "default"

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bolhxqflfufbo"]
+
+[ext_resource type="PackedScene" uid="uid://66hcm3seogib" path="res://scenes/world/WolrdMap/WorldMap.tscn" id="1_464ce"]
+
+[node name="Trailer" type="Node2D"]
+
+[node name="WorldMap" parent="." instance=ExtResource("1_464ce")]
+scale = Vector2(3, 3)

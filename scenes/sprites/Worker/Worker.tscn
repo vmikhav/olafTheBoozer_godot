@@ -78,22 +78,76 @@ region = Rect2(160, 32, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cgvkd"]
 animations = [{
-"frames": [SubResource("AtlasTexture_tfi0s"), SubResource("AtlasTexture_o8amc"), SubResource("AtlasTexture_0ppyo")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfi0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8amc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ppyo")
+}],
 "loop": false,
 "name": &"hit",
 "speed": 10.0
 }, {
-"frames": [SubResource("AtlasTexture_0ax8e"), SubResource("AtlasTexture_cnrbq"), SubResource("AtlasTexture_icbcg"), SubResource("AtlasTexture_uxact")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ax8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnrbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icbcg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxact")
+}],
 "loop": true,
 "name": &"idle",
 "speed": 6.0
 }, {
-"frames": [SubResource("AtlasTexture_dvqy4"), SubResource("AtlasTexture_iotkc"), SubResource("AtlasTexture_w0se5"), SubResource("AtlasTexture_0ftlm"), SubResource("AtlasTexture_j7qvi")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dvqy4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iotkc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0se5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ftlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7qvi")
+}],
 "loop": false,
 "name": &"repair",
 "speed": 7.0
 }, {
-"frames": [SubResource("AtlasTexture_vjgkk"), SubResource("AtlasTexture_olmbw"), SubResource("AtlasTexture_u7gxp"), SubResource("AtlasTexture_qq4d8"), SubResource("AtlasTexture_0mx52"), SubResource("AtlasTexture_x2dj8")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vjgkk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olmbw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7gxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq4d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mx52")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2dj8")
+}],
 "loop": true,
 "name": &"walk",
 "speed": 10.0
@@ -107,9 +161,8 @@ script = ExtResource("1_hsl2y")
 y_sort_enabled = true
 texture_filter = 1
 position = Vector2(0, -16)
-frames = SubResource("SpriteFrames_cgvkd")
+sprite_frames = SubResource("SpriteFrames_cgvkd")
 animation = &"idle"
-playing = true
 
 [node name="Emote" type="Sprite2D" parent="."]
 visible = false

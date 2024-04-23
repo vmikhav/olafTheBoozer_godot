@@ -1,8 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://bolhxqflfufbo"]
+[gd_scene load_steps=5 format=3 uid="uid://bolhxqflfufbo"]
 
 [ext_resource type="PackedScene" uid="uid://66hcm3seogib" path="res://scenes/world/WolrdMap/WorldMap.tscn" id="1_464ce"]
+[ext_resource type="Script" path="res://trailer/Trailer.gd" id="1_sfy0o"]
+[ext_resource type="PackedScene" uid="uid://drvmmegobb7dx" path="res://trailer/Tavern.tscn" id="2_wnucr"]
+[ext_resource type="AudioStream" uid="uid://cfcwqgkc4ioax" path="res://trailer/trailer.mp3" id="3_l150n"]
 
 [node name="Trailer" type="Node2D"]
+script = ExtResource("1_sfy0o")
+
+[node name="Tavern" parent="." instance=ExtResource("2_wnucr")]
+position = Vector2(500, 100)
+scale = Vector2(3, 3)
 
 [node name="WorldMap" parent="." instance=ExtResource("1_464ce")]
+position = Vector2(-1035, -400)
 scale = Vector2(3, 3)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 10
+theme_override_constants/margin_bottom = 50
+
+[node name="LyricsLabel" type="Label" parent="CanvasLayer/MarginContainer"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Olaf the Boozer, with a beard full of crumbs"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_l150n")

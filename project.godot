@@ -32,7 +32,7 @@ window/stretch/aspect="expand"
 [editor]
 
 movie_writer/mjpeg_quality=0.9
-movie_writer/movie_file="H:/godot/OlafTheBoozer-ggo2022/records/record.avi"
+movie_writer/movie_file="H:/godot/OlafTheBoozer-ggo2022/records/trailer.avi"
 
 [input]
 

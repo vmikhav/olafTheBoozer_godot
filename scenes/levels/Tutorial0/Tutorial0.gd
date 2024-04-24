@@ -11,8 +11,8 @@ func _ready():
 		{position = Vector2i(7, 4)}
 	]
 	teleports = [
-		{start = Vector2i(2, 2), end = Vector2i(3, 4)},
-		{start = Vector2i(2, 4), end = Vector2i(3, 2)},
+		{start = Vector2i(0, 2), end = Vector2i(1, 4)},
+		{start = Vector2i(0, 4), end = Vector2i(1, 2)},
 	]
 	move_hero_to_position(hero_start_position)
 	init_map()

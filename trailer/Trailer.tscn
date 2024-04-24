@@ -1,12 +1,23 @@
-[gd_scene load_steps=5 format=3 uid="uid://bolhxqflfufbo"]
+[gd_scene load_steps=8 format=3 uid="uid://bolhxqflfufbo"]
 
 [ext_resource type="PackedScene" uid="uid://66hcm3seogib" path="res://scenes/world/WolrdMap/WorldMap.tscn" id="1_464ce"]
 [ext_resource type="Script" path="res://trailer/Trailer.gd" id="1_sfy0o"]
+[ext_resource type="PackedScene" uid="uid://dl0p686aib6x8" path="res://trailer/Wishlist.tscn" id="2_ryhxy"]
 [ext_resource type="PackedScene" uid="uid://drvmmegobb7dx" path="res://trailer/Tavern.tscn" id="2_wnucr"]
 [ext_resource type="AudioStream" uid="uid://cfcwqgkc4ioax" path="res://trailer/trailer.mp3" id="3_l150n"]
+[ext_resource type="PackedScene" uid="uid://b71ry63srqrdy" path="res://scenes/game/Playground/Playground.tscn" id="4_nfpr7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tyoit"]
+font_size = 30
+shadow_size = 3
+shadow_color = Color(0, 0, 0, 0.270588)
+shadow_offset = Vector2(2, 2)
 
 [node name="Trailer" type="Node2D"]
 script = ExtResource("1_sfy0o")
+
+[node name="Wishlist" parent="." instance=ExtResource("2_ryhxy")]
+visible = false
 
 [node name="Tavern" parent="." instance=ExtResource("2_wnucr")]
 position = Vector2(500, 100)
@@ -15,6 +26,18 @@ scale = Vector2(3, 3)
 [node name="WorldMap" parent="." instance=ExtResource("1_464ce")]
 position = Vector2(-1035, -400)
 scale = Vector2(3, 3)
+
+[node name="Playground4" parent="." instance=ExtResource("4_nfpr7")]
+visible = false
+
+[node name="Playground3" parent="." instance=ExtResource("4_nfpr7")]
+visible = false
+
+[node name="Playground2" parent="." instance=ExtResource("4_nfpr7")]
+visible = false
+
+[node name="Playground1" parent="." instance=ExtResource("4_nfpr7")]
+visible = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -39,8 +62,8 @@ theme_override_constants/margin_bottom = 50
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-theme_override_font_sizes/font_size = 30
 text = "Olaf the Boozer, with a beard full of crumbs"
+label_settings = SubResource("LabelSettings_tyoit")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_l150n")

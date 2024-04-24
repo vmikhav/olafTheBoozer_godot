@@ -7,7 +7,7 @@ func _ready():
 	tilemap = $TileMap as TileMap
 	hero = $TileMap/Demolitonist
 	hero_start_position = Vector2i(11, 10)
-	hero_replay_type = ["worker", true]
+	hero_replay_type = ["imp", true]
 	ghosts = [
 		{position = Vector2i(5, 6)},
 		{position = Vector2i(11, 5)},

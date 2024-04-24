@@ -11,8 +11,8 @@ enum Layer {
 # parameters from an implemented scene
 var tilemap: TileMap
 var hero: Node2D
-var hero_play_type: Array = ["demolitonist", true]
-var hero_replay_type: Array = ["demolitonist", true]
+var hero_play_type: Array = ["worker", true]
+var hero_replay_type: Array = ["worker", true]
 var hero_start_position: Vector2i
 var ghosts = []
 var teleports = []

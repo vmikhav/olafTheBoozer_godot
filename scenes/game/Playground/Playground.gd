@@ -9,7 +9,7 @@ extends Node2D
 @onready var summary_container = $UiLayer/SummaryContainer
 @onready var nav_controller = $NavController
 @onready var menu = $UiLayer/LevelMenu
-var level: BaseLevel
+var level: BaseLevel = null
 
 var is_level_finished: bool = false
 var level_progress_report: LevelProgressReport
@@ -65,6 +65,8 @@ func move_hero(direction: String):
 		level.navigate(TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
 
 func load_level(level_name: String):
+	if level != null:
+		level.queue_free()
 	is_level_finished = false
 	var pack = load("res://scenes/levels/" + level_name + "/" + level_name + ".tscn") as PackedScene
 	level = pack.instantiate() as BaseLevel
@@ -98,6 +100,7 @@ func load_next_level():
 	level.is_history_replay = false
 	await transition_rect.fade_out()
 	level.queue_free()
+	level = null
 	level_index += 1
 	if levels.size() <= level_index:
 		exit_levels()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://b71ry63srqrdy"]
 
 [ext_resource type="Script" path="res://scenes/game/Playground/Playground.gd" id="1_4ts3o"]
-[ext_resource type="PackedScene" path="res://scenes/ui/TouchCamera/TouchCamera.tscn" id="2_ylx20"]
+[ext_resource type="PackedScene" uid="uid://ias8gsdjebhw" path="res://scenes/ui/TouchCamera/TouchCamera.tscn" id="2_ylx20"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="3_fgile"]
 [ext_resource type="Texture2D" uid="uid://dysd3t3vacti6" path="res://assets/images/button_reset.png" id="4_4j3n4"]
 [ext_resource type="PackedScene" uid="uid://ehd8l4wredkr" path="res://scenes/ui/ProgressPanel/ProgressPanel.tscn" id="4_47ar2"]

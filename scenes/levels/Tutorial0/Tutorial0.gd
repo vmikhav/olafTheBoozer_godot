@@ -8,7 +8,9 @@ func _ready():
 	hero = $TileMap/Demolitonist
 	hero_start_position = Vector2i(3, 2)
 	ghosts = [
-		{position = Vector2i(7, 4)}
+		{position = Vector2i(7, 4), type = defs.GhostType.MEMORY, mode = defs.UnitType.SUCCUB},
+		{position = Vector2i(1, 4), type = defs.GhostType.ENEMY, mode = defs.UnitType.VILLAGER_WOMAN},
+		{position = Vector2i(6, 5), type = defs.GhostType.ENEMY_SPAWN, mode = defs.UnitType.VILLAGER_WOMAN},
 	]
 	teleports = [
 		{start = Vector2i(0, 2), end = Vector2i(1, 4)},

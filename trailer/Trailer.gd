@@ -1,5 +1,8 @@
 extends Node2D
 
+@export var recording: bool = true
+signal finished()
+
 @onready var lyricsLabel = %LyricsLabel
 @onready var world = $WorldMap
 @onready var tavern = $Tavern
@@ -26,7 +29,7 @@ var song: Array[String] = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	get_tree().create_timer(10).timeout.connect(func():
+	get_tree().create_timer(10 if recording else 0).timeout.connect(func():
 		play()
 	)
 
@@ -236,19 +239,23 @@ func play() -> void:
 		tween3.tween_interval(0.35)
 		tween3.tween_callback(playgroud.move_hero.bind("ui_right"))
 		tween3.tween_property(playgroud, "modulate", Color(1, 1, 1, 0), .35)
+		if not recording:
+			tween3.tween_callback(finished.emit)
 	)
-	get_tree().create_timer(40).timeout.connect(func():
-		switch_lyrics()
-		await get_tree().create_timer(.5).timeout
-		$Camera2D.enabled = true
-		$Camera2D.make_current()
-		$Playground4/TouchCamera.enabled = false
-		$Wishlist/CanvasLayer/CanvasModulate.color = Color(1, 1, 1, 0)
-		$Wishlist.visible = true
-		$Wishlist/CanvasLayer.visible = true
-		var tween3 = get_tree().create_tween()
-		tween3.tween_property($Wishlist/CanvasLayer/CanvasModulate, "color", Color(1, 1, 1, 1), .25)
-	)
+	if recording:
+		get_tree().create_timer(40).timeout.connect(func():
+			switch_lyrics()
+			await get_tree().create_timer(.5).timeout
+			$Camera2D.enabled = true
+			$Camera2D.make_current()
+			$Playground4/TouchCamera.enabled = false
+			$Wishlist/CanvasLayer/CanvasModulate.color = Color(1, 1, 1, 0)
+			$Wishlist.visible = true
+			$Wishlist/CanvasLayer.visible = true
+			var tween3 = get_tree().create_tween()
+			tween3.tween_property($Wishlist/CanvasLayer/CanvasModulate, "color", Color(1, 1, 1, 1), .25)
+			tween3.tween_callback(finished.emit)
+		)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

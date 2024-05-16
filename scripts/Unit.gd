@@ -1,9 +1,10 @@
 class_name Unit
 extends Node2D
 
-enum Ghost_type {
-	MEMORY,
-	ENEMY,
+const ghost_colors = {
+	LevelDefinitions.GhostType.MEMORY: Color8(100, 200, 255, 160),
+	LevelDefinitions.GhostType.ENEMY: Color8(255, 100, 100, 160),
+	LevelDefinitions.GhostType.ENEMY_SPAWN: Color8(200, 200, 100, 160),
 }
 
 var orientation: String = 'right'
@@ -20,6 +21,7 @@ func _ready():
 func set_mode(params):
 	mode = params[0]
 	sprite.play(mode + "_idle")
+	emote.visible = false
 	var sounds_old = can_produce_sounds
 	can_produce_sounds = params[1]
 	if not sounds_old and can_produce_sounds:
@@ -50,10 +52,21 @@ func play_idle_sound():
 		AudioController.play_sfx(sound)
 		get_tree().create_timer(randf_range(4, 10), false).timeout.connect(play_idle_sound)
 
-func make_ghost(type: Ghost_type = Ghost_type.MEMORY) -> void:
-	sprite.modulate = Color8(100, 200, 255, 160)
+func make_ghost(type: LevelDefinitions.GhostType = LevelDefinitions.GhostType.MEMORY) -> void:
+	sprite.modulate = ghost_colors[type]
 	set_orientation("left" if randi_range(0, 1) else "right")
 	can_produce_sounds = false
+
+func make_follower():
+	sprite.play(mode + "_die", -1.5, true)
+	await sprite.animation_finished
+	sprite.play(mode + "_idle")
+
+func die(with_animation: bool):
+	if with_animation:
+		sprite.play(mode + "_die", 1.5)
+		await sprite.animation_finished
+	queue_free()
 
 func set_orientation(direction: String) -> void:
 	if direction == 'right' || direction == 'left':

@@ -8,6 +8,8 @@ enum Layer {
 	GROUND, FLOOR, WALLS, ITEMS, TREES, BAD_ITEMS, GOOD_ITEMS
 }
 
+var defs = LevelDefinitions
+
 # parameters from an implemented scene
 var tilemap: TileMap
 var hero: Node2D
@@ -24,6 +26,7 @@ var level_items_count: int
 var level_items_progress: int
 var ghosts_count: int
 var ghosts_progress: int
+var tail = []
 var history = []
 var is_history_replay: bool = false
 var progress_report: LevelProgressReport
@@ -48,13 +51,16 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 		ghosts_progress = 0
 		ghosts_count = ghosts.size()
 		init_progress_report()
+		for item in tail:
+			item.unit.queue_free()
+		tail = []
 		for i in ghosts.size():
 			if "unit" in ghosts[i] and ghosts[i].unit:
 				ghosts[i].unit.queue_free()
 			ghosts[i].unit = hero.duplicate()
 			tilemap.add_child(ghosts[i].unit)
-			ghosts[i].unit.set_mode(hero_replay_type)
-			ghosts[i].unit.make_ghost()
+			ghosts[i].unit.set_mode([defs.UnitTypeName[ghosts[i].mode], false])
+			ghosts[i].unit.make_ghost(ghosts[i].type)
 			move_unit_to_position(ghosts[i].unit, ghosts[i].position)
 	for pos in bad_items:
 		update_cell(pos, tilemap.get_cell_atlas_coords(source, pos), tilemap.get_cell_alternative_tile(source, pos))
@@ -72,9 +78,17 @@ func restart():
 func move_unit_to_position(unit: Node2D, new_position: Vector2i):
 	unit.position = new_position * TILE_SIZE + TILE_OFFSET
 
+func move_oriented_unit_to_position(unit: Node2D, new_position: Vector2i):
+	var new_absolute_position := new_position * TILE_SIZE + TILE_OFFSET
+	if new_absolute_position.x > unit.position.x:
+		unit.set_orientation('right')
+	if new_absolute_position.x < unit.position.x:
+		unit.set_orientation('left')
+	unit.position = new_absolute_position
+
 func move_hero_to_position(new_position: Vector2i):
 	hero_position = new_position
-	move_unit_to_position(hero, new_position)
+	move_oriented_unit_to_position(hero, new_position)
 
 func is_empty_cell(layer: Layer, cell_position: Vector2i) -> bool:
 	var atlas_pos = tilemap.get_cell_atlas_coords(layer, cell_position)
@@ -101,9 +115,11 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 	
 	var neighbor_pos = tilemap.get_neighbor_cell(hero_position, direction)
 	var history_item = {position = neighbor_pos, direction = direction}
+	# no floor
 	if is_empty_cell(Layer.GROUND, neighbor_pos):
 		skip_step()
 		return
+	# check teleports and walls
 	if not is_empty_cell(Layer.WALLS, neighbor_pos):
 		for teleport in teleports:
 			if teleport.start == neighbor_pos:
@@ -115,12 +131,19 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 			skip_step()
 			return
 	
+	# avoid bots from tail
+	for item in tail:
+		if item.position == neighbor_pos:
+			skip_step()
+			return
+	
 	var neighbor_cell = tilemap.get_cell_atlas_coords(Layer.ITEMS, neighbor_pos)
 	var bad_neighbor_cell = tilemap.get_cell_atlas_coords(Layer.BAD_ITEMS, neighbor_pos)
 	var bad_neighbor_alt = tilemap.get_cell_alternative_tile(Layer.BAD_ITEMS, neighbor_pos)
 	var good_neighbor_cell = tilemap.get_cell_atlas_coords(Layer.GOOD_ITEMS, neighbor_pos)
 	var good_neighbor_alt = tilemap.get_cell_alternative_tile(Layer.GOOD_ITEMS, neighbor_pos)
-	if neighbor_cell.x != -1:
+	# check and update item status
+	if neighbor_cell.x != -1: # if cell is set
 		if neighbor_cell != bad_neighbor_cell or not process_trail(neighbor_pos):
 			skip_step()
 			return
@@ -131,12 +154,50 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		history_item.good_item_alt = good_neighbor_alt
 		level_items_progress += 1
 		items_progress_signal.emit(level_items_progress)
+	# add bot to tail
+	if history.size() and "ghost_type" in history[-1] and history[-1].ghost_type == LevelDefinitions.GhostType.ENEMY:
+		var unit = hero.duplicate()
+		tilemap.add_child(unit)
+		unit.set_mode([defs.UnitTypeName[history[-1].ghost_mode], false])
+		move_unit_to_position(unit, history[-1].position)
+		unit.make_follower()
+		tail.push_front({
+			unit = unit,
+			unit_mode = history[-1].ghost_mode,
+			position = history[-1].position,
+			history_position = history.size() - 1,
+			movement_mode = "follow",
+		})
+		history_item.tail_changed = true
+		for item in tail:
+			if item.movement_mode == "follow":
+				item.history_position -= 1
+	# make tail follow a hero
+	for item in tail:
+		if item.movement_mode == "follow":
+			item.history_position += 1
+			item.position = history[item.history_position].position
+			move_oriented_unit_to_position(item.unit, item.position)
 	for i in ghosts.size():
-		if neighbor_pos == ghosts[i].position:
+		var _can_consume_ghost = false
+		if ghosts[i].type == LevelDefinitions.GhostType.ENEMY_SPAWN:
+			for item in tail:
+				if (item.movement_mode == "follow"
+					and item.unit_mode == ghosts[i].mode
+					and item.position == ghosts[i].position):
+					item.movement_mode = "chill"
+					_can_consume_ghost = true
+					break
+		elif neighbor_pos == ghosts[i].position:
+			_can_consume_ghost = true
+		if _can_consume_ghost:
 			ghosts_progress += 1
 			ghosts_progress_signal.emit(ghosts_progress)
 			ghosts[i].unit.visible = false
 			history_item.ghost = ghosts[i].unit
+			history_item.ghost_position = ghosts[i].position
+			history_item.ghost_type = ghosts[i].type
+			history_item.ghost_mode = ghosts[i].mode
 			ghosts.remove_at(i)
 			break
 	move_hero_to_position(neighbor_pos)
@@ -160,19 +221,34 @@ func step_back():
 	var history_item = history.pop_back()
 	if is_history_replay:
 		play_sfx_by_history(history_item)
-	var history_position_item = history[history.size() - 1]
-	if history_position_item.position.x > hero_position.x:
-		hero.set_orientation('right')
-	if history_position_item.position.x < hero_position.x:
-		hero.set_orientation('left')
+	var history_position_item = history[-1]
 	move_hero_to_position(history_position_item.position)
 	if "bad_item" in history_item:
 		update_cell(history_item.position, history_item.bad_item, history_item.bad_item_alt)
 		level_items_progress -= 1
 	if "ghost" in history_item:
+		if history_item.ghost_type == LevelDefinitions.GhostType.ENEMY_SPAWN:
+			for item in tail:
+				if item.position == history_item.ghost_position:
+					item.movement_mode = "follow"
+					break
+		history_item.ghost.make_ghost(history_item.ghost_type)
 		history_item.ghost.visible = true
-		ghosts.push_back({position = history_item.position, unit = history_item.ghost})
+		ghosts.push_back({
+			position = history_item.ghost_position,
+			type = history_item.ghost_type,
+			mode = history_item.ghost_mode,
+			unit = history_item.ghost,
+		})
 		ghosts_progress -= 1
+	if "tail_changed" in history_item:
+		tail.pop_front().unit.die(is_history_replay)
+	else:
+		for item in tail:
+			if item.movement_mode == "follow":
+				item.history_position -= 1
+				item.position = history[item.history_position].position
+				move_oriented_unit_to_position(item.unit, item.position)
 	if not is_history_replay:
 		ghosts_progress_signal.emit(ghosts_progress)
 		items_progress_signal.emit(level_items_progress)

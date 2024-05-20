@@ -1,5 +1,9 @@
 extends Node
 
+var music = {
+	"knights": load("res://assets/music/Tournier of the Knights.mp3")
+}
+
 var sounds = {
 	"drink": load("res://assets/sounds/drink.wav"),
 	"glass": load("res://assets/sounds/glass.wav"),
@@ -66,6 +70,16 @@ func play_sfx(sfx_name: String):
 		if SettingsManager.settings.burps_muted:
 			position = 0.5
 	player.stream = sounds[sfx_name]
+	add_child(player)
+	player.play(position)
+	await player.finished
+	player.queue_free()
+
+func play_music(music_name: String):
+	var player = AudioStreamPlayer.new()
+	var position = 0
+	player.bus = "Music"
+	player.stream = music[music_name]
 	add_child(player)
 	player.play(position)
 	await player.finished

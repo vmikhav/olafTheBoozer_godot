@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://df525dujavlyd"]
+[gd_scene load_steps=10 format=3 uid="uid://df525dujavlyd"]
 
 [ext_resource type="Script" path="res://scenes/game/MainMenu/MainMenu.gd" id="1_7fekw"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="1_87rnb"]
+[ext_resource type="Texture2D" uid="uid://tra00nxobp22" path="res://assets/images/Outside castle/back.png" id="2_xfymh"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="3_awe0n"]
+[ext_resource type="Texture2D" uid="uid://c68b8nxud88e" path="res://assets/images/Outside castle/middle.png" id="3_rdpox"]
+[ext_resource type="Texture2D" uid="uid://b5k4ucg3lry0c" path="res://assets/images/Outside castle/front.png" id="4_6jrop"]
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="4_lkwgi"]
+[ext_resource type="FontFile" uid="uid://cxtw8p5wygf2e" path="res://assets/fonts/vinque.rg-regular.otf" id="6_fmlrm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_n41tu"]
+font = ExtResource("6_fmlrm")
+font_size = 100
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(4, 4)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_7fekw")
@@ -21,6 +32,24 @@ offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="CenterContainer" type="CenterContainer" parent="UiLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="Back" type="Sprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer"]
+scale = Vector2(4, 4)
+texture = ExtResource("2_xfymh")
+
+[node name="Middle" type="Sprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer"]
+scale = Vector2(4, 4)
+texture = ExtResource("3_rdpox")
+
+[node name="Front" type="Sprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer"]
+scale = Vector2(4, 4)
+texture = ExtResource("4_6jrop")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/MarginContainer"]
 layout_mode = 2
 alignment = 1
@@ -33,6 +62,7 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("1_87rnb")
 theme_override_font_sizes/font_size = 30
 text = "Olaf the Boozer"
+label_settings = SubResource("LabelSettings_n41tu")
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -49,8 +79,3 @@ theme_override_font_sizes/font_size = 40
 text = "Play"
 
 [node name="SceneTransition" parent="UiLayer" instance=ExtResource("4_lkwgi")]
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1

@@ -8,10 +8,10 @@ func _ready():
 	hero = $TileMap/Demolitonist
 	hero_start_position = Vector2i(6, 5)
 	ghosts = [
-		{position = Vector2i(16, 6)},
-		{position = Vector2i(16, 4)},
-		{position = Vector2i(19, 7)},
-		{position = Vector2i(6, 11)},
+		{position = Vector2i(16, 6), type = defs.GhostType.MEMORY, mode = defs.UnitType.WORKER},
+		{position = Vector2i(16, 4), type = defs.GhostType.MEMORY, mode = defs.UnitType.WORKER},
+		{position = Vector2i(19, 7), type = defs.GhostType.MEMORY, mode = defs.UnitType.WORKER},
+		{position = Vector2i(6, 11), type = defs.GhostType.MEMORY, mode = defs.UnitType.WORKER},
 	]
 	move_hero_to_position(hero_start_position)
 	init_map()

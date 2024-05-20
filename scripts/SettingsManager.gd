@@ -4,6 +4,7 @@ extends Node
 var settings: SettingsResource = SettingsResource.new() as SettingsResource
 var game_progress: GameProgressResource = GameProgressResource.new() as GameProgressResource
 var skip_save: bool = false
+var clear_color: Color
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -64,6 +65,13 @@ func update_highscore(level: String, report: LevelProgressReport):
 			tries = 1
 		}
 		save_progress()
+
+func get_touch_control() -> bool:
+	return settings.touch_control
+
+func update_touch_control(value: bool):
+	settings.touch_control = value
+	save_settings()
 
 func save_settings():
 	if skip_save:

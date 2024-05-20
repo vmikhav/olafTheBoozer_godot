@@ -7,13 +7,13 @@ func _ready():
 	tilemap = $TileMap as TileMap
 	hero = $TileMap/Demolitonist
 	hero_start_position = Vector2i(11, 10)
-	hero_replay_type = ["imp", true]
 	ghosts = [
-		{position = Vector2i(5, 6)},
-		{position = Vector2i(11, 5)},
-		{position = Vector2i(13, 8)},
-		{position = Vector2i(18, 6)},
+		{position = Vector2i(5, 6), type = defs.GhostType.MEMORY, mode = defs.UnitType.IMP},
+		{position = Vector2i(11, 5), type = defs.GhostType.MEMORY, mode = defs.UnitType.IMP},
+		{position = Vector2i(13, 8), type = defs.GhostType.MEMORY, mode = defs.UnitType.IMP},
+		{position = Vector2i(18, 6), type = defs.GhostType.MEMORY, mode = defs.UnitType.IMP},
 	]
+	camera_limit = Rect2i(0, 0, 450, 250)
 	move_hero_to_position(hero_start_position)
 	init_map()
 

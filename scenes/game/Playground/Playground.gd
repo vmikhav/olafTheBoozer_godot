@@ -23,6 +23,10 @@ var levels = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	nav_buttons.visible = SettingsManager.get_touch_control()
+	transition_rect.fade_in()
+	if SceneSwitcher.get_param("levels") != null:
+		levels = SceneSwitcher.get_param("levels")
 	load_level(levels[level_index])
 	nav_buttons.actions.connect(imitate_input)
 	nav_controller.actions.connect(move_hero)
@@ -31,6 +35,9 @@ func _ready():
 	summary_container.restart.connect(restart)
 	summary_container.next.connect(load_next_level)
 	summary_container.progress_filled.connect(start_replay)
+	menu.settings.connect(func():
+		nav_buttons.visible = SettingsManager.get_touch_control()
+	)
 	menu.close.connect(close_menu)
 	menu.restart.connect(restart)
 	menu.exit.connect(func():
@@ -74,6 +81,10 @@ func load_level(level_name: String):
 	level.process_mode = PROCESS_MODE_PAUSABLE	
 	camera.target = level.hero
 	camera.go_to(level.hero.position, true)
+	camera.limit_top = level.camera_limit.position.y
+	camera.limit_left = level.camera_limit.position.x
+	camera.limit_bottom = level.camera_limit.end.y
+	camera.limit_right = level.camera_limit.end.x
 	level.level_finished.connect(on_level_finished)
 	progress_panel.set_items_count(level.level_items_count)
 	progress_panel.set_ghosts_count(level.ghosts_count)

@@ -18,6 +18,7 @@ var hero_replay_type: Array = ["worker", true]
 var hero_start_position: Vector2i
 var ghosts = []
 var teleports = []
+var camera_limit := Rect2i(-1000000, -1000000, 2000000, 2000000)
 
 # local variables
 var hero_position: Vector2i
@@ -27,6 +28,7 @@ var level_items_progress: int
 var ghosts_count: int
 var ghosts_progress: int
 var tail = []
+var last_active_tail_item = -1
 var history = []
 var is_history_replay: bool = false
 var progress_report: LevelProgressReport
@@ -53,6 +55,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 		init_progress_report()
 		for item in tail:
 			item.unit.queue_free()
+		last_active_tail_item = -1
 		tail = []
 		for i in ghosts.size():
 			if "unit" in ghosts[i] and ghosts[i].unit:
@@ -168,6 +171,7 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 			history_position = history.size() - 1,
 			movement_mode = "follow",
 		})
+		last_active_tail_item += 1
 		history_item.tail_changed = true
 		for item in tail:
 			if item.movement_mode == "follow":
@@ -181,13 +185,14 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 	for i in ghosts.size():
 		var _can_consume_ghost = false
 		if ghosts[i].type == LevelDefinitions.GhostType.ENEMY_SPAWN:
-			for item in tail:
+			if last_active_tail_item >= 0:
+				var item = tail[last_active_tail_item]
 				if (item.movement_mode == "follow"
 					and item.unit_mode == ghosts[i].mode
 					and item.position == ghosts[i].position):
 					item.movement_mode = "chill"
 					_can_consume_ghost = true
-					break
+					last_active_tail_item -= 1
 		elif neighbor_pos == ghosts[i].position:
 			_can_consume_ghost = true
 		if _can_consume_ghost:
@@ -231,6 +236,7 @@ func step_back():
 			for item in tail:
 				if item.position == history_item.ghost_position:
 					item.movement_mode = "follow"
+					last_active_tail_item += 1
 					break
 		history_item.ghost.make_ghost(history_item.ghost_type)
 		history_item.ghost.visible = true
@@ -243,6 +249,7 @@ func step_back():
 		ghosts_progress -= 1
 	if "tail_changed" in history_item:
 		tail.pop_front().unit.die(is_history_replay)
+		last_active_tail_item -= 1
 	else:
 		for item in tail:
 			if item.movement_mode == "follow":
@@ -316,7 +323,7 @@ func process_trail(trail_position: Vector2i) -> bool:
 			tilemap.get_neighbor_cell(trail_position, directions.side[i])
 		)
 		cell_value = str(cell.x) + "," + str(cell.y)
-		if directions.backward_tile[i] == cell_value:
+		if directions.backward_tile[i] == cell_value or cell_value == "6,12":
 			next_direction = directions.side[i]
 			break
 	
@@ -344,4 +351,7 @@ func fill_progress_report() -> LevelProgressReport:
 	return progress_report
 
 func calc_score() -> int:
-	return ceili((progress_report.progress_items * 1.0 / progress_report.total_items) * 100)
+	return ceili((
+			(progress_report.progress_items + progress_report.progress_ghosts) * 1.0 
+			/ (progress_report.total_items + progress_report.total_ghosts)
+		) * 100)

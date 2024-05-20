@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://covai1ksdraaf"]
+
+[ext_resource type="PackedScene" uid="uid://66hcm3seogib" path="res://scenes/world/WolrdMap/WorldMap.tscn" id="1_4mwwo"]
+[ext_resource type="Script" path="res://scenes/world/WolrdMap/WorldMapInteractive.gd" id="1_lsqxg"]
+[ext_resource type="PackedScene" uid="uid://dbej6aa38k7fj" path="res://scenes/world/WolrdMap/objects/Hero.tscn" id="2_u0lcg"]
+[ext_resource type="PackedScene" uid="uid://ias8gsdjebhw" path="res://scenes/ui/TouchCamera/TouchCamera.tscn" id="3_oocn6"]
+[ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="5_gkfkf"]
+
+[node name="WorldMapInteractive" type="Node2D"]
+script = ExtResource("1_lsqxg")
+
+[node name="WorldMap" parent="." instance=ExtResource("1_4mwwo")]
+
+[node name="Hero" parent="." instance=ExtResource("2_u0lcg")]
+position = Vector2(296, -121)
+
+[node name="TouchCamera" parent="." instance=ExtResource("3_oocn6")]
+zoom = Vector2(2.4, 2.4)
+limit_left = -400
+limit_top = -272
+limit_right = 608
+limit_bottom = 256
+min_zoom = 2.0
+
+[node name="UiLayer" type="CanvasLayer" parent="."]
+
+[node name="SceneTransition" parent="UiLayer" instance=ExtResource("5_gkfkf")]
+metadata/_edit_use_anchors_ = true

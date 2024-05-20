@@ -101,12 +101,28 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.823529, 0.698039, 0.564706, 1)
 theme_override_colors/font_focus_color = Color(0.823529, 0.698039, 0.564706, 1)
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "Beer"
-popup/item_0/id = 0
 popup/item_1/text = "Ginger Ale"
 popup/item_1/id = 1
+
+[node name="TouchContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 46
+
+[node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer/MarginContainer"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
+text = "Touch Control:"
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer"]
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2

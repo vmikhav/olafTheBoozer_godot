@@ -33,7 +33,7 @@ drag_top_margin = 0.4
 drag_right_margin = 0.4
 drag_bottom_margin = 0.4
 editor_draw_drag_margin = true
-min_zoom = 2.5
+min_zoom = 2.0
 max_zoom = 5.0
 
 [node name="UiLayer" type="CanvasLayer" parent="."]

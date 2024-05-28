@@ -4,8 +4,10 @@ extends BaseLevel
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	tilemap = $TileMap as TileMap
-	hero = $TileMap/Demolitonist
+	tilemaps = [
+		$Ground, $Floor, $Walls, $Trails, $Items, $Trees, $BadItems, $GoodItems,
+	]
+	hero = $Items/Demolitonist
 	hero_start_position = Vector2i(11, 10)
 	ghosts = [
 		{position = Vector2i(5, 6), type = defs.GhostType.MEMORY, mode = defs.UnitType.IMP},

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dkbip8st6rlvk"]
+[gd_scene load_steps=4 format=4 uid="uid://dkbip8st6rlvk"]
 
 [ext_resource type="Script" path="res://scenes/levels/Tutorial0/Tutorial0.gd" id="1_pimk5"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_p2yry"]
@@ -7,32 +7,53 @@
 [node name="Tutorial0" type="Node2D"]
 script = ExtResource("1_pimk5")
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="Ground" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAEAAAAcAAAAAAAAAAIAAAAcAAEAAAAAAAQAAAAgAAIAAAABAAEAAAAdAAAAAAABAAIAAAAdAAEAAAABAAQAAAAhAAIAAAACAAEAAAAcAAAAAAACAAIAAAAcAAEAAAACAAQAAAAjAAEAAAADAAEAAAAfAAEAAAADAAIAAAAfAAAAAAADAAMAAAAdAAAAAAADAAQAAAAjAAIAAAADAAUAAAAgAAIAAAAEAAQAAAAiAAEAAAAEAAUAAAAhAAIAAAAFAAQAAAAjAAEAAAAFAAUAAAAjAAIAAAAGAAQAAAApAAAAAAAGAAUAAAApAAIAAAAHAAMAAAA+AAAAAAAHAAQAAAAqAAAAAAAHAAUAAAAqAAIAAAAIAAMAAAA+AAAAAAAIAAQAAAArAAAAAAAIAAUAAAArAAIAAAA=")
+tile_set = ExtResource("2_p2yry")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+z_index = 1
+texture_filter = 1
+tile_set = ExtResource("2_p2yry")
+
+[node name="Walls" type="TileMapLayer" parent="."]
+z_index = 2
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD//wAAAAA0AAEAAAD//wEAAAA3AAIAAAD//wIAAAAzAAIAAAD//wMAAAA2AAMAAAD//wQAAAAzAAIAAAD//wUAAAA0AAIAAAAAAAAAAAA1AAAAAAAAAAEAAAAcABUAAAAAAAMAAAA1AAAAAAAAAAUAAAA1AAAAAAABAAAAAAA1AAAAAAABAAMAAAA3AAEAAAABAAUAAAA3AAAAAAACAAAAAAA1AAAAAAACAAEAAAAfABUAAAACAAMAAAA2AAAAAAACAAUAAAA1AAEAAAACAAYAAAA0AAIAAAADAAAAAAA3AAEAAAADAAYAAAA1AAAAAAAEAAAAAAA1AAEAAAAEAAEAAAAzAAIAAAAEAAIAAAA3AAMAAAAEAAMAAAA0AAIAAAAEAAYAAAA3AAEAAAAFAAMAAAA3AAAAAAAFAAYAAAA1AAAAAAAGAAMAAAA2AAAAAAAGAAYAAAA1AAAAAAAHAAYAAAA3AAAAAAAIAAYAAAA1AAAAAAAJAAMAAAAzAAEAAAAJAAQAAAA3AAMAAAAJAAUAAAA3AAIAABAJAAYAAAA1AAIAAAA=")
+tile_set = ExtResource("2_p2yry")
+
+[node name="Trails" type="TileMapLayer" parent="."]
+z_index = 3
+texture_filter = 1
+tile_set = ExtResource("2_p2yry")
+
+[node name="Items" type="TileMapLayer" parent="."]
+z_index = 3
 y_sort_enabled = true
 texture_filter = 1
 tile_set = ExtResource("2_p2yry")
-format = 2
-layer_0/name = "ground"
-layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(262152, 2818048, 0, 327688, 2818048, 2, 262150, 2686976, 0, 262151, 2752512, 0, 327686, 2686976, 2, 327687, 2752512, 2, 262147, 2293760, 2, 327683, 2097152, 2, 262148, 2228224, 1, 327684, 2162688, 2, 262149, 2293760, 1, 327685, 2293760, 2, 262146, 2293760, 1, 65538, 1835008, 0, 131074, 1835008, 1, 131075, 2031616, 0, 65539, 2031616, 1, 196611, 1900544, 0, 196615, 4063232, 0, 196616, 4063232, 0, 65536, 1835008, 0, 131072, 1835008, 1, 65537, 1900544, 0, 131073, 1900544, 1, 262144, 2097152, 2, 262145, 2162688, 2)
-layer_1/name = "floor"
-layer_1/z_index = 1
-layer_2/name = "walls"
-layer_2/z_index = 2
-layer_2/tile_data = PackedInt32Array(2, 3473408, 0, 3, 3604480, 1, 4, 3473408, 1, 65540, 3342336, 2, 131076, 3604480, 3, 196612, 3407872, 2, 65538, 2031616, 21, 196610, 3538944, 0, 327682, 3473408, 1, 196613, 3604480, 0, 393218, 3407872, 2, 393219, 3473408, 0, 393220, 3604480, 1, 393221, 3473408, 0, 393222, 3473408, 0, 393223, 3604480, 0, 393225, 3473408, 2, 393224, 3473408, 0, 196614, 3538944, 0, 196617, 3342336, 1, 262153, 3604480, 3, 327689, 3604480, 65538, 65535, 3407872, 1, 131071, 3604480, 2, 196607, 3342336, 2, 262143, 3538944, 3, 327679, 3342336, 2, 393215, 3407872, 2, 327680, 3473408, 0, 327681, 3604480, 0, 0, 3473408, 0, 1, 3473408, 0, 196608, 3473408, 0, 196609, 3604480, 1, 65536, 1835008, 21)
-layer_3/name = "items"
-layer_3/y_sort_enabled = true
-layer_3/z_index = 3
-layer_4/name = "trees"
-layer_4/z_index = 4
-layer_5/name = "bad_items"
-layer_5/z_index = 5
-layer_5/tile_data = PackedInt32Array(65539, 917504, 19, 196611, 1245184, 15, 262149, 917504, 19, 262148, 917504, 19, 327685, 786432, 20, 327683, 524288, 14, 262144, 720896, 16)
-layer_6/name = "fixed_items"
-layer_6/z_index = 5
-layer_6/tile_data = PackedInt32Array(196611, 262144, 65547, 262148, 786432, 18, 262149, 786432, 16, 327685, 851968, 20, 65539, 1310720, 17, 262144, 1703936, 17)
 
-[node name="Demolitonist" parent="TileMap" instance=ExtResource("3_g4qxb")]
+[node name="Demolitonist" parent="Items" instance=ExtResource("3_g4qxb")]
 z_index = 3
 z_as_relative = false
 position = Vector2(41, 45)
+
+[node name="Trees" type="TileMapLayer" parent="."]
+z_index = 4
+y_sort_enabled = true
+texture_filter = 1
+tile_set = ExtResource("2_p2yry")
+
+[node name="BadItems" type="TileMapLayer" parent="."]
+z_index = 6
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAQAAAALABAAAAADAAEAAAAOABMAAAADAAMAAAATAA8AAAADAAUAAAAIAA4AAAAEAAQAAAAOABMAAAAFAAQAAAAOABMAAAAFAAUAAAAMABQAAAA=")
+tile_set = ExtResource("2_p2yry")
+
+[node name="GoodItems" type="TileMapLayer" parent="."]
+z_index = 6
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAQAAAAaABEAAAADAAEAAAAUABEAAAADAAMAAAAEAAsAABAEAAQAAAAMABIAAAAFAAQAAAAMABAAAAAFAAUAAAANABQAAAA=")
+tile_set = ExtResource("2_p2yry")

@@ -10,6 +10,8 @@ var sounds = {
 	"step": load("res://assets/sounds/step.wav"),
 	"smash": load("res://assets/sounds/smash.wav"),
 	"break": load("res://assets/sounds/break.wav"),
+	"break05": load("res://assets/sounds/Wood Impact 7_05.wav"),
+	"break11": load("res://assets/sounds/Wood Impact 7_11.wav"),
 	"vomit": load("res://assets/sounds/vomit.wav"),
 	"bump": load("res://assets/sounds/bump.wav"),
 	"pickup": load("res://assets/sounds/pickup.wav"),
@@ -49,7 +51,7 @@ const sounds_map = {
 }
 
 func get_sound(bad_item: Vector2i, good_item: Vector2i) -> String:
-	var result = "break"
+	var result = "break11"
 	var bad_item_key = str(bad_item.x) + ',' + str(bad_item.y)
 	var good_item_key = str(good_item.x) + ',' + str(good_item.y)
 	if sounds_map.has(good_item_key):
@@ -58,7 +60,7 @@ func get_sound(bad_item: Vector2i, good_item: Vector2i) -> String:
 		result = sounds_map[bad_item_key]
 	return result
 
-func play_sfx_by_tiles(bad_item: Vector2i, good_item: Vector2i):
+func play_sfx_by_tiles(bad_item: Vector2i, good_item: Vector2i = Vector2i(-1, -1)):
 	play_sfx(get_sound(bad_item, good_item))
 
 func play_sfx(sfx_name: String):

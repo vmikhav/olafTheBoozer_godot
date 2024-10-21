@@ -31,7 +31,7 @@ func drink():
 	modulate = Color8(255, 255, 255, 255)
 	await get_tree().create_timer(0.1).timeout
 	sprite.play()
-	AudioController.play_sfx("drink")
+	AudioController.play_sfx("dropdown_menu_drink")
 
 func reset():
 	is_empty = false

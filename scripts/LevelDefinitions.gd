@@ -39,5 +39,7 @@ const TrailDirections = {
 	forward_tile = ["6,19", "5,19", "6,20", "5,20"],
 }
 
+const DraggableItems = ["12,16", "13,16", "12,18"]
+
 enum Layers {GROUND, FLOOR, WALLS, ITEMS, TREES}
 enum Walls {WOOD, STONE, BRICK, CLAY, BUSH, FENCE}

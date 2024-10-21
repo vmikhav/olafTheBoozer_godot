@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://csxkt7ogyamcu"
+path="res://.godot/imported/Olaf The Boozer Theme.mp3-6b757b0731ba24f53c1e89f3f4de51a9.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Olaf The Boozer Theme.mp3"
+dest_files=["res://.godot/imported/Olaf The Boozer Theme.mp3-6b757b0731ba24f53c1e89f3f4de51a9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

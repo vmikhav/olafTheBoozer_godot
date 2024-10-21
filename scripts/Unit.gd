@@ -11,7 +11,7 @@ var orientation: String = 'right'
 var sprite: AnimatedSprite2D
 var emote: Sprite2D
 var can_produce_sounds = true
-var available_sounds = ["hiccup", "hrrng", "groan"]
+var available_sounds = ["olaf_hiccup_idle"]
 var last_sound = -1
 var mode: String = "demolitonist"
 
@@ -77,5 +77,3 @@ func hit():
 	sprite.play(mode + "_hit")
 	await sprite.animation_finished
 	sprite.play(mode + "_idle")
-
-

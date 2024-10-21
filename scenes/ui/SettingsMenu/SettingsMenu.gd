@@ -42,7 +42,7 @@ func update_sfx_volume(value: float):
 	timer_mark = local_timer_mark
 	await get_tree().create_timer(1).timeout
 	if timer_mark == local_timer_mark:
-		AudioController.play_sfx("hiccup")
+		AudioController.play_sfx("olaf_hiccup_idle")
 
 func update_music_volume(value: float):
 	var mute = value <= 0.05

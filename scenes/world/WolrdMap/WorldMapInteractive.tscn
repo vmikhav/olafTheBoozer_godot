@@ -1,10 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://covai1ksdraaf"]
+[gd_scene load_steps=8 format=3 uid="uid://covai1ksdraaf"]
 
 [ext_resource type="PackedScene" uid="uid://66hcm3seogib" path="res://scenes/world/WolrdMap/WorldMap.tscn" id="1_4mwwo"]
 [ext_resource type="Script" path="res://scenes/world/WolrdMap/WorldMapInteractive.gd" id="1_lsqxg"]
 [ext_resource type="PackedScene" uid="uid://dbej6aa38k7fj" path="res://scenes/world/WolrdMap/objects/Hero.tscn" id="2_u0lcg"]
 [ext_resource type="PackedScene" uid="uid://ias8gsdjebhw" path="res://scenes/ui/TouchCamera/TouchCamera.tscn" id="3_oocn6"]
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="5_gkfkf"]
+
+[sub_resource type="Curve2D" id="Curve2D_cm0vb"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 288, -121, 0, 0, 0, 0, 231, -116, 0, 0, 0, 0, 207, -25, 0, 0, 0, 0, 161, -24, 0, 0, 0, 0, 110, -54, 0, 0, 0, 0, 19, -8, 0, 0, 0, 0, -49, -7, 0, 0, 0, 0, -56, -30)
+}
+point_count = 8
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3k60v"]
+radius = 33.1361
 
 [node name="WorldMapInteractive" type="Node2D"]
 script = ExtResource("1_lsqxg")
@@ -26,3 +35,12 @@ min_zoom = 2.0
 
 [node name="SceneTransition" parent="UiLayer" instance=ExtResource("5_gkfkf")]
 metadata/_edit_use_anchors_ = true
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_cm0vb")
+
+[node name="City" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="City"]
+position = Vector2(-55, -33)
+shape = SubResource("CircleShape2D_3k60v")

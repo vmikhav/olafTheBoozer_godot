@@ -1,6 +1,7 @@
-[gd_scene load_steps=145 format=3 uid="uid://dbej6aa38k7fj"]
+[gd_scene load_steps=146 format=3 uid="uid://dbej6aa38k7fj"]
 
 [ext_resource type="Texture2D" uid="uid://5epnhs4i4xfk" path="res://assets/sprites/map_npc/Shadows/Minifantasy_NPCsShadowHumanoidIdle.png" id="1_ni6dt"]
+[ext_resource type="Script" path="res://scenes/world/WolrdMap/objects/hero.gd" id="1_oehhn"]
 [ext_resource type="Texture2D" uid="uid://d28i6pt7gmkkj" path="res://assets/sprites/map_npc/Generic_NPCs/Idle/_Characters/Human/Minifantasy_NPCsIdle_Human_whiteskin.png" id="2_a46vw"]
 [ext_resource type="Texture2D" uid="uid://cmky12kfwj5fg" path="res://assets/sprites/map_npc/Generic_NPCs/Idle/Body/Shirt/Minifantasy_NPCsIdle_Shirt_blue.png" id="3_ngrmb"]
 [ext_resource type="Texture2D" uid="uid://d2g4w2o4ai1gl" path="res://assets/sprites/map_npc/Generic_NPCs/Idle/Body/Trousers/Minifantasy_NPCsIdle_Trousers_brownleather.png" id="4_ykv6d"]
@@ -971,6 +972,7 @@ animations = [{
 
 [node name="Hero" type="Node2D"]
 texture_filter = 1
+script = ExtResource("1_oehhn")
 
 [node name="Shadow" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i4wct")
@@ -1012,3 +1014,7 @@ autoplay = "idle"
 sprite_frames = SubResource("SpriteFrames_dvhkj")
 animation = &"idle"
 autoplay = "idle"
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotates = false
+loop = false

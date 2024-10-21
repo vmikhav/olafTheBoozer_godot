@@ -10,6 +10,7 @@ extends Camera2D
 
 @onready var drag_enabled = self.drag_horizontal_enabled
 @onready var target_zoom: float = self.zoom.x
+var timer: Timer
 
 var zoom_sensitivity = 400
 var zoom_speed = 0.1
@@ -18,18 +19,25 @@ var events = {}
 var last_drag_distance = 0
 var after_zoom = false
 var touch_events = false
+var timer_flag = true
 var target: Node2D
 var zoom_tween: Tween
 var smoothing_tween: Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	timer = Timer.new()
+	timer.wait_time = 3
+	timer.one_shot = true
+	add_child(timer)
+	timer.timeout.connect(func():
+		timer_flag = true
+	)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if target and target_return_enabled and events.size() == 0:
+	if target and target_return_enabled and events.size() == 0 and timer_flag:
 		if position == target.position:
 			return
 		if  position.distance_squared_to(target.position) < 1000:
@@ -43,7 +51,10 @@ func _unhandled_input(event):
 	if ignore_input:
 		return
 	
+	var click = false
+	
 	if event is InputEventScreenTouch:
+		click = true
 		touch_events = true
 		if event.pressed:
 			events[event.index] = event
@@ -63,6 +74,7 @@ func _unhandled_input(event):
 			#restore_drag()
 
 	if event is InputEventScreenDrag:
+		click = true
 		events[event.index] = event
 		if events.size() == 1:
 			if after_zoom:
@@ -78,6 +90,7 @@ func _unhandled_input(event):
 
 	if event is InputEventMouseButton and not touch_events:
 		if event.button_index == MOUSE_BUTTON_LEFT:
+			click = true
 			if event.pressed:
 				events[event.button_index] = event
 				disable_drag()
@@ -87,10 +100,16 @@ func _unhandled_input(event):
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			var delta = (zoom_speed) if event.button_index == MOUSE_BUTTON_WHEEL_UP else (-zoom_speed)
 			update_zoom(delta)
+			click = true
 
 	if event is InputEventMouseMotion and not touch_events:
 		if events.size() == 1:
 			position -= event.relative.rotated(rotation) / zoom.x
+			click = true
+	
+	if click:
+		timer_flag = false
+		timer.start(3)
 
 func update_zoom(delta: float):
 	target_zoom = clamp(target_zoom + delta, min_zoom, max_zoom)

@@ -67,6 +67,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 			move_unit_to_position(ghosts[i].unit, ghosts[i].position)
 	for pos in bad_items:
 		update_cell(pos, tilemaps[source].get_cell_atlas_coords(pos), tilemaps[source].get_cell_alternative_tile(pos))
+	AudioController.play_music("olaf_gameplay")
 
 func restart():
 	is_history_replay = false
@@ -77,6 +78,7 @@ func restart():
 	hero.set_mode(hero_play_type)
 	ghosts_progress_signal.emit(ghosts_progress)
 	items_progress_signal.emit(level_items_progress)
+	AudioController.play_music("olaf_gameplay")
 
 func move_unit_to_position(unit: Node2D, new_position: Vector2i):
 	unit.position = new_position * TILE_SIZE + TILE_OFFSET
@@ -115,54 +117,104 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		hero.set_orientation('right')
 	if direction == TileSet.CELL_NEIGHBOR_LEFT_SIDE:
 		hero.set_orientation('left')
-	
+
 	var neighbor_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(hero_position, direction)
 	var history_item = {position = neighbor_pos, direction = direction, trails = []}
-	# no floor
+
+	var can_move_result = can_move_to(neighbor_pos, history_item)
+	if not can_move_result.can_move:
+		return
+	
+	# Update neighbor_pos if teleportation occurred
+	neighbor_pos = can_move_result.new_position
+
+	if not process_trails(neighbor_pos, history_item):
+		return
+	
+	# Check for draggable item
+	var draggable_item = check_for_draggable_item(direction)
+	if draggable_item:
+		move_draggable_item(draggable_item, direction)
+		history_item.dragged_item = draggable_item
+
+	process_item_collection(neighbor_pos, history_item)
+	update_tail(history_item)
+	process_ghosts(neighbor_pos, history_item)
+
+	move_hero_to_position(neighbor_pos)
+	save_history_item(history_item)
+	play_sfx_by_history(history_item)
+
+	check_level_completion()
+
+func can_move_to(neighbor_pos: Vector2i, history_item: Dictionary) -> Dictionary:
 	if is_empty_cell(Layer.GROUND, neighbor_pos):
 		skip_step()
-		return
-	# check teleports and walls
+		return {can_move = false, new_position = neighbor_pos}
+
 	if not is_empty_cell(Layer.WALLS, neighbor_pos):
-		for teleport in teleports:
-			if teleport.start == neighbor_pos:
-				if not is_empty_cell(Layer.TRAILS, neighbor_pos):
-					allow_input = true
-					history_item.trails.push_back({
-						position = neighbor_pos,
-						cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(neighbor_pos)
-					})
-				history_item.teleported = true
-				neighbor_pos = teleport.end
-				history_item.position = neighbor_pos
-				break
-		if not 'teleported' in history_item:
-			skip_step()
-			if not is_empty_cell(Layer.TRAILS, neighbor_pos):
-				if history.size() and history[-1].trails.size():
-					step_back(true)
-			return
-	
-	# avoid bots from tail
-	for item in tail:
-		if item.position == neighbor_pos:
-			skip_step()
-			return
+		return handle_teleport(neighbor_pos, history_item)
+
+	if is_tail_blocking(neighbor_pos):
+		skip_step()
+		return {can_move = false, new_position = neighbor_pos}
 	
 	var neighbor_cell = tilemaps[Layer.ITEMS].get_cell_atlas_coords(neighbor_pos)
+	var bad_neighbor_cell = tilemaps[Layer.BAD_ITEMS].get_cell_atlas_coords(neighbor_pos)
+	
+	if neighbor_cell.x != -1 and neighbor_cell != bad_neighbor_cell:
+		skip_step()
+		return {can_move = false, new_position = neighbor_pos}
+
+	return {can_move = true, new_position = neighbor_pos}
+
+func handle_teleport(neighbor_pos: Vector2i, history_item: Dictionary) -> Dictionary:
+	for teleport in teleports:
+		if teleport.start == neighbor_pos:
+			process_teleport(teleport, history_item)
+			return {can_move = true, new_position = teleport.end}
+
+	skip_step()
+	return {can_move = false, new_position = neighbor_pos}
+
+func process_trails(neighbor_pos: Vector2i, history_item: Dictionary) -> bool:
 	var trail_neighbor_cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(neighbor_pos)
+	if trail_neighbor_cell.x != -1:
+		if not check_trail(neighbor_pos):
+			skip_step()
+			return false
+		history_item.trails.push_back({
+			position = neighbor_pos,
+			cell = trail_neighbor_cell
+		})
+		process_trail(neighbor_pos)
+
+	for trail in history_item.trails:
+		update_cell(trail.position, Vector2i(-1, -1), 0, Layer.TRAILS)
+
+	return true
+
+func process_teleport(teleport, history_item: Dictionary):
+	if not is_empty_cell(Layer.TRAILS, teleport.start):
+		allow_input = true
+		history_item.trails.push_back({
+			position = teleport.start,
+			cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(teleport.start)
+		})
+	history_item.teleported = true
+	history_item.position = teleport.end
+
+func is_tail_blocking(neighbor_pos: Vector2i) -> bool:
+	return tail.any(func(item): return item.position == neighbor_pos)
+
+func process_item_collection(neighbor_pos: Vector2i, history_item: Dictionary):
+	var neighbor_cell = tilemaps[Layer.ITEMS].get_cell_atlas_coords(neighbor_pos)
 	var bad_neighbor_cell = tilemaps[Layer.BAD_ITEMS].get_cell_atlas_coords(neighbor_pos)
 	var bad_neighbor_alt = tilemaps[Layer.BAD_ITEMS].get_cell_alternative_tile(neighbor_pos)
 	var good_neighbor_cell = tilemaps[Layer.GOOD_ITEMS].get_cell_atlas_coords(neighbor_pos)
 	var good_neighbor_alt = tilemaps[Layer.GOOD_ITEMS].get_cell_alternative_tile(neighbor_pos)
-	# check and update item status
-	if trail_neighbor_cell.x != -1 and not check_trail(neighbor_pos):
-		skip_step()
-		return
-	if neighbor_cell.x != -1: # if cell is set
-		if neighbor_cell != bad_neighbor_cell:
-			skip_step()
-			return
+
+	if neighbor_cell.x != -1 and neighbor_cell == bad_neighbor_cell:
 		update_cell(neighbor_pos, good_neighbor_cell, good_neighbor_alt)
 		history_item.bad_item = bad_neighbor_cell
 		history_item.bad_item_alt = bad_neighbor_alt
@@ -170,66 +222,80 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		history_item.good_item_alt = good_neighbor_alt
 		level_items_progress += 1
 		items_progress_signal.emit(level_items_progress)
-	if trail_neighbor_cell.x != -1:
-		history_item.trails.push_back({
-			position = neighbor_pos,
-			cell = trail_neighbor_cell
-		})
-		process_trail(neighbor_pos)
-	for trail in history_item.trails:
-		update_cell(trail.position, Vector2i(-1, -1), 0, Layer.TRAILS)
-	
-	# add bot to tail
-	if history.size() and "ghost_type" in history[-1] and history[-1].ghost_type == LevelDefinitions.GhostType.ENEMY:
-		var unit = hero.duplicate()
-		tilemaps[Layer.ITEMS].add_child(unit)
-		unit.set_mode([defs.UnitTypeName[history[-1].ghost_mode], false])
-		move_unit_to_position(unit, history[-1].position)
-		unit.make_follower()
-		tail.push_front({
-			unit = unit,
-			unit_mode = history[-1].ghost_mode,
-			position = history[-1].position,
-			history_position = history.size() - 1,
-			movement_mode = "follow",
-		})
-		last_active_tail_item += 1
-		history_item.tail_changed = true
-		for item in tail:
-			if item.movement_mode == "follow":
-				item.history_position -= 1
-	# make tail follow a hero
+
+func update_tail(history_item: Dictionary):
+	if should_add_bot_to_tail():
+		add_bot_to_tail(history_item)
+
 	for item in tail:
 		if item.movement_mode == "follow":
-			item.history_position += 1
-			item.position = history[item.history_position].position
-			move_oriented_unit_to_position(item.unit, item.position)
+			update_tail_item_position(item)
+
+func should_add_bot_to_tail() -> bool:
+	return history.size() and "ghost_type" in history[-1] and history[-1].ghost_type == defs.GhostType.ENEMY
+
+func add_bot_to_tail(history_item: Dictionary):
+	var unit = hero.duplicate()
+	tilemaps[Layer.ITEMS].add_child(unit)
+	unit.set_mode([defs.UnitTypeName[history[-1].ghost_mode], false])
+	move_unit_to_position(unit, history[-1].position)
+	unit.make_follower()
+	tail.push_front({
+		unit = unit,
+		unit_mode = history[-1].ghost_mode,
+		position = history[-1].position,
+		history_position = history.size() - 1,
+		movement_mode = "follow",
+	})
+	last_active_tail_item += 1
+	history_item.tail_changed = true
+	for item in tail:
+		if item.movement_mode == "follow":
+			item.history_position -= 1
+
+func update_tail_item_position(item):
+	item.history_position += 1
+	item.position = history[item.history_position].position
+	move_oriented_unit_to_position(item.unit, item.position)
+
+func process_ghosts(neighbor_pos: Vector2i, history_item: Dictionary):
 	for i in ghosts.size():
-		var _can_consume_ghost = false
-		if ghosts[i].type == LevelDefinitions.GhostType.ENEMY_SPAWN:
-			if last_active_tail_item >= 0:
-				var item = tail[last_active_tail_item]
-				if (item.movement_mode == "follow"
-					and item.unit_mode == ghosts[i].mode
-					and item.position == ghosts[i].position):
-					item.movement_mode = "chill"
-					_can_consume_ghost = true
-					last_active_tail_item -= 1
-		elif neighbor_pos == ghosts[i].position:
-			_can_consume_ghost = true
-		if _can_consume_ghost:
-			ghosts_progress += 1
-			ghosts_progress_signal.emit(ghosts_progress)
-			ghosts[i].unit.visible = false
-			history_item.ghost = ghosts[i].unit
-			history_item.ghost_position = ghosts[i].position
-			history_item.ghost_type = ghosts[i].type
-			history_item.ghost_mode = ghosts[i].mode
-			ghosts.remove_at(i)
+		if can_consume_ghost(i, neighbor_pos):
+			consume_ghost(i, history_item)
 			break
-	move_hero_to_position(neighbor_pos)
-	save_history_item(history_item)
-	play_sfx_by_history(history_item)
+
+func can_consume_ghost(ghost_index: int, neighbor_pos: Vector2i) -> bool:
+	var ghost = ghosts[ghost_index]
+	if ghost.type == defs.GhostType.ENEMY_SPAWN:
+		return can_consume_enemy_spawn_ghost(ghost)
+	return neighbor_pos == ghost.position
+
+func can_consume_enemy_spawn_ghost(ghost) -> bool:
+	if last_active_tail_item >= 0:
+		var item = tail[last_active_tail_item]
+		return (item.movement_mode == "follow"
+			and item.unit_mode == ghost.mode
+			and item.position == ghost.position)
+	return false
+
+func consume_ghost(ghost_index: int, history_item: Dictionary):
+	var ghost = ghosts[ghost_index]
+	ghosts_progress += 1
+	ghosts_progress_signal.emit(ghosts_progress)
+	ghost.unit.visible = false
+	history_item.ghost = ghost.unit
+	history_item.ghost_position = ghost.position
+	history_item.ghost_type = ghost.type
+	history_item.ghost_mode = ghost.mode
+
+	if ghost.type == defs.GhostType.ENEMY_SPAWN:
+		var item = tail[last_active_tail_item]
+		item.movement_mode = "chill"
+		last_active_tail_item -= 1
+
+	ghosts.remove_at(ghost_index)
+
+func check_level_completion():
 	if ghosts_progress == ghosts_count:
 		finish_level()
 
@@ -237,7 +303,7 @@ func finish_level():
 	allow_input = false
 	level_finished.emit()
 	get_tree().create_timer(0.5).timeout.connect(func():
-		AudioController.play_sfx("fanfare")
+		AudioController.play_sfx("dropdown_menu")
 		hero.set_mode(hero_replay_type)
 	)
 
@@ -245,52 +311,92 @@ func step_back(manual: bool = false):
 	if history.size() <= 1:
 		is_history_replay = false
 		return
+
 	var history_item = history.pop_back()
+	var previous_position = history[-1].position
+
 	if is_history_replay:
 		play_sfx_by_history(history_item)
-	var history_position_item = history[-1]
-	move_hero_to_position(history_position_item.position)
+
+	move_hero_to_position(previous_position)
+	
+	handle_trails_reversal(history_item, manual)
+	handle_item_reversal(history_item)
+	handle_ghost_reversal(history_item)
+	handle_tail_reversal(history_item)
+	handle_dragged_item_reversal(history_item)
+
+	if not is_history_replay:
+		update_progress_signals()
+
+func handle_trails_reversal(history_item: Dictionary, manual: bool):
 	if history_item.trails.size():
-		for trail in history_item.trails:
-			update_cell(trail.position, trail.cell, 0, Layer.TRAILS)
-		if manual and history_position_item.trails.size():
-			allow_input = false
-			var timer = get_tree().create_timer(0.1 + randf_range(0, 0.075))
-			timer.timeout.connect(func():
-				allow_input = true
-				step_back(manual)
-			)
+		restore_trails(history_item.trails)
+		if manual and history[-1].trails.size():
+			schedule_next_step_back(manual)
+
+func restore_trails(trails: Array):
+	for trail in trails:
+		update_cell(trail.position, trail.cell, 0, Layer.TRAILS)
+
+func schedule_next_step_back(manual: bool):
+	allow_input = false
+	var timer = get_tree().create_timer(0.1 + randf_range(0, 0.075))
+	timer.timeout.connect(func():
+		allow_input = true
+		step_back(manual)
+	)
+
+func handle_item_reversal(history_item: Dictionary):
 	if "bad_item" in history_item:
 		update_cell(history_item.position, history_item.bad_item, history_item.bad_item_alt)
 		level_items_progress -= 1
+
+func handle_ghost_reversal(history_item: Dictionary):
 	if "ghost" in history_item:
-		if history_item.ghost_type == LevelDefinitions.GhostType.ENEMY_SPAWN:
-			for item in tail:
-				if item.position == history_item.ghost_position:
-					item.movement_mode = "follow"
-					last_active_tail_item += 1
-					break
-		history_item.ghost.make_ghost(history_item.ghost_type)
-		history_item.ghost.visible = true
-		ghosts.push_back({
-			position = history_item.ghost_position,
-			type = history_item.ghost_type,
-			mode = history_item.ghost_mode,
-			unit = history_item.ghost,
-		})
+		restore_ghost(history_item)
 		ghosts_progress -= 1
+
+func restore_ghost(history_item: Dictionary):
+	if history_item.ghost_type == defs.GhostType.ENEMY_SPAWN:
+		restore_enemy_spawn_ghost(history_item)
+	
+	history_item.ghost.make_ghost(history_item.ghost_type)
+	history_item.ghost.visible = true
+	ghosts.push_back({
+		position = history_item.ghost_position,
+		type = history_item.ghost_type,
+		mode = history_item.ghost_mode,
+		unit = history_item.ghost,
+	})
+
+func restore_enemy_spawn_ghost(history_item: Dictionary):
+	for item in tail:
+		if item.position == history_item.ghost_position:
+			item.movement_mode = "follow"
+			last_active_tail_item += 1
+			break
+
+func handle_tail_reversal(history_item: Dictionary):
 	if "tail_changed" in history_item:
-		tail.pop_front().unit.die(is_history_replay)
-		last_active_tail_item -= 1
+		remove_tail_item()
 	else:
-		for item in tail:
-			if item.movement_mode == "follow":
-				item.history_position -= 1
-				item.position = history[item.history_position].position
-				move_oriented_unit_to_position(item.unit, item.position)
-	if not is_history_replay:
-		ghosts_progress_signal.emit(ghosts_progress)
-		items_progress_signal.emit(level_items_progress)
+		update_tail_positions()
+
+func remove_tail_item():
+	tail.pop_front().unit.die(is_history_replay)
+	last_active_tail_item -= 1
+
+func update_tail_positions():
+	for item in tail:
+		if item.movement_mode == "follow":
+			item.history_position -= 1
+			item.position = history[item.history_position].position
+			move_oriented_unit_to_position(item.unit, item.position)
+
+func update_progress_signals():
+	ghosts_progress_signal.emit(ghosts_progress)
+	items_progress_signal.emit(level_items_progress)
 
 func replay():
 	allow_input = false
@@ -322,17 +428,17 @@ func save_history_item(item):
 	history.push_back(item)
 
 func is_simple_step(history_item) -> bool:
-	return not "bad_item" in history_item and not "ghost" in history_item and not history_item.trails.size()
+	return not "bad_item" in history_item and not "ghost" in history_item and not history_item.trails.size() and not "dragged_item" in history_item
 
 func check_trail(trail_position: Vector2i) -> bool:
-	var directions = LevelDefinitions.TrailDirections
+	var directions = defs.TrailDirections
 	var cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(trail_position)
 	var cell_value = str(cell.x) + "," + str(cell.y)
 	var cell_index = directions.forward_tile.find(cell_value)
 	if cell_index == -1:
 		# not trail
 		return true
-	
+
 	cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(
 		tilemaps[Layer.TRAILS].get_neighbor_cell(trail_position, directions.side[cell_index])
 	)
@@ -343,10 +449,9 @@ func check_trail(trail_position: Vector2i) -> bool:
 	return true
 
 func process_trail(trail_position: Vector2i) -> void:
-	var directions = LevelDefinitions.TrailDirections
+	var directions = defs.TrailDirections
 	var cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(trail_position)
 	var cell_value = str(cell.x) + "," + str(cell.y)
-	var cell_index = directions.forward_tile.find(cell_value)
 
 	var next_direction = null
 	for i in directions.side.size():
@@ -357,7 +462,7 @@ func process_trail(trail_position: Vector2i) -> void:
 		if directions.backward_tile[i] == cell_value:
 			next_direction = directions.side[i]
 			break
-	
+
 	if next_direction != null:
 		allow_input = false
 		var timer = get_tree().create_timer(0.175 + randf_range(0, 0.075))
@@ -366,6 +471,52 @@ func process_trail(trail_position: Vector2i) -> void:
 		)
 	else:
 		allow_input = true
+
+func is_draggable_item(cell_coords: Vector2i) -> bool:
+	var cell_value = str(cell_coords.x) + "," + str(cell_coords.y)
+	return defs.DraggableItems.has(cell_value)
+
+func check_for_draggable_item(direction: TileSet.CellNeighbor) -> Vector2i:
+	if not tail.is_empty() or not is_empty_cell(Layer.ITEMS, hero_position):
+		return Vector2i.ZERO
+
+	var opposite_direction = get_opposite_direction(direction)
+	var item_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(hero_position, opposite_direction)
+	var item_coords = tilemaps[Layer.ITEMS].get_cell_atlas_coords(item_pos)
+	
+	if is_draggable_item(item_coords):
+		return item_pos
+	return Vector2i.ZERO
+
+func get_opposite_direction(direction: TileSet.CellNeighbor) -> TileSet.CellNeighbor:
+	match direction:
+		TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
+			return TileSet.CELL_NEIGHBOR_LEFT_SIDE
+		TileSet.CELL_NEIGHBOR_LEFT_SIDE:
+			return TileSet.CELL_NEIGHBOR_RIGHT_SIDE
+		TileSet.CELL_NEIGHBOR_BOTTOM_SIDE:
+			return TileSet.CELL_NEIGHBOR_TOP_SIDE
+		TileSet.CELL_NEIGHBOR_TOP_SIDE:
+			return TileSet.CELL_NEIGHBOR_BOTTOM_SIDE
+	return direction  # Default case, shouldn't happen
+
+func move_draggable_item(item_pos: Vector2i, direction: TileSet.CellNeighbor):
+	var item_coords = tilemaps[Layer.ITEMS].get_cell_atlas_coords(item_pos)
+	var item_alt = tilemaps[Layer.ITEMS].get_cell_alternative_tile(item_pos)
+	var new_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(item_pos, direction)
+
+	update_cell(item_pos, Vector2i(-1, -1), 0, Layer.ITEMS)
+	update_cell(new_pos, item_coords, item_alt, Layer.ITEMS)
+
+func handle_dragged_item_reversal(history_item: Dictionary):
+	if "dragged_item" in history_item:
+		var item_pos = history_item.dragged_item
+		var new_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(item_pos, history_item.direction)
+		var item_coords = tilemaps[Layer.ITEMS].get_cell_atlas_coords(new_pos)
+		var item_alt = tilemaps[Layer.ITEMS].get_cell_alternative_tile(new_pos)
+		
+		update_cell(new_pos, Vector2i(-1, -1), 0, Layer.ITEMS)
+		update_cell(item_pos, item_coords, item_alt, Layer.ITEMS)
 
 func init_progress_report():
 	progress_report = LevelProgressReport.new()
@@ -382,6 +533,6 @@ func fill_progress_report() -> LevelProgressReport:
 
 func calc_score() -> int:
 	return ceili((
-			(progress_report.progress_items + progress_report.progress_ghosts) * 1.0 
+			(progress_report.progress_items + progress_report.progress_ghosts) * 1.0
 			/ (progress_report.total_items + progress_report.total_ghosts)
 		) * 100)

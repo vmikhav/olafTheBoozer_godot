@@ -16,5 +16,3 @@ func _ready():
 	camera_limit = Rect2i(-304, -128, 608, 288)
 	move_hero_to_position(hero_start_position)
 	init_map()
-
-

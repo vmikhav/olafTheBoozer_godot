@@ -3043,6 +3043,9 @@ texture = ExtResource("1_axr5e")
 31:23/1/flip_h = true
 31:23/1/texture_origin = Vector2i(0, 8)
 31:23/1/y_sort_origin = -8
+8:19/0 = 0
+8:18/0 = 0
+8:20/0 = 0
 
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_45jpu")

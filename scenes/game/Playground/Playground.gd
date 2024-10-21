@@ -105,6 +105,8 @@ func on_level_finished():
 	summary_container.display(level_progress_report)
 	camera.drag_top_margin = -0.2
 	camera.drag_bottom_margin = 0.6
+	#AudioController.stop_music(1.5)
+	AudioController.play_music("olaf_fast", 1.5)
 
 func load_next_level():
 	await summary_container.dismiss_panel()
@@ -120,6 +122,7 @@ func load_next_level():
 		transition_rect.fade_in()
 
 func exit_levels():
+	AudioController.stop_music()
 	SceneSwitcher.change_scene_to_file("res://scenes/game/MainMenu/MainMenu.tscn")
 
 func prepare_report():

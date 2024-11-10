@@ -9,6 +9,7 @@ func _ready():
 	hero_start_position = Vector2i(7, 5)
 	ghosts = [
 		{position = Vector2i(7, 4), type = defs.GhostType.MEMORY, mode = defs.UnitType.WORKER},
+		{position = Vector2i(-2, 8), type = defs.GhostType.MEMORY, mode = defs.UnitType.WORKER},
 	]
 	teleports = [
 		{start = Vector2i(2, 6), end = Vector2i(-15, -3)},

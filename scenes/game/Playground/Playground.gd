@@ -79,8 +79,7 @@ func load_level(level_name: String):
 	level = pack.instantiate() as BaseLevel
 	add_child(level)
 	level.process_mode = PROCESS_MODE_PAUSABLE	
-	camera.target = level.hero
-	camera.go_to(level.hero.position, true)
+	camera.set_target(level.hero)
 	camera.limit_top = level.camera_limit.position.y
 	camera.limit_left = level.camera_limit.position.x
 	camera.limit_bottom = level.camera_limit.end.y
@@ -93,8 +92,7 @@ func load_level(level_name: String):
 	prepare_ui_for_level()
 
 func prepare_ui_for_level():
-	camera.drag_top_margin = 0.4
-	camera.drag_bottom_margin = 0.4
+	camera.restore_original_drag_margins()
 	$UiLayer/HudContainer.visible = true
 	summary_container.dismiss(false)
 
@@ -103,8 +101,7 @@ func on_level_finished():
 	is_level_finished = true
 	$UiLayer/HudContainer.visible = false
 	summary_container.display(level_progress_report)
-	camera.drag_top_margin = -0.2
-	camera.drag_bottom_margin = 0.6
+	camera.offset_drag_margins(Vector4(.4, .4, -0.2, .6))
 	#AudioController.stop_music(1.5)
 	AudioController.play_music("olaf_fast", 1.5)
 

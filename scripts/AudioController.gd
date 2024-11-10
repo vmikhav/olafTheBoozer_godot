@@ -32,17 +32,19 @@ var sounds = {
 	"hrrng": load("res://assets/sounds/hrrng.wav"),
 	"hiccup": load("res://assets/sounds/hiccup.wav"),
 	"groan": load("res://assets/sounds/groan.wav"),
-	"burp_9": load("res://assets/sounds/Burp_9.wav"),
-	"burp_13": load("res://assets/sounds/Burp_13.wav"),
-	"burp_15": load("res://assets/sounds/Burp_15.wav"),
-	"burp_16": load("res://assets/sounds/Burp_16.wav"),
-	"burp_17": load("res://assets/sounds/Burp_17.wav"),
-	"burp_18": load("res://assets/sounds/Burp_18.wav"),
-	"burp_19": load("res://assets/sounds/Burp_19.wav"),
-	"burp_20": load("res://assets/sounds/Burp_20.wav"),
 }
 
 var sfx = {
+	"burp": [
+		load("res://assets/sounds/Burp_9.wav"),
+		load("res://assets/sounds/Burp_13.wav"),
+		load("res://assets/sounds/Burp_15.wav"),
+		load("res://assets/sounds/Burp_16.wav"),
+		load("res://assets/sounds/Burp_17.wav"),
+		load("res://assets/sounds/Burp_18.wav"),
+		load("res://assets/sounds/Burp_19.wav"),
+		load("res://assets/sounds/Burp_20.wav"),
+	],
 	"book_shelf": [
 		load("res://assets/sfx/as_pr_so_book_shelf_1.wav"),
 		load("res://assets/sfx/as_pr_so_book_shelf_2.wav"),
@@ -355,6 +357,8 @@ func play_sfx_audio(audio_stream: AudioStream, sfx_name: String = ""):
 	if sfx_name == "vomit":
 		if SettingsManager.settings.burps_muted:
 			position = 0.15
+	if sfx_name == "burp":
+		player.volume_db = linear_to_db(.4)
 	add_child(player)
 	player.play(position)
 	await player.finished
@@ -418,7 +422,7 @@ func play_music(music_name: String, switch_duration: float = .75):
 	new_tween.tween_property(player, 'volume_db', 0, switch_duration).set_trans(Tween.TRANS_CIRC)
 	player.play(position)
 	player.finished.connect(func():
-		player.queue_free()
+		player.play()
 	)
 
 func stop_music(switch_duration: float = 1):

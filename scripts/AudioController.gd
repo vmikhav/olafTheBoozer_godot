@@ -16,34 +16,16 @@ var music: Dictionary[String, Array] = {
 	],
 }
 
-var sounds = {
-	"drink": load("res://assets/sounds/drink.wav"),
-	"glass": load("res://assets/sounds/glass.wav"),
-	"step": load("res://assets/sounds/step.wav"),
-	"smash": load("res://assets/sounds/smash.wav"),
-	"break": load("res://assets/sounds/break.wav"),
-	"break05": load("res://assets/sounds/Wood Impact 7_05.wav"),
-	"break11": load("res://assets/sounds/Wood Impact 7_11.wav"),
-	"vomit": load("res://assets/sounds/vomit.wav"),
-	"bump": load("res://assets/sounds/bump.wav"),
-	"pickup": load("res://assets/sounds/pickup.wav"),
-	"water_step": load("res://assets/sounds/water-step.wav"),
-	"fanfare": load("res://assets/sounds/fanfare.mp3"),
-	"hrrng": load("res://assets/sounds/hrrng.wav"),
-	"hiccup": load("res://assets/sounds/hiccup.wav"),
-	"groan": load("res://assets/sounds/groan.wav"),
-}
-
 var sfx = {
 	"burp": [
-		load("res://assets/sounds/Burp_9.wav"),
-		load("res://assets/sounds/Burp_13.wav"),
-		load("res://assets/sounds/Burp_15.wav"),
-		load("res://assets/sounds/Burp_16.wav"),
-		load("res://assets/sounds/Burp_17.wav"),
-		load("res://assets/sounds/Burp_18.wav"),
-		load("res://assets/sounds/Burp_19.wav"),
-		load("res://assets/sounds/Burp_20.wav"),
+		load("res://assets/sfx/Burp_9.wav"),
+		load("res://assets/sfx/Burp_13.wav"),
+		load("res://assets/sfx/Burp_15.wav"),
+		load("res://assets/sfx/Burp_16.wav"),
+		load("res://assets/sfx/Burp_17.wav"),
+		load("res://assets/sfx/Burp_18.wav"),
+		load("res://assets/sfx/Burp_19.wav"),
+		load("res://assets/sfx/Burp_20.wav"),
 	],
 	"book_shelf": [
 		load("res://assets/sfx/as_pr_so_book_shelf_1.wav"),

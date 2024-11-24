@@ -7,14 +7,15 @@ func _ready() -> void:
 	scene_transaction.fade_in()
 	$TouchCamera.position = $Hero.position
 	$TouchCamera.set_target($Hero)
-	await get_tree().create_timer(10).timeout
+	#await get_tree().create_timer(10).timeout
 	AudioController.play_music("olaf_world")
 	$City.input_event.connect(func(viewport, event, shapeidx):
 		if (event is InputEventMouseButton && event.pressed):
-			$Hero.navigate_to($Path2D, Vector2i(-53, -30))
+			pass
+			#$Hero.navigate_to($Path2D, Vector2i(-53, -30))
 	)
 	#
-	get_tree().create_timer(5).timeout.connect(func():
+	get_tree().create_timer(7).timeout.connect(func():
 		scene_transaction.change_scene("res://scenes/game/Playground/Playground.tscn", {
 			levels = ["Tutorial0", "Kitchen", "Library", "Cellar", "Tavern"],
 			#levels = ["Tavern", "Tutorial0", "Kitchen", "Library", "Cellar"],

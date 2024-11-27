@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://qbwqcgn7su0n"]
 
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="1_83s70"]
-[ext_resource type="Script" path="res://scenes/ui/SettingsMenu/SettingsMenu.gd" id="2_m7qoo"]
+[ext_resource type="Script" uid="uid://cujdvewuxmofs" path="res://scenes/ui/SettingsMenu/SettingsMenu.gd" id="2_m7qoo"]
 
 [node name="SettingsMenu" type="MarginContainer"]
 process_mode = 3
@@ -50,7 +50,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SoundsContainer"]
-custom_minimum_size = Vector2(120, 30)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Sounds:"
@@ -69,7 +69,7 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
-custom_minimum_size = Vector2(120, 30)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Music:"
@@ -90,7 +90,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 
 [node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DrinkContainer/MarginContainer"]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Drink:"
@@ -104,7 +104,34 @@ theme_override_colors/font_focus_color = Color(0.823529, 0.698039, 0.564706, 1)
 selected = 0
 item_count = 2
 popup/item_0/text = "Beer"
+popup/item_0/id = 0
 popup/item_1/text = "Ginger Ale"
+popup/item_1/id = 1
+
+[node name="LanguageContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LanguageContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LanguageContainer/MarginContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
+text = "Language:"
+
+[node name="LanguageOptionButton" type="OptionButton" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LanguageContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.823529, 0.698039, 0.564706, 1)
+theme_override_colors/font_focus_color = Color(0.823529, 0.698039, 0.564706, 1)
+selected = 0
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Українська"
 popup/item_1/id = 1
 
 [node name="TouchContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -112,17 +139,21 @@ layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer"]
 layout_mode = 2
-theme_override_constants/margin_right = 46
 
 [node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer/MarginContainer"]
-custom_minimum_size = Vector2(120, 30)
+custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Touch Control:"
 vertical_alignment = 1
 
-[node name="CheckButton" type="CheckButton" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckButton" type="CheckButton" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2

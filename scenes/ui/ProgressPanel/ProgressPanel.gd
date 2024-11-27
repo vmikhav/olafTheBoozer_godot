@@ -19,5 +19,3 @@ func items_progress(progress: int):
 
 func ghosts_progress(progress: int):
 	ghosts.progress = progress
-
-

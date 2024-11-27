@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://c8v6chl2e1ync"]
 
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="1_ugcap"]
-[ext_resource type="Script" path="res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.gd" id="2_xstww"]
+[ext_resource type="Script" uid="uid://bax2hhyeb8vtx" path="res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.gd" id="2_xstww"]
 [ext_resource type="PackedScene" uid="uid://c1ognd1rd5rw5" path="res://scenes/sprites/Cup/Cup.tscn" id="3_sshju"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ajdow"]

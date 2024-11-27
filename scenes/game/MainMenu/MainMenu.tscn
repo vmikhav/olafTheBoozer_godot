@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://df525dujavlyd"]
 
-[ext_resource type="Script" path="res://scenes/game/MainMenu/MainMenu.gd" id="1_7fekw"]
+[ext_resource type="Script" uid="uid://crsmg8g5yemts" path="res://scenes/game/MainMenu/MainMenu.gd" id="1_7fekw"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="1_87rnb"]
 [ext_resource type="Texture2D" uid="uid://tra00nxobp22" path="res://assets/images/Outside castle/back.png" id="2_xfymh"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="3_awe0n"]

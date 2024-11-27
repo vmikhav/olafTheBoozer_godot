@@ -1,5 +1,6 @@
 extends Node
 
+const languages: Array[String] = ['en', 'uk']
 
 var settings: SettingsResource = SettingsResource.new() as SettingsResource
 var game_progress: GameProgressResource = GameProgressResource.new() as GameProgressResource
@@ -11,6 +12,7 @@ func _ready():
 	game_progress.load_from_file(game_progress._filename)
 	if not FileAccess.file_exists(settings._filename):
 		settings.uid = generate_uuid()
+		settings.language = TranslationServer.get_locale()
 		save_settings()
 	else:
 		settings.load_from_file(settings._filename)
@@ -20,6 +22,7 @@ func _ready():
 	update_music_volume(settings.music_volume)
 	update_sfx_mute(settings.sfx_muted)
 	update_music_mute(settings.music_muted)
+	update_language(get_language_index())
 	skip_save = false
 
 func update_sfx_mute(value: bool):
@@ -71,6 +74,15 @@ func get_touch_control() -> bool:
 
 func update_touch_control(value: bool):
 	settings.touch_control = value
+	save_settings()
+
+func get_language_index() -> int:
+	var pos = languages.find(settings.language)
+	return maxi(pos, 0)
+
+func update_language(value: int):
+	settings.language = languages[value]
+	TranslationServer.set_locale(settings.language)
 	save_settings()
 
 func save_settings():

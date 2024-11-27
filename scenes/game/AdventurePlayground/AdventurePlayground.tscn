@@ -1,0 +1,90 @@
+[gd_scene load_steps=12 format=3 uid="uid://2gngn40cold4"]
+
+[ext_resource type="Script" uid="uid://1n7pftc673xb" path="res://scenes/game/AdventurePlayground/AdventurePlayground.gd" id="1_302fe"]
+[ext_resource type="PackedScene" uid="uid://ias8gsdjebhw" path="res://scenes/ui/TouchCamera/TouchCamera.tscn" id="2_rvieo"]
+[ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="3_0hwy5"]
+[ext_resource type="Texture2D" uid="uid://bobvyiugtptpr" path="res://assets/images/button_menu.png" id="4_84ie0"]
+[ext_resource type="Texture2D" uid="uid://ch22168q55x3j" path="res://assets/images/button_menu_pressed.png" id="5_tabh6"]
+[ext_resource type="PackedScene" uid="uid://p41vq4676q75" path="res://scenes/ui/NavButtons/NavButtons.tscn" id="9_6rhoj"]
+[ext_resource type="PackedScene" uid="uid://4j3ebc64sxog" path="res://scenes/ui/LevelMenu/LevelMenu.tscn" id="11_obw0o"]
+[ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="12_penv2"]
+[ext_resource type="PackedScene" uid="uid://c78sgpd3kkbu2" path="res://scenes/ui/NavController/NavController.tscn" id="13_nbkt7"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_68k73"]
+keycode = 82
+
+[sub_resource type="Shortcut" id="Shortcut_wg68p"]
+events = [SubResource("InputEventKey_68k73")]
+
+[node name="Playground" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_302fe")
+
+[node name="TouchCamera" parent="." instance=ExtResource("2_rvieo")]
+zoom = Vector2(3, 3)
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.4
+drag_top_margin = 0.4
+drag_right_margin = 0.4
+drag_bottom_margin = 0.4
+editor_draw_drag_margin = true
+min_zoom = 2.0
+max_zoom = 5.0
+
+[node name="UiLayer" type="CanvasLayer" parent="."]
+
+[node name="HudContainer" type="MarginContainer" parent="UiLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_0hwy5")
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/HudContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/HudContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/HudContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(63, 0)
+layout_mode = 2
+focus_mode = 0
+shortcut = SubResource("Shortcut_wg68p")
+shortcut_in_tooltip = false
+texture_normal = ExtResource("4_84ie0")
+texture_pressed = ExtResource("5_tabh6")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="MarginContainer2" type="MarginContainer" parent="UiLayer/HudContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="UiLayer/HudContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 2
+
+[node name="NavButtons" parent="UiLayer/HudContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("9_6rhoj")]
+layout_mode = 2
+
+[node name="LevelMenu" parent="UiLayer" instance=ExtResource("11_obw0o")]
+process_mode = 2
+visible = false
+
+[node name="SceneTransitionRect" parent="UiLayer" instance=ExtResource("12_penv2")]
+
+[node name="NavController" parent="." instance=ExtResource("13_nbkt7")]
+actions_to_track = Array[String](["ui_up", "ui_left", "ui_right", "ui_down"])

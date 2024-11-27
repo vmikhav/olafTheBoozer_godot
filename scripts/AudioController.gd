@@ -6,223 +6,224 @@ var music_positions: Dictionary[String, float] = {}
 var music_stop_times: Dictionary[String, int] = {}
 
 var music: Dictionary[String, Array] = {
-	"knights": [load("res://assets/music/Tournier of the Knights.mp3")],
-	"olaf_fast": [load("res://assets/music/Olaf The Boozer Theme.mp3")],
-	"olaf_world": [load("res://assets/music/Olaf The Boozer World.mp3")],
+	"knights": [Audio.new("res://assets/music/Tournier of the Knights.mp3")],
+	"fairies": [Audio.new("res://assets/music/A Dance With Fairies.mp3", 0.3)],
+	"olaf_fast": [Audio.new("res://assets/music/Olaf The Boozer Theme.mp3")],
+	"olaf_world": [Audio.new("res://assets/music/Olaf The Boozer World.mp3")],
 	"olaf_gameplay": [
-		load("res://assets/music/Olaf The Boozer Gameplay Theme.mp3"),
-		load("res://assets/music/Olaf The Boozer Gameplay Theme V2.mp3"),
-		load("res://assets/music/Olaf The Boozer Gameplay Theme V3.mp3"),
+		Audio.new("res://assets/music/Olaf The Boozer Gameplay Theme.mp3"),
+		Audio.new("res://assets/music/Olaf The Boozer Gameplay Theme V2.mp3"),
+		Audio.new("res://assets/music/Olaf The Boozer Gameplay Theme V3.mp3"),
 	],
 }
 
-var sfx = {
+var sfx: Dictionary[String, Array] = {
 	"burp": [
-		load("res://assets/sfx/Burp_9.wav"),
-		load("res://assets/sfx/Burp_13.wav"),
-		load("res://assets/sfx/Burp_15.wav"),
-		load("res://assets/sfx/Burp_16.wav"),
-		load("res://assets/sfx/Burp_17.wav"),
-		load("res://assets/sfx/Burp_18.wav"),
-		load("res://assets/sfx/Burp_19.wav"),
-		load("res://assets/sfx/Burp_20.wav"),
+		Audio.new("res://assets/sfx/Burp_9.wav", 0.4),
+		Audio.new("res://assets/sfx/Burp_13.wav", 0.4),
+		Audio.new("res://assets/sfx/Burp_15.wav", 0.4),
+		Audio.new("res://assets/sfx/Burp_16.wav", 0.4),
+		Audio.new("res://assets/sfx/Burp_17.wav", 0.4),
+		Audio.new("res://assets/sfx/Burp_18.wav", 0.4),
+		Audio.new("res://assets/sfx/Burp_19.wav", 0.4),
+		Audio.new("res://assets/sfx/Burp_20.wav", 0.4),
 	],
 	"book_shelf": [
-		load("res://assets/sfx/as_pr_so_book_shelf_1.wav"),
-		load("res://assets/sfx/as_pr_so_book_shelf_2.wav"),
-		load("res://assets/sfx/as_pr_so_book_shelf_3.wav"),
-		load("res://assets/sfx/as_pr_so_book_shelf_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_book_shelf_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_book_shelf_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_book_shelf_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_book_shelf_4.wav")
 	],
 	"vomit": [
-		load("res://assets/sfx/as_pr_so_bucket_womit_1.wav"),
-		load("res://assets/sfx/as_pr_so_bucket_womit_2.wav"),
-		load("res://assets/sfx/as_pr_so_bucket_womit_3.wav"),
-		load("res://assets/sfx/as_pr_so_bucket_womit_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_bucket_womit_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_bucket_womit_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_bucket_womit_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_bucket_womit_4.wav")
 	],
 	"cabinet_ceramics": [
-		load("res://assets/sfx/as_pr_so_cabinet_ceramics_1.wav"),
-		load("res://assets/sfx/as_pr_so_cabinet_ceramics_2.wav"),
-		load("res://assets/sfx/as_pr_so_cabinet_ceramics_3.wav")
+		Audio.new("res://assets/sfx/as_pr_so_cabinet_ceramics_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_cabinet_ceramics_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_cabinet_ceramics_3.wav")
 	],
 	"chair": [
-		load("res://assets/sfx/as_pr_so_chair_1.wav"),
-		load("res://assets/sfx/as_pr_so_chair_2.wav"),
-		load("res://assets/sfx/as_pr_so_chair_3.wav")
+		Audio.new("res://assets/sfx/as_pr_so_chair_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_chair_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_chair_3.wav")
 	],
 	"clock": [
-		load("res://assets/sfx/as_pr_so_clock_1.wav"),
-		load("res://assets/sfx/as_pr_so_clock_2.wav")
+		Audio.new("res://assets/sfx/as_pr_so_clock_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_clock_2.wav")
 	],
 	"door": [
-		load("res://assets/sfx/as_pr_so_door_1.wav"),
-		load("res://assets/sfx/as_pr_so_door_2.wav"),
-		load("res://assets/sfx/as_pr_so_door_3.wav"),
-		load("res://assets/sfx/as_pr_so_door_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_door_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_door_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_door_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_door_4.wav")
 	],
 	"grain": [
-		load("res://assets/sfx/as_pr_so_grain_1.wav"),
-		load("res://assets/sfx/as_pr_so_grain_2.wav"),
-		load("res://assets/sfx/as_pr_so_grain_3.wav")
+		Audio.new("res://assets/sfx/as_pr_so_grain_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_grain_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_grain_3.wav")
 	],
 	"hammer_1": [
-		load("res://assets/sfx/as_pr_so_hammer_1_1.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_1_2.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_1_3.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_1_4.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_1_5.wav")
+		Audio.new("res://assets/sfx/as_pr_so_hammer_1_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_1_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_1_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_1_4.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_1_5.wav")
 	],
 	"hammer_2": [
-		load("res://assets/sfx/as_pr_so_hammer_2_1.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_2_2.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_2_3.wav")
+		Audio.new("res://assets/sfx/as_pr_so_hammer_2_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_2_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_2_3.wav")
 	],
 	"hammer_double": [
-		load("res://assets/sfx/as_pr_so_hammer_double_1_1.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_double_1_2.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_double_1_3.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_double_1_4.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_double_2_1.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_double_2_2.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_double_2_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_double_1_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_double_1_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_double_1_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_double_1_4.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_double_2_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_double_2_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_double_2_3.wav"),
 	],
 	"hammer_table": [
-		load("res://assets/sfx/as_pr_so_hammer_2_1.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_2_2.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_2_3.wav"),
-		load("res://assets/sfx/as_pr_so_table_1.wav"),
-		load("res://assets/sfx/as_pr_so_table_2.wav"),
-		load("res://assets/sfx/as_pr_so_table_3.wav"),
-		load("res://assets/sfx/as_pr_so_table_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_hammer_2_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_2_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_2_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_table_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_table_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_table_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_table_4.wav")
 	],
 	"hammer_complex": [
-		load("res://assets/sfx/as_pr_so_hammer_1_1.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_1_2.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_1_3.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_1_4.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_1_5.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_double_1_1.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_double_1_2.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_double_1_3.wav"),
-		load("res://assets/sfx/as_pr_so_hammer_double_1_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_hammer_1_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_1_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_1_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_1_4.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_1_5.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_double_1_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_double_1_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_double_1_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_hammer_double_1_4.wav")
 	],
 	"mirror": [
-		load("res://assets/sfx/as_pr_so_mirror_1.wav"),
-		load("res://assets/sfx/as_pr_so_mirror_2.wav"),
-		load("res://assets/sfx/as_pr_so_mirror_3.wav"),
-		load("res://assets/sfx/as_pr_so_mirror_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_mirror_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_mirror_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_mirror_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_mirror_4.wav")
 	],
 	"pot": [
-		load("res://assets/sfx/as_pr_so_pot_1.wav"),
-		load("res://assets/sfx/as_pr_so_pot_2.wav"),
-		load("res://assets/sfx/as_pr_so_pot_3.wav"),
-		load("res://assets/sfx/as_pr_so_pot_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_pot_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_pot_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_pot_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_pot_4.wav")
 	],
 	"shelf_orange": [
-		load("res://assets/sfx/as_pr_so_shelf_orange_1.wav"),
-		load("res://assets/sfx/as_pr_so_shelf_orange_2.wav"),
-		load("res://assets/sfx/as_pr_so_shelf_orange_3.wav"),
-		load("res://assets/sfx/as_pr_so_shelf_orange_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_shelf_orange_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_shelf_orange_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_shelf_orange_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_shelf_orange_4.wav")
 	],
 	"shelf_violet": [
-		load("res://assets/sfx/as_pr_so_shelf_violet_1.wav"),
-		load("res://assets/sfx/as_pr_so_shelf_violet_2.wav"),
-		load("res://assets/sfx/as_pr_so_shelf_violet_3.wav"),
-		load("res://assets/sfx/as_pr_so_shelf_violet_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_shelf_violet_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_shelf_violet_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_shelf_violet_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_shelf_violet_4.wav")
 	],
 	"statue": [
-		load("res://assets/sfx/as_pr_so_statue_1.wav"),
-		load("res://assets/sfx/as_pr_so_statue_2.wav"),
-		load("res://assets/sfx/as_pr_so_statue_3.wav")
+		Audio.new("res://assets/sfx/as_pr_so_statue_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_statue_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_statue_3.wav")
 	],
 	"table": [
-		load("res://assets/sfx/as_pr_so_table_1.wav"),
-		load("res://assets/sfx/as_pr_so_table_2.wav"),
-		load("res://assets/sfx/as_pr_so_table_3.wav"),
-		load("res://assets/sfx/as_pr_so_table_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_table_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_table_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_table_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_table_4.wav")
 	],
 	"tub_drink": [
-		load("res://assets/sfx/as_pr_so_tub_drink_1.wav"),
-		load("res://assets/sfx/as_pr_so_tub_drink_2.wav"),
-		load("res://assets/sfx/as_pr_so_tub_drink_3.wav"),
-		load("res://assets/sfx/as_pr_so_tub_drink_4.wav"),
-		load("res://assets/sfx/as_pr_so_tub_drink_5.wav")
+		Audio.new("res://assets/sfx/as_pr_so_tub_drink_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_tub_drink_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_tub_drink_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_tub_drink_4.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_tub_drink_5.wav")
 	],
 	"window": [
-		load("res://assets/sfx/as_pr_so_window_1.wav"),
-		load("res://assets/sfx/as_pr_so_window_2.wav"),
-		load("res://assets/sfx/as_pr_so_window_3.wav"),
-		load("res://assets/sfx/as_pr_so_window_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_window_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_window_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_window_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_window_4.wav")
 	],
 	"bump": [
-		load("res://assets/sfx/as_pс_so_olaf_blocked_step.wav")
+		Audio.new("res://assets/sfx/as_pс_so_olaf_blocked_step.wav")
 	],
 	"step": [
-		load("res://assets/sfx/as_pс_so_olaf_footstep_1.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_footstep_2.wav")
+		Audio.new("res://assets/sfx/as_pс_so_olaf_footstep_1.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_footstep_2.wav")
 	],
 	"olaf_hiccup_idle": [
-		load("res://assets/sfx/as_pс_so_olaf_hiccup_idle_1.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_hiccup_idle_2.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_hiccup_idle_3.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_hiccup_idle_4.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_hiccup_idle_5.wav")
+		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_1.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_2.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_3.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_4.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_5.wav")
 	],
 	"footprints": [
-		load("res://assets/sfx/as_pс_so_olaf_footprints_1.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_footprints_2.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_footprints_3.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_footprints_4.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_footprints_5.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_footprints_6.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_footprints_1.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_footprints_2.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_footprints_3.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_footprints_4.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_footprints_5.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_footprints_6.wav"),
 	],
 	"wood_impact": [
-		load("res://assets/sfx/as_pr_so_wood_impact_1.wav"),
-		load("res://assets/sfx/as_pr_so_wood_impact_2.wav"),
-		load("res://assets/sfx/as_pr_so_wood_impact_3.wav"),
-		load("res://assets/sfx/as_pr_so_wood_impact_4.wav"),
-		load("res://assets/sfx/as_pr_so_wood_impact_5.wav"),
-		load("res://assets/sfx/as_pr_so_wood_impact_6.wav")
+		Audio.new("res://assets/sfx/as_pr_so_wood_impact_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_wood_impact_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_wood_impact_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_wood_impact_4.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_wood_impact_5.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_wood_impact_6.wav")
 	],
 	"rock_impact": [
-		load("res://assets/sfx/as_pr_so_rock_impact_1.wav"),
-		load("res://assets/sfx/as_pr_so_rock_impact_2.wav"),
-		load("res://assets/sfx/as_pr_so_rock_impact_3.wav"),
-		load("res://assets/sfx/as_pr_so_rock_impact_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_rock_impact_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_rock_impact_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_rock_impact_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_rock_impact_4.wav")
 	],
 	"glass_impact": [
-		load("res://assets/sfx/as_pr_so_glass_impact_1.wav"),
-		load("res://assets/sfx/as_pr_so_glass_impact_2.wav"),
-		load("res://assets/sfx/as_pr_so_glass_impact_3.wav"),
-		load("res://assets/sfx/as_pr_so_glass_impact_4.wav")
+		Audio.new("res://assets/sfx/as_pr_so_glass_impact_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_glass_impact_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_glass_impact_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_glass_impact_4.wav")
 	],
 	"pickup": [
-		load("res://assets/sfx/as_pс_so_olaf_soul_1.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_soul_2.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_soul_3.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_soul_4.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_soul_5.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_soul_6.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_soul_7.wav"),
-		load("res://assets/sfx/as_pс_so_olaf_soul_8.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_soul_1.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_soul_2.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_soul_3.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_soul_4.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_soul_5.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_soul_6.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_soul_7.wav"),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_soul_8.wav"),
 	],
 	"mouse_moving": [
-		load("res://assets/sfx/as_ui_so_mouse_moving_1.wav"),
-		load("res://assets/sfx/as_ui_so_mouse_moving_2.wav")
+		Audio.new("res://assets/sfx/as_ui_so_mouse_moving_1.wav"),
+		Audio.new("res://assets/sfx/as_ui_so_mouse_moving_2.wav")
 	],
 	"mouse_click": [
-		load("res://assets/sfx/as_ui_so_mouse_click.wav")
+		Audio.new("res://assets/sfx/as_ui_so_mouse_click.wav")
 	],
 	"dropdown_menu": [
-		load("res://assets/sfx/as_ui_so_dropdown_menu.wav")
+		Audio.new("res://assets/sfx/as_ui_so_dropdown_menu.wav")
 	],
 	"dropdown_menu_drink": [
-		load("res://assets/sfx/as_ui_so_dropdown_menu_drinking_beer.wav")
+		Audio.new("res://assets/sfx/as_ui_so_dropdown_menu_drinking_beer.wav")
 	],
 }
 
 var last_played_variations = {}
 
-const sounds_map = {
+const sounds_map: Dictionary[String, String] = {
 	"31,17": "clock",
 	"9,20": "mirror",
 	"4,11": "door",
@@ -331,16 +332,15 @@ func play_sfx_by_tiles(bad_item: Vector2i, good_item: Vector2i = Vector2i(-1, -1
 	var sfx_key = get_sound(bad_item, good_item)
 	play_sfx(sfx_key)
 
-func play_sfx_audio(audio_stream: AudioStream, sfx_name: String = ""):
+func play_sfx_audio(audio: Audio, sfx_name: String = ""):
 	var player = AudioStreamPlayer.new()
 	var position = 0
-	player.stream = audio_stream
+	player.stream = audio.stream
 	player.bus = "SFX"
+	player.volume_db = linear_to_db(audio.volume)
 	if sfx_name == "vomit":
 		if SettingsManager.settings.burps_muted:
 			position = 0.15
-	if sfx_name == "burp":
-		player.volume_db = linear_to_db(.4)
 	add_child(player)
 	player.play(position)
 	await player.finished
@@ -397,11 +397,12 @@ func play_music(music_name: String, switch_duration: float = .75):
 		music_stop_times.erase(music_name)
 	current_music = player
 	player.bus = "Music"
-	player.stream = music[music_name].pick_random()
+	var item: Audio = music[music_name].pick_random()
+	player.stream = item.stream
 	add_child(player)
 	player.volume_db = -60
 	var new_tween = get_tree().create_tween()
-	new_tween.tween_property(player, 'volume_db', 0, switch_duration).set_trans(Tween.TRANS_CIRC)
+	new_tween.tween_property(player, 'volume_db', linear_to_db(item.volume), switch_duration).set_trans(Tween.TRANS_CIRC)
 	player.play(position)
 	player.finished.connect(func():
 		player.play()

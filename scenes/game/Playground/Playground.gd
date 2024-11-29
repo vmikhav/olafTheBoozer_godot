@@ -16,10 +16,10 @@ var level_progress_report: LevelProgressReport
 
 var level_index = 0
 var levels = [
-	"Tavern",
 	"Tutorial0",
 	"Kitchen",
 	"Library",
+	"Tavern",
 ]
 
 # Called when the node enters the scene tree for the first time.

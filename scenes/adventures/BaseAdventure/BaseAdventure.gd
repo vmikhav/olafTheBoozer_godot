@@ -18,6 +18,7 @@ var hero_play_type: Array = ["worker", true]
 var hero_start_position: Vector2i
 var characters = []
 var teleports = []
+var interactive_zones = []
 var camera_limit := Rect2i(-1000000, -1000000, 2000000, 2000000)
 
 # local variables
@@ -78,9 +79,14 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		hero.set_orientation('left')
 
 	var neighbor_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(hero_position, direction)
-	var history_item = {position = neighbor_pos, direction = direction, trails = []}
+	
+	for i in interactive_zones.size():
+		if interactive_zones[i].active and interactive_zones[i].position == neighbor_pos:
+			interactive_zones[i].callback.call(i)
+			allow_input = false
+			return
 
-	var can_move_result = can_move_to(neighbor_pos, history_item)
+	var can_move_result = can_move_to(neighbor_pos)
 	if not can_move_result.can_move:
 		return
 	
@@ -88,20 +94,20 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 	neighbor_pos = can_move_result.new_position
 
 
-	process_item_collection(neighbor_pos, history_item)
+	process_item_collection(neighbor_pos)
 
 	move_hero_to_position(neighbor_pos)
-	play_sfx_by_history(history_item)
+	play_sfx_by_history(null)
 
 	check_level_completion()
 
-func can_move_to(neighbor_pos: Vector2i, history_item: Dictionary) -> Dictionary:
+func can_move_to(neighbor_pos: Vector2i) -> Dictionary:
 	if is_empty_cell(Layer.GROUND, neighbor_pos):
 		skip_step()
 		return {can_move = false, new_position = neighbor_pos}
 
 	if not is_empty_cell(Layer.WALLS, neighbor_pos):
-		return handle_teleport(neighbor_pos, history_item)
+		return handle_teleport(neighbor_pos)
 
 	var neighbor_cell = tilemaps[Layer.ITEMS].get_cell_atlas_coords(neighbor_pos)
 	
@@ -111,26 +117,15 @@ func can_move_to(neighbor_pos: Vector2i, history_item: Dictionary) -> Dictionary
 
 	return {can_move = true, new_position = neighbor_pos}
 
-func handle_teleport(neighbor_pos: Vector2i, history_item: Dictionary) -> Dictionary:
+func handle_teleport(neighbor_pos: Vector2i) -> Dictionary:
 	for teleport in teleports:
 		if teleport.start == neighbor_pos:
-			process_teleport(teleport, history_item)
 			return {can_move = true, new_position = teleport.end}
 
 	skip_step()
 	return {can_move = false, new_position = neighbor_pos}
 
-func process_teleport(teleport, history_item: Dictionary):
-	if not is_empty_cell(Layer.TRAILS, teleport.start):
-		allow_input = true
-		history_item.trails.push_back({
-			position = teleport.start,
-			cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(teleport.start)
-		})
-	history_item.teleported = true
-	history_item.position = teleport.end
-
-func process_item_collection(neighbor_pos: Vector2i, history_item: Dictionary):
+func process_item_collection(neighbor_pos: Vector2i):
 	var neighbor_cell = tilemaps[Layer.ITEMS].get_cell_atlas_coords(neighbor_pos)
 
 
@@ -144,15 +139,6 @@ func finish_level():
 
 
 func play_sfx_by_history(history_item):
-	if "ghost" in history_item:
-		AudioController.play_sfx("pickup")
-		return
-	if "bad_item" in history_item:
-		AudioController.play_sfx_by_tiles(history_item.bad_item, history_item.good_item)
-		return
-	if history_item.trails.size():
-		AudioController.play_sfx_by_tiles(history_item.trails[0].cell)
-		return
 	AudioController.play_sfx("step")
 
 

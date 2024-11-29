@@ -8,9 +8,13 @@ enum GhostType {
 }
 
 enum UnitType {
+	BLACKSMITH,BLACKSMITH_B,
 	DEMOLITONIST,
 	DEMONESS,
+	GHOST,
+	GRENADIER,
 	IMP,
+	OLD_MAN,
 	PEASANT,
 	SUCCUB,
 	VILLAGER_WOMAN,
@@ -18,9 +22,14 @@ enum UnitType {
 }
 
 const UnitTypeName = {
+	UnitType.BLACKSMITH: "blacksmith",
+	UnitType.BLACKSMITH_B: "blacksmithB",
 	UnitType.DEMOLITONIST: "demolitonist",
 	UnitType.DEMONESS: "demoness",
+	UnitType.GHOST: "ghost",
+	UnitType.GRENADIER: "grenadier",
 	UnitType.IMP: "imp",
+	UnitType.OLD_MAN: "oldMan",
 	UnitType.PEASANT: "peasant",
 	UnitType.SUCCUB: "succub",
 	UnitType.VILLAGER_WOMAN: "villagerWoman",

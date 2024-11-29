@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c83slhg3dkpwl"
-path="res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"
+uid="uid://di2ilj5ptujw3"
+path="res://.godot/imported/MiniReaper.png-8a04bf44b41cab1a5743b7ccf032b54e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/MiniPeasant.png"
-dest_files=["res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"]
+source_file="res://assets/sprites/MiniReaper.png"
+dest_files=["res://.godot/imported/MiniReaper.png-8a04bf44b41cab1a5743b7ccf032b54e.ctex"]
 
 [params]
 

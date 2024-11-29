@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c83slhg3dkpwl"
-path="res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"
+uid="uid://bnla0n3eikvnr"
+path="res://.godot/imported/MiniDwarfShieldbreaker.png-f510976171fa2240d2056e3d9779daf4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/MiniPeasant.png"
-dest_files=["res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"]
+source_file="res://assets/sprites/MiniDwarfShieldbreaker.png"
+dest_files=["res://.godot/imported/MiniDwarfShieldbreaker.png-f510976171fa2240d2056e3d9779daf4.ctex"]
 
 [params]
 

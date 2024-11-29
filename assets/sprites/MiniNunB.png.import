@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c83slhg3dkpwl"
-path="res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"
+uid="uid://ci03fxb0ax1vc"
+path="res://.godot/imported/MiniNunB.png-8c2de8ff2b5a7525b8276a5d5fe06f9b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/MiniPeasant.png"
-dest_files=["res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"]
+source_file="res://assets/sprites/MiniNunB.png"
+dest_files=["res://.godot/imported/MiniNunB.png-8c2de8ff2b5a7525b8276a5d5fe06f9b.ctex"]
 
 [params]
 

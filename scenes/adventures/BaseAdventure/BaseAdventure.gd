@@ -15,9 +15,8 @@ var music_key: String = "fairies"
 var tilemaps: Array[TileMapLayer]
 var hero: Node2D
 var hero_play_type: Array = ["worker", true]
-var hero_replay_type: Array = ["worker", true]
 var hero_start_position: Vector2i
-var ghosts = []
+var characters = []
 var teleports = []
 var camera_limit := Rect2i(-1000000, -1000000, 2000000, 2000000)
 
@@ -31,6 +30,13 @@ signal level_finished
 func init_map():
 	allow_input = true
 	hero.set_mode(hero_play_type)
+	for i in characters.size():
+		if "unit" in characters[i] and characters[i].unit:
+			characters[i].unit.queue_free()
+		characters[i].unit = hero.duplicate()
+		tilemaps[Layer.ITEMS].add_child(characters[i].unit)
+		characters[i].unit.set_mode([defs.UnitTypeName[characters[i].mode], false])
+		move_unit_to_position(characters[i].unit, characters[i].position)
 	AudioController.play_music(music_key)
 
 func move_unit_to_position(unit: Node2D, new_position: Vector2i):

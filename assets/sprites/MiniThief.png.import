@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c83slhg3dkpwl"
-path="res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"
+uid="uid://c1n1a76bbhhcg"
+path="res://.godot/imported/MiniThief.png-47a33d5bef2db92c0ebde44123cc44a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/MiniPeasant.png"
-dest_files=["res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"]
+source_file="res://assets/sprites/MiniThief.png"
+dest_files=["res://.godot/imported/MiniThief.png-47a33d5bef2db92c0ebde44123cc44a0.ctex"]
 
 [params]
 

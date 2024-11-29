@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c83slhg3dkpwl"
-path="res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"
+uid="uid://f7l5qdf0uu5r"
+path="res://.godot/imported/MiniNecromancer.png-15d0901b2433ce313f56e23ac8ea70a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/MiniPeasant.png"
-dest_files=["res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"]
+source_file="res://assets/sprites/MiniNecromancer.png"
+dest_files=["res://.godot/imported/MiniNecromancer.png-15d0901b2433ce313f56e23ac8ea70a8.ctex"]
 
 [params]
 

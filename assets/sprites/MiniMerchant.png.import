@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c83slhg3dkpwl"
-path="res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"
+uid="uid://q0hdcu63jj7w"
+path="res://.godot/imported/MiniMerchant.png-6a121854b13c6ddd2559668bcdd229a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/MiniPeasant.png"
-dest_files=["res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"]
+source_file="res://assets/sprites/MiniMerchant.png"
+dest_files=["res://.godot/imported/MiniMerchant.png-6a121854b13c6ddd2559668bcdd229a9.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c83slhg3dkpwl"
-path="res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"
+uid="uid://b35rkmkafb3jc"
+path="res://.godot/imported/MiniBlacksmithB.png-fdca5a56d3444fa5a5780689c0788b63.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/MiniPeasant.png"
-dest_files=["res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"]
+source_file="res://assets/sprites/MiniBlacksmithB.png"
+dest_files=["res://.godot/imported/MiniBlacksmithB.png-fdca5a56d3444fa5a5780689c0788b63.ctex"]
 
 [params]
 

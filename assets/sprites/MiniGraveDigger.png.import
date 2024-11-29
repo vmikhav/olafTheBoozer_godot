@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c83slhg3dkpwl"
-path="res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"
+uid="uid://ddpgdr88hjfkg"
+path="res://.godot/imported/MiniGraveDigger.png-547b2ec6f2eeaa375efb5399fc1b7aca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/MiniPeasant.png"
-dest_files=["res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"]
+source_file="res://assets/sprites/MiniGraveDigger.png"
+dest_files=["res://.godot/imported/MiniGraveDigger.png-547b2ec6f2eeaa375efb5399fc1b7aca.ctex"]
 
 [params]
 

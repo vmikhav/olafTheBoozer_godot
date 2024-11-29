@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c83slhg3dkpwl"
-path="res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"
+uid="uid://cku8584d2mb0m"
+path="res://.godot/imported/MiniDwarfWarrior.png-2507d636448205f061c87c27fb79e26c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/MiniPeasant.png"
-dest_files=["res://.godot/imported/MiniPeasant.png-e59a8b604d85f1087587aa09fbfd90ff.ctex"]
+source_file="res://assets/sprites/MiniDwarfWarrior.png"
+dest_files=["res://.godot/imported/MiniDwarfWarrior.png-2507d636448205f061c87c27fb79e26c.ctex"]
 
 [params]
 

@@ -34,6 +34,14 @@ var sfx: Dictionary[String, Array] = {
 		Audio.new("res://assets/sfx/as_pr_so_book_shelf_3.wav"),
 		Audio.new("res://assets/sfx/as_pr_so_book_shelf_4.wav")
 	],
+	"barrel_roll": [
+		Audio.new("res://assets/sfx/as_pr_so_barrel_roll_short_1.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_barrel_roll_short_2.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_barrel_roll_short_3.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_barrel_roll_short_4.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_barrel_roll_short_5.wav"),
+		Audio.new("res://assets/sfx/as_pr_so_barrel_roll_short_6.wav"),
+	],
 	"vomit": [
 		Audio.new("res://assets/sfx/as_pr_so_bucket_womit_1.wav"),
 		Audio.new("res://assets/sfx/as_pr_so_bucket_womit_2.wav"),
@@ -218,6 +226,31 @@ var sfx: Dictionary[String, Array] = {
 	],
 	"dropdown_menu_drink": [
 		Audio.new("res://assets/sfx/as_ui_so_dropdown_menu_drinking_beer.wav")
+	],
+	"page_turn": [
+		Audio.new("res://assets/sfx/Recipe Notebook/Notebook, Page Turn 1.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Notebook, Page Turn 2.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Notebook, Page Turn 3.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Notebook, Page Turn 4.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Notebook, Page Turn 5.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Notebook, Page Turn 6.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Notebook, Page Turn 7.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Notebook, Page Turn 8.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Notebook, Page Turn 9.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Notebook, Page Turn 10.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Notebook, Page Turn 11.wav"),
+	],
+	"scribe": [
+		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 1.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 2.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 3.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 4.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 5.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 6.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 7.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 8.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 9.wav"),
+		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 10.wav"),
 	],
 }
 

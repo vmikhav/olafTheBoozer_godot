@@ -81,10 +81,12 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 	var neighbor_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(hero_position, direction)
 	
 	for i in interactive_zones.size():
-		if interactive_zones[i].active and interactive_zones[i].position == neighbor_pos:
-			interactive_zones[i].callback.call(i)
-			allow_input = false
-			return
+		if interactive_zones[i].active:
+			for pos in interactive_zones[i].positions:
+				if  pos == neighbor_pos:
+					interactive_zones[i].callback.call(i)
+					allow_input = false
+					return
 
 	var can_move_result = can_move_to(neighbor_pos)
 	if not can_move_result.can_move:

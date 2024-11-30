@@ -10,8 +10,8 @@ func _ready():
 	hero = $Items/Demolitonist
 	hero_start_position = Vector2i(7, 5)
 	characters = [
-		{position = Vector2i(7, 4), mode = defs.UnitType.OLD_MAN},
-		{position = Vector2i(-2, 8), mode = defs.UnitType.BLACKSMITH_B},
+		{positions = [Vector2i(7, 4)], mode = defs.UnitType.OLD_MAN},
+		{positions = [Vector2i(-2, 8)], mode = defs.UnitType.BLACKSMITH_B},
 	]
 	teleports = [
 		{start = Vector2i(2, 6), end = Vector2i(-15, -3)},

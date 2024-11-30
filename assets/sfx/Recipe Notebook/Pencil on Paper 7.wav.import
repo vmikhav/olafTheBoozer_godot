@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d4l2yubigrljy"
+path="res://.godot/imported/Pencil on Paper 7.wav-2dcf226107a2dc2cc53a5de90c681134.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Recipe Notebook/Pencil on Paper 7.wav"
+dest_files=["res://.godot/imported/Pencil on Paper 7.wav-2dcf226107a2dc2cc53a5de90c681134.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=4 uid="uid://dv2fftuc2m7lb"]
 
-[ext_resource type="Script" path="res://scenes/levels/Cellar/Cellar.gd" id="1_mu7k0"]
+[ext_resource type="Script" uid="uid://cy5p4r5qw4w66" path="res://scenes/levels/Cellar/Cellar.gd" id="1_mu7k0"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_5u8he"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_4053v"]
 
@@ -56,4 +56,10 @@ tile_set = ExtResource("2_5u8he")
 z_index = 6
 texture_filter = 1
 tile_map_data = PackedByteArray("AAABAAEAAAAUABEAAAADAAUAAAAMAA8AAAAFAAIAAAAMABIAAAAIAAIAAAANABAAAAANAAMAAAAaABMAAAA=")
+tile_set = ExtResource("2_5u8he")
+
+[node name="MovingItems" type="TileMapLayer" parent="."]
+modulate = Color(1, 0.392157, 0.392157, 0.392157)
+z_index = 6
+texture_filter = 1
 tile_set = ExtResource("2_5u8he")

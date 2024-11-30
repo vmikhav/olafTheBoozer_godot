@@ -50,5 +50,7 @@ const TrailDirections = {
 
 const DraggableItems = ["12,16", "13,16", "12,18"]
 
-enum Layers {GROUND, FLOOR, WALLS, ITEMS, TREES}
+enum LevelType {BACKWARD, FORWARD}
+
+enum Layers {GROUND, FLOOR, WALLS, ITEMS, TREES, MOVABLE_ITEMS}
 enum Walls {WOOD, STONE, BRICK, CLAY, BUSH, FENCE}

@@ -5,7 +5,7 @@ const TILE_SIZE = 16
 const TILE_OFFSET = Vector2i(8, 18)
 
 enum Layer {
-	GROUND, FLOOR, WALLS, TRAILS, ITEMS, TREES, BAD_ITEMS, GOOD_ITEMS
+	GROUND, FLOOR, WALLS, TRAILS, ITEMS, TREES, BAD_ITEMS, GOOD_ITEMS, MOVABLE_ITEMS
 }
 
 var defs = LevelDefinitions
@@ -19,6 +19,7 @@ var hero_start_position: Vector2i
 var ghosts = []
 var teleports = []
 var camera_limit := Rect2i(-1000000, -1000000, 2000000, 2000000)
+var level_type : LevelDefinitions.LevelType = LevelDefinitions.LevelType.BACKWARD
 
 # local variables
 var hero_position: Vector2i
@@ -32,6 +33,7 @@ var last_active_tail_item = -1
 var history = []
 var is_history_replay: bool = false
 var progress_report: LevelProgressReport
+var has_replay: bool
 
 signal items_progress_signal(items_count: int)
 signal ghosts_progress_signal(ghosts_count: int)
@@ -39,6 +41,7 @@ signal level_finished
 
 
 func init_map(source: Layer = Layer.BAD_ITEMS):
+	has_replay = level_type == LevelDefinitions.LevelType.BACKWARD
 	tilemaps[Layer.ITEMS].clear()
 	tilemaps[Layer.BAD_ITEMS].enabled = false
 	tilemaps[Layer.GOOD_ITEMS].enabled = false
@@ -51,7 +54,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 		level_items_progress = 0
 		level_items_count = bad_items.size()
 		ghosts_progress = 0
-		ghosts_count = ghosts.size()
+		ghosts_count = ghosts.size() + tilemaps[Layer.MOVABLE_ITEMS].get_used_cells().size()
 		init_progress_report()
 		for item in tail:
 			item.unit.queue_free()
@@ -119,6 +122,7 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		hero.set_orientation('left')
 
 	var neighbor_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(hero_position, direction)
+	var next_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(neighbor_pos, direction)
 	var history_item = {position = neighbor_pos, direction = direction, trails = []}
 
 	var can_move_result = can_move_to(neighbor_pos, history_item)
@@ -304,7 +308,8 @@ func finish_level():
 	level_finished.emit()
 	get_tree().create_timer(0.5).timeout.connect(func():
 		AudioController.play_sfx("dropdown_menu")
-		hero.set_mode(hero_replay_type)
+		if has_replay:
+			hero.set_mode(hero_replay_type)
 	)
 
 func step_back(manual: bool = false):
@@ -417,6 +422,9 @@ func play_sfx_by_history(history_item):
 	if history_item.trails.size():
 		AudioController.play_sfx_by_tiles(history_item.trails[0].cell)
 		return
+	if "dragged_item" in history_item:
+		AudioController.play_sfx("barrel_roll")
+		return
 	AudioController.play_sfx("step")
 
 func save_history_item(item):
@@ -504,6 +512,15 @@ func move_draggable_item(item_pos: Vector2i, direction: TileSet.CellNeighbor):
 	var item_coords = tilemaps[Layer.ITEMS].get_cell_atlas_coords(item_pos)
 	var item_alt = tilemaps[Layer.ITEMS].get_cell_alternative_tile(item_pos)
 	var new_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(item_pos, direction)
+	
+	var old_movable = tilemaps[Layer.MOVABLE_ITEMS].get_cell_atlas_coords(item_pos)
+	var new_movable = tilemaps[Layer.MOVABLE_ITEMS].get_cell_atlas_coords(new_pos)
+	
+	if old_movable == item_coords:
+		ghosts_progress -= 1
+	if new_movable == item_coords:
+		ghosts_progress += 1
+	ghosts_progress_signal.emit(ghosts_progress)
 
 	update_cell(item_pos, Vector2i(-1, -1), 0, Layer.ITEMS)
 	update_cell(new_pos, item_coords, item_alt, Layer.ITEMS)

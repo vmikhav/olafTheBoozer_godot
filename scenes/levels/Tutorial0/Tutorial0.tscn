@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=4 uid="uid://dkbip8st6rlvk"]
 
-[ext_resource type="Script" path="res://scenes/levels/Tutorial0/Tutorial0.gd" id="1_pimk5"]
+[ext_resource type="Script" uid="uid://djywvwou4kq28" path="res://scenes/levels/Tutorial0/Tutorial0.gd" id="1_pimk5"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_p2yry"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_g4qxb"]
 
@@ -56,4 +56,10 @@ tile_set = ExtResource("2_p2yry")
 z_index = 6
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAAAAQAAAAaABEAAAADAAEAAAAUABEAAAADAAMAAAAEAAsAABAEAAQAAAAMABIAAAAFAAQAAAAMABAAAAAFAAUAAAANABQAAAA=")
+tile_set = ExtResource("2_p2yry")
+
+[node name="MovingItems" type="TileMapLayer" parent="."]
+modulate = Color(1, 0.392157, 0.392157, 0.392157)
+z_index = 6
+texture_filter = 1
 tile_set = ExtResource("2_p2yry")

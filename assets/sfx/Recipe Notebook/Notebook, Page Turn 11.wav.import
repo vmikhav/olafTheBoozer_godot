@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bur2f743vrufh"
+path="res://.godot/imported/Notebook, Page Turn 11.wav-b4ee58a6cf87d9cf0be7172b6442af04.sample"
+
+[deps]
+
+source_file="res://assets/sfx/Recipe Notebook/Notebook, Page Turn 11.wav"
+dest_files=["res://.godot/imported/Notebook, Page Turn 11.wav-b4ee58a6cf87d9cf0be7172b6442af04.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

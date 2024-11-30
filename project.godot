@@ -22,6 +22,10 @@ AudioController="*res://scripts/AudioController.gd"
 SettingsManager="*res://scripts/SettingsManager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
+[dialogue_manager]
+
+general/balloon_path="res://scenes/ui/DialogueBaloon/DialogueBaloon.tscn"
+
 [display]
 
 window/size/viewport_width=1280

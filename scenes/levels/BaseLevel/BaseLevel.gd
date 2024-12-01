@@ -533,6 +533,15 @@ func handle_dragged_item_reversal(history_item: Dictionary):
 		var item_coords = tilemaps[Layer.ITEMS].get_cell_atlas_coords(new_pos)
 		var item_alt = tilemaps[Layer.ITEMS].get_cell_alternative_tile(new_pos)
 		
+		var old_movable = tilemaps[Layer.MOVABLE_ITEMS].get_cell_atlas_coords(item_pos)
+		var new_movable = tilemaps[Layer.MOVABLE_ITEMS].get_cell_atlas_coords(new_pos)
+		
+		if old_movable == item_coords:
+			ghosts_progress += 1
+		if new_movable == item_coords:
+			ghosts_progress -= 1
+		ghosts_progress_signal.emit(ghosts_progress)
+		
 		update_cell(new_pos, Vector2i(-1, -1), 0, Layer.ITEMS)
 		update_cell(item_pos, item_coords, item_alt, Layer.ITEMS)
 

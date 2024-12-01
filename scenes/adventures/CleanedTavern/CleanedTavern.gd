@@ -25,7 +25,7 @@ func _ready():
 	
 	if !StoryProgress.cellar_fixed:
 		intro()
-		#next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["TavernTutorial"]}]
+		next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["Cellar"]}]
 	elif !StoryProgress.warehouse_fixed:
 		warehouse_quest()
 		#next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["Kitchen"]}]

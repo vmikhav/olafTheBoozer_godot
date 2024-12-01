@@ -119,3 +119,5 @@ visible = false
 
 [node name="NavController" parent="." instance=ExtResource("9_o631k")]
 actions_to_track = Array[String](["ui_up", "ui_left", "ui_right", "ui_down"])
+
+[node name="HTTPRequest" type="HTTPRequest" parent="."]

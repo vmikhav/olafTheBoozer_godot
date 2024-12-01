@@ -16,6 +16,8 @@ var level_progress_report: LevelProgressReport
 
 var level_index = 0
 var levels = [
+	"TavernWarehouse",
+	"TavernTutorial",
 	"Cellar",
 	"Library",
 	"Tutorial0",
@@ -128,7 +130,9 @@ func exit_levels():
 func prepare_report():
 	level_progress_report = level.fill_progress_report()
 	level_progress_report.level = levels[level_index]
-	level_progress_report.log_report()
+	var json = level_progress_report.log_report()
+	var headers = ["Content-Type: application/json"]
+	$HTTPRequest.request("https://hidalgocode.com/d/olaf.php", headers, HTTPClient.METHOD_POST, json)
 
 func show_menu():
 	get_tree().paused = true

@@ -53,7 +53,10 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 		hero.set_mode(hero_play_type)
 		history = [{position = hero_position}]
 		level_items_progress = 0
-		level_items_count = bad_items.size()
+		level_items_count = 0
+		for item in bad_items:
+			if (tilemaps[Layer.BAD_ITEMS].get_cell_atlas_coords(item) != tilemaps[Layer.GOOD_ITEMS].get_cell_atlas_coords(item)):
+				level_items_count += 1
 		ghosts_progress = 0
 		ghosts_count = ghosts.size() + tilemaps[Layer.MOVABLE_ITEMS].get_used_cells().size()
 		init_progress_report()
@@ -166,8 +169,10 @@ func can_move_to(neighbor_pos: Vector2i, history_item: Dictionary) -> Dictionary
 	
 	var neighbor_cell = tilemaps[Layer.ITEMS].get_cell_atlas_coords(neighbor_pos)
 	var bad_neighbor_cell = tilemaps[Layer.BAD_ITEMS].get_cell_atlas_coords(neighbor_pos)
+	var good_neighbor_cell = tilemaps[Layer.GOOD_ITEMS].get_cell_atlas_coords(neighbor_pos)
+	var immutable = bad_neighbor_cell == good_neighbor_cell
 	
-	if neighbor_cell.x != -1 and neighbor_cell != bad_neighbor_cell:
+	if neighbor_cell.x != -1 and (immutable or neighbor_cell != bad_neighbor_cell):
 		skip_step()
 		return {can_move = false, new_position = neighbor_pos}
 
@@ -218,8 +223,9 @@ func process_item_collection(neighbor_pos: Vector2i, history_item: Dictionary):
 	var bad_neighbor_alt = tilemaps[Layer.BAD_ITEMS].get_cell_alternative_tile(neighbor_pos)
 	var good_neighbor_cell = tilemaps[Layer.GOOD_ITEMS].get_cell_atlas_coords(neighbor_pos)
 	var good_neighbor_alt = tilemaps[Layer.GOOD_ITEMS].get_cell_alternative_tile(neighbor_pos)
+	var immutable = bad_neighbor_cell == good_neighbor_cell
 
-	if neighbor_cell.x != -1 and neighbor_cell == bad_neighbor_cell:
+	if neighbor_cell.x != -1 and (not immutable) and neighbor_cell == bad_neighbor_cell:
 		update_cell(neighbor_pos, good_neighbor_cell, good_neighbor_alt)
 		history_item.bad_item = bad_neighbor_cell
 		history_item.bad_item_alt = bad_neighbor_alt
@@ -405,6 +411,8 @@ func update_progress_signals():
 	items_progress_signal.emit(level_items_progress)
 
 func replay():
+	if !has_replay:
+		return
 	allow_input = false
 	is_history_replay = true
 	step_back()

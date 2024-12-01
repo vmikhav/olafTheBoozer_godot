@@ -6,7 +6,7 @@ func to_json():
 	var properties = get_property_list()
 	var data = {}
 	for property in properties:
-		if property.usage == PROPERTY_USAGE_SCRIPT_VARIABLE and not property.name.begins_with("_"):
+		if property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE and not property.name.begins_with("_"):
 			data[property.name] = self[property.name]
 	return JSON.stringify(data)
 

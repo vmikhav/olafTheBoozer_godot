@@ -33,5 +33,6 @@ func mark_as_filled(history):
 
 
 func log_report():
-	print(to_json())
-	pass
+	var text = to_json()
+	print(text)
+	return text

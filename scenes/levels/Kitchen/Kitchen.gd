@@ -18,3 +18,4 @@ func _ready():
 	camera_limit = Rect2i(0, 0, 450, 250)
 	move_hero_to_position(hero_start_position)
 	init_map()
+	next_scene = ["res://scenes/game/AdventurePlayground/AdventurePlayground.tscn", {levels = ["StartTavern"]}]

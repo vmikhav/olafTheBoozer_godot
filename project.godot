@@ -21,9 +21,11 @@ SceneSwitcher="*res://scripts/SceneSwitcher.gd"
 AudioController="*res://scripts/AudioController.gd"
 SettingsManager="*res://scripts/SettingsManager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+StoryProgress="*res://scripts/StoryProgress.gd"
 
 [dialogue_manager]
 
+general/states=["StoryProgress"]
 general/balloon_path="res://scenes/ui/DialogueBaloon/DialogueBaloon.tscn"
 
 [display]
@@ -56,7 +58,7 @@ editor_click={
 [internationalization]
 
 locale/translations=PackedStringArray("res://i18n/translation.en.translation", "res://i18n/translation.uk.translation")
-locale/translations_pot_files=PackedStringArray("res://scenes/adventures/StartTavern/first_host_dialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://scenes/adventures/StartTavern/start_tavern.dialogue")
 
 [rendering]
 

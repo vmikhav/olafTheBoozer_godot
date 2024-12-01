@@ -5,8 +5,8 @@
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="3_0hwy5"]
 [ext_resource type="Texture2D" uid="uid://bobvyiugtptpr" path="res://assets/images/button_menu.png" id="4_84ie0"]
 [ext_resource type="Texture2D" uid="uid://ch22168q55x3j" path="res://assets/images/button_menu_pressed.png" id="5_tabh6"]
+[ext_resource type="PackedScene" uid="uid://d2v243r8fsbr1" path="res://scenes/ui/LevelMenu/AdventureMenu.tscn" id="7_62e5o"]
 [ext_resource type="PackedScene" uid="uid://p41vq4676q75" path="res://scenes/ui/NavButtons/NavButtons.tscn" id="9_6rhoj"]
-[ext_resource type="PackedScene" uid="uid://4j3ebc64sxog" path="res://scenes/ui/LevelMenu/LevelMenu.tscn" id="11_obw0o"]
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="12_penv2"]
 [ext_resource type="PackedScene" uid="uid://c78sgpd3kkbu2" path="res://scenes/ui/NavController/NavController.tscn" id="13_nbkt7"]
 
@@ -80,7 +80,7 @@ alignment = 2
 [node name="NavButtons" parent="UiLayer/HudContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("9_6rhoj")]
 layout_mode = 2
 
-[node name="LevelMenu" parent="UiLayer" instance=ExtResource("11_obw0o")]
+[node name="AdventureMenu" parent="UiLayer" instance=ExtResource("7_62e5o")]
 process_mode = 2
 visible = false
 

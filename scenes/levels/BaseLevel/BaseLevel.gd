@@ -20,6 +20,7 @@ var ghosts = []
 var teleports = []
 var camera_limit := Rect2i(-1000000, -1000000, 2000000, 2000000)
 var level_type : LevelDefinitions.LevelType = LevelDefinitions.LevelType.BACKWARD
+var next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["Tutorial0"]}]
 
 # local variables
 var hero_position: Vector2i
@@ -137,7 +138,7 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 	
 	# Check for draggable item
 	var draggable_item = check_for_draggable_item(direction)
-	if draggable_item:
+	if draggable_item != Vector2i.MAX:
 		move_draggable_item(draggable_item, direction)
 		history_item.dragged_item = draggable_item
 
@@ -486,7 +487,7 @@ func is_draggable_item(cell_coords: Vector2i) -> bool:
 
 func check_for_draggable_item(direction: TileSet.CellNeighbor) -> Vector2i:
 	if not tail.is_empty() or not is_empty_cell(Layer.ITEMS, hero_position):
-		return Vector2i.ZERO
+		return Vector2i.MAX
 
 	var opposite_direction = get_opposite_direction(direction)
 	var item_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(hero_position, opposite_direction)
@@ -494,7 +495,7 @@ func check_for_draggable_item(direction: TileSet.CellNeighbor) -> Vector2i:
 	
 	if is_draggable_item(item_coords):
 		return item_pos
-	return Vector2i.ZERO
+	return Vector2i.MAX
 
 func get_opposite_direction(direction: TileSet.CellNeighbor) -> TileSet.CellNeighbor:
 	match direction:

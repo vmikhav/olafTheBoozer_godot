@@ -1,0 +1,57 @@
+extends BaseAdventure
+
+var first_dialogue = preload("res://scenes/adventures/StartTavern/start_tavern.dialogue")
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	tilemaps = [
+		$Ground, $Floor, $Walls, $Trails, $Items, $Trees,
+	]
+	hero = $Items/Demolitonist
+	hero_start_position = Vector2i(-1, -2)
+	characters = [
+		{position = Vector2i(1, -2), mode = defs.UnitType.BLACKSMITH_B},
+		{position = Vector2i(-2, 0), mode = defs.UnitType.PEASANT},
+	]
+	teleports = [
+	]
+	interactive_zones = [
+		{positions = [Vector2i(0, -2),Vector2i(1, -2),Vector2i(0, -1),Vector2i(1, -1)], active = !StoryProgress.cellar_fixed, callback = cellar_quest},
+		{positions = [Vector2i(-2, 0)], active = true, callback = cleme_idle},
+	]
+	camera_limit = Rect2i(-304, -192, 608, 352)
+	move_hero_to_position(hero_start_position)
+	init_map()
+	
+	if !StoryProgress.cellar_fixed:
+		intro()
+		#next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["TavernTutorial"]}]
+	elif !StoryProgress.warehouse_fixed:
+		warehouse_quest()
+		#next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["Kitchen"]}]
+	
+
+func intro():
+	allow_input = false
+	DialogueManager.show_dialogue_balloon(first_dialogue, "tavern_cleme_resqued")
+	await DialogueManager.dialogue_ended
+	allow_input = true
+
+func cleme_idle(index: int):
+	allow_input = false
+	DialogueManager.show_dialogue_balloon(first_dialogue, "tavern_cleme_idle")
+	await DialogueManager.dialogue_ended
+	allow_input = true
+
+func cellar_quest(index: int):
+	interactive_zones[index].active = false
+	DialogueManager.show_dialogue_balloon(first_dialogue, "host_cellar_quest")
+	await DialogueManager.dialogue_ended
+	allow_input = true
+	finish_level()
+
+func warehouse_quest():
+	DialogueManager.show_dialogue_balloon(first_dialogue, "host_warehouse_quest")
+	await DialogueManager.dialogue_ended
+	allow_input = true
+	finish_level()

@@ -962,7 +962,7 @@ script = ExtResource("1_6ytke")
 texture_filter = 1
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_4ybha")
-animation = &"blacksmithB_idle"
+animation = &"grenadier_idle"
 
 [node name="Emote" type="Sprite2D" parent="."]
 visible = false

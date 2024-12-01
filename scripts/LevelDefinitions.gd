@@ -48,7 +48,7 @@ const TrailDirections = {
 	forward_tile = ["6,19", "5,19", "6,20", "5,20"],
 }
 
-const DraggableItems = ["12,16", "13,16", "12,18"]
+const DraggableItems = ["12,16", "13,16", "12,18", "14,16"]
 
 enum LevelType {BACKWARD, FORWARD}
 

@@ -5,11 +5,10 @@ extends Node2D
 @onready var menu_button = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/TextureButton as TextureButton
 @onready var transition_rect = $UiLayer/SceneTransitionRect
 @onready var nav_controller = $NavController
-@onready var menu = $UiLayer/LevelMenu
+@onready var menu = $UiLayer/AdventureMenu
 var level: BaseAdventure = null
 
 var is_level_finished: bool = false
-var level_progress_report: LevelProgressReport
 
 var level_index = 0
 var levels = [
@@ -86,15 +85,17 @@ func on_level_finished():
 	prepare_report()
 	is_level_finished = true
 	$UiLayer/HudContainer.visible = false
+	load_next_level()
 
 func load_next_level():
-	level.is_history_replay = false
 	await transition_rect.fade_out()
+	var next_scene = level.next_scene
 	level.queue_free()
 	level = null
 	level_index += 1
 	if levels.size() <= level_index:
-		exit_levels()
+		AudioController.stop_music()
+		SceneSwitcher.change_scene_to_file(next_scene[0], next_scene[1])
 	else:
 		load_level(levels[level_index])
 		transition_rect.fade_in()
@@ -104,9 +105,7 @@ func exit_levels():
 	SceneSwitcher.change_scene_to_file("res://scenes/game/MainMenu/MainMenu.tscn")
 
 func prepare_report():
-	level_progress_report = level.fill_progress_report()
-	level_progress_report.level = levels[level_index]
-	level_progress_report.log_report()
+	pass
 
 func show_menu():
 	get_tree().paused = true

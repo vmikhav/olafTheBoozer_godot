@@ -17,7 +17,7 @@ extends Camera2D
 @export var target_return_enabled: bool = true
 @export var target_return_rate: float = 0.02
 @export var target_offset: Vector2 = Vector2.ZERO
-@export var target_follow_delay: float = 1.5
+@export var target_follow_delay: float = .5
 @export var pixel_perfect: bool = true
 
 @export_group("Camera Bounds")

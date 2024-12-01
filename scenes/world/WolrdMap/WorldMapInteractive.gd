@@ -15,9 +15,9 @@ func _ready() -> void:
 			#$Hero.navigate_to($Path2D, Vector2i(-53, -30))
 	)
 	#
-	get_tree().create_timer(7).timeout.connect(func():
-		scene_transaction.change_scene("res://scenes/game/Playground/Playground.tscn", {
-			levels = ["Tutorial0", "Kitchen", "Library", "Cellar", "Tavern"],
-			#levels = ["Tavern", "Tutorial0", "Kitchen", "Library", "Cellar"],
+	get_tree().create_timer(3).timeout.connect(func():
+		scene_transaction.change_scene("res://scenes/game/AdventurePlayground/AdventurePlayground.tscn", {
+			levels = ["StartTavern"],
+			#levels = ["Tutorial0", "Kitchen", "Library", "Cellar", "Tavern"],
 		})
 	)

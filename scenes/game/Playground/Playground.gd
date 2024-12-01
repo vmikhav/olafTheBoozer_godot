@@ -16,6 +16,7 @@ var level_progress_report: LevelProgressReport
 
 var level_index = 0
 var levels = [
+	"TavernTutorial",
 	"Library",
 	"Tutorial0",
 	"Kitchen",
@@ -110,11 +111,12 @@ func load_next_level():
 	await summary_container.dismiss_panel()
 	level.is_history_replay = false
 	await transition_rect.fade_out()
+	var next_scene = level.next_scene
 	level.queue_free()
 	level = null
 	level_index += 1
 	if levels.size() <= level_index:
-		exit_levels()
+		SceneSwitcher.change_scene_to_file(next_scene[0], next_scene[1])
 	else:
 		load_level(levels[level_index])
 		transition_rect.fade_in()

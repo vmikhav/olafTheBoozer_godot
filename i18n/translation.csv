@@ -15,10 +15,40 @@ Next,Next,Далі
 Pause,Pause,Пауза
 Continue,Continue,Продовжити
 Settings,Settings,Налаштування
-Торвін Круторіг,Torvin Sharphorn,Торвін Круторіг
+Олаф,Olaf,Олаф
+Торвін Круторіг,Torvin Cragiron,Торвін Круторіг
+Клім,Cleme,Клім
+Гримлак Зватенбарг,Grimlark Zwattenbarg,Гримлак Зватенбарг
 tb3fda6061e,"I hope you're ashamed of what you did here last night, friend!","Сподіваюсь, тобі соромно за те, що ти тут накоїв минулої ночі, друже!"
 t47ed6a1069,"Torvin emphasizes the last word with a particular sharpness. He looks at you from under his brow, diligently wiping down the semi-broken bar counter with a rag.","Останнє слово Торвін промовляє з особливою різкістю. Він дивиться на тебе з-під лоба, старанно протираючи ганчіркою напівзламану барну стійку."
-ta20fa9ce91,"Sorry, but I don't remember anything.","Перепрошую, та я нічого не пам’ятаю."
-t02868a0da3,"Ha! I'm never ashamed! Especially for things I don't remember!","Ха! Мені ніколи не соромно! Особливо за те, чого я не пам’ятаю!"
+ta20fa9ce91,"Sorry, but I don’t remember a thing.","Перепрошую, та я нічого не пам’ятаю."
+t02868a0da3,"Ha! I’m never ashamed! Especially of things I can’t remember!","Ха! Мені ніколи не соромно! Особливо за те, чого я не пам’ятаю!"
 t7065160959,"Huh? Who? Me? For what?","А? Хто? Я? За що?"
-te71e8ffa05,"So your memory's gone, is it? On the other hand, why am I even surprised! Someone else would have been sent straight to the afterlife from drinking that much. And you? Just a little memory lapse... Either way, I'm not letting you slink away! You'll pay me back for all the havoc you and your lot caused here last night.","То тобі пам’ять відшибло? А з іншого боку, чого я дивуюсь! Когось іншого така кількість випитого відправила б на той світ. А в тебе всього-на-всього провал в пам’яті... Так чи інакше, я тобі злиняти не дам! Ти мені заплатиш за весь той розгардіяш, що ви тут вночі наробили."
+te71e8ffa05,"So, you’ve got a memory blackout, have you? Then again, why am I even surprised? Anyone else would’ve drunk themselves into the grave with that amount, but you? Just a little memory gap... Either way, I’m not letting you off the hook! You’re gonna pay for all the mess you and your lot caused last night.","То тобі пам’ять відшибло? А з іншого боку, чого я дивуюсь! Когось іншого така кількість випитого відправила б на той світ. А в тебе всього-на-всього провал в пам’яті... Так чи інакше, я тобі злиняти не дам! Ти мені заплатиш за весь той розгардіяш, що ви тут вночі наробили."
+t12b6980f97,"You see a few bottles of beer left here since yesterday","Ви бачите кілька пляшок пива, які стоять тут ще від учора"
+t4a406cc786,"Drink","Випити"
+t335e3bf4b0,"Hey, buddy! How much more can you take? Damn it, they say it right: a drunk will sober up, but a fool never will...","Агов, друже! Та скільки можна? Трясця, правду кажуть: п’яниця – проспиться, а дурень – ніколи…"
+t3c5513291e,"Leave them be","Залишити як є"
+t6af4a5afe1,"In the fireplace, you find a half-burnt, crumpled piece of paper. Only the end ot the text remains legible: '...rder must be fulfilled no later than the day of the solstice, two hours before the coronation. Any deviation from the timeline will result in the immediate execution of the contractor.'","У каміні Ви знаходите напівзгорілий лежачий жужмом папірець. Видно лише кінець: '...амовлення має бути виконане не пізніше дня сонцестояння за дві години до коронації. У випадку будь-якого відхилення від термінів виконавець буде негайно страчений'"
+t113c272c47,"Where am I? What happened? Damn it... I can’t remember a thing! Looks like I overdid it last night...","Де я? Що сталося? Трясця… Нічого не пам’ятаю! Таки здається вчора перебрав…"
+tb6bf3de2c8,"But I couldn’t have wrecked all of this on my own!","Але ж я не один це все розгромив!"
+tc9c0cff070,"True enough. But you’re the only one left to answer for it, my friend! The other clods figured out what was coming and fled in the night. You’re the only one who stayed to sleep it off. Couldn’t wake you, couldn’t move you, so we had to wait until you came to on your own.","Твоя правда. Але ти єдиний, з кого я можу спитати, друже! Інші бовдури змогли допетрати, що їх чекає, тому ще вночі втекли. Ти єдиний, хто залишився тут ночувати. І ні розбудити, ні звести зі світу! Ось ми й чекали, поки сам оговтаєшся."
+t06241b004f,"Damn… Seems I’ve really got myself in deep this time.","Дідько… Здається, я вляпався по самі вуса."
+t5bd99f66c8,"Well, I’ll give those idiots a piece of my mind — once I remember what they look like...","Ну я цим бевзеням ще таку прочуханку влаштую! Коли згадаю, як вони виглядали..."
+t1e33823696,"At least I slept well.","Зате мені гарно спалося."
+tf18ce4b5de,"Sure. So, how are you planning to pay for all this?","Ага. То що, як розплачуватись будеш?"
+t13dec8972c,"Pretty sure I drank everything I had last night. My pockets are completely empty.","Здається, я вчора все пропив. У кишенях зовсім порожньо."
+t9e18e9a53c,"Then I’ve got no choice but to call the guards. Let them deal with you.","Тоді нічого іншого не залишається. Я кличу вартових. Хай вже вони розбираються з тобою."
+t72644c82cc,"Wait! I can clean it up and fix everything! I’m handy!","Зачекай! Я можу все прибрати й полагодити! Я рукатий!"
+tf99dd49d5f,"Don’t give me that! I need it exactly as it was before. That’s no small task.","Та годі заливати! Мені потрібно, щоб все було рівно так, як було до цієї ночі. Це не так вже й просто."
+tc0267e167f,"But I’ll do it, I swear!","Але я все зроблю!"
+t85d52e7790,"Hmm, promise?","Хм, обіцяєш?"
+tebc6157c46,"I promise!","Обіцяю!"
+t057eda89c2,"Trust me! I’m the most responsible dwarf you’ve ever met.","Вір мені! Я найвідповідальніший з усіх, кого ти коли-небудь бачив."
+ta26229f8cf,"Uh… yeah.","Ну… так."
+t5060265dd7,"Alright, fine. I’ll trust you. But just so you don’t run off or leave it half-done, I’ll tell you this: I’ve got something very important to you, though it seems you’ve forgotten all about it. I’ll give it back when you’ve done what you promised.","Що ж, добре, друже. Вірю. Але, щоб ти точно нікуди не втік і зробив все, як належно, я тобі ось, що розповім: є у мене дещо дуже важливе для тебе, хоч ти, здається, й сам про це забув. Поверну, тільки якщо зробиш все, як домовлялись."
+t64bda4f058,"And you won’t tell me what it is?","І ти мені не скажеш, що там?"
+t583b25071d,"Nope. I want to see you jump for joy when you realize what I’ve kept safe for you. But enough talking. Get to work. First, free little Cleme from the kitchen.","Ні. Хочу подивитись, як будеш стрибати від щастя, коли зрозумієш, від чого я тебе уберіг. А тепер досить базікати. Іди й берись до справи. Для початку, визволи-но малюка Кліма з кухні."
+tdbabd2416e,"Who?","Кого-кого?"
+t93d281443a,"Our cleaner. You and your pals dragged him into your games last night, then locked him in the kitchen. He’s behind the door to your left. Once you deal with Cleme, come back to me.","Нашого прибиральника, якого ви вночі затягнули у свої ігри, а потім заперли на кухні. Як розберешся з Клімом, повертайся."
+t2722d346ef,"Get Cleme out of the kitchen.","Дістань Кліма з кухні."

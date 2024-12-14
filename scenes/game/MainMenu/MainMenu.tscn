@@ -79,4 +79,18 @@ theme_override_fonts/font = ExtResource("1_87rnb")
 theme_override_font_sizes/font_size = 40
 text = "Play"
 
+[node name="MarginContainer2" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 50
+
+[node name="Button" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+theme = ExtResource("3_awe0n")
+theme_override_fonts/font = ExtResource("1_87rnb")
+theme_override_font_sizes/font_size = 40
+text = "Exit"
+
 [node name="SceneTransition" parent="UiLayer" instance=ExtResource("4_lkwgi")]

@@ -8,7 +8,7 @@ extends Node2D
 @onready var transition_rect = $UiLayer/SceneTransitionRect
 @onready var summary_container = $UiLayer/SummaryContainer
 @onready var nav_controller = $NavController
-@onready var menu = $UiLayer/LevelMenu
+@onready var menu = $MenuLayer/LevelMenu
 var level: BaseLevel = null
 
 var is_level_finished: bool = false
@@ -50,8 +50,18 @@ func _ready():
 	)
 	transition_rect.fade_in()
 
+func _process(delta):
+	if Input.is_action_just_pressed("ui_toggle_menu"):
+		show_menu()
+	if Input.is_action_just_pressed("ui_restart_level"):
+		restart()
+
 func imitate_input(input: InputEvent):
 	nav_controller._input(input)
+
+func undo_step():
+	if not is_level_finished:
+		level.step_back(true)
 
 func restart():
 	if not is_level_finished:
@@ -74,6 +84,8 @@ func move_hero(direction: String):
 		level.navigate(TileSet.CELL_NEIGHBOR_TOP_SIDE)
 	if direction == "ui_down":
 		level.navigate(TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
+	if direction == "ui_undo_step":
+		undo_step()
 
 func load_level(level_name: String):
 	if level != null:

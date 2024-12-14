@@ -327,7 +327,7 @@ func step_back(manual: bool = false):
 	var history_item = history.pop_back()
 	var previous_position = history[-1].position
 
-	if is_history_replay:
+	if is_history_replay or manual:
 		play_sfx_by_history(history_item)
 
 	move_hero_to_position(previous_position)

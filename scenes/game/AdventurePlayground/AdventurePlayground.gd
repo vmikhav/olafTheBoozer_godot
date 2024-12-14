@@ -5,7 +5,7 @@ extends Node2D
 @onready var menu_button = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/TextureButton as TextureButton
 @onready var transition_rect = $UiLayer/SceneTransitionRect
 @onready var nav_controller = $NavController
-@onready var menu = $UiLayer/AdventureMenu
+@onready var menu = $MenuLayer/AdventureMenu
 var level: BaseAdventure = null
 
 var is_level_finished: bool = false
@@ -35,6 +35,10 @@ func _ready():
 		exit_levels()
 	)
 	transition_rect.fade_in()
+
+func _process(delta):
+	if Input.is_action_just_pressed("ui_toggle_menu"):
+		show_menu()
 
 func imitate_input(input: InputEvent):
 	nav_controller._input(input)

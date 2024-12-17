@@ -26,7 +26,7 @@ StoryProgress="*res://scripts/StoryProgress.gd"
 [dialogue_manager]
 
 general/states=["StoryProgress"]
-general/balloon_path="res://scenes/ui/DialogueBaloon/DialogueBaloon.tscn"
+general/balloon_path="res://scenes/ui/DialogueBalloon/DialogueBalloon.tscn"
 
 [display]
 

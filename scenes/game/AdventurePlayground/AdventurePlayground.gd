@@ -5,7 +5,8 @@ extends Node2D
 @onready var menu_button = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/TextureButton as TextureButton
 @onready var transition_rect = $UiLayer/SceneTransitionRect
 @onready var nav_controller = $NavController
-@onready var menu = $MenuLayer/AdventureMenu
+#@onready var menu_layer = $MenuLayer
+@onready var menu = $UiLayer/AdventureMenu
 var level: BaseAdventure = null
 
 var is_level_finished: bool = false

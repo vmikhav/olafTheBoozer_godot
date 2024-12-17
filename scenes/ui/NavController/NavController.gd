@@ -20,30 +20,35 @@ func _set_actions(new_actions):
 		action_timers.push_back(0)
 
 func _input(event):
-	if event is InputEventJoypadMotion:
-		var stick_input := Vector2.ZERO
-		
-		# Assuming default joy axis bindings: 0 = left stick X, 1 = left stick Y
-		if event.axis == JOY_AXIS_LEFT_X:
-			stick_input.x = event.axis_value
-			stick_input.y = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
-		elif event.axis == JOY_AXIS_LEFT_Y:
-			stick_input.x = Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
-			stick_input.y = event.axis_value
-		else:
-			return
-			
-		# Apply deadzone
-		if stick_input.length() < joystick_deadzone:
-			stick_input = Vector2.ZERO
-		
-		process_joystick_direction(stick_input)
-	else:
-		for i in actions_to_track.size():
-			if event.is_action_pressed(actions_to_track[i]):
-				process_action_pressed(i)
-			if event.is_action_released(actions_to_track[i]):
-				process_button_released(i)
+	for i in actions_to_track.size():
+		if event.is_action_pressed(actions_to_track[i]):
+			process_action_pressed(i)
+		if event.is_action_released(actions_to_track[i]):
+			process_button_released(i)
+	#if event is InputEventJoypadMotion:
+	#	var stick_input := Vector2.ZERO
+	#	
+	#	# Assuming default joy axis bindings: 0 = left stick X, 1 = left stick Y
+	#	if event.axis == JOY_AXIS_LEFT_X:
+	#		stick_input.x = event.axis_value
+	#		stick_input.y = Input.get_joy_axis(0, JOY_AXIS_LEFT_Y)
+	#	elif event.axis == JOY_AXIS_LEFT_Y:
+	#		stick_input.x = Input.get_joy_axis(0, JOY_AXIS_LEFT_X)
+	#		stick_input.y = event.axis_value
+	#	else:
+	#		return
+	#		
+	#	# Apply deadzone
+	#	if stick_input.length() < joystick_deadzone:
+	#		stick_input = Vector2.ZERO
+	#	
+	#	process_joystick_direction(stick_input)
+	#else:
+	#	for i in actions_to_track.size():
+	#		if event.is_action_pressed(actions_to_track[i]):
+	#			process_action_pressed(i)
+	#		if event.is_action_released(actions_to_track[i]):
+	#			process_button_released(i)
 
 func process_action_pressed(index: int):
 	actions_pressed[index] = true

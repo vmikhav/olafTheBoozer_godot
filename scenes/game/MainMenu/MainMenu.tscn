@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://df525dujavlyd"]
+[gd_scene load_steps=11 format=3 uid="uid://df525dujavlyd"]
 
 [ext_resource type="Script" uid="uid://crsmg8g5yemts" path="res://scenes/game/MainMenu/MainMenu.gd" id="1_7fekw"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="1_87rnb"]
@@ -15,6 +15,13 @@ font_size = 100
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(4, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c3bsr"]
+font = ExtResource("1_87rnb")
+font_size = 50
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(5, 6)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_7fekw")
@@ -65,6 +72,15 @@ theme_override_font_sizes/font_size = 30
 text = "Olaf the Boozer"
 label_settings = SubResource("LabelSettings_n41tu")
 
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 200
+
+[node name="Label2" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer"]
+layout_mode = 2
+text = "Demo"
+label_settings = SubResource("LabelSettings_c3bsr")
+
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -90,7 +106,7 @@ custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
 theme = ExtResource("3_awe0n")
 theme_override_fonts/font = ExtResource("1_87rnb")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 32
 text = "Exit"
 
 [node name="SceneTransition" parent="UiLayer" instance=ExtResource("4_lkwgi")]

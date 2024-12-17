@@ -5,8 +5,8 @@ extends Node2D
 @onready var menu_button = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/TextureButton as TextureButton
 @onready var transition_rect = $UiLayer/SceneTransitionRect
 @onready var nav_controller = $NavController
-#@onready var menu_layer = $MenuLayer
-@onready var menu = $UiLayer/AdventureMenu
+@onready var menu_layer = $MenuLayer
+@onready var menu = $MenuLayer/AdventureMenu
 var level: BaseAdventure = null
 
 var is_level_finished: bool = false
@@ -114,9 +114,9 @@ func prepare_report():
 
 func show_menu():
 	get_tree().paused = true
-	menu.visible = true
+	menu_layer.visible = true
 	menu.init_modal()
 
 func close_menu():
-	menu.visible = false
+	menu_layer.visible = false
 	get_tree().paused = false

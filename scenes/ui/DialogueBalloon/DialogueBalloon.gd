@@ -89,6 +89,7 @@ func _ready() -> void:
 	balloon.hide()
 	Engine.get_singleton("DialogueManager").mutated.connect(_on_mutated)
 	balloon.gui_input.connect(_on_balloon_gui_input)
+	responses_menu.response_selected.connect(_on_responses_menu_response_selected)
 
 	# If the responses menu doesn't have a next action set, use this one
 	if responses_menu.next_action.is_empty():

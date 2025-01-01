@@ -11,6 +11,7 @@ var janitor_resqued = false
 var cellar_fixed = false
 var warehouse_fixed = false
 var counter_fixed = false
+var chicken_hit = 0
 
 
 func clear_progress():
@@ -25,3 +26,4 @@ func clear_progress():
 	cellar_fixed = false
 	warehouse_fixed = false
 	counter_fixed = false
+	chicken_hit = 0

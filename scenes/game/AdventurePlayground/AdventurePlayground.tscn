@@ -76,9 +76,10 @@ layout_mode = 2
 [node name="SceneTransitionRect" parent="UiLayer" instance=ExtResource("12_penv2")]
 
 [node name="NavController" parent="." instance=ExtResource("13_nbkt7")]
-actions_to_track = Array[String](["ui_up", "ui_left", "ui_right", "ui_down"])
+actions_to_track = Array[String](["step_up", "step_left", "step_right", "step_down"])
 
 [node name="MenuLayer" type="CanvasLayer" parent="."]
+layer = 102
 visible = false
 
 [node name="AdventureMenu" parent="MenuLayer" instance=ExtResource("7_62e5o")]

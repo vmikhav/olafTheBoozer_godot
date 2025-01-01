@@ -106,7 +106,7 @@ visible = false
 [node name="SceneTransitionRect" parent="UiLayer" instance=ExtResource("7_w6wfa")]
 
 [node name="NavController" parent="." instance=ExtResource("9_o631k")]
-actions_to_track = Array[String](["ui_up", "ui_left", "ui_right", "ui_down", "ui_undo_step"])
+actions_to_track = Array[String](["step_up", "step_left", "step_right", "step_down", "undo_step"])
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
 

@@ -323,6 +323,9 @@ func step_back(manual: bool = false):
 	if history.size() <= 1:
 		is_history_replay = false
 		return
+	
+	if manual and not allow_input:
+		return
 
 	var history_item = history.pop_back()
 	var previous_position = history[-1].position

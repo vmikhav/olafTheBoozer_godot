@@ -170,11 +170,11 @@ var sfx: Dictionary[String, Array] = {
 		Audio.new("res://assets/sfx/as_pс_so_olaf_footstep_2.wav")
 	],
 	"olaf_hiccup_idle": [
-		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_1.wav"),
-		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_2.wav"),
-		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_3.wav"),
-		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_4.wav"),
-		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_5.wav")
+		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_1.wav", 0.05),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_2.wav", 0.05),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_3.wav", 0.05),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_4.wav", 0.05),
+		Audio.new("res://assets/sfx/as_pс_so_olaf_hiccup_idle_5.wav", 0.05)
 	],
 	"footprints": [
 		Audio.new("res://assets/sfx/as_pс_so_olaf_footprints_1.wav"),
@@ -251,6 +251,11 @@ var sfx: Dictionary[String, Array] = {
 		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 8.wav"),
 		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 9.wav"),
 		Audio.new("res://assets/sfx/Recipe Notebook/Pencil on Paper 10.wav"),
+	],
+	"chicken": [
+		Audio.new("res://assets/sfx/chicken_1.wav"),
+		Audio.new("res://assets/sfx/chicken_2.wav"),
+		Audio.new("res://assets/sfx/chicken_4.wav")
 	],
 }
 

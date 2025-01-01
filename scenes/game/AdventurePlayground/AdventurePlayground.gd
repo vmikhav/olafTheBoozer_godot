@@ -38,7 +38,7 @@ func _ready():
 	transition_rect.fade_in()
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_toggle_menu"):
+	if Input.is_action_just_pressed("toggle_menu"):
 		show_menu()
 
 func imitate_input(input: InputEvent):
@@ -57,13 +57,13 @@ func start_replay():
 	level.replay()
 
 func move_hero(direction: String):
-	if direction == "ui_left":
+	if direction == "step_left":
 		level.navigate(TileSet.CELL_NEIGHBOR_LEFT_SIDE)
-	if direction == "ui_right":
+	if direction == "step_right":
 		level.navigate(TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
-	if direction == "ui_up":
+	if direction == "step_up":
 		level.navigate(TileSet.CELL_NEIGHBOR_TOP_SIDE)
-	if direction == "ui_down":
+	if direction == "step_down":
 		level.navigate(TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
 
 func load_level(level_name: String):
@@ -113,9 +113,10 @@ func prepare_report():
 	pass
 
 func show_menu():
-	get_tree().paused = true
-	menu_layer.visible = true
-	menu.init_modal()
+	if !get_tree().paused:
+		get_tree().paused = true
+		menu_layer.visible = true
+		menu.init_modal()
 
 func close_menu():
 	menu_layer.visible = false

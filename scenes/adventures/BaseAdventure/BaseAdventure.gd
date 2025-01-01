@@ -85,8 +85,8 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		if interactive_zones[i].active:
 			for pos in interactive_zones[i].positions:
 				if  pos == neighbor_pos:
-					interactive_zones[i].callback.call(i)
 					allow_input = false
+					interactive_zones[i].callback.call(i)
 					return
 
 	var can_move_result = can_move_to(neighbor_pos)

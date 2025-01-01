@@ -3,7 +3,7 @@ extends Node2D
 @onready var camera = $TouchCamera as TouchCamera
 @onready var nav_buttons = $UiLayer/HudContainer/VBoxContainer/HBoxContainer2/NavButtons
 @onready var progress_panel = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer/ProgressPanel
-@onready var restart_button = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer3/TextureButton as TextureButton
+@onready var undo_button = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer3/TextureButton as TextureButton
 @onready var menu_button = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/TextureButton as TextureButton
 @onready var transition_rect = $UiLayer/SceneTransitionRect
 @onready var summary_container = $UiLayer/SummaryContainer
@@ -34,7 +34,7 @@ func _ready():
 	load_level(levels[level_index])
 	nav_buttons.actions.connect(imitate_input)
 	nav_controller.actions.connect(move_hero)
-	restart_button.pressed.connect(restart)
+	undo_button.pressed.connect(undo_step)
 	menu_button.pressed.connect(show_menu)
 	summary_container.restart.connect(restart)
 	summary_container.next.connect(load_next_level)
@@ -51,9 +51,9 @@ func _ready():
 	transition_rect.fade_in()
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_toggle_menu"):
+	if Input.is_action_just_pressed("toggle_menu"):
 		show_menu()
-	if Input.is_action_just_pressed("ui_restart_level"):
+	if Input.is_action_just_pressed("restart_level"):
 		restart()
 
 func imitate_input(input: InputEvent):
@@ -76,15 +76,15 @@ func start_replay():
 	level.replay()
 
 func move_hero(direction: String):
-	if direction == "ui_left":
+	if direction == "step_left":
 		level.navigate(TileSet.CELL_NEIGHBOR_LEFT_SIDE)
-	if direction == "ui_right":
+	if direction == "step_right":
 		level.navigate(TileSet.CELL_NEIGHBOR_RIGHT_SIDE)
-	if direction == "ui_up":
+	if direction == "step_up":
 		level.navigate(TileSet.CELL_NEIGHBOR_TOP_SIDE)
-	if direction == "ui_down":
+	if direction == "step_down":
 		level.navigate(TileSet.CELL_NEIGHBOR_BOTTOM_SIDE)
-	if direction == "ui_undo_step":
+	if direction == "undo_step":
 		undo_step()
 
 func load_level(level_name: String):

@@ -5,10 +5,10 @@ extends MarginContainer
 @onready var right_button = $VBoxContainer/HBoxContainer/MarginContainer2/RightButton as TextureButton
 @onready var down_button = $VBoxContainer/MarginContainer2/DownButton as TextureButton
 @onready var buttons = {
-	"ui_up" = self.up_button,
-	"ui_left" = self.left_button,
-	"ui_right" = self.right_button,
-	"ui_down" = self.down_button,
+	"step_up" = self.up_button,
+	"step_left" = self.left_button,
+	"step_right" = self.right_button,
+	"step_down" = self.down_button,
 }
 
 signal actions(action: InputEventAction)

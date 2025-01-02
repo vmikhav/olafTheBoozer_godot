@@ -4,6 +4,7 @@ var first_dialogue = preload("res://scenes/adventures/StartTavern/start_tavern.d
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Hints.visible = false
 	tilemaps = [
 		$Ground, $Floor, $Walls, $Trails, $Items, $Trees,
 	]
@@ -27,6 +28,7 @@ func _ready():
 	init_map()
 	
 	if !StoryProgress.intro:
+		$Hints.visible = true
 		get_tree().create_timer(1.75).connect("timeout", intro)
 	if !StoryProgress.tavern_flashback:
 		next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["TavernTutorial"]}]

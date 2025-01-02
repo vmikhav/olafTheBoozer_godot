@@ -1,11 +1,90 @@
-[gd_scene load_steps=4 format=4 uid="uid://nx38sn7e5o4c"]
+[gd_scene load_steps=14 format=4 uid="uid://nx38sn7e5o4c"]
 
 [ext_resource type="Script" uid="uid://v5868hhjwc7t" path="res://scenes/adventures/StartTavern/StartTavern.gd" id="1_03nlp"]
+[ext_resource type="Texture2D" uid="uid://dfnbg5i0yj6dl" path="res://assets/images/input_prompts.png" id="2_8oujm"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_8uynj"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_imgfv"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_olm4y"]
+resource_local_to_scene = true
+atlas = ExtResource("2_8oujm")
+region = Rect2(306, 34, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tslji"]
+atlas = ExtResource("2_8oujm")
+region = Rect2(306, 51, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c5s0"]
+atlas = ExtResource("2_8oujm")
+region = Rect2(323, 51, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1sgaq"]
+atlas = ExtResource("2_8oujm")
+region = Rect2(339, 51, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_218hp"]
+atlas = ExtResource("2_8oujm")
+region = Rect2(510, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvnx5"]
+atlas = ExtResource("2_8oujm")
+region = Rect2(561, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omwg3"]
+atlas = ExtResource("2_8oujm")
+region = Rect2(544, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3jho"]
+atlas = ExtResource("2_8oujm")
+region = Rect2(527, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i78k1"]
+atlas = ExtResource("2_8oujm")
+region = Rect2(0, 85, 16, 16)
+
 [node name="StartTavern" type="Node2D"]
 script = ExtResource("1_03nlp")
+
+[node name="Hints" type="Node2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(0, 90)
+
+[node name="W" type="Sprite2D" parent="Hints"]
+position = Vector2(-74, 0)
+texture = SubResource("AtlasTexture_olm4y")
+
+[node name="A" type="Sprite2D" parent="Hints"]
+position = Vector2(-89, 15)
+texture = SubResource("AtlasTexture_tslji")
+
+[node name="S" type="Sprite2D" parent="Hints"]
+position = Vector2(-74, 15)
+texture = SubResource("AtlasTexture_1c5s0")
+
+[node name="D" type="Sprite2D" parent="Hints"]
+position = Vector2(-60, 15)
+texture = SubResource("AtlasTexture_1sgaq")
+
+[node name="Up" type="Sprite2D" parent="Hints"]
+position = Vector2(-22, 0)
+texture = SubResource("AtlasTexture_218hp")
+
+[node name="Left" type="Sprite2D" parent="Hints"]
+position = Vector2(-37, 15)
+texture = SubResource("AtlasTexture_rvnx5")
+
+[node name="Down" type="Sprite2D" parent="Hints"]
+position = Vector2(-22, 15)
+texture = SubResource("AtlasTexture_omwg3")
+
+[node name="Right" type="Sprite2D" parent="Hints"]
+position = Vector2(-8, 15)
+texture = SubResource("AtlasTexture_t3jho")
+
+[node name="Dpad" type="Sprite2D" parent="Hints"]
+position = Vector2(19, 8)
+texture = SubResource("AtlasTexture_i78k1")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 y_sort_enabled = true

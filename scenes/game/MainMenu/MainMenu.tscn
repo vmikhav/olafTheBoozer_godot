@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://df525dujavlyd"]
+[gd_scene load_steps=15 format=3 uid="uid://df525dujavlyd"]
 
 [ext_resource type="Script" uid="uid://crsmg8g5yemts" path="res://scenes/game/MainMenu/MainMenu.gd" id="1_7fekw"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="1_87rnb"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://b5k4ucg3lry0c" path="res://assets/images/Outside castle/front.png" id="4_6jrop"]
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="4_lkwgi"]
 [ext_resource type="FontFile" uid="uid://cxtw8p5wygf2e" path="res://assets/fonts/vinque.rg-regular.otf" id="6_fmlrm"]
+[ext_resource type="Texture2D" uid="uid://dxcvgudbobo1x" path="res://assets/images/Pix_Socials Square.png" id="8_bvnvu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n41tu"]
 font = ExtResource("6_fmlrm")
@@ -22,6 +23,18 @@ font_size = 50
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvnvu"]
+atlas = ExtResource("8_bvnvu")
+region = Rect2(2, 142, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ho80n"]
+atlas = ExtResource("8_bvnvu")
+region = Rect2(102, 182, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1r82"]
+atlas = ExtResource("8_bvnvu")
+region = Rect2(22, 22, 16, 16)
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_7fekw")
@@ -87,9 +100,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = 50
 
-[node name="Button" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Play" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
+focus_next = NodePath("../../MarginContainer2/Exit")
 theme = ExtResource("3_awe0n")
 theme_override_fonts/font = ExtResource("1_87rnb")
 theme_override_font_sizes/font_size = 40
@@ -101,12 +115,79 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = 50
 
-[node name="Button" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="Exit" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2"]
 custom_minimum_size = Vector2(300, 80)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../../../../Socials/MarginContainer/HBoxContainer/Steam")
+focus_next = NodePath("../../../../Socials/MarginContainer/HBoxContainer/Steam")
+focus_previous = NodePath("../../MarginContainer/Play")
 theme = ExtResource("3_awe0n")
 theme_override_fonts/font = ExtResource("1_87rnb")
 theme_override_font_sizes/font_size = 32
 text = "Exit"
+
+[node name="Socials" type="CenterContainer" parent="UiLayer"]
+texture_filter = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/Socials"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/Socials/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+alignment = 1
+
+[node name="Steam" type="LinkButton" parent="UiLayer/Socials/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../../MarginContainer/VBoxContainer/MarginContainer2/Exit")
+focus_next = NodePath("../Bsky")
+focus_previous = NodePath("../../../../MarginContainer/VBoxContainer/MarginContainer2/Exit")
+focus_mode = 2
+action_mode = 0
+uri = "https://store.steampowered.com/app/3001110/Olaf_the_Boozer/"
+
+[node name="Sprite2D" type="Sprite2D" parent="UiLayer/Socials/MarginContainer/HBoxContainer/Steam"]
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_bvnvu")
+centered = false
+
+[node name="Bsky" type="LinkButton" parent="UiLayer/Socials/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../../MarginContainer/VBoxContainer/MarginContainer2/Exit")
+focus_next = NodePath("../Discord")
+focus_previous = NodePath("../Steam")
+focus_mode = 2
+action_mode = 0
+uri = "https://bsky.app/profile/vmikhav.bsky.social"
+
+[node name="Sprite2D" type="Sprite2D" parent="UiLayer/Socials/MarginContainer/HBoxContainer/Bsky"]
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_ho80n")
+centered = false
+
+[node name="Discord" type="LinkButton" parent="UiLayer/Socials/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../../../../MarginContainer/VBoxContainer/MarginContainer2/Exit")
+focus_next = NodePath("../../../../MarginContainer/VBoxContainer/MarginContainer/Play")
+focus_previous = NodePath("../Bsky")
+focus_mode = 2
+action_mode = 0
+uri = "https://discord.gg/yfGh8Y86"
+
+[node name="Sprite2D" type="Sprite2D" parent="UiLayer/Socials/MarginContainer/HBoxContainer/Discord"]
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_h1r82")
+centered = false
 
 [node name="SceneTransition" parent="UiLayer" instance=ExtResource("4_lkwgi")]

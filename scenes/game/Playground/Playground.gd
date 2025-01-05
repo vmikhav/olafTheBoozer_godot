@@ -10,14 +10,16 @@ extends Node2D
 @onready var nav_controller = $NavController
 @onready var menu = $MenuLayer/LevelMenu
 var level: BaseLevel = null
+var current_level_name: String
 
 var is_level_finished: bool = false
+var in_intro: bool = false
 var level_progress_report: LevelProgressReport
 
 var level_index = 0
 var levels = [
-	"TavernWarehouse",
 	"TavernTutorial",
+	"TavernWarehouse",
 	"Cellar",
 	"Library",
 	"Tutorial0",
@@ -48,7 +50,7 @@ func _ready():
 		close_menu()
 		exit_levels()
 	)
-	transition_rect.fade_in()
+	play_intro()
 
 func _process(delta):
 	if Input.is_action_just_pressed("toggle_menu"):
@@ -64,13 +66,15 @@ func undo_step():
 		level.step_back(true)
 
 func restart():
+	if in_intro:
+		return
 	if not is_level_finished:
 		prepare_report()
 	await transition_rect.fade_out()
 	is_level_finished = false
 	level.restart()
 	prepare_ui_for_level()
-	transition_rect.fade_in()
+	play_intro(false)
 
 func start_replay():
 	level.replay()
@@ -91,8 +95,13 @@ func load_level(level_name: String):
 	if level != null:
 		level.queue_free()
 	is_level_finished = false
-	var pack = load("res://scenes/levels/" + level_name + "/" + level_name + ".tscn") as PackedScene
-	level = pack.instantiate() as BaseLevel
+	current_level_name = level_name
+	var path := get_level_path(level_name)
+	if !ResourceLoader.exists(path):
+		push_error("Level " + level_name + " not found")
+		exit_levels()
+		return
+	level = load(path).instantiate() as BaseLevel
 	add_child(level)
 	level.process_mode = PROCESS_MODE_PAUSABLE	
 	camera.set_target(level.hero)
@@ -133,20 +142,25 @@ func load_next_level():
 		SceneSwitcher.change_scene_to_file(next_scene[0], next_scene[1])
 	else:
 		load_level(levels[level_index])
-		transition_rect.fade_in()
+		play_intro()
 
 func exit_levels():
 	AudioController.stop_music()
+	prepare_report()
 	SceneSwitcher.change_scene_to_file("res://scenes/game/MainMenu/MainMenu.tscn")
 
 func prepare_report():
 	level_progress_report = level.fill_progress_report()
 	level_progress_report.level = levels[level_index]
+	if level_progress_report.steps_count == 0:
+		return
 	var json = level_progress_report.log_report()
 	var headers = ["Content-Type: application/json"]
 	$HTTPRequest.request("https://hidalgocode.com/d/olaf.php", headers, HTTPClient.METHOD_POST, json)
 
 func show_menu():
+	if in_intro:
+		return
 	get_tree().paused = true
 	menu.visible = true
 	menu.init_modal()
@@ -154,3 +168,34 @@ func show_menu():
 func close_menu():
 	menu.visible = false
 	get_tree().paused = false
+
+func get_level_path(_name: String) -> String:
+	var level_name = _name
+	return "res://scenes/levels/" + level_name + "/" + level_name + ".tscn"
+
+func get_level_intro_path(_name: String) -> String:
+	var level_name = _name
+	return "res://scenes/levels/" + level_name + "/" + level_name + "_intro.tscn"
+
+func play_intro(init: bool = true):
+	var intro_path := get_level_intro_path(current_level_name)
+	var intro: BaseLevelIntro = null
+	if ResourceLoader.exists(intro_path):
+		intro = load(intro_path).instantiate() as BaseLevelIntro
+		add_child(intro)
+	if intro == null:
+		transition_rect.fade_in()
+		return
+	in_intro = true
+	var fade = 0.5 if init else 0.25
+	$UiLayer/HudContainer.visible = false
+	await transition_rect.fade_in(fade)
+	intro.visible = true
+	intro.play(init)
+	await intro.finished
+	await transition_rect.fade_out(fade)
+	intro.queue_free()
+	intro = null
+	$UiLayer/HudContainer.visible = true
+	in_intro = false
+	transition_rect.fade_in(fade)

@@ -13,6 +13,7 @@ signal exit
 signal settings
 
 func _ready():
+	restore_button.grab_focus.call_deferred()
 	restore_button.pressed.connect(close_modal)
 	restart_button.pressed.connect(restart_level)
 	world_button.pressed.connect(exit_level)

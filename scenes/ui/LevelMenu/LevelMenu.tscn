@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://4j3ebc64sxog"]
 
-[ext_resource type="Script" path="res://scenes/ui/LevelMenu/LevelMenu.gd" id="1_x2bin"]
+[ext_resource type="Script" uid="uid://cm1x2rxunuioo" path="res://scenes/ui/LevelMenu/LevelMenu.gd" id="1_x2bin"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="2_olgr2"]
 [ext_resource type="PackedScene" uid="uid://qbwqcgn7su0n" path="res://scenes/ui/SettingsMenu/SettingsMenu.tscn" id="3_ruogs"]
 

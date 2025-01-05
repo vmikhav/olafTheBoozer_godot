@@ -70,8 +70,12 @@ func load_level(level_name: String):
 	if level != null:
 		level.queue_free()
 	is_level_finished = false
-	var pack = load("res://scenes/adventures/" + level_name + "/" + level_name + ".tscn") as PackedScene
-	level = pack.instantiate() as BaseAdventure
+	var path := "res://scenes/adventures/" + level_name + "/" + level_name + ".tscn"
+	if !ResourceLoader.exists(path):
+		push_error("Level " + level_name + " not found")
+		exit_levels()
+		return
+	level = load(path).instantiate() as BaseAdventure
 	add_child(level)
 	level.process_mode = PROCESS_MODE_PAUSABLE	
 	camera.set_target(level.hero)

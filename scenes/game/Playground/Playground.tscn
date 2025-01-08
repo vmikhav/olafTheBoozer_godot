@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://b71ry63srqrdy"]
+[gd_scene load_steps=15 format=3 uid="uid://b71ry63srqrdy"]
 
 [ext_resource type="Script" uid="uid://18e7n6gvmn03" path="res://scenes/game/Playground/Playground.gd" id="1_4ts3o"]
+[ext_resource type="Texture2D" uid="uid://dxw54ee33wbrm" path="res://assets/images/back.png" id="2_mxuir"]
 [ext_resource type="PackedScene" uid="uid://ias8gsdjebhw" path="res://scenes/ui/TouchCamera/TouchCamera.tscn" id="2_ylx20"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="3_fgile"]
 [ext_resource type="Texture2D" uid="uid://dysd3t3vacti6" path="res://assets/images/button_reset.png" id="4_4j3n4"]
@@ -17,6 +18,20 @@
 [node name="Playground" type="Node2D"]
 process_mode = 1
 script = ExtResource("1_4ts3o")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+modulate = Color(0.821789, 0.821789, 0.821789, 1)
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_mxuir")
+stretch_mode = 6
 
 [node name="TouchCamera" parent="." instance=ExtResource("2_ylx20")]
 zoom = Vector2(3, 3)

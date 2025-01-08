@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://crxdempfp3ekf"]
+
+[ext_resource type="Script" uid="uid://g371cvj2cmxu" path="res://scenes/sprites/Splash/Splash.gd" id="1_fv8h5"]
+[ext_resource type="Texture2D" uid="uid://bku0238bl3jgf" path="res://assets/vfx/273.png" id="2_w7cro"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63ie5"]
+atlas = ExtResource("2_w7cro")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2x7r5"]
+atlas = ExtResource("2_w7cro")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3bqgx"]
+atlas = ExtResource("2_w7cro")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12q0p"]
+atlas = ExtResource("2_w7cro")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulgox"]
+atlas = ExtResource("2_w7cro")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfwct"]
+atlas = ExtResource("2_w7cro")
+region = Rect2(320, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yjp88"]
+atlas = ExtResource("2_w7cro")
+region = Rect2(384, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3d8f"]
+atlas = ExtResource("2_w7cro")
+region = Rect2(448, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bkjd1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63ie5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2x7r5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3bqgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12q0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulgox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfwct")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yjp88")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q3d8f")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="Splash" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_fv8h5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_bkjd1")
+autoplay = "default"
+frame = 7
+frame_progress = 1.0

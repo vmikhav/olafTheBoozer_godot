@@ -10,6 +10,8 @@ enum Layer {
 
 var defs = LevelDefinitions
 
+var splash_scene: PackedScene = preload("res://scenes/sprites/Splash/Splash.tscn")
+
 # parameters from an implemented scene
 var tilemaps: Array[TileMapLayer]
 var hero: Node2D
@@ -273,6 +275,7 @@ func process_ghosts(neighbor_pos: Vector2i, history_item: Dictionary):
 	for i in ghosts.size():
 		if can_consume_ghost(i, neighbor_pos):
 			consume_ghost(i, history_item)
+			display_splash(neighbor_pos)
 			break
 
 func can_consume_ghost(ghost_index: int, neighbor_pos: Vector2i) -> bool:
@@ -532,6 +535,7 @@ func move_draggable_item(item_pos: Vector2i, direction: TileSet.CellNeighbor):
 		ghosts_progress -= 1
 	if new_movable == item_coords:
 		ghosts_progress += 1
+		display_splash(new_pos)
 	ghosts_progress_signal.emit(ghosts_progress)
 
 	update_cell(item_pos, Vector2i(-1, -1), 0, Layer.ITEMS)
@@ -574,3 +578,9 @@ func calc_score() -> int:
 			(progress_report.progress_items + progress_report.progress_ghosts) * 1.0
 			/ (progress_report.total_items + progress_report.total_ghosts)
 		) * 100)
+
+func display_splash(tile_pos: Vector2) -> void:
+	var splash = splash_scene.instantiate() as Node2D
+	add_child(splash)
+	splash.z_index = 50
+	splash.position = (tile_pos + Vector2(0.5, 0.5)) * TILE_SIZE

@@ -10,340 +10,202 @@ extends Camera2D
 @export_group("Zoom Settings")
 @export var min_zoom: float = 1
 @export var max_zoom: float = 4
-@export var zoom_speed: float = 0.1
-@export var zoom_sensitivity: float = 400
+@export var zoom_speed: float = 0.5
 
 @export_group("Target Following")
 @export var target_return_enabled: bool = true
 @export var target_return_rate: float = 0.02
 @export var target_offset: Vector2 = Vector2.ZERO
-@export var target_follow_delay: float = .5
-@export var pixel_perfect: bool = true
+@export var target_follow_delay: float = .15
 
-@export_group("Camera Bounds")
-#@export var camera_bounds: Rect2 = Rect2(-1000, -1000, 2000, 2000)
-@export var elastic_bounds: bool = true
-@export var elastic_force: float = 0.1
+@export_group("Drag Margins")
+@export var default_margins: Vector4 = Vector4(0.7, 0.7, 0.7, 0.7)  # left, right, top, bottom
 
 @export_group("Movement Settings")
-@export var can_restore_drag: bool = true
-@export var ignore_input: bool = false
 @export var use_momentum: bool = true
 @export var momentum_friction: float = 0.9
 @export var zoom_dependent_speed: bool = true
+@export var pixel_perfect: bool = true
 
 # Internal variables
-@onready var drag_enabled = self.drag_horizontal_enabled
-@onready var target_zoom: float = self.zoom.x
-
-var timer: Timer
-var events = {}
-var last_drag_distance: float = 0
-var after_zoom: bool = false
-var touch_events: bool = false
-var timer_flag: bool = true
 var target: Node2D
-var zoom_tween: Tween
-var smoothing_tween: Tween
-var last_target_pos: Vector2
-var teleport_threshold: float = 64.0  # Distance in pixels to consider as teleport
-var default_drag_margins: Vector4  # left, right, top, bottom
-var original_drag_margins: Vector4  # left, right, top, bottom
-var is_adjusting_margins: bool = false
-
+var events = {}
 var velocity: Vector2 = Vector2.ZERO
-var last_position: Vector2 = Vector2.ZERO
-var elastic_offset: Vector2 = Vector2.ZERO
+var target_zoom: float = 1.0
+var last_drag_distance: float = 0.0
+var zoom_tween: Tween
+var follow_timer: Timer
+var can_follow: bool = true
+var screen_size: Vector2
+var last_target_pos: Vector2
 var base_movement_speed: float = 2.0
-var min_movement_threshold: float = 0.001  # Prevents micro-movements
-var max_movement_speed: float = 10.0  # Prevents too fast movement
+var force_center: bool = false
 
 func _ready() -> void:
-	setup_timer()
-	position_smoothing_enabled = true
+	follow_timer = Timer.new()
+	follow_timer.one_shot = true
+	follow_timer.wait_time = target_follow_delay
+	follow_timer.timeout.connect(func(): can_follow = true)
+	add_child(follow_timer)
 	
-	default_drag_margins = Vector4(
-		drag_left_margin,
-		drag_right_margin,
-		drag_top_margin,
-		drag_bottom_margin
-	)
+	target_zoom = zoom.x
+	screen_size = get_viewport_rect().size
 	
-	original_drag_margins = Vector4(
-		drag_left_margin,
-		drag_right_margin,
-		drag_top_margin,
-		drag_bottom_margin
-	)
-	
-	# Enable pixel-perfect rendering if needed
 	if pixel_perfect:
 		position_smoothing_enabled = false
-		set_process_mode(Node.PROCESS_MODE_PAUSABLE)
+	else:
+		position_smoothing_enabled = true
 	
-	if target:
-		last_target_pos = target.position
-
-func setup_timer() -> void:
-	timer = Timer.new()
-	timer.wait_time = target_follow_delay
-	timer.one_shot = true
-	add_child(timer)
-	timer.stop()
-	timer.timeout.connect(func(): timer_flag = true)
+	# Set initial drag margins
+	set_drag_margins(default_margins)
 
 func _physics_process(delta: float) -> void:
 	if use_momentum:
 		apply_momentum(delta)
 	
-	if elastic_bounds:
-		apply_elastic_bounds(delta)
-	
-	if target and target_return_enabled and timer_flag:# and events.size() == 0:
+	if target and target_return_enabled and can_follow and events.is_empty():
 		follow_target(delta)
 	
 	if pixel_perfect:
 		position = position.round()
+		
+	position = get_clamped_position(position)
 
 func apply_momentum(delta: float) -> void:
 	if velocity.length_squared() > 0.1:
-		var movement = velocity * delta
-		position += movement
+		position += velocity * delta
 		velocity *= momentum_friction
 	else:
 		velocity = Vector2.ZERO
 
-func apply_elastic_bounds(delta: float) -> void:
-	var screen_size = get_viewport_rect().size
-	var half_width = (screen_size.x / 2) / zoom.x
-	var half_height = (screen_size.y / 2) / zoom.y
-	
-	var min_x = limit_left + half_width
-	var max_x = limit_right - half_width
-	var min_y = limit_top + half_height
-	var max_y = limit_bottom - half_height
-	
-	if position.x < min_x:
-		elastic_offset.x += (min_x - position.x) * elastic_force * delta
-	elif position.x > max_x:
-		elastic_offset.x += (max_x - position.x) * elastic_force * delta
-	
-	if position.y < min_y:
-		elastic_offset.y += (min_y - position.y) * elastic_force * delta
-	elif position.y > max_y:
-		elastic_offset.y += (max_y - position.y) * elastic_force * delta
-	
-	elastic_offset *= 0.9
-	position += elastic_offset
-
 func follow_target(delta: float) -> void:
 	if not target:
 		return
-	
+		
 	var target_pos = target.position + target_offset
-	# Check if target has "teleported"
-	if target_pos.distance_to(last_target_pos) > teleport_threshold:
-		# Target has moved significantly, treat as teleport
-		reduce_drag_margins()
 	
-	last_target_pos = target.position
-	
-	# Get the screen dimensions
-	var screen_size = get_viewport_rect().size
-	var half_width = (screen_size.x / 2) / zoom.x
-	var half_height = (screen_size.y / 2) / zoom.y
-	
-	# Calculate distance to edges as a percentage
-	var left_distance = (target_pos.x - (position.x - half_width)) / screen_size.x
-	var right_distance = ((position.x + half_width) - target_pos.x) / screen_size.x
-	var top_distance = (target_pos.y - (position.y - half_height)) / screen_size.y
-	var bottom_distance = ((position.y + half_height) - target_pos.y) / screen_size.y
-	
-	# Adjust margins based on proximity to edges
-	var edge_threshold = 0.1  # Start reducing margins when target is within 20% of edge
-	var was_adjusting = is_adjusting_margins
-	is_adjusting_margins = false
-	
-	if left_distance < edge_threshold:
-		drag_left_margin = lerp(0.0, default_drag_margins.x, left_distance / edge_threshold)
-		is_adjusting_margins = true
-	elif right_distance < edge_threshold:
-		drag_right_margin = lerp(0.0, default_drag_margins.y, right_distance / edge_threshold)
-		is_adjusting_margins = true
-	
-	if top_distance < edge_threshold:
-		drag_top_margin = lerp(0.0, default_drag_margins.z, top_distance / edge_threshold)
-		is_adjusting_margins = true
-	elif bottom_distance < edge_threshold:
-		drag_bottom_margin = lerp(0.0, default_drag_margins.w, bottom_distance / edge_threshold)
-		is_adjusting_margins = true
-	
-	# Restore margins if we're no longer near edges
-	if was_adjusting and !is_adjusting_margins:
-		restore_drag_margins()
-	
-	# Normal following behavior
-	if position.distance_squared_to(target_pos) < 1:
-		position = target_pos
-		if can_restore_drag:
-			restore_drag()
-	else:
-		var new_pos = position.lerp(target_pos, target_return_rate)
-		position = clamp_position(new_pos)
-
-func clamp_position(pos: Vector2) -> Vector2:
-	var screen_size = get_viewport_rect().size
-	var half_width = (screen_size.x / 2) / zoom.x
-	var half_height = (screen_size.y / 2) / zoom.y
-	
-	# Add some margin to prevent the target from getting too close to the edge
-	var margin = Vector2(half_width * 0.02, half_height * 0.02)
-	
-	var min_x = limit_left + half_width - margin.x
-	var max_x = limit_right - half_width + margin.x
-	var min_y = limit_top + half_height - margin.y
-	var max_y = limit_bottom - half_height + margin.y
-	
-	# Only clamp if limits are set
-	var clamped_x = pos.x
-	var clamped_y = pos.y
-	
-	if limit_left < limit_right:  # Only clamp if horizontal limits are valid
-		clamped_x = clamp(pos.x, min_x, max_x)
-	
-	if limit_top < limit_bottom:  # Only clamp if vertical limits are valid
-		clamped_y = clamp(pos.y, min_y, max_y)
-	
-	return Vector2(clamped_x, clamped_y)
-
-func reduce_drag_margins() -> void:
-	# Reduce all margins to center the target
-	drag_left_margin = default_drag_margins.x * 0.2
-	drag_right_margin = default_drag_margins.y * 0.2
-	drag_top_margin = default_drag_margins.z * 0.2
-	drag_bottom_margin = default_drag_margins.w * 0.2
-
-func restore_drag_margins() -> void:
-	# Restore original margins
-	drag_left_margin = default_drag_margins.x
-	drag_right_margin = default_drag_margins.y
-	drag_top_margin = default_drag_margins.z
-	drag_bottom_margin = default_drag_margins.w
-
-func _unhandled_input(event: InputEvent) -> void:
-	if ignore_input:
+	# When force_center is true, ignore drag margins
+	if force_center:
+		position = position.lerp(target_pos, target_return_rate)
+		if position.distance_squared_to(target_pos) < 1:
+			force_center = false
 		return
 	
-	if handle_touch_input(event) or handle_mouse_input(event):
-		timer_flag = false
-		timer.start(3)
+	# Calculate screen boundaries with drag margins
+	var half_screen = get_screen_center_offset()
+	var margin_left = half_screen.x * (1 - drag_left_margin)
+	var margin_right = half_screen.x * (1 - drag_right_margin)
+	var margin_top = half_screen.y * (1 - drag_top_margin)
+	var margin_bottom = half_screen.y * (1 - drag_bottom_margin)
+	
+	var view_rect = Rect2(
+		position - half_screen + Vector2(margin_left, margin_top),
+		Vector2(screen_size.x / zoom.x - margin_left - margin_right, 
+				screen_size.y / zoom.x - margin_top - margin_bottom) 
+	)
+	
+	# Only move camera if target is outside drag margin bounds
+	if not view_rect.has_point(target_pos):
+		position = position.lerp(target_pos, target_return_rate)
 
-func handle_touch_input(event: InputEvent) -> bool:
-	if event is InputEventScreenTouch:
-		handle_screen_touch(event)
-		return true
-	elif event is InputEventScreenDrag:
-		handle_screen_drag(event)
-		return true
-	return false
+func get_screen_center_offset() -> Vector2:
+	return (screen_size / 2) / zoom.x
 
-func handle_mouse_input(event: InputEvent) -> bool:
-	if not touch_events:
-		if event is InputEventMouseButton:
-			handle_mouse_button(event)
-			return true
-		elif event is InputEventMouseMotion:
-			handle_mouse_motion(event)
-			return true
-	return false
+func get_clamped_position(pos: Vector2) -> Vector2:
+	var half_screen = get_screen_center_offset()
+	var clamped_pos = pos
+	
+	if limit_left < limit_right:
+		var min_x = limit_left + half_screen.x
+		var max_x = limit_right - half_screen.x
+		
+		if max_x - min_x < 0:
+			clamped_pos.x = (limit_left + limit_right) / 2
+		else:
+			clamped_pos.x = clamp(pos.x, min_x, max_x)
+	
+	if limit_top < limit_bottom:
+		var min_y = limit_top + half_screen.y
+		var max_y = limit_bottom - half_screen.y
+		
+		if max_y - min_y < 0:
+			clamped_pos.y = (limit_top + limit_bottom) / 2
+		else:
+			clamped_pos.y = clamp(pos.y, min_y, max_y)
+	
+	return clamped_pos
 
-func handle_screen_touch(event: InputEventScreenTouch) -> void:
-	touch_events = true
+func _unhandled_input(event: InputEvent) -> void:
+	match event:
+		var e when e is InputEventScreenTouch:
+			handle_touch(e)
+		var e when e is InputEventScreenDrag:
+			handle_drag(e)
+		var e when e is InputEventMouseButton:
+			handle_mouse_button(e)
+		var e when e is InputEventMouseMotion:
+			handle_mouse_motion(e)
+
+func handle_touch(event: InputEventScreenTouch) -> void:
 	if event.pressed:
 		events[event.index] = event
-		after_zoom = false
 		velocity = Vector2.ZERO
-		if events.size() == 1:
-			disable_drag()
-			last_position = event.position
-		else:
-			last_drag_distance = events[0].position.distance_squared_to(events[1].position)
+		if events.size() == 2:
+			last_drag_distance = events[0].position.distance_to(events[1].position)
 	else:
 		events.erase(event.index)
-		handle_touch_release()
+		if events.size() == 1 and event.index == 1:
+			events[0] = events[1]
+			events.erase(1)
+	
+	can_follow = false
+	follow_timer.start()
 
-func handle_screen_drag(event: InputEventScreenDrag) -> void:
+func handle_drag(event: InputEventScreenDrag) -> void:
 	events[event.index] = event
+	
 	if events.size() == 1:
-		handle_single_finger_drag(event)
+		var movement = calculate_movement(event.relative, touch_sensitivity)
+		apply_movement(movement)
 	elif events.size() == 2:
 		handle_pinch_zoom()
 
-func handle_single_finger_drag(event: InputEventScreenDrag) -> void:
-	var movement_speed = base_movement_speed * touch_sensitivity
-	if zoom_dependent_speed:
-		movement_speed /= zoom.x
-	
-	# Clamp movement speed
-	movement_speed = clamp(movement_speed, min_movement_threshold, max_movement_speed)
-	
-	var relative = event.relative.rotated(rotation)
-	var movement = (relative * movement_speed) / zoom.x
-	
-	if movement.length_squared() > min_movement_threshold:
-		if after_zoom:
-			after_zoom = false
-		else:
-			position -= movement
-			if use_momentum:
-				velocity = -movement
-
-func handle_pinch_zoom() -> void:
-	var drag_distance = events[0].position.distance_squared_to(events[1].position)
-	if abs(drag_distance - last_drag_distance) > zoom_sensitivity:
-		var delta = pinch_zoom_sensitivity if drag_distance > last_drag_distance else -pinch_zoom_sensitivity
-		last_drag_distance = drag_distance
-		update_zoom(delta)
-
-func handle_touch_release() -> void:
-	if events.size() > 0:
-		if 1 in events:
-			events[0] = events[1]
-			events.erase(1)
-		last_drag_distance = 0
-		after_zoom = true
-
 func handle_mouse_button(event: InputEventMouseButton) -> void:
-	if event.button_index == MOUSE_BUTTON_LEFT:
-		if event.pressed:
-			events[event.button_index] = event
-			disable_drag()
-			velocity = Vector2.ZERO
-			last_position = event.position
-		else:
-			events.erase(event.button_index)
-	elif event.button_index in [MOUSE_BUTTON_WHEEL_UP, MOUSE_BUTTON_WHEEL_DOWN]:
-		var zoom_delta = wheel_zoom_sensitivity if event.button_index == MOUSE_BUTTON_WHEEL_UP else -wheel_zoom_sensitivity
-		update_zoom(zoom_delta)
+	match event.button_index:
+		MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				events[event.button_index] = event
+				velocity = Vector2.ZERO
+			else:
+				events.erase(event.button_index)
+			can_follow = false
+			follow_timer.start()
+		MOUSE_BUTTON_WHEEL_UP:
+			update_zoom(wheel_zoom_sensitivity)
+		MOUSE_BUTTON_WHEEL_DOWN:
+			update_zoom(-wheel_zoom_sensitivity)
 
 func handle_mouse_motion(event: InputEventMouseMotion) -> void:
 	if events.size() == 1:
-		var movement_speed = base_movement_speed * mouse_sensitivity
-		if zoom_dependent_speed:
-			movement_speed /= zoom.x
-		
-		# Clamp movement speed
-		movement_speed = clamp(movement_speed, min_movement_threshold, max_movement_speed)
-		
-		var relative = event.relative.rotated(rotation)
-		# Apply sensitivity and movement speed
-		var movement = (relative * movement_speed) / zoom.x
-		
-		# Apply movement only if it's significant enough
-		if movement.length_squared() > min_movement_threshold:
-			position -= movement
-			if use_momentum:
-				velocity = -movement
+		var movement = calculate_movement(event.relative, mouse_sensitivity)
+		apply_movement(movement)
+
+func calculate_movement(relative: Vector2, sensitivity: float) -> Vector2:
+	var movement_speed = base_movement_speed * sensitivity
+	if zoom_dependent_speed:
+		movement_speed /= zoom.x
+	return (relative.rotated(rotation) * movement_speed) / zoom.x
+
+func apply_movement(movement: Vector2) -> void:
+	position -= movement
+	if use_momentum:
+		velocity = -movement
+
+func handle_pinch_zoom() -> void:
+	var new_distance = events[0].position.distance_to(events[1].position)
+	var delta = (new_distance - last_drag_distance) * pinch_zoom_sensitivity
+	last_drag_distance = new_distance
+	update_zoom(delta)
 
 func update_zoom(delta: float) -> void:
 	var prev_zoom = zoom.x
@@ -352,63 +214,31 @@ func update_zoom(delta: float) -> void:
 	if target_zoom != prev_zoom:
 		if zoom_tween:
 			zoom_tween.kill()
-		zoom_tween = create_tween()
-		zoom_tween.tween_property(self, "zoom", Vector2.ONE * target_zoom, 0.5)
 		
-		# Adjust position after zoom to maintain focus point
-		var screen_size = get_viewport_rect().size
+		zoom_tween = create_tween()
+		zoom_tween.tween_property(self, "zoom", Vector2.ONE * target_zoom, zoom_speed)
+		
 		var mouse_pos = get_viewport().get_mouse_position()
 		var focus_point = position + ((mouse_pos - screen_size/2) / prev_zoom)
 		var new_pos = focus_point - ((mouse_pos - screen_size/2) / target_zoom)
-		zoom_tween.parallel().tween_property(self, "position", clamp_position(new_pos), 0.5)
-		#position = clamp_position(new_pos)
+		zoom_tween.parallel().tween_property(self, "position", get_clamped_position(new_pos), zoom_speed)
 
 func set_target(_target: Node2D) -> void:
-	last_target_pos = _target.position
 	target = _target
-	go_to(_target.position, true)
+	if target:
+		last_target_pos = target.position
+		center_on_target()
 
-func go_to(pos: Vector2, ignore_drag: bool = false) -> void:
-	if ignore_drag:
-		disable_drag(false)
-	position = clamp_position(pos)
-	if ignore_drag:
-		get_tree().create_timer(0.5).timeout.connect(restore_drag)
+func center_on_target() -> void:
+	if target:
+		force_center = true
+		position = get_clamped_position(target.position + target_offset)
 
-func disable_drag(smooth: bool = true) -> void:
-	if drag_enabled and drag_horizontal_enabled:
-		drag_horizontal_enabled = false
-		drag_vertical_enabled = false
-		if not smooth:
-			position_smoothing_enabled = false
-		else:
-			enable_smooth()
+func set_drag_margins(margins: Vector4) -> void:
+	drag_left_margin = margins.x
+	drag_right_margin = margins.y
+	drag_top_margin = margins.z
+	drag_bottom_margin = margins.w
 
-func restore_drag() -> void:
-	if drag_enabled:
-		drag_horizontal_enabled = true
-		drag_vertical_enabled = true
-		enable_smooth()
-
-func enable_smooth(speed: float = 4.0) -> void:
-	if not pixel_perfect:
-		position_smoothing_enabled = true
-		position_smoothing_speed = speed
-
-func disable_smooth() -> void:
-	position_smoothing_enabled = false
-
-func offset_drag_margins(_offset: Vector4) -> void:
-	default_drag_margins.x = _offset.x
-	default_drag_margins.y = _offset.y
-	default_drag_margins.z = _offset.z
-	default_drag_margins.w = _offset.w
-	drag_left_margin = default_drag_margins.x
-	drag_right_margin = default_drag_margins.y
-	drag_top_margin = default_drag_margins.z
-	drag_bottom_margin = default_drag_margins.w
-	
-	restore_drag()
-
-func restore_original_drag_margins() -> void:
-	offset_drag_margins(original_drag_margins)
+func set_drag_offset(offset: Vector2) -> void:
+	set_drag_margins(default_margins + Vector4(-offset.x, offset.x, -offset.y, offset.y))

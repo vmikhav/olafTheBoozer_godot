@@ -117,7 +117,7 @@ func load_level(level_name: String):
 	prepare_ui_for_level()
 
 func prepare_ui_for_level():
-	camera.restore_original_drag_margins()
+	camera.set_drag_offset(Vector2(0, 0))
 	$UiLayer/HudContainer.visible = true
 	summary_container.dismiss(false)
 
@@ -126,7 +126,7 @@ func on_level_finished():
 	is_level_finished = true
 	$UiLayer/HudContainer.visible = false
 	summary_container.display(level_progress_report)
-	camera.offset_drag_margins(Vector4(.4, .4, -0.2, .6))
+	camera.set_drag_offset(Vector2(0, 0.3))
 	#AudioController.stop_music(1.5)
 	AudioController.play_music("olaf_fast", 1.5)
 

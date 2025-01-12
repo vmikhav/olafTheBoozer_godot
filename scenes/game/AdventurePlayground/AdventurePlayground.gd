@@ -87,7 +87,7 @@ func load_level(level_name: String):
 	prepare_ui_for_level()
 
 func prepare_ui_for_level():
-	camera.restore_original_drag_margins()
+	camera.set_drag_offset(Vector2(0, 0))
 	$UiLayer/HudContainer.visible = true
 
 func on_level_finished():

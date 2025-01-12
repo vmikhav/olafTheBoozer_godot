@@ -11,6 +11,8 @@ enum Layer {
 var defs = LevelDefinitions
 
 var splash_scene: PackedScene = preload("res://scenes/sprites/Splash/Splash.tscn")
+var puff_scene: PackedScene = preload("res://scenes/sprites/Puff/Puff.tscn")
+var puff_displayed := false
 
 # parameters from an implemented scene
 var tilemaps: Array[TileMapLayer]
@@ -234,6 +236,7 @@ func process_item_collection(neighbor_pos: Vector2i, history_item: Dictionary):
 		history_item.good_item = good_neighbor_cell
 		history_item.good_item_alt = good_neighbor_alt
 		level_items_progress += 1
+		display_puff(neighbor_pos)
 		items_progress_signal.emit(level_items_progress)
 
 func update_tail(history_item: Dictionary):
@@ -584,3 +587,15 @@ func display_splash(tile_pos: Vector2) -> void:
 	add_child(splash)
 	splash.z_index = 50
 	splash.position = (tile_pos + Vector2(0.5, 0.5)) * TILE_SIZE
+
+func display_puff(tile_pos: Vector2) -> void:
+	if puff_displayed:
+		return
+	puff_displayed = true
+	var puff = puff_scene.instantiate() as Node2D
+	add_child(puff)
+	puff.z_index = 50
+	puff.position = (tile_pos + Vector2(0.5, 0.5)) * TILE_SIZE
+	puff.finished.connect(func():
+		puff_displayed = false
+	)

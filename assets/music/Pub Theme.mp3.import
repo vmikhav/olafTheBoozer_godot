@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bu0addhaat4r5"
+path="res://.godot/imported/Pub Theme.mp3-2d4cf98e2e1ff7686eed39a1b3926108.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Pub Theme.mp3"
+dest_files=["res://.godot/imported/Pub Theme.mp3-2d4cf98e2e1ff7686eed39a1b3926108.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -24,6 +24,11 @@ func play(init: bool = false):
 	villager.visible = false
 	check.visible = true
 	hero.position.x += TILE_SIZE
+	var splash = splash_scene.instantiate() as Node2D
+	$CanvasLayer/CenterContainer/MarginContainer.add_child(splash)
+	splash.z_index = 150
+	splash.scale = Vector2(2, 2)
+	splash.position = hero.position + Vector2(0, -0.5) * TILE_SIZE
 	await timer.timeout
 	hero.position.x += TILE_SIZE
 	await timer.timeout

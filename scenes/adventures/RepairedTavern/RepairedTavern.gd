@@ -4,6 +4,7 @@ var first_dialogue = preload("res://scenes/adventures/StartTavern/start_tavern.d
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	music_key = "tavern"
 	tilemaps = [
 		$Ground, $Floor, $Walls, $Trails, $Items, $Trees,
 	]

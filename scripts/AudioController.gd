@@ -15,6 +15,7 @@ var music: Dictionary[String, Array] = {
 		Audio.new("res://assets/music/Olaf The Boozer Gameplay Theme V2.mp3"),
 		Audio.new("res://assets/music/Olaf The Boozer Gameplay Theme V3.mp3"),
 	],
+	"tavern": [Audio.new("res://assets/music/Pub Theme.mp3")],
 }
 
 var sfx: Dictionary[String, Array] = {
@@ -424,18 +425,22 @@ func play_music(music_name: String, switch_duration: float = .75):
 		push_error("Music key not found: ", music_name)
 		return
 	current_music_name = music_name
+	var item: Audio = music[music_name].pick_random()
 	var player = AudioStreamPlayer.new()
 	var position = 0
 	var current_time = Time.get_ticks_msec()
 	if music_positions.has(music_name) and music_stop_times.has(music_name):
 		var time_since_stop = (current_time - music_stop_times[music_name]) / 1000.0  # Convert to seconds
 		if time_since_stop <= 300:
-			position = music_positions[music_name]
+			var old_position = music_positions[music_name]
+			for time in item.start_positions:
+				if old_position < time:
+					position = time
+					break
 		music_positions.erase(music_name)
 		music_stop_times.erase(music_name)
 	current_music = player
 	player.bus = "Music"
-	var item: Audio = music[music_name].pick_random()
 	player.stream = item.stream
 	add_child(player)
 	player.volume_db = -60

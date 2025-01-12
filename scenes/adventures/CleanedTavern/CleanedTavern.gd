@@ -17,8 +17,8 @@ func _ready():
 	teleports = [
 	]
 	interactive_zones = [
-		{positions = [Vector2i(0, -2),Vector2i(1, -2),Vector2i(0, -1),Vector2i(1, -1)], active = !StoryProgress.cellar_fixed, callback = cellar_quest},
-		{positions = [Vector2i(-2, 0)], active = true, callback = cleme_idle},
+		{positions = [Vector2i(0, -2),Vector2i(1, -2),Vector2i(0, -1),Vector2i(1, -1)], hint_position = Vector2i(1, -1), hint_type = 8, active = !StoryProgress.cellar_fixed, callback = cellar_quest},
+		{positions = [Vector2i(-2, 0)], hint_position = Vector2i(-2, 0), hint_type = 9, active = true, callback = cleme_idle},
 	]
 	camera_limit = Rect2i(-304, -192, 608, 352)
 	move_hero_to_position(hero_start_position)
@@ -39,13 +39,14 @@ func intro():
 	allow_input = true
 
 func cleme_idle(index: int):
+	deactivate_hint(index)
 	allow_input = false
 	DialogueManager.show_dialogue_balloon(first_dialogue, "tavern_cleme_idle")
 	await DialogueManager.dialogue_ended
 	allow_input = true
 
 func cellar_quest(index: int):
-	interactive_zones[index].active = false
+	deactivate_zone(index)
 	DialogueManager.show_dialogue_balloon(first_dialogue, "host_cellar_quest")
 	await DialogueManager.dialogue_ended
 	allow_input = true

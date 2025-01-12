@@ -10,8 +10,11 @@ enum Layer {
 
 var defs = LevelDefinitions
 
+var hint_scene: PackedScene = preload("res://scenes/sprites/QuestHint/QuestHint.tscn")
+
 # parameters from an implemented scene
 var music_key: String = "fairies"
+var need_stop_music: bool = true
 var tilemaps: Array[TileMapLayer]
 var hero: Node2D
 var hero_play_type: Array = ["worker", true]
@@ -39,7 +42,31 @@ func init_map():
 		tilemaps[Layer.ITEMS].add_child(characters[i].unit)
 		characters[i].unit.set_mode([defs.UnitTypeName[characters[i].mode], false])
 		move_unit_to_position(characters[i].unit, characters[i].position)
+	for i in interactive_zones.size():
+		if "hint_position" in interactive_zones[i]:
+			var hint = hint_scene.instantiate()
+			hint.position = ((Vector2(interactive_zones[i].hint_position) + Vector2(0.5, -0.85)) * TILE_SIZE).ceil()
+			tilemaps[Layer.TREES].add_child(hint)
+			hint.set_icon(interactive_zones[i].hint_type)
+			hint.z_index = 50
+			hint.scale = Vector2(0.5, 0.5)
+			interactive_zones[i].hint = hint
+			if !interactive_zones[i].active:
+				hint.visible = false
 	AudioController.play_music(music_key)
+
+func activate_zone(index: int) -> void:
+	interactive_zones[index].active = true
+	if "hint" in interactive_zones[index]:
+		interactive_zones[index].hint.visible = true
+
+func deactivate_zone(index: int) -> void:
+	interactive_zones[index].active = false
+	deactivate_hint(index)
+
+func deactivate_hint(index: int) -> void:
+	if "hint" in interactive_zones[index]:
+		interactive_zones[index].hint.visible = false
 
 func move_unit_to_position(unit: Node2D, new_position: Vector2i):
 	unit.position = new_position * TILE_SIZE + TILE_OFFSET

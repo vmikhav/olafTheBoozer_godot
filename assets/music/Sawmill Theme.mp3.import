@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c1u47or3pumbn"
+path="res://.godot/imported/Sawmill Theme.mp3-0c1bf328e7105f6190b36fb290ce24f0.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Sawmill Theme.mp3"
+dest_files=["res://.godot/imported/Sawmill Theme.mp3-0c1bf328e7105f6190b36fb290ce24f0.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

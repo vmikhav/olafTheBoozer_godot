@@ -30,7 +30,6 @@ func _ready():
 		nav_buttons.visible = SettingsManager.get_touch_control()
 	)
 	menu.close.connect(close_menu)
-	menu.restart.connect(restart)
 	menu.exit.connect(func():
 		close_menu()
 		exit_levels()
@@ -43,18 +42,6 @@ func _process(delta):
 
 func imitate_input(input: InputEvent):
 	nav_controller._input(input)
-
-func restart():
-	if not is_level_finished:
-		prepare_report()
-	await transition_rect.fade_out()
-	is_level_finished = false
-	level.restart()
-	prepare_ui_for_level()
-	transition_rect.fade_in()
-
-func start_replay():
-	level.replay()
 
 func move_hero(direction: String):
 	if direction == "step_left":
@@ -99,11 +86,13 @@ func on_level_finished():
 func load_next_level():
 	await transition_rect.fade_out()
 	var next_scene = level.next_scene
+	var need_stop_music = level.need_stop_music
 	level.queue_free()
 	level = null
 	level_index += 1
-	if levels.size() <= level_index:
+	if need_stop_music:
 		AudioController.stop_music()
+	if levels.size() <= level_index:
 		SceneSwitcher.change_scene_to_file(next_scene[0], next_scene[1])
 	else:
 		load_level(levels[level_index])

@@ -18,11 +18,11 @@ func _ready():
 	teleports = [
 	]
 	interactive_zones = [
-		{positions = [Vector2i(0, -2),Vector2i(1, -2),Vector2i(0, -1),Vector2i(1, -1)], active = !StoryProgress.tavern_flashback, callback = first_dialog},
-		{positions = [Vector2i(-1, 1)], active = !StoryProgress.drunk_leftovers, callback = drink_proposal},
-		{positions = [Vector2i(-5, 0),Vector2i(-4, 0)], active = !StoryProgress.read_fireplace_note, callback = fireplace_note},
-		{positions = [Vector2i(0, -2),Vector2i(1, -2),Vector2i(0, -1),Vector2i(1, -1)], active = !StoryProgress.janitor_resqued, callback = janitor_quest},
-		{positions = [Vector2i(-3, -6)], active = !StoryProgress.janitor_resque_stage1, callback = kitchen_door_label},
+		{positions = [Vector2i(0, -2),Vector2i(1, -2),Vector2i(0, -1),Vector2i(1, -1)], hint_position = Vector2i(1, -1), hint_type = 8, active = !StoryProgress.tavern_flashback, callback = first_dialog},
+		{positions = [Vector2i(-1, 1)], hint_position = Vector2i(-1, 1), hint_type = 9, active = !StoryProgress.drunk_leftovers, callback = drink_proposal},
+		{positions = [Vector2i(-5, 0)], hint_position = Vector2(-5.5, 0.75), hint_type = 9, active = !StoryProgress.read_fireplace_note, callback = fireplace_note},
+		{positions = [Vector2i(0, -2),Vector2i(1, -2),Vector2i(0, -1),Vector2i(1, -1)], hint_position = Vector2i(1, -1), hint_type = 8, active = StoryProgress.tavern_flashback and !StoryProgress.janitor_resqued, callback = janitor_quest},
+		{positions = [Vector2i(-3, -6)], hint_position = Vector2i(-3, -6), hint_type = 8, active = false, callback = kitchen_door_label},
 	]
 	camera_limit = Rect2i(-304, -192, 608, 352)
 	move_hero_to_position(hero_start_position)
@@ -59,31 +59,33 @@ func intro():
 	allow_input = true
 
 func first_dialog(index: int):
-	interactive_zones[index].active = false
+	deactivate_zone(index)
 	DialogueManager.show_dialogue_balloon(first_dialogue, "first_host_dialogue")
 	await DialogueManager.dialogue_ended
 	allow_input = true
 	finish_level()
 
 func drink_proposal(index: int):
+	deactivate_hint(index)
 	DialogueManager.show_dialogue_balloon(first_dialogue, "leftovers_drink_proposal")
 	await DialogueManager.dialogue_ended
 	if StoryProgress.drunk_leftovers:
-		interactive_zones[index].active = false
+		deactivate_zone(index)
 	allow_input = true
 
 func fireplace_note(index: int):
-	interactive_zones[index].active = false
+	deactivate_zone(index)
 	DialogueManager.show_dialogue_balloon(first_dialogue, "fireplace_note")
 	await DialogueManager.dialogue_ended
 	allow_input = true
 
 
 func janitor_quest(index: int):
+	deactivate_hint(index)
 	var dialog = "host_janitor_quest" if !StoryProgress.janitor_resque_requested else "host_janitor_quest_reminder"
 	DialogueManager.show_dialogue_balloon(first_dialogue, dialog)
 	await DialogueManager.dialogue_ended
-	#interactive_zones[4].active = true
+	activate_zone(4)
 	allow_input = true
 
 
@@ -108,4 +110,5 @@ func kitchen_door_lockpick():
 	DialogueManager.show_dialogue_balloon(first_dialogue, "tavern_kitchen_door_unlock")
 	await DialogueManager.dialogue_ended
 	allow_input = true
+	need_stop_music = false
 	finish_level()

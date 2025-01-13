@@ -20,14 +20,21 @@ func _ready():
 	skip_save = true
 	update_sfx_volume(settings.sfx_volume)
 	update_music_volume(settings.music_volume)
+	update_voice_volume(settings.voice_volume)
 	update_sfx_mute(settings.sfx_muted)
 	update_music_mute(settings.music_muted)
+	update_voice_mute(settings.voice_muted)
 	update_language(get_language_index())
 	skip_save = false
 
 func update_sfx_mute(value: bool):
 	settings.sfx_muted = value
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), settings.sfx_muted)
+	save_settings()
+
+func update_voice_mute(value: bool):
+	settings.voice_muted = value
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Voices"), settings.voice_muted)
 	save_settings()
 
 func update_music_mute(value: bool):
@@ -42,6 +49,11 @@ func update_burp_mute(value: float):
 func update_sfx_volume(value: float):
 	settings.sfx_volume = clampf(value, -60, -0.1)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), settings.sfx_volume)
+	save_settings()
+
+func update_voice_volume(value: float):
+	settings.voice_volume = clampf(value, -60, -0.1)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Voices"), settings.voice_volume)
 	save_settings()
 
 func update_music_volume(value: float):

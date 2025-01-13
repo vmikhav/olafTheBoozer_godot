@@ -19,11 +19,11 @@ var level_progress_report: LevelProgressReport
 var level_index = 0
 var levels = [
 	"TavernTutorial",
-	"TavernWarehouse",
-	"Cellar",
-	"Library",
-	"Tutorial0",
 	"Kitchen",
+	"Library",
+	"Cellar",
+	"TavernWarehouse",
+	"Tutorial0",
 	"Tavern",
 ]
 

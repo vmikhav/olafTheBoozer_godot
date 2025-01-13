@@ -164,6 +164,8 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
 	if letter_index == 0:
-		AudioController.play_sfx("scribe")
+		SpeechController.set_character(dialogue_line.character)
+		#AudioController.play_sfx("scribe")
+	SpeechController.speak(letter)
 
 #endregion

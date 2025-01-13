@@ -68,6 +68,8 @@ Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 [node name="DialogueBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_umpel")
+next_action = null
+skip_action = null
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -128,7 +130,7 @@ theme_override_fonts/normal_font = ExtResource("3_vi7ha")
 theme_override_font_sizes/normal_font_size = 18
 text = "Dialogue..."
 skip_action = &"ui_acceptl"
-skip_pause_at_abbreviations = PackedStringArray("Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex", "")
+skip_pause_at_character_if_followed_by = ")\"'"
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
 layout_mode = 1

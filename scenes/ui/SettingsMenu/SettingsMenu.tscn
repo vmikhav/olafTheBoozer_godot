@@ -64,6 +64,25 @@ max_value = 1.0
 step = 0.02
 value = 0.5
 
+[node name="VoicesContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VoicesContainer"]
+custom_minimum_size = Vector2(150, 30)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
+text = "Voices:"
+vertical_alignment = 1
+
+[node name="VoicesSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VoicesContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.02
+value = 0.5
+
 [node name="MusicContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10

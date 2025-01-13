@@ -70,7 +70,7 @@ theme_override_constants/margin_bottom = 5
 
 [node name="WorldButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
-text = "Back to Map"
+text = "Back to Menu"
 
 [node name="SettingsMenu" parent="." instance=ExtResource("3_if7o5")]
 visible = false

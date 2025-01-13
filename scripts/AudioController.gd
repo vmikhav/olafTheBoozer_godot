@@ -15,7 +15,7 @@ var music: Dictionary[String, Array] = {
 		Audio.new("res://assets/music/Olaf The Boozer Gameplay Theme V2.mp3"),
 		Audio.new("res://assets/music/Olaf The Boozer Gameplay Theme V3.mp3"),
 	],
-	"tavern": [Audio.new("res://assets/music/Pub Theme.mp3")],
+	"tavern": [Audio.new("res://assets/music/Pub Theme.mp3", 0.3)],
 }
 
 var sfx: Dictionary[String, Array] = {

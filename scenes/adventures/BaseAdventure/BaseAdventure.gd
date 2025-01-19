@@ -156,7 +156,8 @@ func handle_teleport(neighbor_pos: Vector2i) -> Dictionary:
 	return {can_move = false, new_position = neighbor_pos}
 
 func process_item_collection(neighbor_pos: Vector2i):
-	var neighbor_cell = tilemaps[Layer.ITEMS].get_cell_atlas_coords(neighbor_pos)
+	pass
+	#var neighbor_cell = tilemaps[Layer.ITEMS].get_cell_atlas_coords(neighbor_pos)
 
 
 func check_level_completion():

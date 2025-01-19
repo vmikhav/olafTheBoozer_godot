@@ -13,7 +13,6 @@ func _ready():
 	hero_start_position = Vector2i(-3, 3)
 	characters = [
 		{position = Vector2i(1, -2), mode = defs.UnitType.BLACKSMITH_B},
-		{position = Vector2i(-2, -6), mode = defs.UnitType.PEASANT},
 	]
 	teleports = [
 	]

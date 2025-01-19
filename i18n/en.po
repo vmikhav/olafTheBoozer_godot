@@ -1,0 +1,924 @@
+# LANGUAGE translation for OlafTheBoozer-ggo2022 for the following files:
+# res://scenes/adventures/StartTavern/start_tavern.dialogue
+# res://scenes/ui/LevelMenu/AdventureMenu.tscn
+# res://scenes/ui/LevelMenu/LevelMenu.gd
+# res://scenes/ui/LevelMenu/LevelMenu.tscn
+# res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.gd
+# res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.tscn
+# res://scenes/ui/SettingsMenu/SettingsMenu.gd
+# res://scenes/ui/SettingsMenu/SettingsMenu.tscn
+#
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: OlafTheBoozer-ggo2022\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 3.5\n"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "dialogue"
+msgid "Олаф"
+msgstr "Olaf"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "dialogue"
+msgid "Торвін Круторіг"
+msgstr "Torvin Cragiron"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "dialogue"
+msgid ""
+msgstr " "
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "dialogue"
+msgid "Клім"
+msgstr "Cleme"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t113c272c47"
+msgid ""
+"Де я? Що сталося? Трясця… Нічого не пам’ятаю! Таки здається вчора перебрав…"
+msgstr ""
+"Where am I? What happened? Damn it... I can’t remember a thing! Looks like I "
+"overdid it last night…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tb3fda6061e"
+msgid "Сподіваюсь, тобі соромно за те, що ти тут накоїв минулої ночі, друже!"
+msgstr "I hope you're ashamed of what you did here last night, buddy!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t47ed6a1069"
+msgid ""
+"Останнє слово Торвін промовляє з особливою різкістю. Він дивиться на тебе з-"
+"під лоба, старанно протираючи ганчіркою напівзламану барну стійку."
+msgstr ""
+"Torvin emphasizes the last word with a particular sharpness. He looks at you "
+"from under his brow, diligently wiping down the semi-broken bar counter with "
+"a rag."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ta20fa9ce91"
+msgid "Перепрошую, та я нічого не пам’ятаю."
+msgstr "Sorry, but I don’t remember a thing."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t02868a0da3"
+msgid "Ха! Мені ніколи не соромно! Особливо за те, чого я не пам’ятаю!"
+msgstr "Ha! I’m never ashamed! Especially of things I can’t remember!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t7065160959"
+msgid "А? Хто? Я? За що?"
+msgstr "Huh? Who? Me? For what?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "te71e8ffa05"
+msgid ""
+"То тобі пам’ять відшибло? А з іншого боку, чого я дивуюсь! Когось іншого "
+"така кількість випитого відправила б на той світ. А в тебе всього-на-всього "
+"провал в пам’яті... Так чи інакше, я тобі злиняти не дам! Ти мені заплатиш "
+"за весь той розгардіяш, що ви тут вночі наробили."
+msgstr ""
+"So, you’ve got a memory blackout, have you? Then again, why am I even "
+"surprised? Anyone else would’ve drunk themselves into the grave with that "
+"amount, but you? Just a little memory gap... Either way, I’m not letting you "
+"off the hook! You’re gonna pay for all the mess you and your lot caused last "
+"night."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t12b6980f97"
+msgid "Ви бачите кілька пляшок пива, які стоять тут ще від учора"
+msgstr "You see a few bottles of beer left here since yesterday"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t4a406cc786"
+msgid "Випити"
+msgstr "Drink"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t335e3bf4b0"
+msgid ""
+"Агов, друже! Та скільки можна? Трясця, правду кажуть: п’яниця – проспиться, "
+"а дурень – ніколи…"
+msgstr ""
+"Hey, buddy! How much more can you take? Damn it, they say it right: a drunk "
+"will sober up, but a fool never will…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t3c5513291e"
+msgid "Залишити як є"
+msgstr "Leave them be"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t6af4a5afe1"
+msgid ""
+"У каміні Ви знаходите напівзгорілий лежачий жужмом папірець. Видно лише "
+"кінець: '...амовлення має бути виконане не пізніше дня сонцестояння за дві "
+"години до коронації. У випадку будь-якого відхилення від термінів виконавець "
+"буде негайно страчений'"
+msgstr ""
+"In the fireplace, you find a half-burnt, crumpled piece of paper. Only the "
+"end ot the text remains legible: '...rder must be fulfilled no later than "
+"the day of the solstice, two hours before the coronation. Any deviation from "
+"the timeline will result in the immediate execution of the contractor.'"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tb6bf3de2c8"
+msgid "Але ж я не один це все розгромив!"
+msgstr "But I couldn’t have wrecked all of this on my own!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tc9c0cff070"
+msgid ""
+"Твоя правда. Але ти єдиний, з кого я можу спитати, друже! Інші бовдури "
+"змогли допетрати, що їх чекає, тому ще вночі втекли. Ти єдиний, хто "
+"залишився тут ночувати. І ні розбудити, ні звести зі світу! Ось ми й чекали, "
+"поки сам оговтаєшся."
+msgstr ""
+"True enough. But you’re the only one left to answer for it, my buddy! The "
+"other clods figured out what was coming and fled in the night. You’re the "
+"only one who stayed to sleep it off. Couldn’t wake you, couldn’t move you, "
+"so we had to wait until you came to on your own."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t06241b004f"
+msgid "Дідько… Здається, я вляпався по самі вуса."
+msgstr "Damn… Seems I’ve really got myself in deep this time."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t5bd99f66c8"
+msgid ""
+"Ну я цим бевзеням ще таку прочуханку влаштую! Коли згадаю, як вони виглядали."
+msgstr ""
+"Well, I’ll give those idiots a piece of my mind — once I remember what they "
+"look like..."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t1e33823696"
+msgid "Зате мені гарно спалося."
+msgstr "At least I slept well."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tf18ce4b5de"
+msgid "Ага. То що, як розплачуватись будеш?"
+msgstr "Sure. So, how are you planning to pay for all this?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t13dec8972c"
+msgid "Здається, я вчора все пропив. У кишенях зовсім порожньо."
+msgstr ""
+"Pretty sure I drank everything I had last night. My pockets are completely "
+"empty."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t9e18e9a53c"
+msgid ""
+"Тоді нічого іншого не залишається. Я кличу вартових. Хай вже вони "
+"розбираються з тобою."
+msgstr ""
+"Then I’ve got no choice but to call the guards. Let them deal with you."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t72644c82cc"
+msgid "Зачекай! Я можу все прибрати й полагодити! Я рукатий!"
+msgstr "Wait! I can clean it up and fix everything! I’m handy!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tf99dd49d5f"
+msgid ""
+"Та годі заливати! Мені потрібно, щоб все було рівно так, як було до цієї "
+"ночі. Це не так вже й просто."
+msgstr ""
+"Don’t give me that! I need it exactly as it was before. That’s no small task."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tc0267e167f"
+msgid "Але я все зроблю!"
+msgstr "But I’ll do it, I swear!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t85d52e7790"
+msgid "Хм, обіцяєш?"
+msgstr "Hmm, promise?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tebc6157c46"
+msgid "Обіцяю!"
+msgstr "I promise!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t057eda89c2"
+msgid "Вір мені! Я найвідповідальніший з усіх, кого ти коли-небудь бачив."
+msgstr "Trust me! I’m the most responsible dwarf you’ve ever met."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ta26229f8cf"
+msgid "Ну… так."
+msgstr "Uh… yeah."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t5060265dd7"
+msgid ""
+"Що ж, добре, друже. Вірю. Але, щоб ти точно нікуди не втік і зробив все, як "
+"належно, я тобі ось, що розповім: є у мене дещо дуже важливе для тебе, хоч "
+"ти, здається, й сам про це забув. Поверну, тільки якщо зробиш все, як "
+"домовлялись."
+msgstr ""
+"Alright, fine. I’ll trust you. But just so you don’t run off or leave it "
+"half-done, I’ll tell you this: I’ve got something very important to you, "
+"though it seems you’ve forgotten all about it. I’ll give it back when you’ve "
+"done what you promised."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t64bda4f058"
+msgid "І ти мені не скажеш, що там?"
+msgstr "And you won’t tell me what it is?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t583b25071d"
+msgid ""
+"Ні. Хочу подивитись, як будеш стрибати від щастя, коли зрозумієш, від чого я "
+"тебе уберіг. А тепер досить базікати. Іди й берись до справи. Для початку, "
+"визволи-но малюка Кліма з кухні."
+msgstr ""
+"Nope. I want to see you jump for joy when you realize what I’ve kept safe "
+"for you. But enough talking. Get to work. First, free little Cleme from the "
+"kitchen."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tdbabd2416e"
+msgid "Кого-кого?"
+msgstr "The who?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t93d281443a"
+msgid ""
+"Нашого прибиральника, якого ви вночі затягнули у свої ігри, а потім заперли "
+"на кухні. Як розберешся з Клімом, повертайся."
+msgstr ""
+"Our cleaner. You and your pals dragged him into your games last night, then "
+"locked him in the kitchen. He’s behind the door to your left. Once you deal "
+"with Cleme, come back to me."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t2722d346ef"
+msgid "Дістань Кліма з кухні."
+msgstr "Get Cleme out of the kitchen."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t6183ce8d2f"
+msgid ""
+"Ти бачиш перед собою простенькі дерев’яні двері, на яких висить табличка: "
+"“Кухня. Постороннім вхід заборонений”"
+msgstr ""
+"You see a simple wooden door with a sign that reads: 'Kitchen. No entry for "
+"outsiders.'"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t475d7d355c"
+msgid ""
+"Ти бачиш перед собою простенькі дерев’яні двері, на яких висить табличка: "
+"“Кухня. Постороннім вхід заборонений”. Що зробиш?"
+msgstr ""
+"You see a simple wooden door with a sign that reads: 'Kitchen. No entry for "
+"outsiders.' What will you do?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t0331b696a7"
+msgid "Постукати у двері."
+msgstr "Knock on the door."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t027e9c4570"
+msgid "Вдарити по дверях ногою."
+msgstr "Kick the door with your foot."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t49c0783756"
+msgid "Закричати “Агов, невільнику!”"
+msgstr "Shout 'Hey, jailbird!'"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t55ca8dcd6f"
+msgid "Так-так? Хто там?"
+msgstr "Yes, yes? Who's there?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tdd207fdd73"
+msgid "Мене звати Олаф."
+msgstr "My name is Olaf."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t6bf8a78c06"
+msgid "Це неважливо. Скажи краще, як ти туди попав, бовдуре?"
+msgstr "It doesn't matter. Tell me how you got in there, fool?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tdeff80ddeb"
+msgid "Це я."
+msgstr "It's me."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tdc4a7de79f"
+msgid ""
+"Пане Олафе, то це ви? Ви нарешті прокинулись? Як чудово! Тепер ви зможете "
+"мене звільнити! Знаєте, ми любо з вами грали в ночі, але зараз мені вже "
+"трохи не так весело. Не могли б ви відкрити двері, будь ласка? У вас мав би "
+"бути ключ, чи не так?"
+msgstr ""
+"Mr. Olaf, is that you? You finally woke up? How wonderful! Now you can free "
+"me! You know, we played together last night, but now I'm not so happy. Could "
+"you open the door, please? You should have the key, right?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t94a9c55dd9"
+msgid "Кхм, маю тобі зізнатись… Я нічого не пам’ятаю з минулої ночі."
+msgstr "Hmm, I have to admit... I don't remember anything from last night."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ta8585c5858"
+msgid ""
+"Правда? Це ж треба… Дозвольте тоді нагадати. Десь опівночі ви закрили мене "
+"тут, сказали, що це квест. Необхідно за годину вийти з кімнати, щоб "
+"перемогти. Та я трохи не впорався. Ви не пам’ятаєте цього?"
+msgstr ""
+"Really? That's… wow. Let me remind you then. Around midnight, you locked me "
+"in here and said it was a quest. I had to get out of the room in an hour to "
+"win. But I kind of failed. Don't you remember this?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t55759fffd6"
+msgid "Ні, аж ніяк. І я гадки не маю, де знайти ключ, про який ти говориш."
+msgstr ""
+"No, not at all. And I have no idea where to find the key you're talking "
+"about."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t30f453c64d"
+msgid "Хм, пане, а ви ніде його в кишенях не залишали?"
+msgstr "Hmm, sir, did you leave it in any of your pockets?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tca54b0b120"
+msgid "Мої кишені порожні, хлопче."
+msgstr "My pockets are empty, kid."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tf8950a49b6"
+msgid ""
+"Це погані новини, пане. Не могли б ви пошукати в банній кімнаті? Це сусіднє "
+"приміщення. Наскільки я вас чув вночі крізь двері, після того, як зачинити "
+"мене тут, ви пішли з іншими гістьми в баню. Здається хотіли зіграти в те, "
+"хто довше протримається під водою не дихаючи. Можливо, знімаючи одяг, ви "
+"десь там залишили ключі?"
+msgstr ""
+"That's bad news, sir. Could you check the bathhouse? It's the next room. "
+"From what I heard last night through the door, after locking me in here, you "
+"went with the other guests to the bath. You were playing a game of who can "
+"stay under water the longest. Maybe you left the keys there while taking off "
+"your clothes?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t03c1836cac"
+msgid ""
+"О, звучить весело, гарно я придумав! Та мабуть, не будемо зараз про це. "
+"Значить, банна кімната? Добре, я перевірю. Почекай тут."
+msgstr ""
+"Oh, sounds fun, good idea! But let's not talk about that now. So, the "
+"bathhouse? Fine, I'll check. Wait here."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t632496390c"
+msgid "Авжеж, пане. Де ж мені ще чекати..?"
+msgstr "Of course, sir. Where else should I wait..?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t8da260d6ac"
+msgid "Агов, хлопче! Я знайшов ключ."
+msgstr "Hey, kid! I found the key."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t020ea62b4c"
+msgid "Чудово, пане! Відкривайте двері."
+msgstr "Great, sir! Open the door."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "td3c4173033"
+msgid ""
+"Ти вставляєш ключ і намагаєшся повернути його у замку, але механізм не "
+"піддається. Ти докладаєш додаткових зусиль. Ключ зрушується лише зовсім "
+"трохи. Ти докладаєш ще більше зусиль, аж раптом ключ ламається. У твоїх "
+"руках залишається лише його половина. Інша застрягла всередині."
+msgstr ""
+"You insert the key and try to turn it in the lock, but the mechanism doesn't "
+"give way. You put more effort into it. The key moves only slightly. You put "
+"even more effort, and suddenly, the key breaks. You are left holding only "
+"half of it. The other half is stuck inside."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t24b6af8dbf"
+msgid "Кліме?"
+msgstr "Cleme?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t0c0d4c2907"
+msgid "Кліме?"
+msgstr "Cleme?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t1b95aedb5b"
+msgid "Так?"
+msgstr "Yes?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "td535e773bc"
+msgid "Я здається зламав ключ."
+msgstr "I think I broke the key."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "taaf01a9e38"
+msgid "Ти чуєш довгу паузу."
+msgstr "You hear a long pause."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t4aa1dff0a5"
+msgid ""
+"Так-так, пане Олафе, я тут. Просто трохи, кхм, засмутився. Є інший варіант, "
+"якщо вже ви… якщо вже так сталося. У нас на другому поверсі має бути "
+"скринька з інструментами для різної дрібної роботи. У тому числі там має "
+"бути відмичка. Ви зможете дістати її?"
+msgstr ""
+"Yes, yes, I'm here, just a bit shocked. Well, sir, if you broke the key, "
+"there's another option. On the second floor, we have a box with tools for "
+"small repairs. There should be a lockpick there. Could you grab it?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t748e2c4a75"
+msgid "Так, звичайно. Коли у мене щось не виходило?"
+msgstr "Sure, when have I ever failed?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t60270ae1c3"
+msgid "Авжеж! Можеш покластися на мене! Я найнадійний дварф з усіх."
+msgstr "Of course! You can count on me! I'm the most reliable dwarf of all."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t5c202d4f74"
+msgid "Якщо Торвін спитає, це ти замок зламав!"
+msgstr "If Torvin asks, it was you who broke the lock!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t0b49f9d0de"
+msgid "Ви дотепний, пане! Усе обов’язково вийде. Я вірю у вас!"
+msgstr "You're witty, sir! Everything will be fine. I believe in you!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t51879b6279"
+msgid ""
+"Ти підходиш до дверей і чуєш, як звідти лунає тихий невмілий спів Кліма. З "
+"уривків тексту ти розумієш, що це дуже відома у всіх корчмах і тавернах  "
+"“Пісня несправедливо ув’язненого”. Ходять чутки, її написав бард, якого "
+"посадили на три дні за ґрати через пісню про слизькі коліна короля."
+msgstr ""
+"You approach the door and hear a quiet, unskilled singing coming from "
+"inside. You recognize the song as the famous 'Song of the Unjustly "
+"Imprisoned,' known in every tavern. Rumor has it, it was written by a bard "
+"who was locked up for three days for his song about the slippery knees of "
+"the king."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "td970a228e8"
+msgid ""
+"В’язниця мене не змінила,\n"
+"В’язниця мене не зламала,\n"
+"Помий, люба, дай мені мила\n"
+"Щоб ти мою пику впізнала."
+msgstr ""
+"The prison didn't change me,\n"
+"The prison didn't break me,\n"
+"Wash, my dear, give me some soap\n"
+"So you recognize my face."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t8df00b4d1b"
+msgid "Кліме, я повернувся."
+msgstr "Cleme, I'm back."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t108eee147e"
+msgid "Гарно співаєш, хлопче."
+msgstr "Nice singing, kid."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t99ae1f2b70"
+msgid ""
+"А таку знаєш? Хто реве, як зранку кобилиці, той живе з відбитком ніг на пиці."
+msgstr ""
+"Do you know this one? 'Who roars like morning mares, lives with footprints "
+"on their face'."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tba3bdddb14"
+msgid ""
+"О! Пане Олафе, ви повернулись! Вибачте за мій спів, не втримався. Як все "
+"пройшло?"
+msgstr ""
+"Oh! Mr. Olaf, you've returned! Sorry for my singing, I couldn't resist. How "
+"did it go?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t7210962e72"
+msgid "Я знайшов відмичку. Зараз відкрию двері."
+msgstr "I found the lockpick. I'll open the door now."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "td49d735585"
+msgid "Усе трохи не так просто, пане."
+msgstr "It's not that simple, sir."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t0071dce617"
+msgid "Тобто?"
+msgstr "What do you mean?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t9c92859e11"
+msgid "Відкрийте двері, і ви побачите."
+msgstr "Open the door, and you'll see."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tb8b64bc0d4"
+msgid ""
+"Твоїм рукам добре знайома робота з інструментами. Трохи покрутивши в замку "
+"відмичку, ти швидко знаходиш потрібне положення. Двері відгукуються таким "
+"бажаним клацанням і привітно відкриваються перед тобою. Всередині ти "
+"помічаєш Клема, пришпиленого до стіни за комір."
+msgstr ""
+"Your hands are well-practiced with tools. After a bit of fiddling with the "
+"lockpick in the lock, you quickly find the right position. The door responds "
+"with a satisfying click and opens welcomingly in front of you. Inside, you "
+"see Cleme pinned to the wall by his collar."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t21c72f60e4"
+msgid ""
+"Дякую, пане, що допомогли мені! Тепер, коли я вільний, маю повернутись до "
+"роботи. Може не варто було вас підганяти…"
+msgstr ""
+"Thank you, sir, for helping me! Now that I'm free, I must get back to wo… oh "
+"gosh… to work. Maybe I shouldn't have rushed you…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t5c931a6620"
+msgid ""
+"Хто б міг подумати, що у створіння розміром з бочку вміщається вміст семи "
+"таких бочок…"
+msgstr ""
+"Who would've thought that a creature the size of a barrel could contain the "
+"contents of seven such barrels…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tde1ec4a7ae"
+msgid ""
+"Молодець, друже, гарна робота. Упевнений, малюк Клім цього не забуде. Він у "
+"нас хлопчина сентиментальний."
+msgstr ""
+"Well done, buddy, great job. I'm sure little Cleme won't forget this. He's a "
+"sentimental lad."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t5d0c43ac99"
+msgid ""
+"Мені трохи незручно перед ним. Малюк провів цілу ніч прибитим до стіни через "
+"мій нічний дудліж!"
+msgstr ""
+"I feel a bit guilty towards him. The poor guy spent the whole night pinned "
+"to the wall because of my late-night humming!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tc8d38a66eb"
+msgid "Це лікується хорошою п’янкою!"
+msgstr "That can be cured with a good drink!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tb8edca35a3"
+msgid ""
+"Що правда, то правда. Я теж помітив, що він септи… семти… сентамета… Так."
+msgstr "True that. I also noticed he's... septy... semti... sentiment... Yeah."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t1be9635c2d"
+msgid ""
+"Хоч би що там було, повернемось до справи. Наступним твоїм завданням буде "
+"навести ладу в підвалі."
+msgstr ""
+"Whatever the case, let's get back to business. Your next task will be to "
+"clean up the cellar."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tbca0e12d21"
+msgid "У підвалі? А там що було?"
+msgstr "The cellar? What happened there?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t2cd24248b3"
+msgid ""
+"Коли в цій залі закінчилася випивка, ти сказав, що підеш у підвал, вичищати "
+"наші тамтешні запаси. Ніхто не спромігся тебе зупинити. Тепер всі підвальні "
+"приміщення схожі на поле бойових дій. Тобі треба повернути всі бочки на "
+"місця і навести там лад. Як закінчиш – повертайся до мене."
+msgstr ""
+"When the drinks ran out in this hall, you said you'd go to the cellar to "
+"clear out our supplies there. No one was capable to stop you. Now the entire "
+"cellar looks like a battlefield. You need to put all the barrels back in "
+"place and tidy up. When you're done, come back to me."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tfbc9bd1895"
+msgid "У підвалі все знов на своїх місцях, Торвіне!"
+msgstr "The cellar is all tidy again, Torvin!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t278b431d6c"
+msgid ""
+"Так швидко? Гарна робота, друже. Що ж, тоді залишилось розібратись з цією "
+"залою. Тут багато зламаних столів і лав."
+msgstr ""
+"That fast? Good job, buddy. Well, now we just have to deal with this hall. "
+"Lots of broken tables and benches here."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t0de59b2339"
+msgid "Як це сталося? Хоча не впевнений, що насправді хочу знати…"
+msgstr "How did that happen? Though I'm not sure I actually want to know…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "te72c71c328"
+msgid ""
+"Спочатку ти сидів доволі тихо. Ви з хлопцями грали за столом у “філе з "
+"п’ятьма пальцями”."
+msgstr ""
+"At first, you sat quite calmly. You and the lads were playing 'Five-Finger "
+"Fillet' at the table."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tb55eb8eda8"
+msgid ""
+"Ти опускаєш очі на руки та помічаєш на пальцях з десяток свіжих порізів. Що "
+"ж, мабуть, штрикати ножем поміж пальців на п’яну голову таки не найкраще "
+"рішення…"
+msgstr ""
+"You glance down at your hands and notice a dozen fresh cuts on your fingers. "
+"Well, stabbing a knife between your fingers while drunk isn't the best idea…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t1131fd19a0"
+msgid ""
+"Але потім ти сказав, що тобі набридло сидіти на одному місці, тож ви почали "
+"грали у квача. Розумієш, мої меблі виявились не готовими до того, щоб по них "
+"гопцювало юрмище людей, орків та дварфів. Тож тобі доведеться це все "
+"полагодити. Інструменти знайдеш на складі. Тільки цейво. Там трохи безлад, "
+"тому прийдеться добряче пошукати."
+msgstr ""
+"But then you said you were tired of sitting in one spot, so you started "
+"playing tag. You see, my furniture wasn't ready for a crowd of people, orcs, "
+"and dwarves hopping on it. So, you'll have to fix it all. You'll find tools "
+"in the warehouse. Just so you know, it's a bit messy there, so you'll need "
+"to look carefully."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "td187bfe015"
+msgid "Як знайдеш інструменти і полагодиш меблі, підходь до мене."
+msgstr "Once you find the tools and fix the furniture, come see me."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t1a90a7f2a7"
+msgid "Справився? Гаразд, друже. Я майже готовий тебе пробачити. Втомився?"
+msgstr "Done? Alright, buddy. I’m almost ready to forgive you. Tired?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t8ba6d0c822"
+msgid "Анітрохи! Фізична праця допомагає швидше протверезіти."
+msgstr "Not at all! Physical work helps sober up faster."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ta88a22726e"
+msgid "Та я вже не дочекаюсь, як звільнюсь від тебе!"
+msgstr "I can't wait to be rid of you!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t7e79306b60"
+msgid "Я б чогось випив, якщо чесно."
+msgstr "I'd drink something, to be honest."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t8e72eea441"
+msgid ""
+"Розумію, друже! У будь-якому разі у мене для тебе залишилось тільки одне "
+"завдання. Проте, маю визнати, воно буде найскладнішим. Тобі треба "
+"відремонтувати цю барну стійку. Моє дорогоцінне робоче місце! І не думай, що "
+"його можна полагодити так же ж просто, як інші столи в залі."
+msgstr ""
+"I understand, buddy! In any case, there's only one task left for you. But I "
+"have to admit, it's going to be the hardest. You need to fix this bar "
+"counter. My precious workplace! And don't think it'll be as easy to fix as "
+"the other tables in the hall."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t2ac2669897"
+msgid ""
+"Цю стільницю виготовляли спеціально під моє замовлення з високоякісної "
+"деревини. З багаторічного дуба! Вирізали за допомогою новітніх "
+"деревообробних приладів з самого Рамаскору! Ця стільниця покрита тонкішим "
+"шаром тандрійського лаку! Це справжній витвір мистецтва теслярської справи! "
+"Тож вона була дуже міцна і мала б служити мені ще багато років…"
+msgstr ""
+"This countertop was custom-made for me from high-quality wood. From "
+"centuries-old oak! Cut with the latest woodworking tools from Ramaskor! This "
+"countertop is coated with a thinner layer of Tandrian varnish! It’s a true "
+"masterpiece of carpentry! It was very sturdy and should’ve lasted me for "
+"many more years…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t29397d725e"
+msgid "Овва, звучить, як дуже дорога штукенція."
+msgstr "Wow, sounds like quite an expensive thing."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t3a1e6c5ba3"
+msgid "Ха! Я зламав незламне! Внесу це в список своїх досягнень."
+msgstr ""
+"Ha! I broke the unbreakable! I’ll add that to my list of accomplishments."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tf1a7fb2223"
+msgid "Ти дивний."
+msgstr "You’re weird."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t759a3a2874"
+msgid ""
+"Ех, друже. Схоже ти так і не зрозумів, чому мені була так дорога ця "
+"стільниця. Але хай йому грець! Головне, що ти маєш винести з цієї розповіді, "
+"це те, що для ремонту стійки тобі потрібно дістати нову дуже особливу "
+"стільницю."
+msgstr ""
+"Oh, buddy. Looks like you still don't get why this countertop was so dear to "
+"me. But never mind! The main thing you need to take from this story is that "
+"to repair the counter, you'll need to get a very special new one."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t7ec92138c6"
+msgid ""
+"Замовити її можна тільки у неперевершеного майстра Гримлака Зватенбарга. "
+"Орка, що здатний на будь-яку роботу, що стосувалася б дерева. Від "
+"лісорубства до найтоншої слюсарської роботи! Я тобі навіть більше скажу: ви "
+"з ним навіть встигли познайомитись тут у корчмі вчора, але, б’юся на "
+"взаклад, ти не пам’ятаєш цього. Я правий?"
+msgstr ""
+"It can only be ordered from the unrivaled master Grimlark Zwattenbarg. An "
+"orc capable of any work related to wood. From lumberjacking to the finest "
+"carpentry! I'll even tell you more: you met him here at the tavern "
+"yesterday, but I bet you don’t remember that. Am I right?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t5ab80a7c0b"
+msgid ""
+"Правий. Але, коли ми з ним вже знайомі, діло має піти тільки швидше, так?"
+msgstr ""
+"Right. But since we already know each other, this should go much faster, "
+"right?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ta0c4efcb7d"
+msgid "Я б на твоєму місці не був у цьому таким впевненим, друже."
+msgstr "I wouldn’t be so sure of that, buddy."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t6963c5f7c4"
+msgid "Чому? Що сталося?"
+msgstr "Why? What happened?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t2b3fd30d97"
+msgid ""
+"Слухай, я не знаю деталей. Але вночі я чув, як ви разом пішли до нього на "
+"лісопильню, що правда я так і не зрозумів, навіщо. А через пару годин, вже "
+"десь під ранок, ти повернувся один. Щось кричав про те, щоб я тобі ще "
+"наливав, бо в тебе горе. Щось між вами сталося, і тепер у тебе немає друга. "
+"Посварились, як я зрозумів. Є у мене підозра, що він буде не радий тебе "
+"бачити."
+msgstr ""
+"Listen, I don’t know the details. But last night, I heard you both went to "
+"his sawmill. I still don’t understand why. And a couple of hours later, "
+"somewhere near dawn, you came back alone. You were shouting something about "
+"needing another drink because of your sorrow. Something happened between you "
+"two, and now you don’t have a buddy. You had a fight, I gather. I suspect he "
+"won’t be too happy to see you."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t69913f18c6"
+msgid ""
+"Я впевнений, сталося просто якесь непорозуміння. Ми поговоримо, і все буде "
+"добре! Тому чекай мене тут, Торвіне! Скоро я повернусь з твоєю любою "
+"деревиною, і ти залишиш мене нарешті у спокої!"
+msgstr ""
+"I’m sure it was just some misunderstanding. We’ll talk, and everything will "
+"be fine! So wait for me here, Torvin! I’ll return soon with your lovely "
+"wood, and you’ll finally leave me alone!"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t6c3439abc6"
+msgid "Хай так і буде, мій оптимістичний друже! Хай так і буде."
+msgstr "Let’s hope so, my optimistic buddy! Let’s hope so."
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+msgid "Pause"
+msgstr "Pause"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+msgid "Continue"
+msgstr "Continue"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+msgid "Restart"
+msgstr "Restart"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+msgid "Settings"
+msgstr "Settings"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+msgid "Back to Menu"
+msgstr "Back to Menu"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Sounds:"
+msgstr "Sounds:"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Voices:"
+msgstr "Voices:"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Music:"
+msgstr "Music:"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Drink:"
+msgstr "Drink:"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Beer"
+msgstr "Beer"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Ginger Ale"
+msgstr "Ginger Ale"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Language:"
+msgstr "Language:"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "English"
+msgstr "English"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Українська"
+msgstr "Українська"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Touch Control:"
+msgstr "Touch Control:"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Close"
+msgstr "Close"
+
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Olaf the Boozer"
+msgstr "Olaf the Boozer"
+
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Demo"
+msgstr "Demo"
+
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Play"
+msgstr "Play"
+
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Exit"
+msgstr "Exit"

@@ -44,8 +44,6 @@ var last_used_indexes: Array[int] = []
 const FADE_TIME: float = 0.015
 
 func _init() -> void:
-	var bus = AudioServer.get_bus_index("Voices")
-	#AudioServer.set_bus_volume_db(bus, linear_to_db(0.3))
 	for type in types.keys():
 		sounds[type] = []
 		for i in types[type]:
@@ -69,8 +67,8 @@ func set_character(_character: String) -> void:
 	chars_since_last_sound = 100
 	last_used_indexes = []
 
-func speak(char: String) -> void:
-	if char2skip.has(char):
+func speak(_char: String) -> void:
+	if char2skip.has(_char):
 		return
 	
 	if not sounds.has(voice_type) or sounds[voice_type].is_empty():
@@ -84,11 +82,11 @@ func speak(char: String) -> void:
 	if is_playing:
 		return
 	
-	await _play_sound_with_fade(char)
+	await _play_sound_with_fade(_char)
 	
 	chars_since_last_sound = 0
 
-func _play_sound_with_fade(char: String) -> void:
+func _play_sound_with_fade(_char: String) -> void:
 	is_playing = true
 	var player = AudioStreamPlayer.new()
 	add_child(player)
@@ -99,7 +97,7 @@ func _play_sound_with_fade(char: String) -> void:
 	var char_code: int
 	var sound_index: int
 	while true:
-		char_code = char.to_utf8_buffer()[0] * 3 + randi_range(0, 4)
+		char_code = _char.to_utf8_buffer()[0] * 3 + randi_range(0, 4)
 		sound_index = char_code % available_sounds
 		if !last_used_indexes.has(sound_index):
 			break

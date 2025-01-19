@@ -240,5 +240,5 @@ func set_drag_margins(margins: Vector4) -> void:
 	drag_top_margin = margins.z
 	drag_bottom_margin = margins.w
 
-func set_drag_offset(offset: Vector2) -> void:
-	set_drag_margins(default_margins + Vector4(-offset.x, offset.x, -offset.y, offset.y))
+func set_drag_offset(_offset: Vector2) -> void:
+	set_drag_margins(default_margins + Vector4(-_offset.x, _offset.x, -_offset.y, _offset.y))

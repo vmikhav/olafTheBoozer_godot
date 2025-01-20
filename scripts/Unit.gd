@@ -3,8 +3,8 @@ extends Node2D
 
 const ghost_colors = {
 	LevelDefinitions.GhostType.MEMORY: Color8(100, 200, 255, 160),
-	LevelDefinitions.GhostType.ENEMY: Color8(255, 100, 100, 160),
-	LevelDefinitions.GhostType.ENEMY_SPAWN: Color8(200, 200, 100, 160),
+	LevelDefinitions.GhostType.ENEMY: Color8(200, 200, 100, 160),
+	LevelDefinitions.GhostType.ENEMY_SPAWN: Color8(255, 100, 100, 160),
 }
 
 var orientation: String = 'right'

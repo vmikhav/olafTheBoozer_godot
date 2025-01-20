@@ -48,7 +48,7 @@ func _ready():
 		hero_start_position = Vector2i(-4, -6)
 		move_hero_to_position(hero_start_position)
 		hero.set_orientation('right')
-		next_scene = ["res://scenes/game/AdventurePlayground/AdventurePlayground.tscn", {levels = ["CleanedTavern"]}]
+		next_scene = ["res://scenes/game/AdventurePlayground/Playground.tscn", {levels = ["TavernKitchen"]}]
 
 
 func intro():

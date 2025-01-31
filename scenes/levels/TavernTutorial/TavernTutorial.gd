@@ -8,7 +8,6 @@ func _ready():
 	hero = $Items/Demolitonist
 	hero_start_position = Vector2i(-4, -3)
 	ghosts = [
-		{position = Vector2i(2, -6), type = defs.GhostType.MEMORY, mode = defs.UnitType.PEASANT},
 		{position = Vector2i(3, 1), type = defs.GhostType.MEMORY, mode = defs.UnitType.DEMOLITONIST},
 		{position = Vector2i(-7, 1), type = defs.GhostType.MEMORY, mode = defs.UnitType.GRENADIER},
 		{position = Vector2i(1, -2), type = defs.GhostType.MEMORY, mode = defs.UnitType.WORKER},

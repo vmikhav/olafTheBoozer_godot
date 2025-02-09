@@ -19,7 +19,7 @@ extends Camera2D
 @export var target_follow_delay: float = .15
 
 @export_group("Drag Margins")
-@export var default_margins: Vector4 = Vector4(0.7, 0.7, 0.7, 0.7)  # left, right, top, bottom
+@export var default_margins: Vector4 = Vector4(0.7, 0.7, 0.6, 0.7)  # left, right, top, bottom
 
 @export_group("Movement Settings")
 @export var use_momentum: bool = true

@@ -19,6 +19,7 @@ enum UnitType {
 	SUCCUB,
 	VILLAGER_WOMAN,
 	WORKER,
+	ORC_VETERAN
 }
 
 const UnitTypeName = {
@@ -34,6 +35,7 @@ const UnitTypeName = {
 	UnitType.SUCCUB: "succub",
 	UnitType.VILLAGER_WOMAN: "villagerWoman",
 	UnitType.WORKER: "worker",
+	UnitType.ORC_VETERAN: "orcVeteran",
 }
 
 const TrailDirections = {

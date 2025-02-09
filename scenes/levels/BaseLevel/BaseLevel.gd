@@ -15,6 +15,7 @@ var puff_scene: PackedScene = preload("res://scenes/sprites/Puff/Puff.tscn")
 var puff_displayed := false
 
 # parameters from an implemented scene
+var music_key: String = "olaf_gameplay"
 var tilemaps: Array[TileMapLayer]
 var hero: Node2D
 var hero_play_type: Array = ["worker", true]
@@ -78,7 +79,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 			move_unit_to_position(ghosts[i].unit, ghosts[i].position)
 	for pos in bad_items:
 		update_cell(pos, tilemaps[source].get_cell_atlas_coords(pos), tilemaps[source].get_cell_alternative_tile(pos))
-	AudioController.play_music("olaf_gameplay")
+	AudioController.play_music(music_key)
 
 func restart():
 	is_history_replay = false
@@ -89,7 +90,7 @@ func restart():
 	hero.set_mode(hero_play_type)
 	ghosts_progress_signal.emit(ghosts_progress)
 	items_progress_signal.emit(level_items_progress)
-	AudioController.play_music("olaf_gameplay")
+	AudioController.play_music(music_key)
 
 func move_unit_to_position(unit: Node2D, new_position: Vector2i):
 	unit.position = new_position * TILE_SIZE + TILE_OFFSET

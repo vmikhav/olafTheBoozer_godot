@@ -29,6 +29,11 @@ var characters = {
 		"volume": 1.0,
 		"delay": 2
 	},
+	"Гримлак Зватенбарг": {
+		"voice_type": "Low_v2_15_2",
+		"volume": 1.0,
+		"delay": 2
+	},
 }
 
 var character: String

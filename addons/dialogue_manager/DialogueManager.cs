@@ -16,13 +16,15 @@ namespace DialogueManagerRuntime
         PO
     }
 
-    public partial class DialogueManager : Node
+    public partial class DialogueManager : RefCounted
     {
+        public delegate void DialogueStartedEventHandler(Resource dialogueResource);
         public delegate void PassedTitleEventHandler(string title);
         public delegate void GotDialogueEventHandler(DialogueLine dialogueLine);
         public delegate void MutatedEventHandler(Dictionary mutation);
         public delegate void DialogueEndedEventHandler(Resource dialogueResource);
 
+        public static DialogueStartedEventHandler? DialogueStarted;
         public static PassedTitleEventHandler? PassedTitle;
         public static GotDialogueEventHandler? GotDialogue;
         public static MutatedEventHandler? Mutated;
@@ -80,6 +82,7 @@ namespace DialogueManagerRuntime
 
         public static void Prepare(GodotObject instance)
         {
+            instance.Connect("dialogue_started", Callable.From((Resource dialogueResource) => DialogueStarted?.Invoke(dialogueResource)));
             instance.Connect("passed_title", Callable.From((string title) => PassedTitle?.Invoke(title)));
             instance.Connect("got_dialogue", Callable.From((RefCounted line) => GotDialogue?.Invoke(new DialogueLine(line))));
             instance.Connect("mutated", Callable.From((Dictionary mutation) => Mutated?.Invoke(mutation)));
@@ -114,6 +117,11 @@ namespace DialogueManagerRuntime
 
             instance = Engine.GetSingleton("DialogueManager");
             return instance;
+        }
+
+        public static Resource CreateResourceFromText(string text)
+        {
+            return (Resource)Instance.Call("create_resource_from_text", text);
         }
 
         public static async Task<DialogueLine?> GetNextDialogueLine(Resource dialogueResource, string key = "", Array<Variant>? extraGameStates = null)
@@ -211,18 +219,15 @@ namespace DialogueManagerRuntime
 
             if (result is Task taskResult)
             {
-                // await Tasks and handle result if it is a Task<T>
                 await taskResult;
-                var taskType = taskResult.GetType();
-                if (taskType.IsGenericType && taskType.GetGenericTypeDefinition() == typeof(Task<>))
+                try 
                 {
-                    var resultProperty = taskType.GetProperty("Result");
-                    var taskResultValue = resultProperty.GetValue(taskResult);
-                    EmitSignal(SignalName.Resolved, (Variant)taskResultValue);
-                }
-                else
+                    Variant value = (Variant)taskResult.GetType().GetProperty("Result").GetValue(taskResult);
+                    EmitSignal(SignalName.Resolved, value);
+                } 
+                catch (Exception err) 
                 {
-                    EmitSignal(SignalName.Resolved, null);
+                    EmitSignal(SignalName.Resolved);
                 }
             }
             else

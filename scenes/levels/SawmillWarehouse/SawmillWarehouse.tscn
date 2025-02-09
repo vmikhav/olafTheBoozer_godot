@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=4 uid="uid://e35xivu5isf6"]
+
+[ext_resource type="Script" uid="uid://g1uv2lrnccpq" path="res://scenes/levels/SawmillWarehouse/SawmillWarehouse.gd" id="1_5xem8"]
+[ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_1j83s"]
+[ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_hkyrd"]
+
+[node name="SawmillWarehouse" type="Node2D"]
+script = ExtResource("1_5xem8")
+
+[node name="Ground" type="TileMapLayer" parent="."]
+y_sort_enabled = true
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD9//7/AAAbAAAAAAD9////AAAaAAEAAAD9/wAAAAAYAAEAAAD9/wEAAAAbAAEAAAD9/wIAAAAbAAEAAAD9/wMAAAAZAAEAAAD+//7/AAAbAAAAAAD+////AAAZAAAAAAD+/wAAAAAbAAEAAAD+/wEAAAAbAAEAAAD+/wIAAAAZAAAAAAD+/wMAAAAYAAEAAAD///7/AAAaAAEAAAD/////AAAYAAEAAAD//wAAAAAYAAEAAAD//wEAAAAYAAAAAAD//wIAAAAbAAEAAAD//wMAAAAZAAEAAAAAAP7/AAAYAAEAAAAAAP//AAAbAAAAAAAAAAAAAAAbAAEAAAAAAAEAAAAbAAEAAAAAAAIAAAAbAAEAAAAAAAMAAAAZAAEAAAABAP7/AAAYAAEAAAABAP//AAAaAAAAAAABAAAAAAAbAAAAAAABAAEAAAAYAAAAAAABAAIAAAAZAAAAAAABAAMAAAAYAAEAAAD+//3/AAAaAAEAAAA=")
+tile_set = ExtResource("2_1j83s")
+
+[node name="Floor" type="TileMapLayer" parent="."]
+z_index = 1
+texture_filter = 1
+tile_set = ExtResource("2_1j83s")
+
+[node name="Walls" type="TileMapLayer" parent="."]
+z_index = 2
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD8/wIAAAAEAAcAAAD8/wEAAAAEAAcAAAD8/wAAAAAEAAcAAAD8////AAAEAAcAAAD8//7/AAAEAAcAAAD8//3/AAAFAAYAAAD9//3/AAADAAkAAAAAAP3/AAACAAkAAAD///3/AAABAAkAAAABAP3/AAAHAAgAAAACAAAAAAAHAAkAAAACAAEAAAAEAAkAAAACAAIAAAAEAAkAAAD+//3/AAAEAAsAAAD9//7/AAAPAA4AAAAAAAAAAAABAAkAAAABAAAAAAACAAgAAAD+/wQAAAABAAgAAAD//wQAAAACAAkAAAAAAAQAAAACAAkAAAABAAQAAAACAAkAAAACAAQAAAADAAgAAAD8/wMAAAABAAgAAAACAAMAAAAEAAkAAAD9/wMAAAACAAkAAAD+/wMAAAAHAAYAAAD//wAAAAACAA8AAAABAP7/AAAEAAkAAAABAP//AAAEAAkAAAA=")
+tile_set = ExtResource("2_1j83s")
+
+[node name="Trails" type="TileMapLayer" parent="."]
+z_index = 3
+texture_filter = 1
+tile_set = ExtResource("2_1j83s")
+
+[node name="Items" type="TileMapLayer" parent="."]
+z_index = 3
+y_sort_enabled = true
+texture_filter = 1
+tile_set = ExtResource("2_1j83s")
+
+[node name="Demolitonist" parent="Items" instance=ExtResource("3_hkyrd")]
+z_index = 3
+z_as_relative = false
+position = Vector2(41, 45)
+
+[node name="Trees" type="TileMapLayer" parent="."]
+z_index = 4
+y_sort_enabled = true
+texture_filter = 1
+tile_set = ExtResource("2_1j83s")
+
+[node name="BadItems" type="TileMapLayer" parent="."]
+z_index = 6
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAMAAAAIABQAAAABAAEAAAAHAAoAAAAAAAEAAAAOABAAAAD+////AAAOABAAAAA=")
+tile_set = ExtResource("2_1j83s")
+
+[node name="GoodItems" type="TileMapLayer" parent="."]
+z_index = 6
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAMAAAANABAAAAABAAEAAAASAA4AAAAAAAEAAAAOABAAAAD+////AAAOABAAAAA=")
+tile_set = ExtResource("2_1j83s")
+
+[node name="MovingItems" type="TileMapLayer" parent="."]
+modulate = Color(1, 0.392157, 0.392157, 0.392157)
+z_index = 6
+texture_filter = 1
+tile_map_data = PackedByteArray("AAD+/wAAAAANABAAAAA=")
+tile_set = ExtResource("2_1j83s")

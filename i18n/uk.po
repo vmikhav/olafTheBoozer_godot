@@ -25,6 +25,7 @@ msgstr ""
 "X-Generator: Poedit 3.5\n"
 
 #: scenes/adventures/StartTavern/start_tavern.dialogue
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "dialogue"
 msgid "Олаф"
 msgstr "Олаф"
@@ -35,6 +36,7 @@ msgid "Торвін Круторіг"
 msgstr "Торвін Круторіг"
 
 #: scenes/adventures/StartTavern/start_tavern.dialogue
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "dialogue"
 msgid ""
 msgstr " "
@@ -99,11 +101,6 @@ msgid "Ви бачите кілька пляшок пива, які стоять
 msgstr "Ви бачите кілька пляшок пива 'Ригань', які стоять тут ще від учора"
 
 #: scenes/adventures/StartTavern/start_tavern.dialogue
-msgctxt "t4a406cc786"
-msgid "Випити"
-msgstr "Випити"
-
-#: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "t335e3bf4b0"
 msgid ""
 "Агов, друже! Та скільки можна? Трясця, правду кажуть: п’яниця – проспиться, "
@@ -111,6 +108,11 @@ msgid ""
 msgstr ""
 "Агов, друже! Та скільки можна? Трясця, правду кажуть: п’яниця – проспиться, "
 "а дурень – ніколи…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t4a406cc786"
+msgid "Випити"
+msgstr "Випити"
 
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "t3c5513291e"
@@ -917,3 +919,230 @@ msgstr "Грати"
 #: scenes/game/MainMenu/MainMenu.tscn
 msgid "Exit"
 msgstr "Вийти"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "dialogue"
+msgid "Гримлак Зватенбарг"
+msgstr "Гримлак Зватенбарг"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "t4b878b42a2"
+msgid ""
+"Обійшовши майже всю територію лісопильні, ти раптом чуєш чиюсь брудну лайку, "
+"що лунає з-за майстерні. Незнайомий голос звучить трохи втомлено, так ніби "
+"репетує паплюжні прокльони вже не першу годину."
+msgstr ""
+"Обійшовши майже всю територію лісопильні, ти раптом чуєш чиюсь брудну лайку, "
+"що лунає з-за майстерні. Незнайомий голос звучить трохи втомлено, так ніби "
+"репетує паплюжні прокльони вже не першу годину."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "tdcf15b9d22"
+msgid ""
+"Ти бачиш величезну колоду з-під якої стирчать чиїсь зеленуваті ноги. "
+"Затерті, чорні від бруду чоботи видають у своєму власникові чоловіка, що вже "
+"багато років займається важкою фізичною працею."
+msgstr ""
+"Ти бачиш величезну колоду з-під якої стирчать чиїсь зеленуваті ноги. "
+"Затерті, чорні від бруду чоботи видають у своєму власникові чоловіка, що вже "
+"багато років займається важкою фізичною працею."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЩО_Ж_ХОЧА_Б_Я_ЙОГО_НЕ_ВБИВ_405E39"
+msgid "Що ж, хоча б я його не вбив…"
+msgstr "Що ж, хоча б я його не вбив…"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "КОЛОДУ_ЙОМУ_В_СРАКУ_І_ЩОБ_ПОТ_6A7A59"
+msgid ""
+"…Колоду йому в сраку! І щоб потім ще два дні дристало! Ай, бісовий син, за "
+"що мені це..?"
+msgstr ""
+"…Колоду йому в сраку! І щоб потім ще два дні дристало! Ай, бісовий син, за "
+"що мені це..?"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЗДАЄТЬСЯ_ГРИМЛАК_ЗАЙНЯТИЙ_ЛАЯН_479003"
+msgid "Здається Гримлак, зайнятий лаянням, тебе навіть не помітив. Що зробиш?"
+msgstr "Здається Гримлак, зайнятий лаянням, тебе навіть не помітив. Що зробиш?"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПРИВІТАТИСЬ_64767A"
+msgid "Привітатись"
+msgstr "Привітатись"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПНУТИ_КОЛОДУ_12442A"
+msgid "Пнути колоду"
+msgstr "Пнути колоду"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПНУТИ_НОГУ_818931"
+msgid "Пнути ногу"
+msgstr "Пнути ногу"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "НОГИ_ГРИМЛАКА_ПЕРЕЛЯКАНО_ЗДРИГ_ACF60A"
+msgid "Ноги Гримлака перелякано здригнулись."
+msgstr "Ноги Гримлака перелякано здригнулись."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТРЯСЦЯ_ТВОЇЙ_МАТЕРІ_ХТО_ЦЕ_ТАМ_7DB37B"
+msgid "Трясця твоїй матері! Хто це там? Допоможи вилізти!"
+msgstr "Трясця твоїй матері! Хто це там? Допоможи вилізти!"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТИ_ОБХОДИШ_КОЛОДУ_ТАК_ЩОБ_ГРИМ_CA4906"
+msgid "Ти обходиш колоду так, щоб Гримлак тебе побачив."
+msgstr "Ти обходиш колоду так, щоб Гримлак тебе побачив."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "АХ_ТО_ЦЕ_ТИ_ВИЛУПОК_ЙДИ_ГЕТЬ_Т_259BD3"
+msgid "Ах то це ти, вилупок! Йди геть, твоя допомога мені не потрібна!"
+msgstr "Ах то це ти, вилупок! Йди геть, твоя допомога мені не потрібна!"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ГРИМЛАК_ЗВАТЕНБАРГ_702458"
+msgid "Гримлак Зватенбарг?"
+msgstr "Гримлак Зватенбарг?"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТИ_ДУРНИЙ_ХТО_Ж_ЩЕ_970C91"
+msgid "Ти дурний? Хто ж ще?"
+msgstr "Ти дурний? Хто ж ще?"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "СХОЖЕ_ЗА_ВСЕ_МИ_ЗНАЙОМІ_АЛЕ_СП_7A31A8"
+msgid ""
+"Схоже за все, ми знайомі, але справа в тому, що я нічого не пам’ятаю з "
+"минулої ночі."
+msgstr ""
+"Схоже за все, ми знайомі, але справа в тому, що я нічого не пам’ятаю з "
+"минулої ночі."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "НЕ_БЗДИ_НАГОВОРИВ_МЕНІ_ВЧОРА_П_F8D18B"
+msgid ""
+"Не бзди! Наговорив мені вчора погань усіляку, а тепер навіть не пам’ятаєш "
+"цього? Іди звідси, я не збираюсь няньчитись з п'янюгою, який навіть за свої "
+"слова не відповідає! Краще врізати дуба, ніж мати з тобою справу, вишкребок."
+msgstr ""
+"Не бзди! Наговорив мені вчора погань усіляку, а тепер навіть не пам’ятаєш "
+"цього? Іди звідси, я не збираюсь няньчитись з п'янюгою, який навіть за свої "
+"слова не відповідає! Краще врізати дуба, ніж мати з тобою справу, вишкребок."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТОРВІН_ПОПЕРЕДЖАВ_СЛУХАЙ_А_ЦЮ_935F2D"
+msgid "Торвін попереджав… Слухай, а цю колоду хоча б не я на тебе зронив?"
+msgstr "Торвін попереджав… Слухай, а цю колоду хоча б не я на тебе зронив?"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЩЕ_Б_ТИ_ТАКЕ_УЧИНИВ_Я_Б_ТОБІ_В_3489FA"
+msgid ""
+"Ще б ти таке учинив! Я б тобі всі ребра за таке вирівняв! Ні. Я сам у тому "
+"винний, щоб мені срака по шву розійшлася… Зранку взявся до роботи, та з "
+"похмілля не втримав колоду. От лежу тепер десь зо дві години."
+msgstr ""
+"Ще б ти таке учинив! Я б тобі всі ребра за таке вирівняв! Ні. Я сам у тому "
+"винний, щоб мені срака по шву розійшлася… Зранку взявся до роботи, та з "
+"похмілля не втримав колоду. От лежу тепер десь зо дві години."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЧУЄШ_НЕ_ЗНАЮ_ЩО_ТАМ_ВНОЧІ_ТРАП_A45A5D"
+msgid ""
+"Чуєш, не знаю, що там вночі трапилось, але зараз мені потрібна твоя "
+"допомога. Якщо я тебе дістану з-під колоди, зможеш стільницю зробити?"
+msgstr ""
+"Чуєш, не знаю, що там вночі трапилось, але зараз мені потрібна твоя "
+"допомога. Якщо я тебе дістану з-під колоди, зможеш стільницю зробити?"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "АГОВ_СХИБЛЕНИЙ_ТИ_ВЗАГАЛІ_ЧУВ_B7E4F5"
+msgid ""
+"Агов, схиблений! Ти взагалі чув, що я тобі тільки що казав? Я з тобою ніякої "
+"справи мати не буду!"
+msgstr ""
+"Агов, схиблений! Ти взагалі чув, що я тобі тільки що казав? Я з тобою ніякої "
+"справи мати не буду!"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "Я_Ж_НАВІТЬ_НЕ_ЗНАЮ_ЗА_ЩО_ТИ_ЗЛ_94EA9C"
+msgid "Я ж навіть не знаю, за що ти злишся на мене!"
+msgstr "Я ж навіть не знаю, за що ти злишся на мене!"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ГРИМЛАК_ВІДВЕРТАЄТЬСЯ_І_МОВЧИТ_FC55AB"
+msgid "Гримлак відвертається і мовчить."
+msgstr "Гримлак відвертається і мовчить."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ДІДЬКО_ДАВАЙ_ПО_ІНШОМУ_ТИ_РОЗК_D79A28"
+msgid ""
+"Дідько, давай по-іншому. Ти розкажеш, що трапилося, якщо я визволю тебе "
+"звідси?"
+msgstr ""
+"Дідько, давай по-іншому. Ти розкажеш, що трапилося, якщо я визволю тебе "
+"звідси?"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ГРИМЛАК_ДОВГО_ДУМАЄ_ПЕРЕД_ТИМ_6EC9C6"
+msgid ""
+"Гримлак довго думає, перед тим як тобі відповісти. По його обличчю видно, що "
+"він зважує усі “за” і “проти”."
+msgstr ""
+"Гримлак довго думає, перед тим як тобі відповісти. По його обличчю видно, що "
+"він зважує усі “за” і “проти”."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "КУРВА_ГАРАЗД_ДОМОВИЛИСЬ_АЛЕ_НЕ_9560FD"
+msgid ""
+"Курва, гаразд. Домовились. Але не очікуй, що я тебе після того пробачу, "
+"вдуплив?"
+msgstr ""
+"Курва, гаразд. Домовились. Але не очікуй, що я тебе після того пробачу, "
+"вдуплив?"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ВДУПЛИВ_989C93"
+msgid "Вдуплив."
+msgstr "Вдуплив."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПОДИВИМОСЬ_ЩО_ТИ_СКАЖЕШ_ПОТІМ_DA5177"
+msgid "Подивимось, що ти скажеш потім."
+msgstr "Подивимось, що ти скажеш потім."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ОТО_ТИ_НУДЯГА_1036BF"
+msgid "Ото ти нудяга."
+msgstr "Ото ти нудяга."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТОДІ_СЛУХАЙ_ДОВБНЮ_ЩОБ_ПІДНЯТИ_348867"
+msgid ""
+"Тоді слухай, довбню. Щоб підняти цю колоду, тобі знадобиться домкрат. Вночі "
+"ти намагався підняти мою майстерню. Казав, що хочеш там заховатись, щоб "
+"потім когось налякати. Як можеш собі уявити, у тебе не вийшло. Я сказав "
+"повернути домкрат на місце у майстерню. Але де саме ти його залишив, я не "
+"знаю."
+msgstr ""
+"Тоді слухай, довбню. Щоб підняти цю колоду, тобі знадобиться домкрат. Вночі "
+"ти намагався підняти мою майстерню. Казав, що хочеш там заховатись, щоб "
+"потім когось налякати. Як можеш собі уявити, у тебе не вийшло. Я сказав "
+"повернути домкрат на місце у майстерню. Але де саме ти його залишив, я не "
+"знаю."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "І_ЩО_МЕНІ_РОБИТИ_92C6AB"
+msgid "І що мені робити?"
+msgstr "І що мені робити?"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЙТИ_І_ШУКАТИ_ДУРБЕЦАЛО_ДЕСЬ_ВО_DBFBD6"
+msgid "Йти і шукати, дурбецало! Десь воно ж має бути."
+msgstr "Йти і шукати, дурбецало! Десь воно ж має бути."
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТРЕБА_СПРОБУВАТИ_ЗГАДАТИ_ЩО_Я_5FADE0"
+msgid "Треба спробувати згадати, що я робив там минулої ночі…"
+msgstr "Треба спробувати згадати, що я робив там минулої ночі…"

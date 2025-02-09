@@ -12,6 +12,7 @@ var cellar_fixed = false
 var warehouse_fixed = false
 var counter_fixed = false
 var chicken_hit = 0
+var sawmill_intro = false
 
 
 func clear_progress():
@@ -27,3 +28,4 @@ func clear_progress():
 	warehouse_fixed = false
 	counter_fixed = false
 	chicken_hit = 0
+	sawmill_intro = false

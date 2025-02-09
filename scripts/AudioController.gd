@@ -6,8 +6,6 @@ var music_positions: Dictionary[String, float] = {}
 var music_stop_times: Dictionary[String, int] = {}
 
 var music: Dictionary[String, Array] = {
-	"knights": [Audio.new("res://assets/music/Tournier of the Knights.mp3")],
-	"fairies": [Audio.new("res://assets/music/A Dance With Fairies.mp3", 0.3)],
 	"olaf_fast": [Audio.new("res://assets/music/Olaf The Boozer Theme.mp3")],
 	"olaf_world": [Audio.new("res://assets/music/Olaf The Boozer World.mp3")],
 	"olaf_gameplay": [
@@ -16,6 +14,7 @@ var music: Dictionary[String, Array] = {
 		Audio.new("res://assets/music/Olaf The Boozer Gameplay Theme V3.mp3"),
 	],
 	"tavern": [Audio.new("res://assets/music/Pub Theme.mp3", 0.3)],
+	"sawmill": [Audio.new("res://assets/music/Sawmill Theme.mp3", 0.3)],
 }
 
 var sfx: Dictionary[String, Array] = {

@@ -57,6 +57,10 @@ func make_ghost(type: LevelDefinitions.GhostType = LevelDefinitions.GhostType.ME
 	set_orientation("left" if randi_range(0, 1) else "right")
 	can_produce_sounds = false
 
+func make_dead():
+	can_produce_sounds = false
+	sprite.play(mode + "_idle_dead")
+
 func make_follower():
 	sprite.play(mode + "_die", -1.5, true)
 	await sprite.animation_finished

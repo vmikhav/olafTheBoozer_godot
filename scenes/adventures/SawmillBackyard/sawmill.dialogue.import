@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://cwdlaia768yoa"
+path="res://.godot/imported/sawmill.dialogue-18938cc31a952a2cd59a2264c74b1a38.tres"
+
+[deps]
+
+source_file="res://scenes/adventures/SawmillBackyard/sawmill.dialogue"
+dest_files=["res://.godot/imported/sawmill.dialogue-18938cc31a952a2cd59a2264c74b1a38.tres"]
+
+[params]
+
+defaults=true

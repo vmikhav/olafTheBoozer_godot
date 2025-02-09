@@ -156,6 +156,7 @@ response_template = NodePath("ResponseExample")
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Response example"
+autowrap_mode = 3
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

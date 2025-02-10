@@ -19,11 +19,12 @@ func _ready():
 	interactive_zones = [
 	]
 	camera_limit = Rect2i(-304, -192, 608, 352)
-	move_hero_to_position(hero_start_position)
+	move_hero_to_position(hero_start_position)	
 	init_map()
+	hero.set_orientation("right")
 	#next_scene = ["res://trailer/WishlistDemo.tscn", {}]
 	if !StoryProgress.counter_fixed:
-		next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["SawmillYard"]}]
+		next_scene = ["res://scenes/world/WolrdMap/WorldMapInteractive.tscn", {next_location = "sawmill"}]
 		counter()
 	else:
 		next_scene = ["res://trailer/WishlistDemo.tscn", {}]

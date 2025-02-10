@@ -29,7 +29,7 @@ func _ready():
 		demon_captured()
 	else:
 		#next_scene = ["res://trailer/WishlistDemo.tscn", {}]
-		next_scene = ["res://scenes/game/AdventurePlayground/AdventurePlayground.tscn", {levels = ["RepairedTavern"]}]
+		next_scene = ["res://scenes/world/WolrdMap/WorldMapInteractive.tscn", {next_location = "tavern"}]
 		outro()
 
 func intro():

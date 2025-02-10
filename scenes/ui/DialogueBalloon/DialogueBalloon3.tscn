@@ -128,6 +128,7 @@ theme_override_fonts/normal_font = ExtResource("3_i450q")
 theme_override_font_sizes/normal_font_size = 18
 text = "Dialogue..."
 skip_action = &"ui_accept"
+pause_at_characters = ".?!…"
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
 layout_mode = 1

@@ -13,8 +13,7 @@ var is_level_finished: bool = false
 
 var level_index = 0
 var levels = [
-	"RepairedSawmillBackyard",
-	#"StartTavern",
+	"StartTavern",
 ]
 
 # Called when the node enters the scene tree for the first time.

@@ -8,10 +8,10 @@ func _ready():
 	hero = $Items/Demolitonist
 	hero_start_position = Vector2i(-2, 4)
 	ghosts = [
-		{position = Vector2i(-2, 3), type = defs.GhostType.ENEMY, mode = defs.UnitType.SUCCUB},
-		{position = Vector2i(1, -2), type = defs.GhostType.ENEMY, mode = defs.UnitType.SUCCUB},
-		{position = Vector2i(-2, -1), type = defs.GhostType.ENEMY_SPAWN, mode = defs.UnitType.SUCCUB},
-		{position = Vector2i(1, 3), type = defs.GhostType.ENEMY_SPAWN, mode = defs.UnitType.SUCCUB},
+		{position = Vector2i(-2, 3), type = defs.GhostType.ENEMY, mode = defs.UnitType.IMP},
+		{position = Vector2i(1, -2), type = defs.GhostType.ENEMY, mode = defs.UnitType.IMP},
+		{position = Vector2i(-2, -1), type = defs.GhostType.ENEMY_SPAWN, mode = defs.UnitType.IMP},
+		{position = Vector2i(1, 3), type = defs.GhostType.ENEMY_SPAWN, mode = defs.UnitType.IMP},
 	]
 	teleports = [
 		{start = Vector2i(-4, 3), end = Vector2i(-3, -4)},

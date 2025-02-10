@@ -13,7 +13,7 @@ var emote: Sprite2D
 var can_produce_sounds = true
 var available_sounds = ["olaf_hiccup_idle"]
 var last_sound = -1
-var mode: String = "demolitonist"
+var mode: String = LevelDefinitions.UnitTypeName[LevelDefinitions.UnitType.DEMOLITONIST]
 
 func _ready():
 	sprite.play(mode + "_idle")
@@ -54,6 +54,8 @@ func play_idle_sound():
 
 func make_ghost(type: LevelDefinitions.GhostType = LevelDefinitions.GhostType.MEMORY) -> void:
 	sprite.modulate = ghost_colors[type]
+	if LevelDefinitions.Demons.has(mode) && type == LevelDefinitions.GhostType.ENEMY:
+		sprite.modulate = Color8(150, 255, 100, 200)
 	set_orientation("left" if randi_range(0, 1) else "right")
 	can_produce_sounds = false
 

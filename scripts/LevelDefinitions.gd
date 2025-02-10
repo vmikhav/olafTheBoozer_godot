@@ -38,6 +38,8 @@ const UnitTypeName = {
 	UnitType.ORC_VETERAN: "orcVeteran",
 }
 
+const Demons = ["demoness", "imp", "succub"]
+
 const TrailDirections = {
 	side = [
 		TileSet.CELL_NEIGHBOR_BOTTOM_SIDE,

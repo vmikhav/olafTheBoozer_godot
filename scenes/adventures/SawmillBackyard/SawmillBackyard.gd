@@ -23,8 +23,14 @@ func _ready():
 	init_map()
 	characters[0].unit.make_dead()
 	hero.set_orientation("right")
-	next_scene = ["res://scenes/game/AdventurePlayground/Playground.tscn", {levels = ["SawmillWarehouse"]}]
-	intro()
+	if StoryProgress.sawmill_intro:
+		move_hero_to_position(Vector2i(-1, 1))
+		hero.set_orientation("right")
+		next_scene = ["res://scenes/game/AdventurePlayground/AdventurePlayground.tscn", {levels = ["RepairedSawmillBackyard"]}]
+		outro()
+	else:
+		next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["SawmillWarehouse"]}]
+		intro()
 
 func intro():
 	allow_input = false
@@ -38,4 +44,12 @@ func first_dialog(index: int):
 	DialogueManager.show_dialogue_balloon(first_dialogue, "first_sawmill_dialogue")
 	await DialogueManager.dialogue_ended
 	finish_level()
+	allow_input = true
+
+func outro():
+	allow_input = false
+	DialogueManager.show_dialogue_balloon(first_dialogue, "sawmill_log_part1")
+	await DialogueManager.dialogue_ended
+	finish_level()
+	need_stop_music = false
 	allow_input = true

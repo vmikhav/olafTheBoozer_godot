@@ -13,6 +13,9 @@ var warehouse_fixed = false
 var counter_fixed = false
 var chicken_hit = 0
 var sawmill_intro = false
+var sawmill_log = false
+var sawmill_demon_captured = false
+var sawmill_warehouse_fixed = false
 
 
 func clear_progress():
@@ -29,3 +32,6 @@ func clear_progress():
 	counter_fixed = false
 	chicken_hit = 0
 	sawmill_intro = false
+	sawmill_log = false
+	sawmill_demon_captured = false
+	sawmill_warehouse_fixed = false

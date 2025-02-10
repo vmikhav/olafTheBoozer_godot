@@ -21,13 +21,24 @@ func _ready():
 	camera_limit = Rect2i(-304, -192, 608, 352)
 	move_hero_to_position(hero_start_position)
 	init_map()
-	next_scene = ["res://trailer/WishlistDemo.tscn", {}]
-	outro()
+	#next_scene = ["res://trailer/WishlistDemo.tscn", {}]
+	if !StoryProgress.counter_fixed:
+		next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["SawmillYard"]}]
+		counter()
+	else:
+		next_scene = ["res://trailer/WishlistDemo.tscn", {}]
+		outro()
 
+func counter():
+	allow_input = false
+	DialogueManager.show_dialogue_balloon(first_dialogue, "host_counter_quest")
+	await DialogueManager.dialogue_ended
+	finish_level()
+	allow_input = true
 
 func outro():
 	allow_input = false
-	DialogueManager.show_dialogue_balloon(first_dialogue, "host_counter_quest")
+	DialogueManager.show_dialogue_balloon(first_dialogue, "host_counter_returned")
 	await DialogueManager.dialogue_ended
 	finish_level()
 	allow_input = true

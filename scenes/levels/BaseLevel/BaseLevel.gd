@@ -504,7 +504,7 @@ func is_draggable_item(cell_coords: Vector2i) -> bool:
 	return defs.DraggableItems.has(cell_value)
 
 func check_for_draggable_item(direction: TileSet.CellNeighbor) -> Vector2i:
-	if not tail.is_empty() or not is_empty_cell(Layer.ITEMS, hero_position):
+	if (not tail.is_empty() and last_active_tail_item > -1) or not is_empty_cell(Layer.ITEMS, hero_position):
 		return Vector2i.MAX
 
 	var opposite_direction = get_opposite_direction(direction)

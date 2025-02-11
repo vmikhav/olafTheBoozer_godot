@@ -53,7 +53,7 @@ tile_set = ExtResource("2_oo3bk")
 [node name="Floor" type="TileMapLayer" parent="."]
 z_index = 1
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD8//3/AAAdAAgAAAD8//7/AAAdAAkAAAD8////AAAdAAoAAAD9//3/AAAeAAgAAAD9//7/AAAeAAkAAAD9////AAAeAAoAAAD+//3/AAAfAAgAAAD+//7/AAAfAAkAAAD+////AAAfAAoAAAA=")
+tile_map_data = PackedByteArray("AAD8//3/AAAdAAgAAAD8//7/AAAdAAkAAAD8////AAAdAAoAAAD9//3/AAAeAAgAAAD9//7/AAAeAAkAAAD9////AAAeAAoAAAD+//3/AAAfAAgAAAD+//7/AAAfAAkAAAD+////AAAfAAoAAAAAAPz/AAA/AAQAAAD9//r/AAA/AAcAAAD6//z/AAA/AAUAAAA=")
 tile_set = ExtResource("2_oo3bk")
 
 [node name="Walls" type="TileMapLayer" parent="."]

@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://bw0f56ba8yukh"]
+
+[ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="1_u0b1x"]
+[ext_resource type="StyleBox" uid="uid://dvd8isprt3mqj" path="res://themes/wide_button_normal.tres" id="2_w2eiy"]
+[ext_resource type="StyleBox" uid="uid://crt75st4wfoi4" path="res://themes/wide_button_pressed.tres" id="3_i7cl1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c52aj"]
+
+[resource]
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_u0b1x")
+Button/styles/focus = SubResource("StyleBoxEmpty_c52aj")
+Button/styles/hover = ExtResource("2_w2eiy")
+Button/styles/normal = ExtResource("2_w2eiy")
+Button/styles/pressed = ExtResource("3_i7cl1")

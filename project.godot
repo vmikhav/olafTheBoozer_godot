@@ -23,6 +23,7 @@ SettingsManager="*res://scripts/SettingsManager.gd"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 StoryProgress="*res://scripts/StoryProgress.gd"
 SpeechController="*res://scripts/SpeechController.gd"
+ButtonsController="*res://scripts/ButtonsController.gd"
 
 [dialogue_manager]
 
@@ -141,7 +142,7 @@ step_down={
 [internationalization]
 
 locale/translations=PackedStringArray("res://i18n/en.po", "res://i18n/uk.po")
-locale/translations_pot_files=PackedStringArray("res://scenes/adventures/StartTavern/start_tavern.dialogue", "res://scenes/ui/LevelMenu/AdventureMenu.tscn", "res://scenes/ui/LevelMenu/LevelMenu.gd", "res://scenes/ui/LevelMenu/LevelMenu.tscn", "res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.gd", "res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.tscn", "res://scenes/ui/SettingsMenu/SettingsMenu.gd", "res://scenes/ui/SettingsMenu/SettingsMenu.tscn", "res://scenes/game/MainMenu/MainMenu.gd", "res://scenes/game/MainMenu/MainMenu.tscn", "res://scenes/adventures/SawmillBackyard/sawmill.dialogue")
+locale/translations_pot_files=PackedStringArray("res://scenes/adventures/StartTavern/start_tavern.dialogue", "res://scenes/ui/LevelMenu/AdventureMenu.tscn", "res://scenes/ui/LevelMenu/LevelMenu.gd", "res://scenes/ui/LevelMenu/LevelMenu.tscn", "res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.gd", "res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.tscn", "res://scenes/ui/SettingsMenu/SettingsMenu.gd", "res://scenes/ui/SettingsMenu/SettingsMenu.tscn", "res://scenes/game/MainMenu/MainMenu.gd", "res://scenes/game/MainMenu/MainMenu.tscn", "res://scenes/adventures/SawmillBackyard/sawmill.dialogue", "res://trailer/WishlistDemo.tscn")
 
 [rendering]
 

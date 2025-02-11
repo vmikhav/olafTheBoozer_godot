@@ -893,14 +893,14 @@ msgid ""
 "день. Спатиму без задніх ніг, згадуючи то все, як страшний сон. Тільки, "
 "Торвіне?"
 msgstr ""
-" Oh, finally someone agrees I’ve done enough! Phew, it's been an utterly "
+"Oh, finally someone agrees I’ve done enough! Phew, it's been an utterly "
 "crazy day. I'm going to sleep like the dead and try to forget this whole "
 "thing like a bad dream.  Listen, Torvin?"
 
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "ЩО_63A3F1"
 msgid "Що?"
-msgstr " What is it?"
+msgstr "What is it?"
 
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "НЕ_ВИКОРИСТОВУЙ_ДЛЯ_ЦІЄЇ_СТІЛЬ_EF62D1"
@@ -1052,7 +1052,7 @@ msgstr "Demo"
 msgid "Play"
 msgstr "Play"
 
-#: scenes/game/MainMenu/MainMenu.tscn
+#: scenes/game/MainMenu/MainMenu.tscn trailer/WishlistDemo.tscn
 msgid "Exit"
 msgstr "Exit"
 
@@ -1301,7 +1301,7 @@ msgid ""
 msgstr ""
 "You insert the jack under the log. In just a few minutes, it rises high "
 "enough for Grimlark to crawl out of his trap. He clumsily dusts himself off "
-"and straightens up with satisfaction. "
+"and straightens up with satisfaction."
 
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "ПЕРЕД_ТОБОЮ_СТОЇТЬ_ВИСОКИЙ_СТО_E5C6BD"
@@ -1442,7 +1442,7 @@ msgstr "Bloody hell, I really did say that…"
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "ЗГАДАВ_НАРЕШТІ_02EB62"
 msgid "Згадав нарешті?"
-msgstr " Finally remembered?"
+msgstr "Finally remembered?"
 
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "АГА_8124D2"
@@ -1723,3 +1723,31 @@ msgstr "Your green mug is worthy of any woman you fancy."
 msgctxt "ДЯКУЮ_ОЛАФЕ_БУВАЙ_CE9E37"
 msgid "Дякую, Олафе. Бувай."
 msgstr "Thank you, Olaf. Farewell."
+
+#: trailer/WishlistDemo.tscn
+msgid ""
+"Thank you for playing Olaf the Boozer demo!\n"
+"\n"
+"I hope you felt puzzled and curious - Get ready to reeval more of what "
+"really happened with Olaf when the full release comes later this year.\n"
+"\n"
+"If you have any feedback, I would love to hear it. Please, leave a review on "
+"Steam and add game to wishlist!"
+msgstr ""
+"Thank you for playing Olaf the Boozer demo!\n"
+"\n"
+"I hope you felt puzzled and curious - Get ready to reeval more of what "
+"really happened with Olaf when the full release comes later this year.\n"
+"\n"
+"If you have any feedback, I would love to hear it. Please, leave a review on "
+"Steam and add game to wishlist!"
+
+#~ msgid "THANK_YOU_FOR_PLAYING_DEMO"
+#~ msgstr ""
+#~ "Thank you for playing Olaf the Boozer demo!\n"
+#~ "\n"
+#~ "I hope you felt puzzled and curious - Get ready to reeval more of what "
+#~ "really happened with Olaf when the full release comes later this year.\n"
+#~ "\n"
+#~ "If you have any feedback, I would love to hear it. Please, leave a review "
+#~ "on Steam and add game to wishlist!"

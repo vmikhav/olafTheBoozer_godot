@@ -6,6 +6,7 @@ extends Node2D
 
 func _ready():
 	scene_transition.fade_in()
+	AudioController.play_music("olaf_world")
 	exit_button.pressed.connect(exit)
 	if OS.has_feature("wasm"):
 		exit_button.hide()

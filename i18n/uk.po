@@ -1046,7 +1046,7 @@ msgstr "Демо"
 msgid "Play"
 msgstr "Грати"
 
-#: scenes/game/MainMenu/MainMenu.tscn
+#: scenes/game/MainMenu/MainMenu.tscn trailer/WishlistDemo.tscn
 msgid "Exit"
 msgstr "Вийти"
 
@@ -1712,3 +1712,20 @@ msgstr ""
 msgctxt "ДЯКУЮ_ОЛАФЕ_БУВАЙ_CE9E37"
 msgid "Дякую, Олафе. Бувай."
 msgstr "Дякую, Олафе. Бувай."
+
+#: trailer/WishlistDemo.tscn
+msgid ""
+"Thank you for playing Olaf the Boozer demo!\n"
+"\n"
+"I hope you felt puzzled and curious - Get ready to reeval more of what "
+"really happened with Olaf when the full release comes later this year.\n"
+"\n"
+"If you have any feedback, I would love to hear it. Please, leave a review on "
+"Steam and add game to wishlist!"
+msgstr ""
+"Дякую за те, що грали у демо Olaf the Boozer!\n"
+"\n"
+"Сподіваюся що вам стало цікаво, тож готуйтеся відкрити для себе більше "
+"пригод Олафа з повною версією гри.\n"
+"\n"
+"Будь ласка, залиште відгук та додайте гру в бажане!"

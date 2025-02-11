@@ -10,6 +10,7 @@
 # res://scenes/game/MainMenu/MainMenu.gd
 # res://scenes/game/MainMenu/MainMenu.tscn
 # res://scenes/adventures/SawmillBackyard/sawmill.dialogue
+# res://trailer/WishlistDemo.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -749,6 +750,7 @@ msgid "Play"
 msgstr ""
 
 #: scenes/game/MainMenu/MainMenu.tscn
+#: trailer/WishlistDemo.tscn
 msgid "Exit"
 msgstr ""
 
@@ -1195,4 +1197,13 @@ msgstr ""
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "ДЯКУЮ_ОЛАФЕ_БУВАЙ_CE9E37"
 msgid "Дякую, Олафе. Бувай."
+msgstr ""
+
+#: trailer/WishlistDemo.tscn
+msgid ""
+"Thank you for playing Olaf the Boozer demo!\n"
+"\n"
+"I hope you felt puzzled and curious - Get ready to reeval more of what really happened with Olaf when the full release comes later this year.\n"
+"\n"
+"If you have any feedback, I would love to hear it. Please, leave a review on Steam and add game to wishlist!"
 msgstr ""

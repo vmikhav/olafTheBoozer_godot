@@ -1,26 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://7qh5b785eipd"]
+[gd_scene load_steps=10 format=3 uid="uid://7qh5b785eipd"]
 
 [ext_resource type="Texture2D" uid="uid://b6mw14015yrc2" path="res://trailer/wishlist.png" id="1_0l7di"]
 [ext_resource type="Script" uid="uid://de27p7ewdcitj" path="res://trailer/WishlistDemo.gd" id="1_yrd7t"]
-[ext_resource type="FontFile" uid="uid://cxtw8p5wygf2e" path="res://assets/fonts/vinque.rg-regular.otf" id="2_r2t7h"]
 [ext_resource type="Texture2D" uid="uid://tra00nxobp22" path="res://assets/images/Outside castle/back.png" id="2_wytv3"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="3_0l7di"]
 [ext_resource type="Texture2D" uid="uid://c68b8nxud88e" path="res://assets/images/Outside castle/middle.png" id="3_s6kaj"]
 [ext_resource type="Texture2D" uid="uid://b5k4ucg3lry0c" path="res://assets/images/Outside castle/front.png" id="4_8hcio"]
-[ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="5_12vqa"]
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="6_12vqa"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_alb15"]
-font = ExtResource("2_r2t7h")
-font_size = 70
-shadow_size = 10
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(5, 5)
-
-[sub_resource type="LabelSettings" id="LabelSettings_10mdw"]
-shadow_size = 4
-shadow_color = Color(0, 0, 0, 1)
-shadow_offset = Vector2(2, 2)
+[ext_resource type="FontFile" uid="uid://t17ntd6k15d0" path="res://assets/fonts/PixeloidSans-Bold.otf" id="7_wytv3"]
+[ext_resource type="Theme" uid="uid://bw0f56ba8yukh" path="res://themes/wood_menu.tres" id="8_wytv3"]
 
 [node name="Wishlist" type="Node2D"]
 script = ExtResource("1_yrd7t")
@@ -66,44 +54,6 @@ texture = ExtResource("3_s6kaj")
 scale = Vector2(4, 4)
 texture = ExtResource("4_8hcio")
 
-[node name="LinkButton" type="LinkButton" parent="CanvasLayer"]
-texture_filter = 1
-offset_right = 672.0
-offset_bottom = 25.0
-uri = "https://store.steampowered.com/app/3001110"
-
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/LinkButton"]
-texture_filter = 2
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -6.0
-offset_top = 267.5
-offset_right = 1194.0
-offset_bottom = 809.5
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-size_flags_horizontal = 6
-size_flags_vertical = 10
-texture = ExtResource("1_0l7di")
-
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
-theme_override_constants/margin_top = 70
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
-text = "Olaf the Boozer"
-label_settings = SubResource("LabelSettings_alb15")
-horizontal_alignment = 1
-
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
@@ -113,32 +63,80 @@ offset_right = 176.0
 offset_bottom = 40.0
 grow_horizontal = 2
 size_flags_horizontal = 6
-theme_override_constants/margin_top = 250
+theme_override_constants/margin_top = 75
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer2"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(600, 300)
 layout_mode = 2
 theme = ExtResource("3_0l7di")
-theme_override_font_sizes/font_size = 25
-text = "Thank you for playing!"
-label_settings = SubResource("LabelSettings_10mdw")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer2/VBoxContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("7_wytv3")
+theme_override_font_sizes/normal_font_size = 18
+text = "Thank you for playing Olaf the Boozer demo!
+
+I hope you felt puzzled and curious - Get ready to reeval more of what really happened with Olaf when the full release comes later this year.
+
+If you have any feedback, I would love to hear it. Please, leave a review on Steam and add game to wishlist!"
+fit_content = true
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = -120
+
+[node name="LinkButton" type="LinkButton" parent="CanvasLayer/MarginContainer2/VBoxContainer/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+uri = "https://store.steampowered.com/app/3001110"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer2/VBoxContainer/MarginContainer/LinkButton"]
+texture_filter = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_right = 960.0
+offset_bottom = 542.0
+grow_horizontal = 2
+scale = Vector2(0.4, 0.4)
+size_flags_horizontal = 6
+size_flags_vertical = 10
+texture = ExtResource("1_0l7di")
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_top = 300
+theme_override_constants/margin_top = 550
 
 [node name="Button" type="Button" parent="CanvasLayer/MarginContainer2/MarginContainer2"]
-custom_minimum_size = Vector2(300, 80)
+custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
-theme = ExtResource("3_0l7di")
-theme_override_fonts/font = ExtResource("5_12vqa")
-theme_override_font_sizes/font_size = 40
+theme = ExtResource("8_wytv3")
+theme_override_font_sizes/font_size = 24
 text = "Exit"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer"]

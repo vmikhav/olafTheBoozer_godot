@@ -1,0 +1,19 @@
+extends Node
+
+func _enter_tree() -> void:
+	get_tree().node_added.connect(_on_node_added)
+
+func _on_node_added(node:Node) -> void:
+	if node is BaseButton:
+		# If the added node is a button we connect to its mouse_entered and pressed signals
+		# and play a sound
+		node.mouse_entered.connect(_play_hover)
+		node.button_down.connect(_play_pressed)
+
+
+func _play_hover() -> void:
+	AudioController.play_sfx("mouse_moving")
+
+
+func _play_pressed() -> void:
+	AudioController.play_sfx("mouse_click")

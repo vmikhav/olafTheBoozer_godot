@@ -2,14 +2,15 @@ extends MarginContainer
 
 @export var with_background: bool = true
 
-@onready var sfx_slider = $SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SoundsContainer/SFXSlider as HSlider
-@onready var voices_slider = $SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VoicesContainer/VoicesSlider as HSlider
-@onready var music_slider = $SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer/MusicSlider as HSlider
-@onready var drink_selector = $SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DrinkContainer/DrinkOptionButton as OptionButton
-@onready var language_selector: OptionButton = $SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LanguageContainer/LanguageOptionButton
-@onready var touch_checkbox = $SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer/MarginContainer2/CheckButton as CheckButton
-@onready var close_button = $SettingsPanel/MarginContainer/VBoxContainer/MarginContainer/CloseButton as Button
+@onready var sfx_slider: HSlider = %SFXSlider
+@onready var voices_slider: HSlider = %VoicesSlider
+@onready var music_slider: HSlider = %MusicSlider
+@onready var drink_selector: OptionButton = %DrinkOptionButton
+@onready var language_selector: OptionButton = %LanguageOptionButton
+@onready var touch_checkbox: CheckButton = %TouchCheckButton
+@onready var close_button: Button = %CloseButton
 @onready var background = $ColorRect
+@onready var labels = [%SFXLabel, %VoicesLabel, %MusicLabel, %DrinkLabel, %LanguageLabel, %TouchLabel]
 
 var timer_mark
 
@@ -30,6 +31,17 @@ func _ready():
 	language_selector.item_selected.connect(update_language)
 	touch_checkbox.pressed.connect(update_touch_control)
 	close_button.pressed.connect(close_modal)
+	sfx_slider.mouse_entered.connect(sfx_slider.grab_focus)
+	voices_slider.mouse_entered.connect(voices_slider.grab_focus)
+	music_slider.mouse_entered.connect(music_slider.grab_focus)
+	sfx_slider.focus_entered.connect(reset_label_highlight.bind(%SFXLabel))
+	voices_slider.focus_entered.connect(reset_label_highlight.bind(%VoicesLabel))
+	music_slider.focus_entered.connect(reset_label_highlight.bind(%MusicLabel))
+	drink_selector.focus_entered.connect(reset_label_highlight.bind(%DrinkLabel))
+	language_selector.focus_entered.connect(reset_label_highlight.bind(%LanguageLabel))
+	touch_checkbox.focus_entered.connect(reset_label_highlight.bind(%TouchLabel))
+	close_button.focus_entered.connect(reset_label_highlight)
+	
 
 func init_modal():
 	background.visible = with_background
@@ -39,6 +51,8 @@ func init_modal():
 	if with_background:
 		background.color.a8 = 0
 		tween.parallel().tween_property(background, "color", Color8(0, 0, 0, 60), 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	get_tree().create_timer(0.05, true).timeout.connect(sfx_slider.grab_focus)
+	#reset_label_highlight.call_deferred(%SFXLabel)
 
 func update_sfx_volume(value: float):
 	var mute = value < 0.02
@@ -77,3 +91,10 @@ func close_modal():
 	await tween.finished
 	visible = false
 	close.emit()
+
+func reset_label_highlight(new_label: Label = null) -> void:
+	for label in labels:
+		label.position.x = 0
+	
+	if new_label != null:
+		new_label.position.x = 10

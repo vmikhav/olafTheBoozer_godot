@@ -1,7 +1,31 @@
-[gd_scene load_steps=3 format=3 uid="uid://qbwqcgn7su0n"]
+[gd_scene load_steps=9 format=3 uid="uid://qbwqcgn7su0n"]
 
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="1_83s70"]
 [ext_resource type="Script" uid="uid://cujdvewuxmofs" path="res://scenes/ui/SettingsMenu/SettingsMenu.gd" id="2_m7qoo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xoghu"]
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(1, 1, 1, 0.588235)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fhx3p"]
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(1, 1, 1, 0.588235)
+
+[sub_resource type="LabelSettings" id="LabelSettings_su5ui"]
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(1, 1, 1, 0.588235)
+
+[sub_resource type="LabelSettings" id="LabelSettings_b7f2g"]
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(1, 1, 1, 0.588235)
+
+[sub_resource type="LabelSettings" id="LabelSettings_sksdv"]
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(1, 1, 1, 0.490196)
+
+[sub_resource type="LabelSettings" id="LabelSettings_fm5ek"]
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(1, 1, 1, 0.588235)
 
 [node name="SettingsMenu" type="MarginContainer"]
 process_mode = 3
@@ -49,17 +73,22 @@ layout_mode = 2
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SoundsContainer"]
+[node name="SFXLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SoundsContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Sounds:"
+label_settings = SubResource("LabelSettings_xoghu")
 vertical_alignment = 1
 
 [node name="SFXSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SoundsContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../../VoicesContainer/VoicesSlider")
+focus_next = NodePath("../../VoicesContainer/VoicesSlider")
 max_value = 1.0
 step = 0.02
 value = 0.5
@@ -68,17 +97,24 @@ value = 0.5
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VoicesContainer"]
+[node name="VoicesLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VoicesContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Voices:"
+label_settings = SubResource("LabelSettings_fhx3p")
 vertical_alignment = 1
 
 [node name="VoicesSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VoicesContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../SoundsContainer/SFXSlider")
+focus_neighbor_bottom = NodePath("../../MusicContainer/MusicSlider")
+focus_next = NodePath("../../MusicContainer/MusicSlider")
+focus_previous = NodePath("../../SoundsContainer/SFXSlider")
 max_value = 1.0
 step = 0.02
 value = 0.5
@@ -87,17 +123,24 @@ value = 0.5
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
+[node name="MusicLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Music:"
+label_settings = SubResource("LabelSettings_su5ui")
 vertical_alignment = 1
 
 [node name="MusicSlider" type="HSlider" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../VoicesContainer/VoicesSlider")
+focus_neighbor_bottom = NodePath("../../DrinkContainer/DrinkOptionButton")
+focus_next = NodePath("../../DrinkContainer/DrinkOptionButton")
+focus_previous = NodePath("../../VoicesContainer/VoicesSlider")
 max_value = 1.0
 step = 0.05
 
@@ -108,18 +151,26 @@ theme_override_constants/separation = 10
 [node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DrinkContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DrinkContainer/MarginContainer"]
+[node name="DrinkLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DrinkContainer/MarginContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Drink:"
+label_settings = SubResource("LabelSettings_b7f2g")
 
 [node name="DrinkOptionButton" type="OptionButton" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DrinkContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../MusicContainer/MusicSlider")
+focus_neighbor_bottom = NodePath("../../LanguageContainer/LanguageOptionButton")
+focus_next = NodePath("../../LanguageContainer/LanguageOptionButton")
+focus_previous = NodePath("../../MusicContainer/MusicSlider")
 theme_override_colors/font_color = Color(0.823529, 0.698039, 0.564706, 1)
 theme_override_colors/font_focus_color = Color(0.823529, 0.698039, 0.564706, 1)
+toggle_mode = false
 selected = 0
 item_count = 2
 popup/item_0/text = "Beer"
@@ -134,18 +185,22 @@ theme_override_constants/separation = 10
 [node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LanguageContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LanguageContainer/MarginContainer"]
+[node name="LanguageLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LanguageContainer/MarginContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Language:"
+label_settings = SubResource("LabelSettings_sksdv")
 
 [node name="LanguageOptionButton" type="OptionButton" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LanguageContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.823529, 0.698039, 0.564706, 1)
 theme_override_colors/font_focus_color = Color(0.823529, 0.698039, 0.564706, 1)
+toggle_mode = false
 selected = 0
 item_count = 2
 popup/item_0/text = "English"
@@ -159,28 +214,38 @@ layout_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer/MarginContainer"]
+[node name="TouchLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer/MarginContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Touch Control:"
+label_settings = SubResource("LabelSettings_fm5ek")
 vertical_alignment = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CheckButton" type="CheckButton" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer/MarginContainer2"]
+[node name="TouchCheckButton" type="CheckButton" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/TouchContainer/MarginContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
+focus_neighbor_top = NodePath("../../../LanguageContainer/LanguageOptionButton")
+focus_neighbor_bottom = NodePath("../../../../../../MarginContainer/CloseButton")
+focus_next = NodePath("../../../../../../MarginContainer/CloseButton")
+focus_previous = NodePath("../../../LanguageContainer/LanguageOptionButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_top = 15
 
 [node name="CloseButton" type="Button" parent="SettingsPanel/MarginContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+focus_neighbor_top = NodePath("../../PanelContainer/MarginContainer/VBoxContainer/TouchContainer/MarginContainer2/TouchCheckButton")
+focus_previous = NodePath("../../PanelContainer/MarginContainer/VBoxContainer/TouchContainer/MarginContainer2/TouchCheckButton")
 theme_type_variation = &"BlueButton"
 text = "Close"

@@ -59,6 +59,7 @@ func close_settings():
 	var tween = create_tween()
 	tween.tween_property($PanelContainer, "modulate", Color8(255, 255, 255, 255), .25).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	settings.emit()
+	settings_button.grab_focus()
 
 func exit_level():
 	exit.emit()

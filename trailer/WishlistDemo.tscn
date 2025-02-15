@@ -109,7 +109,7 @@ custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-uri = "https://store.steampowered.com/app/3001110"
+uri = "https://store.steampowered.com/app/3528050"
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer2/VBoxContainer/MarginContainer/LinkButton"]
 texture_filter = 2

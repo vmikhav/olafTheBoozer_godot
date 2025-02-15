@@ -66,7 +66,6 @@ func _ready() -> void:
 	dialogue_label.spoke.connect(func(letter: String, letter_index: int, speed: float):
 		if letter_index == 0:
 			SpeechController.set_character(dialogue_line.character)
-				#AudioController.play_sfx("scribe")
 		SpeechController.speak(letter)
 	)
 

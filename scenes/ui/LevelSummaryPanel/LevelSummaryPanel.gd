@@ -39,6 +39,7 @@ func display():
 	for i in cups.size():
 		cups[i].reset()
 	add_theme_constant_override("margin_top", -400)
+	next_button.grab_focus()
 	var tween = create_tween()
 	tween.tween_property(self, "theme_override_constants/margin_top", 10, 1.25).set_trans(Tween.TRANS_BOUNCE).set_ease(Tween.EASE_OUT)
 	get_tree().create_timer(1.4).timeout.connect(fill_progress_bar)

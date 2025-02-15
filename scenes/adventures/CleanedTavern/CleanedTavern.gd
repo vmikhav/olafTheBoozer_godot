@@ -39,13 +39,14 @@ func intro():
 	allow_input = true
 
 func cleme_idle(index: int):
-	deactivate_hint(index)
 	allow_input = false
+	deactivate_hint(index)
 	DialogueManager.show_dialogue_balloon(first_dialogue, "tavern_cleme_idle")
 	await DialogueManager.dialogue_ended
 	allow_input = true
 
 func cellar_quest(index: int):
+	allow_input = false
 	deactivate_zone(index)
 	DialogueManager.show_dialogue_balloon(first_dialogue, "host_cellar_quest")
 	await DialogueManager.dialogue_ended
@@ -53,6 +54,7 @@ func cellar_quest(index: int):
 	finish_level()
 
 func warehouse_quest():
+	allow_input = false
 	DialogueManager.show_dialogue_balloon(first_dialogue, "host_warehouse_quest")
 	await DialogueManager.dialogue_ended
 	allow_input = true

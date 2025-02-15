@@ -31,6 +31,7 @@ func _ready():
 	)
 	menu.close.connect(close_menu)
 	menu.exit.connect(func():
+		AudioController.stop_music(0)
 		close_menu()
 		exit_levels()
 	)

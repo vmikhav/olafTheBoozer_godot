@@ -18,12 +18,12 @@ var level_progress_report: LevelProgressReport
 
 var level_index = 0
 var levels = [
-	"SawmillDemon",
+	"SawmillYard",
 	"TavernKitchen",
 	"TavernTutorial",
 	"Kitchen",
-	"Library",
 	"Cellar",
+	"Library",
 	"TavernWarehouse",
 	"Tutorial0",
 	"Tavern",
@@ -49,6 +49,7 @@ func _ready():
 	menu.close.connect(close_menu)
 	menu.restart.connect(restart)
 	menu.exit.connect(func():
+		AudioController.stop_music(0)
 		close_menu()
 		exit_levels()
 	)

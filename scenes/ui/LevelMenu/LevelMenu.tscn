@@ -75,3 +75,9 @@ text = "Back to Menu"
 visible = false
 layout_mode = 2
 with_background = false
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 0.3
+one_shot = true
+ignore_time_scale = true

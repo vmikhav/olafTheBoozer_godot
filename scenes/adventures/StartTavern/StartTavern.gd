@@ -58,6 +58,7 @@ func intro():
 	allow_input = true
 
 func first_dialog(index: int):
+	allow_input = false
 	deactivate_zone(index)
 	DialogueManager.show_dialogue_balloon(first_dialogue, "first_host_dialogue")
 	await DialogueManager.dialogue_ended
@@ -65,6 +66,7 @@ func first_dialog(index: int):
 	finish_level()
 
 func drink_proposal(index: int):
+	allow_input = false
 	deactivate_hint(index)
 	DialogueManager.show_dialogue_balloon(first_dialogue, "leftovers_drink_proposal")
 	await DialogueManager.dialogue_ended
@@ -73,6 +75,7 @@ func drink_proposal(index: int):
 	allow_input = true
 
 func fireplace_note(index: int):
+	allow_input = false
 	deactivate_zone(index)
 	DialogueManager.show_dialogue_balloon(first_dialogue, "fireplace_note")
 	await DialogueManager.dialogue_ended
@@ -80,13 +83,13 @@ func fireplace_note(index: int):
 
 
 func janitor_quest(index: int):
+	allow_input = false
 	deactivate_hint(index)
 	var dialog = "host_janitor_quest" if !StoryProgress.janitor_resque_requested else "host_janitor_quest_reminder"
 	DialogueManager.show_dialogue_balloon(first_dialogue, dialog)
 	await DialogueManager.dialogue_ended
 	activate_zone(4)
 	allow_input = true
-
 
 func kitchen_door_label(index: int):
 	allow_input = false

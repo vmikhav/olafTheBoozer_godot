@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://df525dujavlyd"]
+[gd_scene load_steps=16 format=3 uid="uid://df525dujavlyd"]
 
 [ext_resource type="Script" uid="uid://crsmg8g5yemts" path="res://scenes/game/MainMenu/MainMenu.gd" id="1_7fekw"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="1_87rnb"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b5k4ucg3lry0c" path="res://assets/images/Outside castle/front.png" id="4_6jrop"]
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="4_lkwgi"]
 [ext_resource type="Theme" uid="uid://bw0f56ba8yukh" path="res://themes/wood_menu.tres" id="6_c3bsr"]
+[ext_resource type="Texture2D" uid="uid://dfnbg5i0yj6dl" path="res://assets/images/input_prompts.png" id="7_bvnvu"]
 [ext_resource type="Texture2D" uid="uid://dxcvgudbobo1x" path="res://assets/images/Pix_Socials Square.png" id="8_bvnvu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_n41tu"]
@@ -22,6 +23,10 @@ font_size = 40
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(5, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5pc3b"]
+atlas = ExtResource("7_bvnvu")
+region = Rect2(34, 153, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bvnvu"]
 atlas = ExtResource("8_bvnvu")
@@ -106,6 +111,16 @@ focus_next = NodePath("../../MarginContainer2/Exit")
 theme = ExtResource("6_c3bsr")
 theme_override_font_sizes/font_size = 30
 text = "Play"
+
+[node name="TextureRect" type="TextureRect" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
+texture_filter = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = SubResource("AtlasTexture_5pc3b")
+expand_mode = 1
+stretch_mode = 4
 
 [node name="MarginContainer2" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2

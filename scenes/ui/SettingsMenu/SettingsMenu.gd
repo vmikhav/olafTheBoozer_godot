@@ -18,6 +18,8 @@ signal close
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var option_buttons = [drink_selector, language_selector]
+	
 	sfx_slider.value = db_to_linear(SettingsManager.settings.sfx_volume)
 	voices_slider.value = db_to_linear(SettingsManager.settings.voice_volume)
 	music_slider.value = db_to_linear(SettingsManager.settings.music_volume)
@@ -31,9 +33,11 @@ func _ready():
 	language_selector.item_selected.connect(update_language)
 	touch_checkbox.pressed.connect(update_touch_control)
 	close_button.pressed.connect(close_modal)
+	
 	sfx_slider.mouse_entered.connect(sfx_slider.grab_focus)
 	voices_slider.mouse_entered.connect(voices_slider.grab_focus)
 	music_slider.mouse_entered.connect(music_slider.grab_focus)
+	
 	sfx_slider.focus_entered.connect(reset_label_highlight.bind(%SFXLabel))
 	voices_slider.focus_entered.connect(reset_label_highlight.bind(%VoicesLabel))
 	music_slider.focus_entered.connect(reset_label_highlight.bind(%MusicLabel))
@@ -41,6 +45,10 @@ func _ready():
 	language_selector.focus_entered.connect(reset_label_highlight.bind(%LanguageLabel))
 	touch_checkbox.focus_entered.connect(reset_label_highlight.bind(%TouchLabel))
 	close_button.focus_entered.connect(reset_label_highlight)
+	
+	for button in option_buttons:
+		button.pressed.connect(_on_option_button_pressed.bind(button))
+		button.item_selected.connect(_on_option_item_selected.bind(button))
 	
 
 func init_modal():
@@ -52,7 +60,6 @@ func init_modal():
 		background.color.a8 = 0
 		tween.parallel().tween_property(background, "color", Color8(0, 0, 0, 60), 0.5).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	get_tree().create_timer(0.05, true).timeout.connect(sfx_slider.grab_focus)
-	#reset_label_highlight.call_deferred(%SFXLabel)
 
 func update_sfx_volume(value: float):
 	var mute = value < 0.02
@@ -98,3 +105,17 @@ func reset_label_highlight(new_label: Label = null) -> void:
 	
 	if new_label != null:
 		new_label.position.x = 10
+
+func _on_option_button_pressed(button: OptionButton) -> void:
+	# Remove focus from the button when popup opens
+	button.release_focus()
+	await get_tree().process_frame
+	var popup = button.get_popup()
+	if popup:
+		# Set initial selection to current item
+		popup.set_focused_item(button.selected)
+
+func _on_option_item_selected(_index: int, button: OptionButton) -> void:
+	# Return focus to the button after selection
+	await get_tree().create_timer(.05, true).timeout
+	button.grab_focus.call_deferred()

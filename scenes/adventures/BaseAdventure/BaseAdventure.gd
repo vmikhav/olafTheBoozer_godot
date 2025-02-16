@@ -16,7 +16,7 @@ var hint_scene: PackedScene = preload("res://scenes/sprites/QuestHint/QuestHint.
 var music_key: String = "fairies"
 var need_stop_music: bool = true
 var tilemaps: Array[TileMapLayer]
-var hero: Node2D
+var hero: Unit
 var hero_play_type: Array = ["worker", true]
 var hero_start_position: Vector2i
 var characters = []
@@ -68,16 +68,16 @@ func deactivate_hint(index: int) -> void:
 	if "hint" in interactive_zones[index]:
 		interactive_zones[index].hint.visible = false
 
-func move_unit_to_position(unit: Node2D, new_position: Vector2i):
-	unit.position = new_position * TILE_SIZE + TILE_OFFSET
+func move_unit_to_position(unit: Unit, new_position: Vector2i):
+	unit.move(new_position * TILE_SIZE + TILE_OFFSET)
 
-func move_oriented_unit_to_position(unit: Node2D, new_position: Vector2i):
+func move_oriented_unit_to_position(unit: Unit, new_position: Vector2i):
 	var new_absolute_position := new_position * TILE_SIZE + TILE_OFFSET
 	if new_absolute_position.x > unit.position.x:
 		unit.set_orientation('right')
 	if new_absolute_position.x < unit.position.x:
 		unit.set_orientation('left')
-	unit.position = new_absolute_position
+	unit.move(new_absolute_position)
 
 func move_hero_to_position(new_position: Vector2i):
 	hero_position = new_position

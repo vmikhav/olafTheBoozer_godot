@@ -101,14 +101,16 @@ vertical_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer2/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = -120
 
 [node name="LinkButton" type="LinkButton" parent="CanvasLayer/MarginContainer2/VBoxContainer/MarginContainer"]
 texture_filter = 1
-custom_minimum_size = Vector2(20, 20)
+custom_minimum_size = Vector2(420, 150)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 8
+focus_neighbor_bottom = NodePath("../../../MarginContainer2/Button")
+focus_next = NodePath("../../../MarginContainer2/Button")
+focus_mode = 2
 uri = "https://store.steampowered.com/app/3528050"
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer2/VBoxContainer/MarginContainer/LinkButton"]
@@ -118,8 +120,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -240.0
+offset_top = -35.0
 offset_right = 960.0
-offset_bottom = 542.0
+offset_bottom = 507.0
 grow_horizontal = 2
 scale = Vector2(0.4, 0.4)
 size_flags_horizontal = 6
@@ -135,6 +138,8 @@ theme_override_constants/margin_top = 550
 [node name="Button" type="Button" parent="CanvasLayer/MarginContainer2/MarginContainer2"]
 custom_minimum_size = Vector2(250, 80)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../VBoxContainer/MarginContainer/LinkButton")
+focus_previous = NodePath("../../VBoxContainer/MarginContainer/LinkButton")
 theme = ExtResource("8_wytv3")
 theme_override_font_sizes/font_size = 24
 text = "Exit"

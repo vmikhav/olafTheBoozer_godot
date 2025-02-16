@@ -34,9 +34,9 @@ func _ready():
 	touch_checkbox.pressed.connect(update_touch_control)
 	close_button.pressed.connect(close_modal)
 	
-	sfx_slider.mouse_entered.connect(sfx_slider.grab_focus)
-	voices_slider.mouse_entered.connect(voices_slider.grab_focus)
-	music_slider.mouse_entered.connect(music_slider.grab_focus)
+	sfx_slider.mouse_entered.connect(check_focus_grab.bind(sfx_slider))
+	voices_slider.mouse_entered.connect(check_focus_grab.bind(voices_slider))
+	music_slider.mouse_entered.connect(check_focus_grab.bind(music_slider))
 	
 	sfx_slider.focus_entered.connect(reset_label_highlight.bind(%SFXLabel))
 	voices_slider.focus_entered.connect(reset_label_highlight.bind(%VoicesLabel))
@@ -99,6 +99,10 @@ func close_modal():
 	visible = false
 	close.emit()
 
+func check_focus_grab(node: Control) -> void:
+	if ButtonsController.allow_grab:
+		node.grab_focus()
+
 func reset_label_highlight(new_label: Label = null) -> void:
 	for label in labels:
 		label.position.x = 0
@@ -114,8 +118,10 @@ func _on_option_button_pressed(button: OptionButton) -> void:
 	if popup:
 		# Set initial selection to current item
 		popup.set_focused_item(button.selected)
+		ButtonsController.allow_grab = false
 
 func _on_option_item_selected(_index: int, button: OptionButton) -> void:
 	# Return focus to the button after selection
 	await get_tree().create_timer(.05, true).timeout
 	button.grab_focus.call_deferred()
+	ButtonsController.allow_grab = true

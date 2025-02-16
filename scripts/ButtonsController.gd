@@ -1,5 +1,7 @@
 extends Node
 
+var allow_grab := true
+
 func _enter_tree() -> void:
 	get_tree().node_added.connect(_on_node_added)
 
@@ -13,7 +15,8 @@ func _on_node_added(node:Node) -> void:
 
 func _play_hover(node: BaseButton) -> void:
 	AudioController.play_sfx("mouse_moving")
-	node.grab_focus()
+	if allow_grab:
+		node.grab_focus()
 
 
 func _play_pressed(node: BaseButton) -> void:

@@ -103,7 +103,7 @@ vertical_alignment = 1
 layout_mode = 2
 
 [node name="LinkButton" type="LinkButton" parent="CanvasLayer/MarginContainer2/VBoxContainer/MarginContainer"]
-texture_filter = 1
+z_index = 4
 custom_minimum_size = Vector2(420, 150)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -111,6 +111,8 @@ size_flags_vertical = 8
 focus_neighbor_bottom = NodePath("../../../MarginContainer2/Button")
 focus_next = NodePath("../../../MarginContainer2/Button")
 focus_mode = 2
+action_mode = 0
+keep_pressed_outside = true
 uri = "https://store.steampowered.com/app/3528050"
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/MarginContainer2/VBoxContainer/MarginContainer/LinkButton"]
@@ -127,6 +129,7 @@ grow_horizontal = 2
 scale = Vector2(0.4, 0.4)
 size_flags_horizontal = 6
 size_flags_vertical = 10
+mouse_default_cursor_shape = 2
 texture = ExtResource("1_0l7di")
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer2"]

@@ -113,6 +113,7 @@ theme_override_font_sizes/font_size = 30
 text = "Play"
 
 [node name="TextureRect" type="TextureRect" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
+visible = false
 texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2

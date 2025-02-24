@@ -11,6 +11,7 @@
 # res://scenes/game/MainMenu/MainMenu.tscn
 # res://scenes/adventures/SawmillBackyard/sawmill.dialogue
 # res://trailer/WishlistDemo.tscn
+# res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -680,7 +681,13 @@ msgstr ""
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn
 #: scenes/ui/LevelMenu/LevelMenu.tscn
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
 msgid "Restart"
+msgstr ""
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn
+#: scenes/ui/LevelMenu/LevelMenu.tscn
+msgid "Skip Level"
 msgstr ""
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn
@@ -1206,4 +1213,16 @@ msgid ""
 "I hope you felt puzzled and curious - Get ready to reeval more of what really happened with Olaf when the full release comes later this year.\n"
 "\n"
 "If you have any feedback, I would love to hear it. Please, leave a review on Steam and add game to wishlist!"
+msgstr ""
+
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "Level Complete!"
+msgstr ""
+
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "New Highscore!"
+msgstr ""
+
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "Next"
 msgstr ""

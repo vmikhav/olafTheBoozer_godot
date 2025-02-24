@@ -62,12 +62,6 @@ func _ready() -> void:
 
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
-	
-	dialogue_label.spoke.connect(func(letter: String, letter_index: int, speed: float):
-		if letter_index == 0:
-			SpeechController.set_character(dialogue_line.character)
-		SpeechController.speak(letter)
-	)
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -87,8 +81,6 @@ func _notification(what: int) -> void:
 
 ## Start some dialogue
 func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
-	if not is_node_ready():
-		await ready
 	temporary_game_states = [self] + extra_game_states
 	is_waiting_for_input = false
 	resource = dialogue_resource
@@ -97,10 +89,6 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 
 ## Apply any changes to the balloon given a new [DialogueLine].
 func apply_dialogue_line() -> void:
-	# If the node isn't ready yet then none of the labels will be ready yet either
-	if not is_node_ready():
-		await ready
-
 	mutation_cooldown.stop()
 
 	is_waiting_for_input = false

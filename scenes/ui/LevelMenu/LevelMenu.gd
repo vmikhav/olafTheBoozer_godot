@@ -2,6 +2,7 @@ extends MarginContainer
 
 @onready var restore_button = $PanelContainer/MarginContainer/VBoxContainer/RestoreButton as Button
 @onready var restart_button = $PanelContainer/MarginContainer/VBoxContainer/RestartButton as Button
+@onready var skip_button = $PanelContainer/MarginContainer/VBoxContainer/SkipButton as Button
 @onready var settings_button = $PanelContainer/MarginContainer/VBoxContainer/SettingsButton as Button
 @onready var world_button = $PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/WorldButton as Button
 @onready var background = $ColorRect as ColorRect
@@ -10,6 +11,7 @@ extends MarginContainer
 
 signal close
 signal restart
+signal skip
 signal exit
 signal settings
 
@@ -20,6 +22,7 @@ var allow_hotkey_close = false
 func _ready():
 	restore_button.pressed.connect(close_modal)
 	restart_button.pressed.connect(restart_level)
+	skip_button.pressed.connect(skip_level)
 	world_button.pressed.connect(exit_level)
 	settings_button.pressed.connect(open_settings)
 	settings_menu.close.connect(close_settings)
@@ -66,6 +69,10 @@ func exit_level():
 
 func restart_level():
 	restart.emit()
+	close_modal()
+
+func skip_level():
+	skip.emit()
 	close_modal()
 
 func close_modal():

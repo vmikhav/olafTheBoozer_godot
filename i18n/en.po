@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OlafTheBoozer-ggo2022\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-02-15 22:43+0200\n"
+"PO-Revision-Date: 2025-02-24 10:43+0200\n"
 "Last-Translator: Volodymyr Mikhav <mihaw.wolodymyr@gmail.com>\n"
 "Language-Team: English <http://weblate.hidalgocode.com/projects/olaf-the-"
 "boozer/dialogs/en/>\n"
@@ -986,8 +986,13 @@ msgid "Continue"
 msgstr "Continue"
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
 msgid "Restart"
 msgstr "Restart"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+msgid "Skip Level"
+msgstr "Skip Level"
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
 msgid "Settings"
@@ -1738,6 +1743,18 @@ msgstr ""
 "\n"
 "BTW, if you have any feedback, I would love to hear it. Please, leave a "
 "review on Steam and add game to wishlist!"
+
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "Level Complete!"
+msgstr "Level Complete!"
+
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "New Highscore!"
+msgstr "New Highscore!"
+
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "Next"
+msgstr "Next"
 
 #~ msgid "THANK_YOU_FOR_PLAYING_DEMO"
 #~ msgstr ""

@@ -18,7 +18,7 @@ var level_progress_report: LevelProgressReport
 
 var level_index = 0
 var levels = [
-	"SawmillDemon",
+	"SawmillYard",
 	"TavernTutorial",
 	"TavernKitchen",
 	"Kitchen",
@@ -48,6 +48,7 @@ func _ready():
 	)
 	menu.close.connect(close_menu)
 	menu.restart.connect(restart)
+	menu.skip.connect(skip)
 	menu.exit.connect(func():
 		AudioController.stop_music(0)
 		close_menu()
@@ -78,6 +79,13 @@ func restart():
 	level.restart()
 	prepare_ui_for_level()
 	play_intro(false)
+
+func skip():
+	if in_intro:
+		return
+	if not is_level_finished:
+		prepare_report()
+	load_next_level()
 
 func start_replay():
 	level.replay()

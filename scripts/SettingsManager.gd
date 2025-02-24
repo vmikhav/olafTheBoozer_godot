@@ -93,6 +93,8 @@ func get_language_index() -> int:
 	return maxi(pos, 0)
 
 func update_language(value: int):
+	if value < 0 or value >= languages.size():
+		value = 0
 	settings.language = languages[value]
 	TranslationServer.set_locale(settings.language)
 	save_settings()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bmg38p33gp6c"]
 
-[ext_resource type="Script" uid="uid://d1wt4ma6055l8" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_oun85"]
+[ext_resource type="Script" uid="uid://bwx7reqbycw6j" path="res://scenes/ui/DialogueBalloon/DialogueBalloon3.gd" id="1_oun85"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="2_5k0lb"]
 [ext_resource type="FontFile" uid="uid://t17ntd6k15d0" path="res://assets/fonts/PixeloidSans-Bold.otf" id="3_i450q"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="4_0hxxb"]

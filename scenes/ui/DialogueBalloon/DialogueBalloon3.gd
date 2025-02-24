@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name DialogueBalloon3 extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
 ## The action to use for advancing the dialogue
@@ -62,6 +62,12 @@ func _ready() -> void:
 
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
+	
+	dialogue_label.spoke.connect(func(letter: String, letter_index: int, speed: float):
+		if letter_index == 0:
+			SpeechController.set_character(dialogue_line.character)
+		SpeechController.speak(letter)
+	)
 
 
 func _unhandled_input(_event: InputEvent) -> void:

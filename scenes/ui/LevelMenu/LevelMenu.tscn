@@ -51,6 +51,11 @@ layout_mode = 2
 theme_type_variation = &"BlueButton"
 text = "Restart"
 
+[node name="SkipButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_type_variation = &"BlueButton"
+text = "Skip Level"
+
 [node name="SettingsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"BlueButton"

@@ -979,8 +979,13 @@ msgid "Continue"
 msgstr "Продовжити"
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
 msgid "Restart"
 msgstr "Перепройти"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+msgid "Skip Level"
+msgstr "Пропустити рівень"
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
 msgid "Settings"
@@ -1729,3 +1734,15 @@ msgstr ""
 "пригод Олафа з повною версією гри.\n"
 "\n"
 "Будь ласка, залиште відгук та додайте гру в бажане!"
+
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "Level Complete!"
+msgstr "Рівень пройдено!"
+
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "New Highscore!"
+msgstr "Новий рекорд!"
+
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "Next"
+msgstr "Далі"

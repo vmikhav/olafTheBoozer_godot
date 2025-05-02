@@ -46,6 +46,8 @@ func display():
 	await tween.finished
 
 func dismiss_tween():
+	if !is_visible:
+		return
 	var tween = create_tween()
 	tween.tween_property(self, "theme_override_constants/margin_top", -400, 1).set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN)
 	reset_progress()

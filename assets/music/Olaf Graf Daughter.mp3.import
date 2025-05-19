@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cebwna01e4ori"
+path="res://.godot/imported/Olaf Graf Daughter.mp3-66689350ef624f9ca907acf21defc53f.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Olaf Graf Daughter.mp3"
+dest_files=["res://.godot/imported/Olaf Graf Daughter.mp3-66689350ef624f9ca907acf21defc53f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

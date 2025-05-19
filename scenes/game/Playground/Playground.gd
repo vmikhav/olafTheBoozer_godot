@@ -1,10 +1,11 @@
 extends Node2D
 
 @onready var camera = $TouchCamera as TouchCamera
-@onready var nav_buttons = $UiLayer/HudContainer/VBoxContainer/HBoxContainer2/NavButtons
-@onready var progress_panel = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer2/MarginContainer/ProgressPanel
-@onready var undo_button = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer3/TextureButton as TextureButton
-@onready var menu_button = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/TextureButton as TextureButton
+@onready var nav_buttons = %NavButtons
+@onready var progress_panel = %ProgressPanel
+@onready var undo_button = %UndoButton as TextureButton
+@onready var restart_button = %RestartButton as TextureButton
+@onready var menu_button = %MenuButton as TextureButton
 @onready var transition_rect = $UiLayer/SceneTransitionRect
 @onready var summary_container = $UiLayer/SummaryContainer
 @onready var nav_controller = $NavController
@@ -39,6 +40,7 @@ func _ready():
 	nav_buttons.actions.connect(imitate_input)
 	nav_controller.actions.connect(move_hero)
 	undo_button.pressed.connect(undo_step)
+	restart_button.pressed.connect(restart)
 	menu_button.pressed.connect(show_menu)
 	summary_container.restart.connect(restart)
 	summary_container.next.connect(load_next_level)
@@ -129,13 +131,13 @@ func load_level(level_name: String):
 
 func prepare_ui_for_level():
 	camera.set_drag_offset(Vector2(0, 0))
-	$UiLayer/HudContainer.visible = true
+	%HudContainer.visible = true
 	summary_container.dismiss(false)
 
 func on_level_finished():
 	prepare_report()
 	is_level_finished = true
-	$UiLayer/HudContainer.visible = false
+	%HudContainer.visible = false
 	summary_container.display(level_progress_report)
 	camera.set_drag_offset(Vector2(0, 0.3))
 	#AudioController.stop_music(1.5)
@@ -199,7 +201,7 @@ func play_intro(init: bool = true):
 		return
 	in_intro = true
 	var fade = 0.5 if init else 0.25
-	$UiLayer/HudContainer.visible = false
+	%HudContainer.visible = false
 	await transition_rect.fade_in(fade)
 	intro.visible = true
 	intro.play(init)
@@ -207,6 +209,6 @@ func play_intro(init: bool = true):
 	await transition_rect.fade_out(fade)
 	intro.queue_free()
 	intro = null
-	$UiLayer/HudContainer.visible = true
+	%HudContainer.visible = true
 	in_intro = false
 	transition_rect.fade_in(fade)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dqg723uuet4da"
+path="res://.godot/imported/Olaf Room fiancee.mp3-641b5ed19799037127010f76791db957.mp3str"
+
+[deps]
+
+source_file="res://assets/music/Olaf Room fiancee.mp3"
+dest_files=["res://.godot/imported/Olaf Room fiancee.mp3-641b5ed19799037127010f76791db957.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

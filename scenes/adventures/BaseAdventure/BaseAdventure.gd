@@ -49,7 +49,7 @@ func init_map():
 			tilemaps[Layer.TREES].add_child(hint)
 			hint.set_icon(interactive_zones[i].hint_type)
 			hint.z_index = 50
-			hint.scale = Vector2(0.5, 0.5)
+			#hint.scale = Vector2(0.5, 0.5)
 			interactive_zones[i].hint = hint
 			if !interactive_zones[i].active:
 				hint.visible = false

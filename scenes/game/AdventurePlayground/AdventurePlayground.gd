@@ -1,8 +1,8 @@
 extends Node2D
 
 @onready var camera = $TouchCamera as TouchCamera
-@onready var nav_buttons = $UiLayer/HudContainer/VBoxContainer/HBoxContainer2/NavButtons
-@onready var menu_button = $UiLayer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/TextureButton as TextureButton
+@onready var nav_buttons = %NavButtons
+@onready var menu_button = %MenuButton as TextureButton
 @onready var transition_rect = $UiLayer/SceneTransitionRect
 @onready var nav_controller = $NavController
 @onready var menu_layer = $MenuLayer
@@ -76,12 +76,12 @@ func load_level(level_name: String):
 
 func prepare_ui_for_level():
 	camera.set_drag_offset(Vector2(0, 0))
-	$UiLayer/HudContainer.visible = true
+	%HudContainer.visible = true
 
 func on_level_finished():
 	prepare_report()
 	is_level_finished = true
-	$UiLayer/HudContainer.visible = false
+	%HudContainer.visible = false
 	load_next_level()
 
 func load_next_level():

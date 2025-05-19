@@ -70,17 +70,33 @@ Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 layer = 100
 script = ExtResource("1_mswvj")
 
-[node name="Balloon" type="Control" parent="."]
-unique_name_in_owner = true
-layout_mode = 3
+[node name="HSplitContainer" type="HSplitContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+split_offset = -640
+dragging_enabled = false
+dragger_visibility = 1
+
+[node name="Control" type="Control" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+split_offset = 1280
+dragging_enabled = false
+dragger_visibility = 1
+
+[node name="Balloon" type="Control" parent="HSplitContainer/HSplitContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 theme = SubResource("Theme_qq3yp")
 
-[node name="Panel" type="Panel" parent="Balloon"]
+[node name="Panel" type="Panel" parent="HSplitContainer/HSplitContainer/Balloon"]
 clip_children = 2
 layout_mode = 1
 anchors_preset = 12
@@ -96,7 +112,7 @@ grow_vertical = 0
 mouse_filter = 1
 theme = ExtResource("2_55qjb")
 
-[node name="Dialogue" type="MarginContainer" parent="Balloon/Panel"]
+[node name="Dialogue" type="MarginContainer" parent="HSplitContainer/HSplitContainer/Balloon/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -104,10 +120,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel/Dialogue"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue"]
 layout_mode = 2
 
-[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Panel/Dialogue/VBoxContainer"]
+[node name="CharacterLabel" type="RichTextLabel" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue/VBoxContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
@@ -120,7 +136,7 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Balloon/Panel/Dialogue/VBoxContainer" instance=ExtResource("4_qmi0o")]
+[node name="DialogueLabel" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue/VBoxContainer" instance=ExtResource("4_qmi0o")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -132,7 +148,7 @@ theme_override_font_sizes/normal_font_size = 18
 text = "Dialogue..."
 script = ExtResource("6_i450q")
 
-[node name="Responses" type="MarginContainer" parent="Balloon"]
+[node name="Responses" type="MarginContainer" parent="HSplitContainer/HSplitContainer/Balloon"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -146,7 +162,7 @@ offset_bottom = -154.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/Responses" node_paths=PackedStringArray("response_template")]
+[node name="ResponsesMenu" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/Balloon/Responses" node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -155,11 +171,15 @@ theme_override_constants/separation = 2
 script = ExtResource("6_twqlo")
 response_template = NodePath("ResponseExample")
 
-[node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
+[node name="ResponseExample" type="Button" parent="HSplitContainer/HSplitContainer/Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Response example"
 autowrap_mode = 3
 
-[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
-[connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
+[node name="Control" type="Control" parent="HSplitContainer/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[connection signal="gui_input" from="HSplitContainer/HSplitContainer/Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="response_selected" from="HSplitContainer/HSplitContainer/Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]

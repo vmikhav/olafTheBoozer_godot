@@ -30,7 +30,7 @@ script = ExtResource("1_lsqxg")
 position = Vector2(296, -121)
 
 [node name="TouchCamera" parent="." instance=ExtResource("3_oocn6")]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(3, 3)
 limit_left = -400
 limit_top = -272
 limit_right = 608

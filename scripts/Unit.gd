@@ -4,9 +4,9 @@ extends Node2D
 const MOVE_DURATION = 0.12
 
 const ghost_colors = {
-	LevelDefinitions.GhostType.MEMORY: Color8(100, 200, 255, 160),
-	LevelDefinitions.GhostType.ENEMY: Color8(200, 200, 100, 160),
-	LevelDefinitions.GhostType.ENEMY_SPAWN: Color8(255, 100, 100, 160),
+	LevelDefinitions.GhostType.MEMORY: Color8(100, 200, 255, 255),
+	LevelDefinitions.GhostType.ENEMY: Color8(255, 210, 0, 255),
+	LevelDefinitions.GhostType.ENEMY_SPAWN: Color8(255, 100, 100, 255),
 }
 
 var orientation: String = 'right'
@@ -39,6 +39,8 @@ func set_mode(params):
 
 func init():
 	init_sounds()
+	sprite.material.set_shader_parameter("status_intensity", 0.0)
+	sprite.material.set_shader_parameter("transparency", 1.0)
 
 func init_sounds():
 	get_tree().create_timer(randf_range(2.5, 4), false).timeout.connect(play_idle_sound)
@@ -63,9 +65,9 @@ func play_idle_sound():
 		get_tree().create_timer(randf_range(4, 10), false).timeout.connect(play_idle_sound)
 
 func make_ghost(type: LevelDefinitions.GhostType = LevelDefinitions.GhostType.MEMORY) -> void:
-	sprite.modulate = ghost_colors[type]
-	if LevelDefinitions.Demons.has(mode) && type == LevelDefinitions.GhostType.ENEMY:
-		sprite.modulate = Color8(150, 255, 100, 200)
+	sprite.material.set_shader_parameter("status_color", ghost_colors[type])
+	sprite.material.set_shader_parameter("status_intensity", 1.0)
+	sprite.material.set_shader_parameter("transparency", 0.85)
 	set_orientation("left" if randi_range(0, 1) else "right")
 	can_produce_sounds = false
 	if type == LevelDefinitions.GhostType.ENEMY:

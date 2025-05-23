@@ -43,7 +43,8 @@ func play(init: bool = false):
 	splash.position = hero.position + Vector2(0, -0.5) * TILE_SIZE
 	await timer.timeout
 	hero.position.x += TILE_SIZE
-	villager2.sprite.modulate = Color.WHITE
+	villager2.sprite.material.set_shader_parameter("status_intensity", 0.0)
+	villager2.sprite.material.set_shader_parameter("transparency", 1.0)
 	villager2.make_follower()
 	villager2.set_orientation('right')
 	await timer.timeout

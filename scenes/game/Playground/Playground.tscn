@@ -50,7 +50,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-split_offset = -640
+split_offset = -700
 dragging_enabled = false
 dragger_visibility = 1
 
@@ -61,7 +61,7 @@ size_flags_horizontal = 3
 [node name="HSplitContainer" type="HSplitContainer" parent="UiLayer/HSplitContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-split_offset = 1280
+split_offset = 1400
 
 [node name="HudContainer" type="MarginContainer" parent="UiLayer/HSplitContainer/HSplitContainer"]
 unique_name_in_owner = true

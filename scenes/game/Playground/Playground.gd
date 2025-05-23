@@ -19,9 +19,10 @@ var level_progress_report: LevelProgressReport
 
 var level_index = 0
 var levels = [
+	"TavernKitchen",
+	"SawmillDemon",
 	"SawmillYard",
 	"TavernTutorial",
-	"TavernKitchen",
 	"Kitchen",
 	"Cellar",
 	"Library",
@@ -118,10 +119,7 @@ func load_level(level_name: String):
 	add_child(level)
 	level.process_mode = PROCESS_MODE_PAUSABLE	
 	camera.set_target(level.hero)
-	camera.limit_top = level.camera_limit.position.y
-	camera.limit_left = level.camera_limit.position.x
-	camera.limit_bottom = level.camera_limit.end.y
-	camera.limit_right = level.camera_limit.end.x
+	camera.set_limits(level.camera_limit)
 	level.level_finished.connect(on_level_finished)
 	progress_panel.set_items_count(level.level_items_count)
 	progress_panel.set_ghosts_count(level.ghosts_count)

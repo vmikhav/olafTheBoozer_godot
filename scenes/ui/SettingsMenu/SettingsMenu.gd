@@ -12,6 +12,9 @@ extends MarginContainer
 @onready var background = $ColorRect
 @onready var labels = [%SFXLabel, %VoicesLabel, %MusicLabel, %DrinkLabel, %LanguageLabel, %TouchLabel]
 
+var focus_indicator_scene = preload("res://scenes/sprites/OlafPortrait/OlafPortrait.tscn")
+var current_focus_indicator = null
+
 var timer_mark
 
 signal close
@@ -107,8 +110,21 @@ func reset_label_highlight(new_label: Label = null) -> void:
 	for label in labels:
 		label.position.x = 0
 	
+	if current_focus_indicator != null:
+		current_focus_indicator.queue_free()
+		current_focus_indicator = null
+	
 	if new_label != null:
-		new_label.position.x = 10
+		#new_label.position.x = 10
+		# Create a new focus indicator
+		current_focus_indicator = focus_indicator_scene.instantiate()
+		
+		# Add it to the scene
+		new_label.add_child(current_focus_indicator)
+		
+		# Position it in front of the button
+		# You may need to adjust this positioning based on your specific needs
+		current_focus_indicator.position = Vector2(-16 - 12, new_label.size.y / 2)
 
 func _on_option_button_pressed(button: OptionButton) -> void:
 	# Remove focus from the button when popup opens

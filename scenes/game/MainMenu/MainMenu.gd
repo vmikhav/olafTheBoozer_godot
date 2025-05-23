@@ -1,11 +1,12 @@
 extends Node2D
 
-@onready var play_button = $UiLayer/MarginContainer/VBoxContainer/MarginContainer/Play as Button
-@onready var exit_button = $UiLayer/MarginContainer/VBoxContainer/MarginContainer2/Exit as Button
+@onready var play_button = %Play as Button
+@onready var exit_button = %Exit as Button
 @onready var scene_transition = $UiLayer/SceneTransition
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	AudioController.play_music('workshop')
 	scene_transition.fade_in()
 	play_button.grab_focus.call_deferred()
 	play_button.pressed.connect(start_game)

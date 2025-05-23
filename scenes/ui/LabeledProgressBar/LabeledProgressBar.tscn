@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://car4s7r20herb"]
 
-[ext_resource type="Script" path="res://scenes/ui/LabeledProgressBar/LabeledProgressBar.gd" id="1_ligkf"]
+[ext_resource type="Script" uid="uid://4bxjkv7dle85" path="res://scenes/ui/LabeledProgressBar/LabeledProgressBar.gd" id="1_ligkf"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="1_qjak5"]
 
 [node name="LabeledProgressBar" type="HBoxContainer"]
@@ -8,16 +8,14 @@ alignment = 2
 script = ExtResource("1_ligkf")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 80.0
-offset_bottom = 17.0
+layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_right = 5
 
 [node name="Label" type="Label" parent="MarginContainer"]
+texture_filter = 1
 custom_minimum_size = Vector2(60, 0)
-offset_left = 5.0
-offset_right = 75.0
-offset_bottom = 17.0
+layout_mode = 2
 theme_override_fonts/font = ExtResource("1_qjak5")
 theme_override_font_sizes/font_size = 14
 text = "10/10"
@@ -26,9 +24,7 @@ vertical_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(0, 16)
-offset_left = 84.0
-offset_right = 88.0
-offset_bottom = 16.0
+layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"GreenProgressBar"
 value = 30.0

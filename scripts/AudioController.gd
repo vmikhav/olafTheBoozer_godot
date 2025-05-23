@@ -15,6 +15,7 @@ var music: Dictionary[String, Array] = {
 	],
 	"tavern": [Audio.new("res://assets/music/Pub Theme.mp3", 0.3)],
 	"sawmill": [Audio.new("res://assets/music/Sawmill Theme.mp3", 0.3)],
+	"workshop": [Audio.new("res://assets/music/Olaf Workshop.mp3", 0.3)],
 }
 
 var sfx: Dictionary[String, Array] = {

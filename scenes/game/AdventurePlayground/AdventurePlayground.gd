@@ -67,10 +67,7 @@ func load_level(level_name: String):
 	add_child(level)
 	level.process_mode = PROCESS_MODE_PAUSABLE	
 	camera.set_target(level.hero)
-	camera.limit_top = level.camera_limit.position.y
-	camera.limit_left = level.camera_limit.position.x
-	camera.limit_bottom = level.camera_limit.end.y
-	camera.limit_right = level.camera_limit.end.x
+	camera.set_limits(level.camera_limit)
 	level.level_finished.connect(on_level_finished)
 	prepare_ui_for_level()
 

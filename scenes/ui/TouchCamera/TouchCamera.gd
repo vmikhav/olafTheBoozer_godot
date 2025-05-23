@@ -40,6 +40,7 @@ var screen_size: Vector2
 var last_target_pos: Vector2
 var base_movement_speed: float = 2.0
 var force_center: bool = false
+var limits_rect: Rect2i = Rect2i(-10000, -10000, 20000, 20000)
 
 func _ready() -> void:
 	follow_timer = Timer.new()
@@ -47,6 +48,7 @@ func _ready() -> void:
 	follow_timer.wait_time = target_follow_delay
 	follow_timer.timeout.connect(func(): can_follow = true)
 	add_child(follow_timer)
+	
 	
 	target_zoom = zoom.x
 	screen_size = get_viewport_rect().size
@@ -242,3 +244,30 @@ func set_drag_margins(margins: Vector4) -> void:
 
 func set_drag_offset(_offset: Vector2) -> void:
 	set_drag_margins(default_margins + Vector4(-_offset.x, _offset.x, -_offset.y, _offset.y))
+
+func set_limits(rect: Rect2i) -> void:
+	limits_rect = rect
+	update_limits_by_zoom()
+
+func update_limits_by_zoom() -> void:
+	var new_limit_pos = limits_rect.position
+	var new_limit_end = limits_rect.end
+	var mapped_screen_size = screen_size / zoom
+
+	# Horizontally
+	if limits_rect.size.x < mapped_screen_size.x:
+		var expand_x = ceili((mapped_screen_size.x - limits_rect.size.x) / 2)
+		new_limit_pos.x -= expand_x
+		new_limit_end.x += expand_x
+
+	# Vertically
+	if limits_rect.size.y < mapped_screen_size.y:
+		var expand_y = ceili((mapped_screen_size.y - limits_rect.size.y) / 2)
+		new_limit_pos.y -= expand_y
+		new_limit_end.y += expand_y
+
+	# Apply the adjusted limits
+	limit_left = new_limit_pos.x
+	limit_top = new_limit_pos.y
+	limit_right = new_limit_end.x
+	limit_bottom = new_limit_end.y

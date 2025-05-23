@@ -1,8 +1,8 @@
 class_name LevelSummaryPanel
 extends MarginContainer
 
-@onready var restart_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RestartButton as Button
-@onready var next_button = $PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/NextButton as Button
+@onready var restart_button = %RestartButton as Button
+@onready var next_button = %NextButton as Button
 @onready var progress_bar = $PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer/MarginContainer2/ProgressBar as ProgressBar
 @onready var highscore_label = $PanelContainer/MarginContainer/VBoxContainer/MarginContainer3/HighscoreLabel as Label
 @onready var cups = [

@@ -14,7 +14,7 @@ func _ready():
 	]
 	teleports = [
 	]
-	camera_limit = Rect2i(-304, -256, 608, 320)
+	camera_limit = Rect2i(-304, -192, 608, 224)
 	move_hero_to_position(hero_start_position)
 	level_type = defs.LevelType.FORWARD
 	init_map()

@@ -69,6 +69,7 @@ Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 [node name="DialogueBalloon" type="CanvasLayer"]
 layer = 100
 script = ExtResource("1_mswvj")
+skip_action = &"ui_skip_text"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="."]
 anchors_preset = 15

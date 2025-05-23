@@ -74,6 +74,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 				ghosts[i].unit.queue_free()
 			ghosts[i].unit = hero.duplicate()
 			tilemaps[Layer.ITEMS].add_child(ghosts[i].unit)
+			ghosts[i].unit.sprite.material = ghosts[i].unit.sprite.material.duplicate()
 			ghosts[i].unit.set_mode([defs.UnitTypeName[ghosts[i].mode], false])
 			ghosts[i].unit.make_ghost(ghosts[i].type)
 			move_unit_to_position(ghosts[i].unit, ghosts[i].position)
@@ -254,6 +255,7 @@ func should_add_bot_to_tail() -> bool:
 func add_bot_to_tail(history_item: Dictionary):
 	var unit = hero.duplicate()
 	tilemaps[Layer.ITEMS].add_child(unit)
+	unit.sprite.material = unit.sprite.material.duplicate()
 	unit.set_mode([defs.UnitTypeName[history[-1].ghost_mode], false])
 	move_unit_to_position(unit, history[-1].position)
 	unit.make_follower()

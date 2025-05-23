@@ -1,7 +1,8 @@
-[gd_scene load_steps=219 format=3 uid="uid://bx2syps2qmyxq"]
+[gd_scene load_steps=221 format=3 uid="uid://bx2syps2qmyxq"]
 
 [ext_resource type="Script" uid="uid://bsenh15febpxy" path="res://scenes/sprites/Demolitonist/Demolitonist.gd" id="1_6ytke"]
 [ext_resource type="Texture2D" uid="uid://bmnac0sq8kbk6" path="res://assets/sprites/MiniDwarfDemolitionist.png" id="1_vj30r"]
+[ext_resource type="Shader" uid="uid://bkrdktauvyuke" path="res://scenes/sprites/Demolitonist/Demolitonist.gdshader" id="2_s0xll"]
 [ext_resource type="Texture2D" uid="uid://b35rkmkafb3jc" path="res://assets/sprites/MiniBlacksmithB.png" id="2_t6i0t"]
 [ext_resource type="Texture2D" uid="uid://dkkghwcvrcqeq" path="res://assets/sprites/MiniDemoness.png" id="3_2cx42"]
 [ext_resource type="Texture2D" uid="uid://deg0w5jrdf33i" path="res://assets/sprites/MiniBlacksmith.png" id="3_ecsst"]
@@ -15,6 +16,14 @@
 [ext_resource type="Texture2D" uid="uid://cqhkjn0me6yoc" path="res://assets/sprites/MiniDwarfGrenadier.png" id="7_uh3u2"]
 [ext_resource type="Texture2D" uid="uid://chjvd327fna5e" path="res://assets/sprites/MiniOldMan.png" id="9_widac"]
 [ext_resource type="Texture2D" uid="uid://j3btm8clyoug" path="res://assets/sprites/MiniOrcVeteran.png" id="10_ecsst"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uh3u2"]
+resource_local_to_scene = true
+shader = ExtResource("2_s0xll")
+shader_parameter/status_intensity = 0.0
+shader_parameter/status_color = Color(1, 1, 1, 1)
+shader_parameter/transparency = 1.0
+shader_parameter/ignore_background = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ovy3"]
 atlas = ExtResource("2_t6i0t")
@@ -1682,6 +1691,7 @@ script = ExtResource("1_6ytke")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_uh3u2")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_4ybha")
 animation = &"blacksmithB_idle"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5k4ucg3lry0c"
-path="res://.godot/imported/front.png-4fe948b7aa6d1407a64339cf8303f321.ctex"
+uid="uid://b6rc7nq7sc8kd"
+path="res://.godot/imported/front3.png-b246d45136b9cd91618c45cfd4344ab3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/Outside castle/front.png"
-dest_files=["res://.godot/imported/front.png-4fe948b7aa6d1407a64339cf8303f321.ctex"]
+source_file="res://assets/images/Outside castle/front3.png"
+dest_files=["res://.godot/imported/front3.png-b246d45136b9cd91618c45cfd4344ab3.ctex"]
 
 [params]
 

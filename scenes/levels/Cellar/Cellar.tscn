@@ -44,7 +44,7 @@ position = Vector2(41, 45)
 z_index = 4
 y_sort_enabled = true
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAGAAEAAAAnAAoAAAA=")
+tile_map_data = PackedByteArray("AAAGAAEAAAAnAAoAAAADAP7/AAAgAAoAAAAGAP7/AAAgAAoAAAA=")
 tile_set = ExtResource("2_5u8he")
 
 [node name="BadItems" type="TileMapLayer" parent="."]

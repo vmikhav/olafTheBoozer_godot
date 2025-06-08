@@ -19,17 +19,18 @@ var level_progress_report: LevelProgressReport
 
 var level_index = 0
 var levels = [
+	"Tutorial0",
+	"SawmillYard",
 	"TavernKitchen",
 	"SawmillDemon",
-	"SawmillYard",
 	"TavernTutorial",
 	"Kitchen",
 	"Cellar",
 	"Library",
 	"TavernWarehouse",
-	"Tutorial0",
 	"Tavern",
 ]
+var next_scene: Array = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -37,6 +38,8 @@ func _ready():
 	transition_rect.fade_in()
 	if SceneSwitcher.get_param("levels") != null:
 		levels = SceneSwitcher.get_param("levels")
+		if SceneSwitcher.get_param("next_scene") != null:
+			next_scene = SceneSwitcher.get_param("next_scene")
 	load_level(levels[level_index])
 	nav_buttons.actions.connect(imitate_input)
 	nav_controller.actions.connect(move_hero)
@@ -145,11 +148,12 @@ func load_next_level():
 	await summary_container.dismiss_panel()
 	level.is_history_replay = false
 	await transition_rect.fade_out()
-	var next_scene = level.next_scene
 	level.queue_free()
 	level = null
 	level_index += 1
 	if levels.size() <= level_index:
+		if next_scene.size() < 2:
+			next_scene = level.next_scene
 		SceneSwitcher.change_scene_to_file(next_scene[0], next_scene[1])
 	else:
 		load_level(levels[level_index])

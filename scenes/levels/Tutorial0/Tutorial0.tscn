@@ -1,8 +1,46 @@
-[gd_scene load_steps=4 format=4 uid="uid://dkbip8st6rlvk"]
+[gd_scene load_steps=14 format=4 uid="uid://dkbip8st6rlvk"]
 
 [ext_resource type="Script" uid="uid://djywvwou4kq28" path="res://scenes/levels/Tutorial0/Tutorial0.gd" id="1_pimk5"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_p2yry"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_g4qxb"]
+[ext_resource type="Texture2D" uid="uid://dfnbg5i0yj6dl" path="res://assets/images/input_prompts.png" id="4_f05pw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blsm7"]
+resource_local_to_scene = true
+atlas = ExtResource("4_f05pw")
+region = Rect2(306, 34, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lb02c"]
+atlas = ExtResource("4_f05pw")
+region = Rect2(306, 51, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0s4c1"]
+atlas = ExtResource("4_f05pw")
+region = Rect2(323, 51, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1iuj5"]
+atlas = ExtResource("4_f05pw")
+region = Rect2(339, 51, 17, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfk6i"]
+atlas = ExtResource("4_f05pw")
+region = Rect2(510, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vamts"]
+atlas = ExtResource("4_f05pw")
+region = Rect2(561, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_404p1"]
+atlas = ExtResource("4_f05pw")
+region = Rect2(544, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ywe3s"]
+atlas = ExtResource("4_f05pw")
+region = Rect2(527, 68, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iun3s"]
+atlas = ExtResource("4_f05pw")
+region = Rect2(0, 85, 16, 16)
 
 [node name="Tutorial0" type="Node2D"]
 script = ExtResource("1_pimk5")
@@ -10,7 +48,7 @@ script = ExtResource("1_pimk5")
 [node name="Ground" type="TileMapLayer" parent="."]
 y_sort_enabled = true
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAAAAEAAAAcAAAAAAAAAAIAAAAcAAEAAAAAAAQAAAAgAAIAAAABAAEAAAAdAAAAAAABAAIAAAAdAAEAAAABAAQAAAAhAAIAAAACAAEAAAAcAAAAAAACAAIAAAAcAAEAAAACAAQAAAAjAAEAAAADAAEAAAAfAAEAAAADAAIAAAAfAAAAAAADAAMAAAAdAAAAAAADAAQAAAAjAAIAAAADAAUAAAAgAAIAAAAEAAQAAAAiAAEAAAAEAAUAAAAhAAIAAAAFAAQAAAAjAAEAAAAFAAUAAAAjAAIAAAAGAAQAAAApAAAAAAAGAAUAAAApAAIAAAAHAAMAAAA+AAAAAAAHAAQAAAAqAAAAAAAHAAUAAAAqAAIAAAAIAAMAAAA+AAAAAAAIAAQAAAArAAAAAAAIAAUAAAArAAIAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAAAcAAAAAAAAAAIAAAAcAAEAAAABAAEAAAAdAAAAAAABAAIAAAAdAAEAAAACAAEAAAAcAAAAAAACAAIAAAAcAAEAAAADAAEAAAAfAAEAAAADAAIAAAAfAAAAAAADAAMAAAAdAAAAAAA=")
 tile_set = ExtResource("2_p2yry")
 
 [node name="Floor" type="TileMapLayer" parent="."]
@@ -21,7 +59,7 @@ tile_set = ExtResource("2_p2yry")
 [node name="Walls" type="TileMapLayer" parent="."]
 z_index = 2
 texture_filter = 1
-tile_map_data = PackedByteArray("AAD//wAAAAA0AAEAAAD//wEAAAA3AAIAAAD//wIAAAAzAAIAAAD//wMAAAA2AAMAAAD//wQAAAAzAAIAAAD//wUAAAA0AAIAAAAAAAAAAAA1AAAAAAAAAAEAAAAcABUAAAAAAAMAAAA1AAAAAAAAAAUAAAA1AAAAAAABAAAAAAA1AAAAAAABAAMAAAA3AAEAAAABAAUAAAA3AAAAAAACAAAAAAA1AAAAAAACAAEAAAAfABUAAAACAAMAAAA2AAAAAAACAAUAAAA1AAEAAAACAAYAAAA0AAIAAAADAAAAAAA3AAEAAAADAAYAAAA1AAAAAAAEAAAAAAA1AAEAAAAEAAEAAAAzAAIAAAAEAAIAAAA3AAMAAAAEAAMAAAA0AAIAAAAEAAYAAAA3AAEAAAAFAAMAAAA3AAAAAAAFAAYAAAA1AAAAAAAGAAMAAAA2AAAAAAAGAAYAAAA1AAAAAAAHAAYAAAA3AAAAAAAIAAYAAAA1AAAAAAAJAAMAAAAzAAEAAAAJAAQAAAA3AAMAAAAJAAUAAAA3AAIAABAJAAYAAAA1AAIAAAA=")
+tile_map_data = PackedByteArray("AAD//wAAAAAFAAYAAAD//wEAAAAEAAcAAAD//wIAAAAEAAcAAAAAAAAAAAACAAkAAAAAAAEAAAAcABUAAAAAAAMAAAACAAkAAAABAAAAAAACAAkAAAABAAMAAAACAAkAAAACAAAAAAACAAkAAAACAAEAAAAfABUAAAACAAMAAAADAAkAAAADAAAAAAACAAkAAAAEAAAAAAAHAAgAAAAEAAEAAAAEAAkAAAAEAAIAAAAEAAkAAAAEAAMAAAAAAAgAAAADAAMAAAAEAAsAAAD//wMAAAABAAgAAAADAAEAAAAQAA4AAAA=")
 tile_set = ExtResource("2_p2yry")
 
 [node name="Trails" type="TileMapLayer" parent="."]
@@ -49,13 +87,12 @@ tile_set = ExtResource("2_p2yry")
 [node name="BadItems" type="TileMapLayer" parent="."]
 z_index = 6
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAAAAQAAAALABAAAAADAAEAAAAOABMAAAADAAMAAAATAA8AAAADAAUAAAAIAA4AAAAEAAQAAAAOABMAAAAFAAQAAAAOABMAAAAFAAUAAAAMABQAAAA=")
+tile_map_data = PackedByteArray("AAACAAIAAAAIAA4AAAA=")
 tile_set = ExtResource("2_p2yry")
 
 [node name="GoodItems" type="TileMapLayer" parent="."]
 z_index = 6
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAAAAQAAAAaABEAAAADAAEAAAAUABEAAAADAAMAAAAEAAsAABAEAAQAAAAMABIAAAAFAAQAAAAMABAAAAAFAAUAAAANABQAAAA=")
 tile_set = ExtResource("2_p2yry")
 
 [node name="MovingItems" type="TileMapLayer" parent="."]
@@ -63,3 +100,43 @@ modulate = Color(1, 0.392157, 0.392157, 0.392157)
 z_index = 6
 texture_filter = 1
 tile_set = ExtResource("2_p2yry")
+
+[node name="Hints" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(60, 90)
+
+[node name="W" type="Sprite2D" parent="Hints"]
+position = Vector2(-74, 0)
+texture = SubResource("AtlasTexture_blsm7")
+
+[node name="A" type="Sprite2D" parent="Hints"]
+position = Vector2(-89, 15)
+texture = SubResource("AtlasTexture_lb02c")
+
+[node name="S" type="Sprite2D" parent="Hints"]
+position = Vector2(-74, 15)
+texture = SubResource("AtlasTexture_0s4c1")
+
+[node name="D" type="Sprite2D" parent="Hints"]
+position = Vector2(-60, 15)
+texture = SubResource("AtlasTexture_1iuj5")
+
+[node name="Up" type="Sprite2D" parent="Hints"]
+position = Vector2(-22, 0)
+texture = SubResource("AtlasTexture_xfk6i")
+
+[node name="Left" type="Sprite2D" parent="Hints"]
+position = Vector2(-37, 15)
+texture = SubResource("AtlasTexture_vamts")
+
+[node name="Down" type="Sprite2D" parent="Hints"]
+position = Vector2(-22, 15)
+texture = SubResource("AtlasTexture_404p1")
+
+[node name="Right" type="Sprite2D" parent="Hints"]
+position = Vector2(-8, 15)
+texture = SubResource("AtlasTexture_ywe3s")
+
+[node name="Dpad" type="Sprite2D" parent="Hints"]
+position = Vector2(19, 8)
+texture = SubResource("AtlasTexture_iun3s")

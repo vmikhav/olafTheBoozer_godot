@@ -124,8 +124,6 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 	neighbor_pos = can_move_result.new_position
 
 
-	process_item_collection(neighbor_pos)
-
 	move_hero_to_position(neighbor_pos)
 	play_sfx_by_history(null)
 
@@ -154,11 +152,6 @@ func handle_teleport(neighbor_pos: Vector2i) -> Dictionary:
 
 	skip_step()
 	return {can_move = false, new_position = neighbor_pos}
-
-func process_item_collection(neighbor_pos: Vector2i):
-	pass
-	#var neighbor_cell = tilemaps[Layer.ITEMS].get_cell_atlas_coords(neighbor_pos)
-
 
 func check_level_completion():
 	if true == false:

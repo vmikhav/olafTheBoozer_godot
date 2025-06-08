@@ -6,7 +6,7 @@ func _ready():
 		$Ground, $Floor, $Walls, $Trails, $Items, $Trees, $BadItems, $GoodItems, $MovingItems,
 	]
 	hero = $Items/Demolitonist
-	hero_start_position = Vector2i(1, 1)
+	hero_start_position = Vector2i(-1, 1)
 	ghosts = [
 		{position = Vector2i(3, 2), type = defs.GhostType.MEMORY, mode = defs.UnitType.WORKER},
 	]

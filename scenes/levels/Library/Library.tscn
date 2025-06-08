@@ -28,7 +28,6 @@ tile_set = ExtResource("2_psyqe")
 [node name="Trails" type="TileMapLayer" parent="."]
 z_index = 3
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAHAAcAAAAFABQAAAAHAAgAAAAFABMAAAAHAAkAAAAFABMAAAAHAAoAAAAFABMAAAAIAAcAAAAFABQAAAAGAAoAAAAFABQAAAAGAAsAAAAFABMAAAA=")
 tile_set = ExtResource("2_psyqe")
 
 [node name="Items" type="TileMapLayer" parent="."]

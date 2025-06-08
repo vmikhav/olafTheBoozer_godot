@@ -5,12 +5,11 @@ var first_dialogue = preload("res://scenes/adventures/StartTavern/start_tavern.d
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	music_key = "tavern"
-	$Hints.visible = false
 	tilemaps = [
 		$Ground, $Floor, $Walls, $Trails, $Items, $Trees,
 	]
 	hero = $Items/Demolitonist
-	hero_start_position = Vector2i(-3, 3)
+	hero_start_position = Vector2i(-5, -7)
 	characters = [
 		{position = Vector2i(1, -2), mode = defs.UnitType.BLACKSMITH_B},
 	]
@@ -28,7 +27,6 @@ func _ready():
 	init_map()
 	
 	if !StoryProgress.intro:
-		$Hints.visible = true
 		get_tree().create_timer(1.75).connect("timeout", intro)
 	if !StoryProgress.tavern_flashback:
 		next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["TavernTutorial"]}]

@@ -5,11 +5,11 @@ extends MarginContainer
 @onready var sfx_slider: HSlider = %SFXSlider
 @onready var voices_slider: HSlider = %VoicesSlider
 @onready var music_slider: HSlider = %MusicSlider
-@onready var drink_selector: OptionButton = %DrinkOptionButton
-@onready var language_selector: OptionButton = %LanguageOptionButton
+@onready var drink_dropdown: CustomDropdown = %DrinkDropdown
+@onready var language_dropdown: CustomDropdown = %LanguageDropdown
 @onready var touch_checkbox: CheckButton = %TouchCheckButton
 @onready var close_button: Button = %CloseButton
-@onready var background = $ColorRect
+@onready var background: ColorRect = $ColorRect
 @onready var labels = [%SFXLabel, %VoicesLabel, %MusicLabel, %DrinkLabel, %LanguageLabel, %TouchLabel]
 
 var focus_indicator_scene = preload("res://scenes/sprites/OlafPortrait/OlafPortrait.tscn")
@@ -21,19 +21,17 @@ signal close
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var option_buttons = [drink_selector, language_selector]
-	
 	sfx_slider.value = db_to_linear(SettingsManager.settings.sfx_volume)
 	voices_slider.value = db_to_linear(SettingsManager.settings.voice_volume)
 	music_slider.value = db_to_linear(SettingsManager.settings.music_volume)
-	drink_selector.selected = 1 if SettingsManager.settings.burps_muted else 0
-	language_selector.selected = SettingsManager.get_language_index()
+	drink_dropdown.selected_index = 1 if SettingsManager.settings.burps_muted else 0
+	language_dropdown.selected_index = SettingsManager.get_language_index()
 	touch_checkbox.button_pressed = SettingsManager.get_touch_control()
 	sfx_slider.value_changed.connect(update_sfx_volume)
 	voices_slider.value_changed.connect(update_voice_volume)
 	music_slider.value_changed.connect(update_music_volume)
-	drink_selector.item_selected.connect(update_drink)
-	language_selector.item_selected.connect(update_language)
+	drink_dropdown.item_selected.connect(update_drink)
+	language_dropdown.item_selected.connect(update_language)
 	touch_checkbox.pressed.connect(update_touch_control)
 	close_button.pressed.connect(close_modal)
 	
@@ -44,14 +42,10 @@ func _ready():
 	sfx_slider.focus_entered.connect(reset_label_highlight.bind(%SFXLabel))
 	voices_slider.focus_entered.connect(reset_label_highlight.bind(%VoicesLabel))
 	music_slider.focus_entered.connect(reset_label_highlight.bind(%MusicLabel))
-	drink_selector.focus_entered.connect(reset_label_highlight.bind(%DrinkLabel))
-	language_selector.focus_entered.connect(reset_label_highlight.bind(%LanguageLabel))
+	drink_dropdown.focus_entered.connect(reset_label_highlight.bind(%DrinkLabel))
+	language_dropdown.focus_entered.connect(reset_label_highlight.bind(%LanguageLabel))
 	touch_checkbox.focus_entered.connect(reset_label_highlight.bind(%TouchLabel))
 	close_button.focus_entered.connect(reset_label_highlight)
-	
-	for button in option_buttons:
-		button.pressed.connect(_on_option_button_pressed.bind(button))
-		button.item_selected.connect(_on_option_item_selected.bind(button))
 	
 
 func init_modal():

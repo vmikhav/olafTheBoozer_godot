@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://qbwqcgn7su0n"]
+[gd_scene load_steps=19 format=3 uid="uid://qbwqcgn7su0n"]
 
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="1_83s70"]
 [ext_resource type="Script" uid="uid://cujdvewuxmofs" path="res://scenes/ui/SettingsMenu/SettingsMenu.gd" id="2_m7qoo"]
+[ext_resource type="Script" uid="uid://dfgpe3pp2wfgq" path="res://scenes/ui/CustomDropdown/CustomDropdown.gd" id="3_fhx3p"]
+[ext_resource type="StyleBox" uid="uid://pibdnrth3xi0" path="res://themes/brown_button_normal.tres" id="4_su5ui"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xoghu"]
 font_color = Color(0, 0, 0, 1)
@@ -19,9 +21,81 @@ outline_color = Color(1, 1, 1, 0.588235)
 font_color = Color(0, 0, 0, 1)
 outline_color = Color(1, 1, 1, 0.588235)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sksdv"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fm5ek"]
+content_margin_left = 10.0
+bg_color = Color(0.15, 0.15, 0.15, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp4m0"]
+content_margin_left = 10.0
+bg_color = Color(0.3, 0.3, 0.3, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7if5a"]
+content_margin_left = 10.0
+bg_color = Color(0.4, 0.6, 0.8, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [sub_resource type="LabelSettings" id="LabelSettings_sksdv"]
 font_color = Color(0, 0, 0, 1)
 outline_color = Color(1, 1, 1, 0.490196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_axyux"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bopb4"]
+content_margin_left = 10.0
+bg_color = Color(0.15, 0.15, 0.15, 0)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tg5f3"]
+content_margin_left = 10.0
+bg_color = Color(0.3, 0.3, 0.3, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahlbo"]
+content_margin_left = 10.0
+bg_color = Color(0.4, 0.6, 0.8, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="LabelSettings" id="LabelSettings_fm5ek"]
 font_color = Color(0, 0, 0, 1)
@@ -138,8 +212,8 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 focus_neighbor_top = NodePath("../../VoicesContainer/VoicesSlider")
-focus_neighbor_bottom = NodePath("../../DrinkContainer/DrinkOptionButton")
-focus_next = NodePath("../../DrinkContainer/DrinkOptionButton")
+focus_neighbor_bottom = NodePath("../../DrinkContainer/DrinkDropdown")
+focus_next = NodePath("../../DrinkContainer/DrinkDropdown")
 focus_previous = NodePath("../../VoicesContainer/VoicesSlider")
 max_value = 1.0
 step = 0.05
@@ -159,26 +233,27 @@ theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Drink:"
 label_settings = SubResource("LabelSettings_b7f2g")
 
-[node name="DrinkOptionButton" type="OptionButton" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DrinkContainer"]
+[node name="DrinkDropdown" type="Button" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DrinkContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
 focus_neighbor_top = NodePath("../../MusicContainer/MusicSlider")
-focus_neighbor_bottom = NodePath("../../LanguageContainer/LanguageOptionButton")
-focus_next = NodePath("../../LanguageContainer/LanguageOptionButton")
+focus_neighbor_bottom = NodePath("../../LanguageContainer/LanguageDropdown")
+focus_next = NodePath("../../LanguageContainer/LanguageDropdown")
 focus_previous = NodePath("../../MusicContainer/MusicSlider")
-theme_override_colors/font_color = Color(0.823529, 0.698039, 0.564706, 1)
-theme_override_colors/font_focus_color = Color(0.823529, 0.698039, 0.564706, 1)
-toggle_mode = false
-action_mode = 1
-selected = 0
-allow_reselect = true
-item_count = 2
-popup/item_0/text = "Beer"
-popup/item_0/id = 0
-popup/item_1/text = "Ginger Ale"
-popup/item_1/id = 1
+text = "Beer"
+alignment = 0
+script = ExtResource("3_fhx3p")
+items = Array[String](["Beer", "Ginger Ale"])
+selected_index = 0
+dropdown_button_style = ExtResource("4_su5ui")
+dropdown_button_hover_style = ExtResource("4_su5ui")
+dropdown_button_pressed_style = ExtResource("4_su5ui")
+panel_style = SubResource("StyleBoxFlat_sksdv")
+item_style = SubResource("StyleBoxFlat_fm5ek")
+item_hover_style = SubResource("StyleBoxFlat_cp4m0")
+item_selected_style = SubResource("StyleBoxFlat_7if5a")
+metadata/_custom_type_script = "uid://dfgpe3pp2wfgq"
 
 [node name="LanguageContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -195,26 +270,27 @@ theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Language:"
 label_settings = SubResource("LabelSettings_sksdv")
 
-[node name="LanguageOptionButton" type="OptionButton" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LanguageContainer"]
+[node name="LanguageDropdown" type="Button" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LanguageContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
-focus_neighbor_top = NodePath("../../DrinkContainer/DrinkOptionButton")
+focus_neighbor_top = NodePath("../../DrinkContainer/DrinkDropdown")
 focus_neighbor_bottom = NodePath("../../TouchContainer/MarginContainer2/TouchCheckButton")
 focus_next = NodePath("../../TouchContainer/MarginContainer2/TouchCheckButton")
-focus_previous = NodePath("../../DrinkContainer/DrinkOptionButton")
-theme_override_colors/font_color = Color(0.823529, 0.698039, 0.564706, 1)
-theme_override_colors/font_focus_color = Color(0.823529, 0.698039, 0.564706, 1)
-toggle_mode = false
-action_mode = 1
-selected = 0
-allow_reselect = true
-item_count = 2
-popup/item_0/text = "English"
-popup/item_0/id = 0
-popup/item_1/text = "Українська"
-popup/item_1/id = 1
+focus_previous = NodePath("../../DrinkContainer/DrinkDropdown")
+text = "Select..."
+alignment = 0
+script = ExtResource("3_fhx3p")
+items = Array[String](["English", "Українська"])
+dropdown_button_style = ExtResource("4_su5ui")
+dropdown_button_hover_style = ExtResource("4_su5ui")
+dropdown_button_pressed_style = ExtResource("4_su5ui")
+panel_style = SubResource("StyleBoxFlat_axyux")
+item_style = SubResource("StyleBoxFlat_bopb4")
+item_hover_style = SubResource("StyleBoxFlat_tg5f3")
+item_selected_style = SubResource("StyleBoxFlat_ahlbo")
+metadata/_custom_type_script = "uid://dfgpe3pp2wfgq"
 
 [node name="TouchContainer" type="HBoxContainer" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -226,6 +302,8 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(150, 30)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../../LanguageContainer/LanguageDropdown")
+focus_previous = NodePath("../../../LanguageContainer/LanguageDropdown")
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Touch Control:"
 label_settings = SubResource("LabelSettings_fm5ek")
@@ -239,10 +317,8 @@ size_flags_horizontal = 3
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 8
-focus_neighbor_top = NodePath("../../../LanguageContainer/LanguageOptionButton")
 focus_neighbor_bottom = NodePath("../../../../../../MarginContainer/CloseButton")
 focus_next = NodePath("../../../../../../MarginContainer/CloseButton")
-focus_previous = NodePath("../../../LanguageContainer/LanguageOptionButton")
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsPanel/MarginContainer/VBoxContainer"]
 layout_mode = 2

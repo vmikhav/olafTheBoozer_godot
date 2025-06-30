@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://0jl372jvjnm4"]
+
+[ext_resource type="Script" uid="uid://dfgpe3pp2wfgq" path="res://scenes/ui/CustomDropdown/CustomDropdown.gd" id="1_wmrtl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wmrtl"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3x7h3"]
+bg_color = Color(0.25, 0.25, 0.25, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ll72"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2saw"]
+bg_color = Color(0.15, 0.15, 0.15, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.4, 0.4, 0.4, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjchs"]
+bg_color = Color(0.15, 0.15, 0.15, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2sqo"]
+bg_color = Color(0.3, 0.3, 0.3, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2guyw"]
+bg_color = Color(0.4, 0.6, 0.8, 1)
+
+[node name="CustomDropdown" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Select..."
+alignment = 0
+script = ExtResource("1_wmrtl")
+dropdown_button_style = SubResource("StyleBoxFlat_wmrtl")
+dropdown_button_hover_style = SubResource("StyleBoxFlat_3x7h3")
+dropdown_button_pressed_style = SubResource("StyleBoxFlat_6ll72")
+panel_style = SubResource("StyleBoxFlat_h2saw")
+item_style = SubResource("StyleBoxFlat_sjchs")
+item_hover_style = SubResource("StyleBoxFlat_f2sqo")
+item_selected_style = SubResource("StyleBoxFlat_2guyw")

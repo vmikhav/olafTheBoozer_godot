@@ -43,8 +43,8 @@ window/stretch/aspect="expand"
 
 [editor]
 
-movie_writer/mjpeg_quality=0.7
 movie_writer/movie_file="D:/my_proj/godot/OlafTheBoozer-ggo2022/records/last_record.avi"
+movie_writer/mjpeg_quality=0.7
 
 [editor_plugins]
 

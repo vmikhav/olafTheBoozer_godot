@@ -9,12 +9,14 @@ func _enter_tree() -> void:
 
 func _on_node_added(node:Node) -> void:
 	if node is BaseButton and node.focus_mode == Control.FocusMode.FOCUS_ALL:
+		if node is Button and node.flat:
+			return
 		# If the added node is a button we connect to its mouse_entered and pressed signals
 		# and play a sound
 		node.mouse_entered.connect(_play_hover.bind(node))
 		node.button_down.connect(_play_pressed.bind(node))
 		
-		if node is Button and !(node is OptionButton or node is CheckButton):
+		if node is Button and !(node is OptionButton or node is CheckButton or node is CustomDropdown):
 			# Connect to focus signals to show/hide the animated sprite
 			node.focus_entered.connect(_on_button_focus_entered.bind(node))
 			node.focus_exited.connect(_on_button_focus_exited.bind(node))

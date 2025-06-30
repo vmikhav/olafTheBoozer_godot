@@ -177,11 +177,11 @@ text = "Exit"
 layout_mode = 2
 theme_override_constants/margin_left = 50
 
-[node name="Label" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer3"]
+[node name="Version" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer3"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-text = "v. 20250523-demo"
+text = "v. 20250608-demo"
 label_settings = SubResource("LabelSettings_h1r82")
 
 [node name="Socials" type="CenterContainer" parent="UiLayer"]

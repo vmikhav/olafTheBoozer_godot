@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c8v6chl2e1ync"]
+[gd_scene load_steps=9 format=3 uid="uid://c8v6chl2e1ync"]
 
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="1_ugcap"]
 [ext_resource type="Script" uid="uid://bax2hhyeb8vtx" path="res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.gd" id="2_xstww"]
 [ext_resource type="PackedScene" uid="uid://c1ognd1rd5rw5" path="res://scenes/sprites/Cup/Cup.tscn" id="3_sshju"]
 [ext_resource type="StyleBox" uid="uid://bwpwiuf8q5mlh" path="res://themes/blue_button_pressed.tres" id="4_ce4bu"]
 [ext_resource type="StyleBox" uid="uid://crjdn0mn8tw68" path="res://themes/blue_button_normal.tres" id="5_qmuv3"]
+[ext_resource type="PackedScene" uid="uid://bvomsgp50xmqo" path="res://scenes/ui/InputHint/InputHint.tscn" id="6_8vxwy"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ajdow"]
 shadow_color = Color(0, 0, 0, 0.54902)
@@ -112,11 +113,14 @@ focus_neighbor_right = NodePath("../../MarginContainer2/NextButton")
 focus_next = NodePath("../../MarginContainer2/NextButton")
 focus_previous = NodePath("../../MarginContainer2/NextButton")
 theme_override_colors/font_color = Color(0.831373, 0.847059, 0.913725, 1)
-theme_override_styles/hover = ExtResource("5_qmuv3")
-theme_override_styles/pressed = ExtResource("4_ce4bu")
 theme_override_styles/normal = ExtResource("5_qmuv3")
+theme_override_styles/pressed = ExtResource("4_ce4bu")
+theme_override_styles/hover = ExtResource("5_qmuv3")
 shortcut_in_tooltip = false
 text = "Restart"
+
+[node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RestartButton" instance=ExtResource("6_8vxwy")]
+layout_mode = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -132,3 +136,6 @@ focus_next = NodePath("../../MarginContainer/RestartButton")
 focus_previous = NodePath("../../MarginContainer/RestartButton")
 shortcut_in_tooltip = false
 text = "Next"
+
+[node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/NextButton" instance=ExtResource("6_8vxwy")]
+layout_mode = 1

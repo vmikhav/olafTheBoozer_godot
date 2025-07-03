@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b71ry63srqrdy"]
+[gd_scene load_steps=18 format=3 uid="uid://b71ry63srqrdy"]
 
 [ext_resource type="Script" uid="uid://18e7n6gvmn03" path="res://scenes/game/Playground/Playground.gd" id="1_4ts3o"]
 [ext_resource type="Texture2D" uid="uid://dxw54ee33wbrm" path="res://assets/images/back.png" id="2_mxuir"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bobvyiugtptpr" path="res://assets/images/button_menu.png" id="4_k61c5"]
 [ext_resource type="Texture2D" uid="uid://ch22168q55x3j" path="res://assets/images/button_menu_pressed.png" id="5_s87kq"]
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="7_w6wfa"]
+[ext_resource type="PackedScene" uid="uid://bvomsgp50xmqo" path="res://scenes/ui/InputHint/InputHint.tscn" id="7_yp2d6"]
 [ext_resource type="PackedScene" uid="uid://di116jnep8f6t" path="res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.tscn" id="8_70vhg"]
 [ext_resource type="Texture2D" uid="uid://dlxo2omwq38n5" path="res://assets/images/button_cancel.png" id="8_mxuir"]
 [ext_resource type="Texture2D" uid="uid://cax24r4tc234t" path="res://assets/images/button_cancel_pressed.png" id="9_0gynf"]
@@ -85,14 +86,24 @@ layout_mode = 2
 
 [node name="MenuButton" type="TextureButton" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(63, 0)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+size_flags_vertical = 0
 focus_mode = 0
 shortcut_in_tooltip = false
 texture_normal = ExtResource("4_k61c5")
 texture_pressed = ExtResource("5_s87kq")
 ignore_texture_size = true
 stretch_mode = 4
+
+[node name="InputHint" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/MenuButton" instance=ExtResource("7_yp2d6")]
+layout_mode = 1
+offset_left = 60.0
+offset_top = 140.0
+offset_right = 60.0
+offset_bottom = 140.0
+action_name = "toggle_menu"
+show_only_when_focused = false
 
 [node name="MarginContainer2" type="MarginContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -127,6 +138,15 @@ texture_pressed = ExtResource("9_0gynf")
 ignore_texture_size = true
 stretch_mode = 4
 
+[node name="InputHint" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer/UndoButton" instance=ExtResource("7_yp2d6")]
+layout_mode = 1
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 60.0
+offset_bottom = 60.0
+action_name = "undo_step"
+show_only_when_focused = false
+
 [node name="RestartButton" type="TextureButton" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 60)
@@ -137,6 +157,15 @@ texture_normal = ExtResource("10_lwh4g")
 texture_pressed = ExtResource("11_yp2d6")
 ignore_texture_size = true
 stretch_mode = 4
+
+[node name="InputHint" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer/RestartButton" instance=ExtResource("7_yp2d6")]
+layout_mode = 1
+offset_left = 60.0
+offset_top = 60.0
+offset_right = 60.0
+offset_bottom = 60.0
+action_name = "restart_level"
+show_only_when_focused = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer"]
 layout_mode = 2

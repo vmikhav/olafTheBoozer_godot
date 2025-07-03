@@ -1,7 +1,7 @@
 extends Node
 
 @export var actions_to_track: Array[String] = []: set = _set_actions
-@export var repeat_delay_start: float = 0.5
+@export var repeat_delay_start: float = 0.35
 @export var repeat_delay_continue: float = 0.2 
 @export var joystick_deadzone: float = 0.5
 var actions_pressed: Array[bool] = []

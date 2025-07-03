@@ -1,48 +1,11 @@
-[gd_scene load_steps=9 format=4 uid="uid://lix6iem5d0ce"]
+[gd_scene load_steps=4 format=4 uid="uid://lix6iem5d0ce"]
 
 [ext_resource type="Script" uid="uid://dbg5nhuujbco5" path="res://scenes/levels/TavernTutorial/TavernTutorial.gd" id="1_7xgat"]
-[ext_resource type="Texture2D" uid="uid://dfnbg5i0yj6dl" path="res://assets/images/input_prompts.png" id="2_5xirq"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_oo3bk"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_qb2ki"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_itwo5"]
-atlas = ExtResource("2_5xirq")
-region = Rect2(340, 34, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u2dff"]
-atlas = ExtResource("2_5xirq")
-region = Rect2(51, 153, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b3fft"]
-atlas = ExtResource("2_5xirq")
-region = Rect2(323, 68, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xm05u"]
-atlas = ExtResource("2_5xirq")
-region = Rect2(17, 152, 16, 17)
-
 [node name="TavernTutorial" type="Node2D"]
 script = ExtResource("1_7xgat")
-
-[node name="Hints" type="Node2D" parent="."]
-texture_filter = 1
-position = Vector2(0, 95)
-
-[node name="R" type="Sprite2D" parent="Hints"]
-position = Vector2(-123, -146)
-texture = SubResource("AtlasTexture_itwo5")
-
-[node name="X" type="Sprite2D" parent="Hints"]
-position = Vector2(-107, -146)
-texture = SubResource("AtlasTexture_u2dff")
-
-[node name="Z" type="Sprite2D" parent="Hints"]
-position = Vector2(-123, -123)
-texture = SubResource("AtlasTexture_b3fft")
-
-[node name="B" type="Sprite2D" parent="Hints"]
-position = Vector2(-107, -123)
-texture = SubResource("AtlasTexture_xm05u")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 y_sort_enabled = true

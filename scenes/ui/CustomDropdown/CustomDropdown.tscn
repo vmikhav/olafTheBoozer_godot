@@ -75,3 +75,4 @@ panel_style = SubResource("StyleBoxFlat_h2saw")
 item_style = SubResource("StyleBoxFlat_sjchs")
 item_hover_style = SubResource("StyleBoxFlat_f2sqo")
 item_selected_style = SubResource("StyleBoxFlat_2guyw")
+item_font = null

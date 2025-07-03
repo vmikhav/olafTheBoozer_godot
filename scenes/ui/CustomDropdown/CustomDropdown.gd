@@ -21,6 +21,8 @@ signal item_selected(index: int)
 @export var item_style: StyleBox
 @export var item_hover_style: StyleBox
 @export var item_selected_style: StyleBox
+@export var item_font: Font = preload("res://assets/fonts/press-start-2p-v6.woff2")
+@export var item_font_size: int = 16
 
 var dropdown_panel: Panel
 var item_container: VBoxContainer
@@ -238,7 +240,8 @@ func _update_items():
 		item_button.flat = true
 		item_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		item_button.mouse_filter = Control.MOUSE_FILTER_STOP
-		item_button.add_theme_font_size_override("font_size", 20)
+		item_button.add_theme_font_override("font", item_font)
+		item_button.add_theme_font_size_override("font_size", item_font_size)
 		
 		item_button.pressed.connect(_on_item_selected.bind(i))
 		item_button.mouse_entered.connect(func (): item_button.grab_focus())

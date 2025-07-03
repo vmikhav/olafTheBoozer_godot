@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bmg38p33gp6c"]
+[gd_scene load_steps=13 format=3 uid="uid://bmg38p33gp6c"]
 
 [ext_resource type="Script" uid="uid://bwx7reqbycw6j" path="res://scenes/ui/DialogueBalloon/DialogueBalloon3.gd" id="1_mswvj"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="2_55qjb"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="4_qmi0o"]
 [ext_resource type="Script" uid="uid://cih5ekswndx7" path="res://scenes/ui/DialogueBalloon/WordyDialogueLabel.gd" id="6_i450q"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="6_twqlo"]
+[ext_resource type="PackedScene" uid="uid://bvomsgp50xmqo" path="res://scenes/ui/InputHint/InputHint.tscn" id="7_i450q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -143,8 +144,8 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(0.862745, 0.862745, 0.862745, 1)
 theme_override_fonts/normal_font = ExtResource("3_5yde8")
-theme_override_fonts/bold_italics_font = ExtResource("3_5yde8")
 theme_override_fonts/bold_font = ExtResource("3_5yde8")
+theme_override_fonts/bold_italics_font = ExtResource("3_5yde8")
 theme_override_font_sizes/normal_font_size = 18
 text = "Dialogue..."
 script = ExtResource("6_i450q")
@@ -177,6 +178,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Response example"
 autowrap_mode = 3
+
+[node name="InputHint" parent="HSplitContainer/HSplitContainer/Balloon/Responses/ResponsesMenu/ResponseExample" instance=ExtResource("7_i450q")]
+z_index = 5
+y_sort_enabled = true
+layout_mode = 1
+offset_left = 581.0
+offset_top = 34.0
+offset_right = 581.0
+offset_bottom = 34.0
 
 [node name="Control" type="Control" parent="HSplitContainer/HSplitContainer"]
 layout_mode = 2

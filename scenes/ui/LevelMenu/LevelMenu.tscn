@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://4j3ebc64sxog"]
+[gd_scene load_steps=5 format=3 uid="uid://4j3ebc64sxog"]
 
 [ext_resource type="Script" uid="uid://cm1x2rxunuioo" path="res://scenes/ui/LevelMenu/LevelMenu.gd" id="1_x2bin"]
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="2_olgr2"]
+[ext_resource type="PackedScene" uid="uid://bvomsgp50xmqo" path="res://scenes/ui/InputHint/InputHint.tscn" id="3_ikkp5"]
 [ext_resource type="PackedScene" uid="uid://qbwqcgn7su0n" path="res://scenes/ui/SettingsMenu/SettingsMenu.tscn" id="3_ruogs"]
 
 [node name="LevelMenu" type="MarginContainer"]
@@ -46,20 +47,48 @@ layout_mode = 2
 theme_type_variation = &"BlueButton"
 text = "Continue"
 
+[node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/RestoreButton" instance=ExtResource("3_ikkp5")]
+layout_mode = 1
+offset_left = 226.0
+offset_top = 34.0
+offset_right = 226.0
+offset_bottom = 34.0
+
 [node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"BlueButton"
 text = "Restart"
+
+[node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/RestartButton" instance=ExtResource("3_ikkp5")]
+layout_mode = 1
+offset_left = 226.0
+offset_top = 34.0
+offset_right = 226.0
+offset_bottom = 34.0
 
 [node name="SkipButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"BlueButton"
 text = "Skip Level"
 
+[node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/SkipButton" instance=ExtResource("3_ikkp5")]
+layout_mode = 1
+offset_left = 226.0
+offset_top = 34.0
+offset_right = 226.0
+offset_bottom = 34.0
+
 [node name="SettingsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_type_variation = &"BlueButton"
 text = "Settings"
+
+[node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/SettingsButton" instance=ExtResource("3_ikkp5")]
+layout_mode = 1
+offset_left = 226.0
+offset_top = 34.0
+offset_right = 226.0
+offset_bottom = 34.0
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -75,6 +104,13 @@ theme_override_constants/margin_bottom = 5
 [node name="WorldButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer"]
 layout_mode = 2
 text = "Back to Menu"
+
+[node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/WorldButton" instance=ExtResource("3_ikkp5")]
+layout_mode = 1
+offset_left = 206.0
+offset_top = 34.0
+offset_right = 206.0
+offset_bottom = 34.0
 
 [node name="SettingsMenu" parent="." instance=ExtResource("3_ruogs")]
 visible = false

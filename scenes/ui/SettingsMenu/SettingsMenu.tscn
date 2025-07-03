@@ -1,9 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://qbwqcgn7su0n"]
+[gd_scene load_steps=20 format=3 uid="uid://qbwqcgn7su0n"]
 
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="1_83s70"]
 [ext_resource type="Script" uid="uid://cujdvewuxmofs" path="res://scenes/ui/SettingsMenu/SettingsMenu.gd" id="2_m7qoo"]
 [ext_resource type="Script" uid="uid://dfgpe3pp2wfgq" path="res://scenes/ui/CustomDropdown/CustomDropdown.gd" id="3_fhx3p"]
 [ext_resource type="StyleBox" uid="uid://pibdnrth3xi0" path="res://themes/brown_button_normal.tres" id="4_su5ui"]
+[ext_resource type="PackedScene" uid="uid://bvomsgp50xmqo" path="res://scenes/ui/InputHint/InputHint.tscn" id="5_b7f2g"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xoghu"]
 font_color = Color(0, 0, 0, 1)
@@ -40,6 +41,7 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp4m0"]
 content_margin_left = 10.0
@@ -48,6 +50,7 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7if5a"]
 content_margin_left = 10.0
@@ -56,6 +59,7 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_sksdv"]
 font_color = Color(0, 0, 0, 1)
@@ -80,6 +84,7 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tg5f3"]
 content_margin_left = 10.0
@@ -88,6 +93,7 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ahlbo"]
 content_margin_left = 10.0
@@ -96,6 +102,7 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+anti_aliasing = false
 
 [sub_resource type="LabelSettings" id="LabelSettings_fm5ek"]
 font_color = Color(0, 0, 0, 1)
@@ -333,3 +340,10 @@ focus_neighbor_top = NodePath("../../PanelContainer/MarginContainer/VBoxContaine
 focus_previous = NodePath("../../PanelContainer/MarginContainer/VBoxContainer/TouchContainer/MarginContainer2/TouchCheckButton")
 theme_type_variation = &"BlueButton"
 text = "Close"
+
+[node name="InputHint" parent="SettingsPanel/MarginContainer/VBoxContainer/MarginContainer/CloseButton" instance=ExtResource("5_b7f2g")]
+layout_mode = 1
+offset_left = 94.0
+offset_top = 34.0
+offset_right = 94.0
+offset_bottom = 34.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://2gngn40cold4"]
+[gd_scene load_steps=12 format=3 uid="uid://2gngn40cold4"]
 
 [ext_resource type="Script" uid="uid://1n7pftc673xb" path="res://scenes/game/AdventurePlayground/AdventurePlayground.gd" id="1_302fe"]
 [ext_resource type="Texture2D" uid="uid://dxw54ee33wbrm" path="res://assets/images/back.png" id="2_ah7wg"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="3_0hwy5"]
 [ext_resource type="Texture2D" uid="uid://bobvyiugtptpr" path="res://assets/images/button_menu.png" id="4_84ie0"]
 [ext_resource type="Texture2D" uid="uid://ch22168q55x3j" path="res://assets/images/button_menu_pressed.png" id="5_tabh6"]
+[ext_resource type="PackedScene" uid="uid://bvomsgp50xmqo" path="res://scenes/ui/InputHint/InputHint.tscn" id="7_0tonn"]
 [ext_resource type="PackedScene" uid="uid://d2v243r8fsbr1" path="res://scenes/ui/LevelMenu/AdventureMenu.tscn" id="7_62e5o"]
 [ext_resource type="PackedScene" uid="uid://p41vq4676q75" path="res://scenes/ui/NavButtons/NavButtons.tscn" id="9_6rhoj"]
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="12_penv2"]
@@ -81,14 +82,24 @@ layout_mode = 2
 
 [node name="MenuButton" type="TextureButton" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(63, 0)
+custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
+size_flags_vertical = 0
 focus_mode = 0
 shortcut_in_tooltip = false
 texture_normal = ExtResource("4_84ie0")
 texture_pressed = ExtResource("5_tabh6")
 ignore_texture_size = true
 stretch_mode = 4
+
+[node name="InputHint" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/MenuButton" instance=ExtResource("7_0tonn")]
+layout_mode = 1
+offset_left = 60.0
+offset_top = 75.0
+offset_right = 60.0
+offset_bottom = 75.0
+action_name = "toggle_menu"
+show_only_when_focused = false
 
 [node name="MarginContainer2" type="MarginContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2

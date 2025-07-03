@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://df525dujavlyd"]
+[gd_scene load_steps=23 format=3 uid="uid://df525dujavlyd"]
 
 [ext_resource type="Script" uid="uid://crsmg8g5yemts" path="res://scenes/game/MainMenu/MainMenu.gd" id="1_7fekw"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="1_87rnb"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dfnbg5i0yj6dl" path="res://assets/images/input_prompts.png" id="7_bvnvu"]
 [ext_resource type="Texture2D" uid="uid://dxcvgudbobo1x" path="res://assets/images/Pix_Socials Square.png" id="8_bvnvu"]
 [ext_resource type="FontFile" uid="uid://t17ntd6k15d0" path="res://assets/fonts/PixeloidSans-Bold.otf" id="8_ho80n"]
+[ext_resource type="PackedScene" uid="uid://bvomsgp50xmqo" path="res://scenes/ui/InputHint/InputHint.tscn" id="10_d3jgr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_krrbd"]
 animations = [{
@@ -146,6 +147,10 @@ theme = ExtResource("6_c3bsr")
 theme_override_font_sizes/font_size = 30
 text = "Play"
 
+[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer/Play" instance=ExtResource("10_d3jgr")]
+layout_mode = 1
+hint_offset = Vector2(-32, -16)
+
 [node name="TextureRect" type="TextureRect" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
 visible = false
 texture_filter = 1
@@ -172,6 +177,10 @@ focus_next = NodePath("../../../../Socials/MarginContainer/HBoxContainer/Steam")
 focus_previous = NodePath("../../MarginContainer/Play")
 theme = ExtResource("6_c3bsr")
 text = "Exit"
+
+[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2/Exit" instance=ExtResource("10_d3jgr")]
+layout_mode = 1
+hint_offset = Vector2(-30, -8)
 
 [node name="MarginContainer3" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2

@@ -100,6 +100,7 @@ func apply_dialogue_line() -> void:
 	# If the node isn't ready yet then none of the labels will be ready yet either
 	if not is_node_ready():
 		await ready
+	%BaloonInputHint.visible = false
 
 	mutation_cooldown.stop()
 
@@ -137,6 +138,8 @@ func apply_dialogue_line() -> void:
 		is_waiting_for_input = true
 		balloon.focus_mode = Control.FOCUS_ALL
 		balloon.grab_focus()
+		%BaloonInputHint.visible = true
+		%BaloonInputHint.position_hint()
 
 
 ## Go to the next line

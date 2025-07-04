@@ -149,6 +149,17 @@ theme_override_fonts/bold_italics_font = ExtResource("3_5yde8")
 theme_override_font_sizes/normal_font_size = 18
 text = "Dialogue..."
 script = ExtResource("6_i450q")
+short_pause_at_characters = ","
+pause_at_characters = ".?!,"
+seconds_per_pause_step = 0.35000000000582077
+
+[node name="BaloonInputHint" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue" instance=ExtResource("7_i450q")]
+unique_name_in_owner = true
+visible = false
+z_index = 20
+layout_mode = 2
+show_only_when_focused = false
+hint_offset = Vector2(-25, -5)
 
 [node name="Responses" type="MarginContainer" parent="HSplitContainer/HSplitContainer/Balloon"]
 layout_mode = 1

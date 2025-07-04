@@ -2,6 +2,8 @@
 
 extends DialogueLabel
 
+@export var short_pause_at_characters: String = ","
+
 # Store word boundaries for word-by-word display
 var _word_boundaries: Array = []
 var _internal_char_counter: int = 0
@@ -39,7 +41,10 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 			should_pause = false
 			
 		if should_pause:
-			additional_waiting_seconds += seconds_per_pause_step
+			if get_parsed_text()[_internal_char_counter - 1] in short_pause_at_characters.split():
+				additional_waiting_seconds += seconds_per_pause_step / 3
+			else:
+				additional_waiting_seconds += seconds_per_pause_step
 	
 	# Handle explicit waits
 	if _last_wait_index != _internal_char_counter and additional_waiting_seconds > 0:

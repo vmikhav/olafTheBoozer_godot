@@ -95,9 +95,9 @@ stretch_mode = 4
 [node name="InputHint" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/MenuButton" instance=ExtResource("7_0tonn")]
 layout_mode = 1
 offset_left = 60.0
-offset_top = 75.0
+offset_top = 60.0
 offset_right = 60.0
-offset_bottom = 75.0
+offset_bottom = 60.0
 action_name = "toggle_menu"
 show_only_when_focused = false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://df525dujavlyd"]
+[gd_scene load_steps=22 format=3 uid="uid://df525dujavlyd"]
 
 [ext_resource type="Script" uid="uid://crsmg8g5yemts" path="res://scenes/game/MainMenu/MainMenu.gd" id="1_7fekw"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="1_87rnb"]
@@ -10,10 +10,10 @@
 [ext_resource type="Theme" uid="uid://bw0f56ba8yukh" path="res://themes/wood_menu.tres" id="6_c3bsr"]
 [ext_resource type="Texture2D" uid="uid://b6rc7nq7sc8kd" path="res://assets/images/Outside castle/front3.png" id="6_d3jgr"]
 [ext_resource type="Texture2D" uid="uid://daw5yhy2b3jje" path="res://assets/images/Outside castle/front4.png" id="7_25owc"]
-[ext_resource type="Texture2D" uid="uid://dfnbg5i0yj6dl" path="res://assets/images/input_prompts.png" id="7_bvnvu"]
 [ext_resource type="Texture2D" uid="uid://dxcvgudbobo1x" path="res://assets/images/Pix_Socials Square.png" id="8_bvnvu"]
 [ext_resource type="FontFile" uid="uid://t17ntd6k15d0" path="res://assets/fonts/PixeloidSans-Bold.otf" id="8_ho80n"]
 [ext_resource type="PackedScene" uid="uid://bvomsgp50xmqo" path="res://scenes/ui/InputHint/InputHint.tscn" id="10_d3jgr"]
+[ext_resource type="PackedScene" uid="uid://qbwqcgn7su0n" path="res://scenes/ui/SettingsMenu/SettingsMenu.tscn" id="14_d3jgr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_krrbd"]
 animations = [{
@@ -37,7 +37,7 @@ animations = [{
 
 [sub_resource type="LabelSettings" id="LabelSettings_n41tu"]
 font = ExtResource("1_87rnb")
-font_size = 60
+font_size = 50
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(4, 4)
@@ -48,10 +48,6 @@ font_size = 40
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(5, 6)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5pc3b"]
-atlas = ExtResource("7_bvnvu")
-region = Rect2(34, 153, 16, 16)
 
 [sub_resource type="LabelSettings" id="LabelSettings_h1r82"]
 font = ExtResource("8_ho80n")
@@ -125,7 +121,7 @@ label_settings = SubResource("LabelSettings_n41tu")
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 200
+theme_override_constants/margin_top = 120
 
 [node name="Label2" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer"]
 layout_mode = 2
@@ -140,47 +136,68 @@ theme_override_constants/margin_top = 50
 
 [node name="Play" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(350, 120)
+custom_minimum_size = Vector2(300, 120)
 layout_mode = 2
-focus_next = NodePath("../../MarginContainer2/Exit")
+focus_next = NodePath("../../MarginContainer4/Settings")
 theme = ExtResource("6_c3bsr")
 theme_override_font_sizes/font_size = 30
 text = "Play"
 
 [node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer/Play" instance=ExtResource("10_d3jgr")]
 layout_mode = 1
-hint_offset = Vector2(-32, -16)
+offset_left = 300.0
+offset_top = 104.0
+offset_right = 300.0
+offset_bottom = 104.0
+hint_offset = Vector2(0, -16)
 
-[node name="TextureRect" type="TextureRect" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
-visible = false
-texture_filter = 1
-custom_minimum_size = Vector2(32, 32)
+[node name="MarginContainer4" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-texture = SubResource("AtlasTexture_5pc3b")
-expand_mode = 1
-stretch_mode = 4
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 20
+
+[node name="Settings" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+focus_next = NodePath("../../MarginContainer2/Exit")
+focus_previous = NodePath("../../MarginContainer/Play")
+theme = ExtResource("6_c3bsr")
+text = "Settings"
+
+[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer4/Settings" instance=ExtResource("10_d3jgr")]
+layout_mode = 1
+offset_left = 200.0
+offset_top = 72.0
+offset_right = 200.0
+offset_bottom = 72.0
+hint_offset = Vector2(0, -8)
 
 [node name="MarginContainer2" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 20
 
 [node name="Exit" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 80)
+custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
+focus_neighbor_top = NodePath("../../MarginContainer4/Settings")
 focus_neighbor_bottom = NodePath("../../../../Socials/MarginContainer/HBoxContainer/Steam")
 focus_next = NodePath("../../../../Socials/MarginContainer/HBoxContainer/Steam")
-focus_previous = NodePath("../../MarginContainer/Play")
+focus_previous = NodePath("../../MarginContainer4/Settings")
 theme = ExtResource("6_c3bsr")
 text = "Exit"
 
 [node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2/Exit" instance=ExtResource("10_d3jgr")]
 layout_mode = 1
-hint_offset = Vector2(-30, -8)
+offset_left = 200.0
+offset_top = 72.0
+offset_right = 200.0
+offset_bottom = 72.0
+hint_offset = Vector2(0, -8)
 
 [node name="MarginContainer3" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -258,3 +275,9 @@ texture = SubResource("AtlasTexture_h1r82")
 centered = false
 
 [node name="SceneTransition" parent="UiLayer" instance=ExtResource("4_lkwgi")]
+
+[node name="SettingsMenu" parent="UiLayer" instance=ExtResource("14_d3jgr")]
+visible = false
+z_index = 20
+size_flags_horizontal = 3
+size_flags_vertical = 3

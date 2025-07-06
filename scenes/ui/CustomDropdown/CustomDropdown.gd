@@ -29,6 +29,7 @@ var item_container: VBoxContainer
 var item_buttons: Array[Button] = []
 var is_dropdown_open: bool = false
 var is_dropdown_created: bool = false
+var dropdown_parent: Node = null
 
 func _ready():
 	# Set up button properties
@@ -56,9 +57,8 @@ func _update_layout():
 # Clean up when the node is removed
 func _exit_tree():
 	if is_dropdown_open and dropdown_panel:
-		var root = get_viewport()
-		if root and dropdown_panel.get_parent() == root:
-			root.remove_child(dropdown_panel)
+		if dropdown_parent and dropdown_panel.get_parent() == dropdown_parent:
+			dropdown_parent.remove_child(dropdown_panel)
 			add_child(dropdown_panel)
 		_close_dropdown()
 
@@ -68,7 +68,7 @@ func update_translations():
 		_update_items()
 
 func _setup_dropdown_ui():
-	# Dropdown panel - initially a child, moves to viewport when open
+	# Dropdown panel - initially a child, moves to appropriate parent when open
 	dropdown_panel = Panel.new()
 	dropdown_panel.visible = false
 	dropdown_panel.z_index = 100
@@ -90,6 +90,28 @@ func _setup_dropdown_ui():
 	item_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	scroll_container.add_child(item_container)
 	is_dropdown_created = true
+
+func _find_dropdown_parent() -> Node:
+	# Look for CanvasLayer in the parent chain
+	var current = get_parent()
+	while current:
+		if current is CanvasLayer:
+			return current
+		current = current.get_parent()
+	
+	# If no CanvasLayer found, look for the topmost Control node
+	current = get_parent()
+	var topmost_control = null
+	while current:
+		if current is Control:
+			topmost_control = current
+		current = current.get_parent()
+	
+	# If we found a topmost Control, use it; otherwise fall back to viewport
+	if topmost_control:
+		return topmost_control
+	else:
+		return get_viewport()
 
 func _apply_default_styles():
 	if not dropdown_button_style:
@@ -177,11 +199,13 @@ func _open_dropdown():
 	is_dropdown_open = true
 	dropdown_panel.visible = true
 	
-	# Move panel to the top level to avoid clipping
-	var root = get_viewport()
-	if dropdown_panel.get_parent() != root:
+	# Find the appropriate parent for the dropdown panel
+	dropdown_parent = _find_dropdown_parent()
+	
+	# Move panel to the appropriate parent to avoid clipping
+	if dropdown_panel.get_parent() != dropdown_parent:
 		remove_child(dropdown_panel)
-		root.add_child(dropdown_panel)
+		dropdown_parent.add_child(dropdown_panel)
 	
 	_position_dropdown_panel()
 	_update_button_styles()
@@ -196,11 +220,11 @@ func _close_dropdown():
 	dropdown_panel.visible = false
 	
 	# Move panel back to this control
-	var root = get_viewport()
-	if dropdown_panel.get_parent() == root:
-		root.remove_child(dropdown_panel)
+	if dropdown_parent and dropdown_panel.get_parent() == dropdown_parent:
+		dropdown_parent.remove_child(dropdown_panel)
 		add_child(dropdown_panel)
 	
+	dropdown_parent = null
 	_update_button_styles()
 	grab_focus()  # Use inherited grab_focus instead of main_button.grab_focus()
 

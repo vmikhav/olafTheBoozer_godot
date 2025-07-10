@@ -73,7 +73,7 @@ func setup_hint_sprite():
 	# Position at bottom-right of parent
 	position_hint()
 
-func position_hint():
+func position_hint(make_visible: bool = false):
 	if not parent_button or not hint_sprite:
 		return
 	
@@ -85,6 +85,9 @@ func position_hint():
 	
 	# Center the sprite on this position
 	hint_sprite.position = Vector2.ZERO
+	if make_visible:
+		await get_tree().process_frame
+		self.visible = true
 
 func _on_focus_entered():
 	update_hint_display()

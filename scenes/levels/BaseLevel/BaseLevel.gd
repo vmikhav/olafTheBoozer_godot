@@ -12,6 +12,7 @@ var defs = LevelDefinitions
 
 var splash_scene: PackedScene = preload("res://scenes/sprites/Splash/Splash.tscn")
 var puff_scene: PackedScene = preload("res://scenes/sprites/Puff/Puff.tscn")
+var draggable_scene: PackedScene = preload("res://scenes/sprites/DraggableObject/DraggableObject.tscn")
 var puff_displayed := false
 
 # parameters from an implemented scene
@@ -34,6 +35,7 @@ var level_items_count: int
 var level_items_progress: int
 var ghosts_count: int
 var ghosts_progress: int
+var draggable_objects: DraggableObjectsResource = DraggableObjectsResource.new()
 var tail = []
 var last_active_tail_item = -1
 var history = []
@@ -65,6 +67,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 		ghosts_progress = 0
 		ghosts_count = ghosts.size() + tilemaps[Layer.MOVABLE_ITEMS].get_used_cells().size()
 		init_progress_report()
+		init_draggable_objects()
 		for item in tail:
 			item.unit.queue_free()
 		last_active_tail_item = -1
@@ -81,6 +84,33 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 	for pos in bad_items:
 		update_cell(pos, tilemaps[source].get_cell_atlas_coords(pos), tilemaps[source].get_cell_alternative_tile(pos))
 	AudioController.play_music(music_key)
+
+func init_draggable_objects():
+	# Clean up existing draggable objects
+	if draggable_objects:
+		draggable_objects.clear()
+	else:
+		draggable_objects = DraggableObjectsResource.new()
+	
+	# Find all draggable items in good_items layer
+	var good_items = tilemaps[Layer.GOOD_ITEMS].get_used_cells()
+	for pos in good_items:
+		var good_coords = tilemaps[Layer.GOOD_ITEMS].get_cell_atlas_coords(pos)
+		var good_alt = tilemaps[Layer.GOOD_ITEMS].get_cell_alternative_tile(pos)
+		var cell_value = str(good_coords.x) + "," + str(good_coords.y)
+		
+		# Check if this is a draggable item
+		if defs.DraggableItems.has(cell_value):
+			var draggable_obj = draggable_scene.instantiate()
+			tilemaps[Layer.ITEMS].add_child(draggable_obj)
+			draggable_obj.initialize(pos, good_coords, good_alt, self)
+			
+			# Check if item is broken (bad != good)
+			var bad_coords = tilemaps[Layer.BAD_ITEMS].get_cell_atlas_coords(pos)
+			var is_broken = bad_coords != good_coords
+			draggable_obj.set_active(not is_broken)
+			
+			draggable_objects.add_object(pos, draggable_obj)
 
 func restart():
 	is_history_replay = false
@@ -107,6 +137,7 @@ func move_oriented_unit_to_position(unit: Unit, new_position: Vector2i):
 func move_hero_to_position(new_position: Vector2i):
 	hero_position = new_position
 	move_oriented_unit_to_position(hero, new_position)
+	draggable_objects.notify_player_moved()
 
 func is_empty_cell(layer: Layer, cell_position: Vector2i) -> bool:
 	var atlas_pos = tilemaps[layer].get_cell_atlas_coords(cell_position)
@@ -132,7 +163,7 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		hero.set_orientation('left')
 
 	var neighbor_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(hero_position, direction)
-	var next_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(neighbor_pos, direction)
+	#var next_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(neighbor_pos, direction)
 	var history_item = {position = neighbor_pos, direction = direction, trails = []}
 
 	var can_move_result = can_move_to(neighbor_pos, history_item)
@@ -169,7 +200,7 @@ func can_move_to(neighbor_pos: Vector2i, history_item: Dictionary) -> Dictionary
 	if not is_empty_cell(Layer.WALLS, neighbor_pos):
 		return handle_teleport(neighbor_pos, history_item)
 
-	if is_tail_blocking(neighbor_pos):
+	if is_tail_blocking(neighbor_pos) or has_draggable_object_at(neighbor_pos):
 		skip_step()
 		return {can_move = false, new_position = neighbor_pos}
 	
@@ -183,6 +214,40 @@ func can_move_to(neighbor_pos: Vector2i, history_item: Dictionary) -> Dictionary
 		return {can_move = false, new_position = neighbor_pos}
 
 	return {can_move = true, new_position = neighbor_pos}
+
+func can_move_in_direction(start_pos: Vector2i, direction: TileSet.CellNeighbor) -> bool:
+	var target_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(start_pos, direction)
+	
+	if is_empty_cell(Layer.GROUND, target_pos):
+		return false
+	
+	if not is_empty_cell(Layer.WALLS, target_pos):
+		for teleport in teleports:
+			if teleport.start == target_pos:
+				target_pos = teleport.end
+		return false
+	
+	if is_tail_blocking(target_pos):
+		return false
+	
+	if has_draggable_object_at(target_pos):
+		return false
+	
+	var neighbor_cell = tilemaps[Layer.ITEMS].get_cell_atlas_coords(target_pos)
+	var bad_neighbor_cell = tilemaps[Layer.BAD_ITEMS].get_cell_atlas_coords(target_pos)
+	var good_neighbor_cell = tilemaps[Layer.GOOD_ITEMS].get_cell_atlas_coords(target_pos)
+	var immutable = bad_neighbor_cell == good_neighbor_cell
+	
+	if neighbor_cell.x != -1 and (immutable or neighbor_cell != bad_neighbor_cell):
+		return false
+	
+	var trail_cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(target_pos)
+	if trail_cell.x != -1:
+		if not check_trail(target_pos):
+			return false
+	
+	return true
+
 
 func handle_teleport(neighbor_pos: Vector2i, history_item: Dictionary) -> Dictionary:
 	for teleport in teleports:
@@ -238,6 +303,7 @@ func process_item_collection(neighbor_pos: Vector2i, history_item: Dictionary):
 		history_item.good_item = good_neighbor_cell
 		history_item.good_item_alt = good_neighbor_alt
 		level_items_progress += 1
+		draggable_objects.set_object_active_at(neighbor_pos, true)
 		display_puff(neighbor_pos)
 		items_progress_signal.emit(level_items_progress)
 
@@ -248,6 +314,7 @@ func update_tail(history_item: Dictionary):
 	for item in tail:
 		if item.movement_mode == "follow":
 			update_tail_item_position(item)
+	draggable_objects.notify_tail_changed()
 
 func should_add_bot_to_tail() -> bool:
 	return history.size() and "ghost_type" in history[-1] and history[-1].ghost_type == defs.GhostType.ENEMY
@@ -375,6 +442,7 @@ func handle_item_reversal(history_item: Dictionary):
 	if "bad_item" in history_item:
 		update_cell(history_item.position, history_item.bad_item, history_item.bad_item_alt)
 		level_items_progress -= 1
+		draggable_objects.set_object_active_at(history_item.position, false)
 
 func handle_ghost_reversal(history_item: Dictionary):
 	if "ghost" in history_item:
@@ -511,9 +579,8 @@ func check_for_draggable_item(direction: TileSet.CellNeighbor) -> Vector2i:
 
 	var opposite_direction = get_opposite_direction(direction)
 	var item_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(hero_position, opposite_direction)
-	var item_coords = tilemaps[Layer.ITEMS].get_cell_atlas_coords(item_pos)
 	
-	if is_draggable_item(item_coords):
+	if has_draggable_object_at(item_pos):
 		return item_pos
 	return Vector2i.MAX
 
@@ -530,8 +597,7 @@ func get_opposite_direction(direction: TileSet.CellNeighbor) -> TileSet.CellNeig
 	return direction  # Default case, shouldn't happen
 
 func move_draggable_item(item_pos: Vector2i, direction: TileSet.CellNeighbor):
-	var item_coords = tilemaps[Layer.ITEMS].get_cell_atlas_coords(item_pos)
-	var item_alt = tilemaps[Layer.ITEMS].get_cell_alternative_tile(item_pos)
+	var item_coords = get_draggable_object_atlas_coords(item_pos)
 	var new_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(item_pos, direction)
 	
 	var old_movable = tilemaps[Layer.MOVABLE_ITEMS].get_cell_atlas_coords(item_pos)
@@ -545,14 +611,13 @@ func move_draggable_item(item_pos: Vector2i, direction: TileSet.CellNeighbor):
 	ghosts_progress_signal.emit(ghosts_progress)
 
 	update_cell(item_pos, Vector2i(-1, -1), 0, Layer.ITEMS)
-	update_cell(new_pos, item_coords, item_alt, Layer.ITEMS)
+	draggable_objects.move_object_at(item_pos, new_pos)
 
 func handle_dragged_item_reversal(history_item: Dictionary):
 	if "dragged_item" in history_item:
 		var item_pos = history_item.dragged_item
 		var new_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(item_pos, history_item.direction)
-		var item_coords = tilemaps[Layer.ITEMS].get_cell_atlas_coords(new_pos)
-		var item_alt = tilemaps[Layer.ITEMS].get_cell_alternative_tile(new_pos)
+		var item_coords = get_draggable_object_atlas_coords(new_pos)
 		
 		var old_movable = tilemaps[Layer.MOVABLE_ITEMS].get_cell_atlas_coords(item_pos)
 		var new_movable = tilemaps[Layer.MOVABLE_ITEMS].get_cell_atlas_coords(new_pos)
@@ -563,8 +628,7 @@ func handle_dragged_item_reversal(history_item: Dictionary):
 			ghosts_progress -= 1
 		ghosts_progress_signal.emit(ghosts_progress)
 		
-		update_cell(new_pos, Vector2i(-1, -1), 0, Layer.ITEMS)
-		update_cell(item_pos, item_coords, item_alt, Layer.ITEMS)
+		draggable_objects.move_object_at(new_pos, item_pos)
 
 func init_progress_report():
 	progress_report = LevelProgressReport.new()
@@ -602,3 +666,13 @@ func display_puff(tile_pos: Vector2) -> void:
 	puff.finished.connect(func():
 		puff_displayed = false
 	)
+
+func has_draggable_object_at(pos: Vector2i) -> bool:
+	if draggable_objects:
+		return draggable_objects.has_active_object_at(pos)
+	return false
+
+func get_draggable_object_atlas_coords(pos: Vector2i) -> Vector2i:
+	if draggable_objects:
+		return draggable_objects.get_cell_atlas_coords(pos)
+	return Vector2i(-1, -1)

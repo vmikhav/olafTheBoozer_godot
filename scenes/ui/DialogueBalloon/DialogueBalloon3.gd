@@ -51,6 +51,8 @@ var mutation_cooldown: Timer = Timer.new()
 ## The menu of responses
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 
+@onready var input_hint: InputHint = %BaloonInputHint
+
 
 func _ready() -> void:
 	balloon.hide()
@@ -100,7 +102,7 @@ func apply_dialogue_line() -> void:
 	# If the node isn't ready yet then none of the labels will be ready yet either
 	if not is_node_ready():
 		await ready
-	%BaloonInputHint.visible = false
+	input_hint.visible = false
 
 	mutation_cooldown.stop()
 
@@ -138,8 +140,10 @@ func apply_dialogue_line() -> void:
 		is_waiting_for_input = true
 		balloon.focus_mode = Control.FOCUS_ALL
 		balloon.grab_focus()
-		%BaloonInputHint.visible = true
-		%BaloonInputHint.position_hint()
+		input_hint.visible = true
+		input_hint.modulate.a = 0
+		await input_hint.position_hint()
+		input_hint.modulate.a = 1
 
 
 ## Go to the next line

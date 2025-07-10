@@ -19,7 +19,7 @@ func _ready():
 		{start = Vector2i(3, -4), end = Vector2i(2, 3)},
 		{start = Vector2i(3, 3), end = Vector2i(-3, 3)},
 	]
-	camera_limit = Rect2i(-100, -128, 300, 250)
+	camera_limit = Rect2i(-100, -128, 200, 250)
 	move_hero_to_position(hero_start_position)
 	level_type = defs.LevelType.FORWARD
 	init_map()

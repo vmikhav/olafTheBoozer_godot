@@ -1,6 +1,6 @@
 [gd_scene load_steps=36 format=3 uid="uid://c1ognd1rd5rw5"]
 
-[ext_resource type="Script" path="res://scenes/sprites/Cup/Cup.gd" id="1_83eyn"]
+[ext_resource type="Script" uid="uid://bi55ot8qnm51v" path="res://scenes/sprites/Cup/Cup.gd" id="1_83eyn"]
 [ext_resource type="Texture2D" uid="uid://do5uava6dkcji" path="res://assets/sprites/consumables.png" id="1_582mt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwydh"]
@@ -133,42 +133,138 @@ region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ubevy"]
 animations = [{
-"frames": [SubResource("AtlasTexture_jwydh"), SubResource("AtlasTexture_upo5o"), SubResource("AtlasTexture_1xwkf"), SubResource("AtlasTexture_ov3og")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jwydh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upo5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1xwkf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov3og")
+}],
 "loop": false,
 "name": &"bronse_cup",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_gucel"), SubResource("AtlasTexture_604ov"), SubResource("AtlasTexture_mirq3"), SubResource("AtlasTexture_gl6fi")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gucel")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_604ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mirq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl6fi")
+}],
 "loop": false,
 "name": &"bronse_trophy",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_oqhh6"), SubResource("AtlasTexture_qsnmv"), SubResource("AtlasTexture_mbb87"), SubResource("AtlasTexture_usutg")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqhh6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsnmv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbb87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usutg")
+}],
 "loop": false,
 "name": &"gold_cup",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_ssww5"), SubResource("AtlasTexture_5qxvb"), SubResource("AtlasTexture_n18jv"), SubResource("AtlasTexture_kpkvo")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ssww5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qxvb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n18jv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kpkvo")
+}],
 "loop": false,
 "name": &"gold_trophy",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_8o8ih"), SubResource("AtlasTexture_wrax7"), SubResource("AtlasTexture_rbeby"), SubResource("AtlasTexture_pvnic")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o8ih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrax7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbeby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvnic")
+}],
 "loop": false,
 "name": &"iron",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_qqpyc"), SubResource("AtlasTexture_dhhbe"), SubResource("AtlasTexture_rirjj"), SubResource("AtlasTexture_s5acg")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qqpyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhhbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rirjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s5acg")
+}],
 "loop": false,
 "name": &"silver_cup",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_lwfvg"), SubResource("AtlasTexture_u4ynj"), SubResource("AtlasTexture_qsnru"), SubResource("AtlasTexture_1dy6g")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwfvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4ynj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qsnru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dy6g")
+}],
 "loop": false,
 "name": &"silver_trophy",
 "speed": 5.0
 }, {
-"frames": [SubResource("AtlasTexture_bdbhq"), SubResource("AtlasTexture_5rc48"), SubResource("AtlasTexture_ws4u6"), SubResource("AtlasTexture_0rlcu")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bdbhq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rc48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ws4u6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0rlcu")
+}],
 "loop": false,
 "name": &"wood",
 "speed": 5.0
@@ -182,6 +278,5 @@ script = ExtResource("1_83eyn")
 [node name="Sprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -8)
-frames = SubResource("SpriteFrames_ubevy")
-animation = &"gold_cup"
-frame = 2
+sprite_frames = SubResource("SpriteFrames_ubevy")
+animation = &"wood"

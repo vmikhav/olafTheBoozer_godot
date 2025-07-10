@@ -18,7 +18,7 @@ func _ready():
 	interactive_zones = [
 		{positions = [Vector2i(0, 1),Vector2i(0, 1),Vector2i(0, 1),Vector2i(0, 1)], hint_position = Vector2i(0, 2), hint_type = 8, active = !StoryProgress.sawmill_intro, callback = first_dialog},
 	]
-	camera_limit = Rect2i(-75, -100, 300, 200)
+	camera_limit = Rect2i(-75, -100, 130, 200)
 	move_hero_to_position(hero_start_position)
 	init_map()
 	characters[0].unit.make_dead()

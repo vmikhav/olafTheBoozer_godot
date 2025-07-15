@@ -69,6 +69,14 @@ script = ExtResource("1_7fekw")
 
 [node name="UiLayer" type="CanvasLayer" parent="."]
 
+[node name="ColorRect" type="ColorRect" parent="UiLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13725491, 0.11764706, 0.15686275, 1)
+
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -88,11 +96,11 @@ texture_filter = 1
 layout_mode = 2
 
 [node name="Back" type="Sprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer"]
-scale = Vector2(4, 4)
+scale = Vector2(5, 5)
 texture = ExtResource("2_xfymh")
 
 [node name="Middle" type="Sprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer"]
-scale = Vector2(4, 4)
+scale = Vector2(5, 5)
 texture = ExtResource("3_rdpox")
 
 [node name="Front" type="Sprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer"]
@@ -101,7 +109,7 @@ scale = Vector2(4, 4)
 texture = ExtResource("4_6jrop")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer"]
-scale = Vector2(4, 4)
+scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_krrbd")
 autoplay = "default"
 
@@ -207,7 +215,7 @@ theme_override_constants/margin_left = 50
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-text = "v. 20250608-demo"
+text = "v. 20250713-demo"
 label_settings = SubResource("LabelSettings_h1r82")
 
 [node name="Socials" type="CenterContainer" parent="UiLayer"]

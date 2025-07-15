@@ -22,25 +22,29 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "dialogue"
 msgid "Олаф"
 msgstr "Олаф"
 
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "dialogue"
 msgid "Торвін Круторіг"
 msgstr "Торвін Круторіг"
 
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "dialogue"
 msgid ""
 msgstr " "
 
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "dialogue"
 msgid "Клім"
@@ -811,18 +815,23 @@ msgstr "Чому? Що сталося?"
 msgctxt "t2b3fd30d97"
 msgid ""
 "Слухай, я не знаю деталей. Але вночі я чув, як ви разом пішли до нього на "
-"лісопильню, що правда я так і не зрозумів, навіщо. А через пару годин, вже "
-"десь під ранок, ти повернувся один. Щось кричав про те, щоб я тобі ще "
-"наливав, бо в тебе горе. Щось між вами сталося, і тепер у тебе немає друга. "
-"Посварились, як я зрозумів. Є у мене підозра, що він буде не радий тебе "
-"бачити."
+"лісопильню, що правда я так і не зрозумів, навіщо."
 msgstr ""
 "Слухай, я не знаю деталей. Але вночі я чув, як ви разом пішли до нього на "
-"лісопильню, що правда я так і не зрозумів, навіщо. А через пару годин, вже "
-"десь під ранок, ти повернувся один. Щось кричав про те, щоб я тобі ще "
-"наливав, бо в тебе горе. Щось між вами сталося, і тепер у тебе немає друга. "
-"Посварились, як я зрозумів. Є у мене підозра, що він буде не радий тебе "
-"бачити."
+"лісопильню, що правда я так і не зрозумів, навіщо."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "А_ЧЕРЕЗ_ПАРУ_ГОДИН_ВЖЕ_ДЕСЬ_ПІ_5BE256"
+msgid ""
+"А через пару годин, вже десь під ранок, ти повернувся один. Щось кричав про "
+"те, щоб я тобі ще наливав, бо в тебе горе. Щось між вами сталося, і тепер у "
+"тебе немає друга. Посварились, як я зрозумів. Є у мене підозра, що він буде "
+"не радий тебе бачити."
+msgstr ""
+"А через пару годин, вже десь під ранок, ти повернувся один. Щось кричав про "
+"те, щоб я тобі ще наливав, бо в тебе горе. Щось між вами сталося, і тепер у "
+"тебе немає друга. Посварились, як я зрозумів. Є у мене підозра, що він буде "
+"не радий тебе бачити."
 
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "t69913f18c6"
@@ -988,6 +997,7 @@ msgid "Skip Level"
 msgstr "Пропустити рівень"
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+#: scenes/game/MainMenu/MainMenu.tscn
 msgid "Settings"
 msgstr "Налаштування"
 
@@ -1016,20 +1026,12 @@ msgid "Beer"
 msgstr "Пиво"
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
-msgid "Ginger Ale"
-msgstr "Імбирне пиво"
-
-#: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Language:"
 msgstr "Мова:"
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
-msgid "English"
-msgstr "English"
-
-#: scenes/ui/SettingsMenu/SettingsMenu.tscn
-msgid "Українська"
-msgstr "Українська"
+msgid "Select..."
+msgstr "Вибрати..."
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Touch Control:"
@@ -1055,6 +1057,11 @@ msgstr "Грати"
 msgid "Exit"
 msgstr "Вийти"
 
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "v. 20250713-demo"
+msgstr "v. 20250713-demo"
+
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "dialogue"
 msgid "Гримлак Зватенбарг"
@@ -1746,3 +1753,12 @@ msgstr "Новий рекорд!"
 #: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
 msgid "Next"
 msgstr "Далі"
+
+#~ msgid "Ginger Ale"
+#~ msgstr "Імбирне пиво"
+
+#~ msgid "English"
+#~ msgstr "English"
+
+#~ msgid "Українська"
+#~ msgstr "Українська"

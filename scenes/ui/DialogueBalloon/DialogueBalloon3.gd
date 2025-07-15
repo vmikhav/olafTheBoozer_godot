@@ -1,6 +1,9 @@
 class_name DialogueBalloon3 extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
+@export var max_dialogue_width_inches: float = 13.3333  # Maximum width in physical inches
+@export var min_scale_factor: float = 0.7  # Minimum scale to maintain readability
+
 ## The action to use for advancing the dialogue
 @export var next_action: StringName = &"ui_accept"
 
@@ -70,6 +73,7 @@ func _ready() -> void:
 			SpeechController.set_character(dialogue_line.character)
 		SpeechController.speak(letter)
 	)
+	call_deferred("adjust_dialogue_size")
 
 
 func _unhandled_input(_event: InputEvent) -> void:
@@ -193,3 +197,46 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
+
+
+func adjust_dialogue_size2():
+	var screen_dpi = DisplayServer.screen_get_dpi()
+
+	# Calculate maximum allowed width in pixels based on physical size
+	var max_width_px = max_dialogue_width_inches * screen_dpi
+	print(screen_dpi)
+	print(max_width_px)
+	var size = get_window().size * (get_viewport().size.x / 1280.0)
+	print(size)
+	
+	# Only scale down if dialogue would be too wide physically
+	var scale_factor = min(max_width_px / size.x, 1.0)
+	
+	# Apply minimum scale to ensure readability
+	scale_factor = max(scale_factor, min_scale_factor)
+	
+	if scale_factor < 1.0:
+		var panel = $HSplitContainer/HSplitContainer/Balloon/Panel
+		panel.pivot_offset = Vector2(panel.size.x * 0.5, panel.size.y)
+		panel.scale = Vector2(scale_factor, scale_factor)
+
+func adjust_dialogue_size():
+	var screen_dpi = DisplayServer.screen_get_dpi()
+	var max_width_px = max_dialogue_width_inches * screen_dpi
+	
+	var viewport_size = get_viewport().get_visible_rect().size
+	var screen_size = get_window().size
+	var viewport_to_screen_ratio = minf(screen_size.y / viewport_size.y, screen_size.x / viewport_size.x)
+	var max_width_viewport = max_width_px / viewport_to_screen_ratio
+	
+	var panel = $HSplitContainer/HSplitContainer/Balloon/Panel
+	var original_width = panel.size.x
+	
+	if original_width > max_width_viewport:
+		# Set the maximum width
+		panel.custom_minimum_size.x = max_width_viewport
+		panel.size.x = max_width_viewport
+		panel.position.x += int((original_width - max_width_viewport) / 2)
+		
+		# Let height adjust automatically by setting size flags
+		panel.size_flags_vertical = Control.SIZE_EXPAND_FILL

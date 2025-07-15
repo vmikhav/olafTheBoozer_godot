@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://7qh5b785eipd"]
+[gd_scene load_steps=15 format=3 uid="uid://7qh5b785eipd"]
 
 [ext_resource type="Texture2D" uid="uid://b6mw14015yrc2" path="res://trailer/wishlist.png" id="1_0l7di"]
 [ext_resource type="Script" uid="uid://de27p7ewdcitj" path="res://trailer/WishlistDemo.gd" id="1_yrd7t"]
@@ -6,9 +6,33 @@
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="3_0l7di"]
 [ext_resource type="Texture2D" uid="uid://c68b8nxud88e" path="res://assets/images/Outside castle/middle.png" id="3_s6kaj"]
 [ext_resource type="Texture2D" uid="uid://b5k4ucg3lry0c" path="res://assets/images/Outside castle/front.png" id="4_8hcio"]
+[ext_resource type="Texture2D" uid="uid://bmo4yjt51xnuv" path="res://assets/images/Outside castle/front2.png" id="5_p12w6"]
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="6_12vqa"]
+[ext_resource type="Texture2D" uid="uid://b6rc7nq7sc8kd" path="res://assets/images/Outside castle/front3.png" id="6_lnhco"]
+[ext_resource type="Texture2D" uid="uid://daw5yhy2b3jje" path="res://assets/images/Outside castle/front4.png" id="7_74dak"]
 [ext_resource type="FontFile" uid="uid://t17ntd6k15d0" path="res://assets/fonts/PixeloidSans-Bold.otf" id="7_wytv3"]
 [ext_resource type="Theme" uid="uid://bw0f56ba8yukh" path="res://themes/wood_menu.tres" id="8_wytv3"]
+[ext_resource type="PackedScene" uid="uid://bvomsgp50xmqo" path="res://scenes/ui/InputHint/InputHint.tscn" id="12_m3ybk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oajyn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_p12w6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_lnhco")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_74dak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8hcio")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Wishlist" type="Node2D"]
 script = ExtResource("1_yrd7t")
@@ -24,7 +48,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.13725491, 0.11764706, 0.15686275, 1)
 
 [node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 15
@@ -43,16 +67,22 @@ texture_filter = 1
 layout_mode = 2
 
 [node name="Back" type="Sprite2D" parent="CanvasLayer/MarginContainer3/CenterContainer/MarginContainer"]
-scale = Vector2(4, 4)
+scale = Vector2(5, 5)
 texture = ExtResource("2_wytv3")
 
 [node name="Middle" type="Sprite2D" parent="CanvasLayer/MarginContainer3/CenterContainer/MarginContainer"]
-scale = Vector2(4, 4)
+scale = Vector2(5, 5)
 texture = ExtResource("3_s6kaj")
 
 [node name="Front" type="Sprite2D" parent="CanvasLayer/MarginContainer3/CenterContainer/MarginContainer"]
-scale = Vector2(4, 4)
+visible = false
+scale = Vector2(5, 5)
 texture = ExtResource("4_8hcio")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/MarginContainer3/CenterContainer/MarginContainer"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_oajyn")
+autoplay = "default"
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 5
@@ -146,6 +176,14 @@ focus_previous = NodePath("../../VBoxContainer/MarginContainer/LinkButton")
 theme = ExtResource("8_wytv3")
 theme_override_font_sizes/font_size = 24
 text = "Exit"
+
+[node name="InputHint" parent="CanvasLayer/MarginContainer2/MarginContainer2/Button" instance=ExtResource("12_m3ybk")]
+layout_mode = 1
+offset_left = 250.0
+offset_top = 72.0
+offset_right = 250.0
+offset_bottom = 72.0
+hint_offset = Vector2(0, -8)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer"]
 

@@ -19,15 +19,15 @@ var level_progress_report: LevelProgressReport
 
 var level_index = 0
 var levels = [
-	"SawmillDemon",
-	"Cellar",
-	"TutorialBarrel",
 	"SawmillYard",
+	"Cellar",
+	"TavernWarehouse",
+	"SawmillDemon",
+	"TutorialBarrel",
 	"TavernKitchen",
 	"TavernTutorial",
 	"Kitchen",
 	"Library",
-	"TavernWarehouse",
 	"Tavern",
 ]
 var next_scene: Array = []

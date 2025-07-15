@@ -23,23 +23,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8-bit\n"
 
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "dialogue"
 msgid "Олаф"
 msgstr ""
 
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "dialogue"
 msgid "Торвін Круторіг"
 msgstr ""
 
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "dialogue"
 msgid ""
 msgstr ""
 
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "dialogue"
 msgid "Клім"
@@ -576,7 +580,12 @@ msgstr ""
 
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "t2b3fd30d97"
-msgid "Слухай, я не знаю деталей. Але вночі я чув, як ви разом пішли до нього на лісопильню, що правда я так і не зрозумів, навіщо. А через пару годин, вже десь під ранок, ти повернувся один. Щось кричав про те, щоб я тобі ще наливав, бо в тебе горе. Щось між вами сталося, і тепер у тебе немає друга. Посварились, як я зрозумів. Є у мене підозра, що він буде не радий тебе бачити."
+msgid "Слухай, я не знаю деталей. Але вночі я чув, як ви разом пішли до нього на лісопильню, що правда я так і не зрозумів, навіщо."
+msgstr ""
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "А_ЧЕРЕЗ_ПАРУ_ГОДИН_ВЖЕ_ДЕСЬ_ПІ_5BE256"
+msgid "А через пару годин, вже десь під ранок, ти повернувся один. Щось кричав про те, щоб я тобі ще наливав, бо в тебе горе. Щось між вами сталося, і тепер у тебе немає друга. Посварились, як я зрозумів. Є у мене підозра, що він буде не радий тебе бачити."
 msgstr ""
 
 #: scenes/adventures/StartTavern/start_tavern.dialogue
@@ -692,6 +701,7 @@ msgstr ""
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn
 #: scenes/ui/LevelMenu/LevelMenu.tscn
+#: scenes/game/MainMenu/MainMenu.tscn
 msgid "Settings"
 msgstr ""
 
@@ -721,19 +731,11 @@ msgid "Beer"
 msgstr ""
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
-msgid "Ginger Ale"
-msgstr ""
-
-#: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Language:"
 msgstr ""
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
-msgid "English"
-msgstr ""
-
-#: scenes/ui/SettingsMenu/SettingsMenu.tscn
-msgid "Українська"
+msgid "Select..."
 msgstr ""
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
@@ -761,6 +763,11 @@ msgstr ""
 msgid "Exit"
 msgstr ""
 
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "v. 20250713-demo"
+msgstr ""
+
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "dialogue"
 msgid "Гримлак Зватенбарг"

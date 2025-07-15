@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OlafTheBoozer-ggo2022\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-02-24 10:43+0200\n"
+"PO-Revision-Date: 2025-07-15 09:20+0300\n"
 "Last-Translator: Volodymyr Mikhav <mihaw.wolodymyr@gmail.com>\n"
 "Language-Team: English <http://weblate.hidalgocode.com/projects/olaf-the-"
 "boozer/dialogs/en/>\n"
@@ -23,25 +23,29 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "dialogue"
 msgid "Олаф"
 msgstr "Olaf"
 
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "dialogue"
 msgid "Торвін Круторіг"
 msgstr "Torvin Cragiron"
 
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "dialogue"
 msgid ""
 msgstr " "
 
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "dialogue"
 msgid "Клім"
@@ -817,18 +821,23 @@ msgstr "Why? What happened?"
 msgctxt "t2b3fd30d97"
 msgid ""
 "Слухай, я не знаю деталей. Але вночі я чув, як ви разом пішли до нього на "
-"лісопильню, що правда я так і не зрозумів, навіщо. А через пару годин, вже "
-"десь під ранок, ти повернувся один. Щось кричав про те, щоб я тобі ще "
-"наливав, бо в тебе горе. Щось між вами сталося, і тепер у тебе немає друга. "
-"Посварились, як я зрозумів. Є у мене підозра, що він буде не радий тебе "
-"бачити."
+"лісопильню, що правда я так і не зрозумів, навіщо."
 msgstr ""
 "Look, I don’t know the details. But last night, I heard you both went to his "
-"sawmill. I still don’t understand why. And a couple of hours later, "
-"somewhere near dawn, you came back alone. You were shouting something about "
-"needing another drink because of your sorrow. Something happened between you "
-"two, and now you don’t have a buddy. You had a fight, I gather. I suspect he "
-"won’t be too happy to see you."
+"sawmill. I still don’t understand why."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "А_ЧЕРЕЗ_ПАРУ_ГОДИН_ВЖЕ_ДЕСЬ_ПІ_5BE256"
+msgid ""
+"А через пару годин, вже десь під ранок, ти повернувся один. Щось кричав про "
+"те, щоб я тобі ще наливав, бо в тебе горе. Щось між вами сталося, і тепер у "
+"тебе немає друга. Посварились, як я зрозумів. Є у мене підозра, що він буде "
+"не радий тебе бачити."
+msgstr ""
+"And a couple of hours later, somewhere near dawn, you came back alone. You "
+"were shouting something about needing another drink because of your sorrow. "
+"Something happened between you two, and now you don’t have a buddy. You had "
+"a fight, I gather. I suspect he won’t be too happy to see you."
 
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "t69913f18c6"
@@ -995,6 +1004,7 @@ msgid "Skip Level"
 msgstr "Skip Level"
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+#: scenes/game/MainMenu/MainMenu.tscn
 msgid "Settings"
 msgstr "Settings"
 
@@ -1023,20 +1033,12 @@ msgid "Beer"
 msgstr "Beer"
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
-msgid "Ginger Ale"
-msgstr "Ginger Ale"
-
-#: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Language:"
 msgstr "Language:"
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
-msgid "English"
-msgstr "English"
-
-#: scenes/ui/SettingsMenu/SettingsMenu.tscn
-msgid "Українська"
-msgstr "Українська"
+msgid "Select..."
+msgstr "Select..."
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Touch Control:"
@@ -1062,6 +1064,11 @@ msgstr "Play"
 msgid "Exit"
 msgstr "Exit"
 
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "v. 20250713-demo"
+msgstr "v. 20250713-demo"
+
+#. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
 msgctxt "dialogue"
 msgid "Гримлак Зватенбарг"
@@ -1755,6 +1762,15 @@ msgstr "New Highscore!"
 #: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
 msgid "Next"
 msgstr "Next"
+
+#~ msgid "Ginger Ale"
+#~ msgstr "Ginger Ale"
+
+#~ msgid "English"
+#~ msgstr "English"
+
+#~ msgid "Українська"
+#~ msgstr "Українська"
 
 #~ msgid "THANK_YOU_FOR_PLAYING_DEMO"
 #~ msgstr ""

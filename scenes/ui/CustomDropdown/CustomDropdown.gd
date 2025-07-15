@@ -57,10 +57,7 @@ func _update_layout():
 # Clean up when the node is removed
 func _exit_tree():
 	if is_dropdown_open and dropdown_panel:
-		if dropdown_parent and dropdown_panel.get_parent() == dropdown_parent:
-			dropdown_parent.remove_child(dropdown_panel)
-			add_child(dropdown_panel)
-		_close_dropdown()
+		dropdown_panel.queue_free()
 
 # Public method to call when language changes
 func update_translations():
@@ -71,7 +68,7 @@ func _setup_dropdown_ui():
 	# Dropdown panel - initially a child, moves to appropriate parent when open
 	dropdown_panel = Panel.new()
 	dropdown_panel.visible = false
-	dropdown_panel.z_index = 100
+	dropdown_panel.z_index = 1000
 	dropdown_panel.mouse_filter = Control.MOUSE_FILTER_STOP
 	add_child(dropdown_panel)
 	
@@ -206,6 +203,7 @@ func _open_dropdown():
 	if dropdown_panel.get_parent() != dropdown_parent:
 		remove_child(dropdown_panel)
 		dropdown_parent.add_child(dropdown_panel)
+		dropdown_parent.move_child(dropdown_panel, -1)
 	
 	_position_dropdown_panel()
 	_update_button_styles()
@@ -226,7 +224,7 @@ func _close_dropdown():
 	
 	dropdown_parent = null
 	_update_button_styles()
-	grab_focus()  # Use inherited grab_focus instead of main_button.grab_focus()
+	grab_focus()
 
 func _position_dropdown_panel():
 	# Make sure we have the correct size from the container
@@ -264,6 +262,8 @@ func _update_items():
 		item_button.flat = true
 		item_button.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		item_button.mouse_filter = Control.MOUSE_FILTER_STOP
+		item_button.z_as_relative = true
+		item_button.action_mode = BaseButton.ACTION_MODE_BUTTON_PRESS
 		item_button.add_theme_font_override("font", item_font)
 		item_button.add_theme_font_size_override("font_size", item_font_size)
 		
@@ -274,8 +274,40 @@ func _update_items():
 		item_container.add_child(item_button)
 		item_buttons.append(item_button)
 	
+	_setup_focus_looping()
 	_update_item_styles()
 	_update_button_text()
+
+func _setup_focus_looping():
+	if item_buttons.size() == 0:
+		return
+	
+	if item_buttons.size() == 1:
+		# For single item, make it loop focus on itself
+		var single_button = item_buttons[0]
+		single_button.focus_neighbor_bottom = single_button.get_path_to(single_button)
+		single_button.focus_neighbor_top = single_button.get_path_to(single_button)
+		single_button.focus_neighbor_left = single_button.get_path_to(single_button)
+		single_button.focus_neighbor_right = single_button.get_path_to(single_button)
+		single_button.focus_next = single_button.get_path_to(single_button)
+		single_button.focus_previous = single_button.get_path_to(single_button)
+		return
+	
+	# For multiple items, set up normal looping
+	for i in range(item_buttons.size()):
+		var current_button = item_buttons[i]
+		var next_index = (i + 1) % item_buttons.size()
+		var prev_index = (i - 1 + item_buttons.size()) % item_buttons.size()
+		
+		# Set up focus neighbors for looping
+		current_button.focus_neighbor_bottom = current_button.get_path_to(item_buttons[next_index])
+		current_button.focus_neighbor_top = current_button.get_path_to(item_buttons[prev_index])
+		current_button.focus_neighbor_left = current_button.get_path_to(item_buttons[prev_index])
+		current_button.focus_neighbor_right = current_button.get_path_to(item_buttons[next_index])
+		
+		# Also set the focus_next and focus_previous for Tab navigation
+		current_button.focus_next = current_button.get_path_to(item_buttons[next_index])
+		current_button.focus_previous = current_button.get_path_to(item_buttons[prev_index])
 
 func _on_item_selected(index: int):
 	selected_index = index
@@ -342,6 +374,10 @@ func _input(event):
 		if not button_global_rect.has_point(mouse_pos) and not panel_global_rect.has_point(mouse_pos):
 			_close_dropdown()
 			get_viewport().set_input_as_handled()
+		else:
+			var node = get_viewport().gui_get_focus_owner()
+			if node is Button:
+				node.emit_signal("pressed")
 
 func has_focus_in_dropdown() -> bool:
 	for button in item_buttons:

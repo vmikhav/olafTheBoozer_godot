@@ -154,11 +154,17 @@ ui_skip_text={
 , null, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194305,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+ui_skip_dialogue={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":122,"location":0,"echo":false,"script":null)
+, Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":0,"button_index":1,"pressure":0.0,"pressed":false,"script":null)
+]
+}
 
 [internationalization]
 
 locale/translations=PackedStringArray("res://i18n/en.po", "res://i18n/uk.po")
-locale/translations_pot_files=PackedStringArray("res://scenes/adventures/StartTavern/start_tavern.dialogue", "res://scenes/ui/LevelMenu/AdventureMenu.tscn", "res://scenes/ui/LevelMenu/LevelMenu.gd", "res://scenes/ui/LevelMenu/LevelMenu.tscn", "res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.gd", "res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.tscn", "res://scenes/ui/SettingsMenu/SettingsMenu.gd", "res://scenes/ui/SettingsMenu/SettingsMenu.tscn", "res://scenes/game/MainMenu/MainMenu.gd", "res://scenes/game/MainMenu/MainMenu.tscn", "res://scenes/adventures/SawmillBackyard/sawmill.dialogue", "res://trailer/WishlistDemo.tscn", "res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn")
+locale/translations_pot_files=PackedStringArray("res://scenes/adventures/StartTavern/start_tavern.dialogue", "res://scenes/ui/LevelMenu/AdventureMenu.tscn", "res://scenes/ui/LevelMenu/LevelMenu.gd", "res://scenes/ui/LevelMenu/LevelMenu.tscn", "res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.gd", "res://scenes/ui/LevelSummaryContainer/LevelSummaryContainer.tscn", "res://scenes/ui/SettingsMenu/SettingsMenu.gd", "res://scenes/ui/SettingsMenu/SettingsMenu.tscn", "res://scenes/game/MainMenu/MainMenu.gd", "res://scenes/game/MainMenu/MainMenu.tscn", "res://scenes/adventures/SawmillBackyard/sawmill.dialogue", "res://trailer/WishlistDemo.tscn", "res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn", "res://scenes/ui/DialogueBalloon/DialogueBalloon3.tscn")
 
 [rendering]
 

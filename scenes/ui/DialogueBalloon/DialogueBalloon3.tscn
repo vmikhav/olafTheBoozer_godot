@@ -161,6 +161,36 @@ layout_mode = 2
 show_only_when_focused = false
 hint_offset = Vector2(-25, -5)
 
+[node name="SkipButton" type="Button" parent="HSplitContainer/HSplitContainer/Balloon"]
+visible = false
+custom_minimum_size = Vector2(170, 0)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 21.0
+offset_top = -226.0
+offset_right = 171.0
+offset_bottom = -194.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+focus_mode = 0
+theme = ExtResource("2_55qjb")
+theme_override_font_sizes/font_size = 12
+shortcut_in_tooltip = false
+text = "Skip"
+
+[node name="InputHint" parent="HSplitContainer/HSplitContainer/Balloon/SkipButton" instance=ExtResource("7_i450q")]
+layout_mode = 1
+offset_left = 596.0
+offset_top = 134.0
+offset_right = 596.0
+offset_bottom = 134.0
+action_name = "ui_skip_dialogue"
+show_only_when_focused = false
+hint_offset = Vector2(-5, -5)
+
 [node name="Responses" type="MarginContainer" parent="HSplitContainer/HSplitContainer/Balloon"]
 layout_mode = 1
 anchors_preset = 7

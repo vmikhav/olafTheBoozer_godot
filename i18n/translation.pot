@@ -12,6 +12,7 @@
 # res://scenes/adventures/SawmillBackyard/sawmill.dialogue
 # res://trailer/WishlistDemo.tscn
 # res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+# res://scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -1232,4 +1233,20 @@ msgstr ""
 
 #: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
 msgid "Next"
+msgstr ""
+
+#: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+msgid "Character"
+msgstr ""
+
+#: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+msgid "Dialogue..."
+msgstr ""
+
+#: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+msgid "Skip"
+msgstr ""
+
+#: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+msgid "Response example"
 msgstr ""

@@ -1754,6 +1754,22 @@ msgstr "Новий рекорд!"
 msgid "Next"
 msgstr "Далі"
 
+#: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+msgid "Character"
+msgstr "Персонаж"
+
+#: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+msgid "Dialogue..."
+msgstr "Діалог..."
+
+#: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+msgid "Skip"
+msgstr "Пропустити"
+
+#: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+msgid "Response example"
+msgstr "Приклад відповіді"
+
 #~ msgid "Ginger Ale"
 #~ msgstr "Імбирне пиво"
 

@@ -10,6 +10,8 @@ class_name DialogueBalloon3 extends CanvasLayer
 ## The action to use to skip typing the dialogue
 @export var skip_action: StringName = &"ui_cancel"
 
+@export var skip_all_action: StringName = &"ui_skip_dialogue"
+
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -21,6 +23,7 @@ var is_waiting_for_input: bool = false
 
 ## See if we are running a long mutation and should hide the balloon
 var will_hide_balloon: bool = false
+var will_free: bool = false
 
 ## A dictionary to store any ephemeral variables
 var locals: Dictionary = {}
@@ -35,6 +38,7 @@ var dialogue_line: DialogueLine:
 			apply_dialogue_line()
 		else:
 			# The dialogue has finished so close the balloon
+			will_free = true
 			queue_free()
 	get:
 		return dialogue_line
@@ -44,6 +48,7 @@ var mutation_cooldown: Timer = Timer.new()
 
 ## The base balloon anchor
 @onready var balloon: Control = %Balloon
+@onready var panel: Panel = $HSplitContainer/HSplitContainer/Balloon/Panel
 
 ## The label showing the name of the currently speaking character
 @onready var character_label: RichTextLabel = %CharacterLabel
@@ -56,6 +61,7 @@ var mutation_cooldown: Timer = Timer.new()
 
 @onready var input_hint: InputHint = %BaloonInputHint
 
+@onready var skip_button: Button = $HSplitContainer/HSplitContainer/Balloon/SkipButton
 
 func _ready() -> void:
 	balloon.hide()
@@ -74,9 +80,12 @@ func _ready() -> void:
 		SpeechController.speak(letter)
 	)
 	call_deferred("adjust_dialogue_size")
+	skip_button.pressed.connect(skip_dialog)
 
 
-func _unhandled_input(_event: InputEvent) -> void:
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(skip_all_action) and not dialogue_label.is_typing:
+		skip_dialog()
 	# Only the balloon is allowed to handle input while it's showing
 	get_viewport().set_input_as_handled()
 
@@ -107,6 +116,7 @@ func apply_dialogue_line() -> void:
 	if not is_node_ready():
 		await ready
 	input_hint.visible = false
+	skip_button.visible = false
 
 	mutation_cooldown.stop()
 
@@ -133,6 +143,7 @@ func apply_dialogue_line() -> void:
 		await dialogue_label.finished_typing
 
 	# Wait for input
+	skip_button.visible = true
 	if dialogue_line.responses.size() > 0:
 		balloon.focus_mode = Control.FOCUS_NONE
 		responses_menu.show()
@@ -181,6 +192,8 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 			return
 
 	if not is_waiting_for_input: return
+	if event.is_action_pressed(skip_all_action):
+		skip_dialog()
 	if dialogue_line.responses.size() > 0: return
 
 	# When there are no response options the balloon itself is the clickable thing
@@ -190,6 +203,8 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 		next(dialogue_line.next_id)
 	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
+	elif event.is_action_pressed(skip_all_action):
+		skip_dialog()
 
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
@@ -197,28 +212,6 @@ func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 
 
 #endregion
-
-
-func adjust_dialogue_size2():
-	var screen_dpi = DisplayServer.screen_get_dpi()
-
-	# Calculate maximum allowed width in pixels based on physical size
-	var max_width_px = max_dialogue_width_inches * screen_dpi
-	print(screen_dpi)
-	print(max_width_px)
-	var size = get_window().size * (get_viewport().size.x / 1280.0)
-	print(size)
-	
-	# Only scale down if dialogue would be too wide physically
-	var scale_factor = min(max_width_px / size.x, 1.0)
-	
-	# Apply minimum scale to ensure readability
-	scale_factor = max(scale_factor, min_scale_factor)
-	
-	if scale_factor < 1.0:
-		var panel = $HSplitContainer/HSplitContainer/Balloon/Panel
-		panel.pivot_offset = Vector2(panel.size.x * 0.5, panel.size.y)
-		panel.scale = Vector2(scale_factor, scale_factor)
 
 func adjust_dialogue_size():
 	var screen_dpi = DisplayServer.screen_get_dpi()
@@ -229,14 +222,25 @@ func adjust_dialogue_size():
 	var viewport_to_screen_ratio = minf(screen_size.y / viewport_size.y, screen_size.x / viewport_size.x)
 	var max_width_viewport = max_width_px / viewport_to_screen_ratio
 	
-	var panel = $HSplitContainer/HSplitContainer/Balloon/Panel
 	var original_width = panel.size.x
 	
 	if original_width > max_width_viewport:
 		# Set the maximum width
 		panel.custom_minimum_size.x = max_width_viewport
 		panel.size.x = max_width_viewport
-		panel.position.x += int((original_width - max_width_viewport) / 2)
+		var position_diff = int((original_width - max_width_viewport) / 2)
+		panel.position.x += position_diff
+		skip_button.position.x += position_diff
 		
 		# Let height adjust automatically by setting size flags
 		panel.size_flags_vertical = Control.SIZE_EXPAND_FILL
+
+func skip_dialog() -> void:
+	visible = false
+	# Process through all lines
+	while not will_free:
+		if dialogue_line.responses.size() > 0:
+			# Select first response
+			await next(dialogue_line.responses[0].next_id)
+		else:
+			await next(dialogue_line.next_id)

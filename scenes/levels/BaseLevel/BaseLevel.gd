@@ -13,7 +13,11 @@ var defs = LevelDefinitions
 var splash_scene: PackedScene = preload("res://scenes/sprites/Splash/Splash.tscn")
 var puff_scene: PackedScene = preload("res://scenes/sprites/Puff/Puff.tscn")
 var draggable_scene: PackedScene = preload("res://scenes/sprites/DraggableObject/DraggableObject.tscn")
+var hint_scene: PackedScene = preload("res://scenes/sprites/QuestHint/QuestHint.tscn")
 var puff_displayed := false
+var active_trail_hints = []
+var waiting_for_trail_choice: bool = false
+var available_trail_directions = []
 
 # parameters from an implemented scene
 var music_key: String = "olaf_gameplay"
@@ -163,8 +167,17 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		hero.set_orientation('left')
 
 	var neighbor_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(hero_position, direction)
-	#var next_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(neighbor_pos, direction)
 	var history_item = {position = neighbor_pos, direction = direction, trails = []}
+	
+	# Handle trail choice mode
+	if waiting_for_trail_choice:
+		if direction in available_trail_directions:
+			history_item.is_trail_choice_point = true
+			clear_trail_choices()
+		elif not skip_check:
+			# Invalid direction for trail choice
+			skip_step()
+			return
 
 	var can_move_result = can_move_to(neighbor_pos, history_item)
 	if not can_move_result.can_move:
@@ -243,7 +256,7 @@ func can_move_in_direction(start_pos: Vector2i, direction: TileSet.CellNeighbor)
 	
 	var trail_cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(target_pos)
 	if trail_cell.x != -1:
-		if not check_trail(target_pos):
+		if not check_trail(target_pos, direction):
 			return false
 	
 	return true
@@ -260,18 +273,33 @@ func handle_teleport(neighbor_pos: Vector2i, history_item: Dictionary) -> Dictio
 
 func process_trails(neighbor_pos: Vector2i, history_item: Dictionary) -> bool:
 	var trail_neighbor_cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(neighbor_pos)
+	var came_from_direction = get_opposite_direction(history_item.direction)
 	if trail_neighbor_cell.x != -1:
-		if not check_trail(neighbor_pos):
+		if not check_trail(neighbor_pos, history_item.direction):
 			skip_step()
 			return false
 		history_item.trails.push_back({
 			position = neighbor_pos,
 			cell = trail_neighbor_cell
 		})
-		process_trail(neighbor_pos)
+		process_trail(neighbor_pos, came_from_direction)
 
 	for trail in history_item.trails:
-		update_cell(trail.position, Vector2i(-1, -1), 0, Layer.TRAILS)
+		var trail_cell_value = str(trail.cell.x) + "," + str(trail.cell.y)
+		var directions = defs.TrailDirections.directions[trail_cell_value]
+		
+		if history_item.direction in directions:
+			directions = directions.filter(func(dir): return dir != history_item.direction)
+		else:
+			for direction in directions:
+				var checking_direction = get_opposite_direction(direction)
+				var neighbor2_pos = tilemaps[Layer.TRAILS].get_neighbor_cell(trail.position, checking_direction)
+				var neighbor2_cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(neighbor2_pos)
+				if neighbor2_cell.x == -1:
+					directions = directions.filter(func(dir): return dir != direction)
+					break
+				
+		update_cell(trail.position, get_tile_coords_for_directions(directions), 0, Layer.TRAILS)
 
 	return true
 
@@ -421,8 +449,29 @@ func step_back(manual: bool = false):
 		update_progress_signals()
 
 func handle_trails_reversal(history_item: Dictionary, manual: bool):
+	clear_trail_choices()
 	if history_item.trails.size():
 		restore_trails(history_item.trails)
+		
+		# Check if this was a choice point and we're doing manual rollback
+		if manual and history_item.has("is_trail_choice_point") and history_item.is_trail_choice_point:
+			# Stop rollback here and show choices again if it's a multi-direction tile
+			var came_from_direction = get_opposite_direction(history_item.direction)
+			var available_directions = []
+			for direction in defs.TrailDirections.sides:
+				if direction == came_from_direction:
+					continue
+				var neighbor_pos = tilemaps[Layer.TRAILS].get_neighbor_cell(hero_position, direction)
+				var neighbor_cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(neighbor_pos)
+				var neighbor_value = str(neighbor_cell.x) + "," + str(neighbor_cell.y)
+				
+				# Check if neighbor is a trail tile that could lead to this position
+				if defs.TrailDirections.directions.has(neighbor_value) and direction in defs.TrailDirections.directions[neighbor_value]:
+					available_directions.append(direction)
+			if available_directions.size() > 1:
+				show_trail_choices(hero_position, available_directions)
+				return
+		
 		if manual and history[-1].trails.size():
 			schedule_next_step_back(manual)
 
@@ -527,47 +576,61 @@ func save_history_item(item):
 func is_simple_step(history_item) -> bool:
 	return not "bad_item" in history_item and not "ghost" in history_item and not history_item.trails.size() and not "dragged_item" in history_item
 
-func check_trail(trail_position: Vector2i) -> bool:
-	var directions = defs.TrailDirections
+func check_trail(trail_position: Vector2i, step_direction: TileSet.CellNeighbor) -> bool:
 	var cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(trail_position)
 	var cell_value = str(cell.x) + "," + str(cell.y)
-	var cell_index = directions.forward_tile.find(cell_value)
-	if cell_index == -1:
-		# not trail
-		return true
+	
+	# Check if it's a trail tile
+	if not defs.TrailDirections.directions.has(cell_value):
+		return true # not a trail
+	
+	var directions = defs.TrailDirections.directions[cell_value]
+	
+	# Check how many directions have valid predecessors
+	var predecessor_count = 0
+	for direction in directions:
+		var checking_direction = get_opposite_direction(direction)
+		#if checking_direction == came_from_direction:
+		if direction == step_direction:
+			continue
+		var neighbor_pos = tilemaps[Layer.TRAILS].get_neighbor_cell(trail_position, checking_direction)
+		var neighbor_cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(neighbor_pos)
+		var neighbor_value = str(neighbor_cell.x) + "," + str(neighbor_cell.y)
+		
+		# Check if neighbor is a trail tile that could lead to this position
+		if defs.TrailDirections.directions.has(neighbor_value):
+			predecessor_count += 1
+	
+	# Can start if there are no predecessors, or if coming from a trail sequence
+	return predecessor_count < directions.size()
 
-	cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(
-		tilemaps[Layer.TRAILS].get_neighbor_cell(trail_position, directions.side[cell_index])
-	)
-	cell_value = str(cell.x) + "," + str(cell.y)
-	if directions.forward_tile.has(cell_value):
-		# not first item of trail
-		return false
-	return true
-
-func process_trail(trail_position: Vector2i) -> void:
-	var directions = defs.TrailDirections
-	var cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(trail_position)
-	var cell_value = str(cell.x) + "," + str(cell.y)
-
-	var next_direction = null
-	for i in directions.side.size():
-		cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(
-			tilemaps[Layer.TRAILS].get_neighbor_cell(trail_position, directions.side[i])
-		)
-		cell_value = str(cell.x) + "," + str(cell.y)
-		if directions.backward_tile[i] == cell_value:
-			next_direction = directions.side[i]
-			break
-
-	if next_direction != null:
+func process_trail(trail_position: Vector2i, came_from_direction: TileSet.CellNeighbor) -> void:
+	var available_directions = []
+	
+	for direction in defs.TrailDirections.sides:
+		if direction == came_from_direction:
+			continue
+		var neighbor_pos = tilemaps[Layer.TRAILS].get_neighbor_cell(trail_position, direction)
+		var neighbor_cell = tilemaps[Layer.TRAILS].get_cell_atlas_coords(neighbor_pos)
+		var neighbor_value = str(neighbor_cell.x) + "," + str(neighbor_cell.y)
+		
+		# Check if neighbor is a trail tile that could lead to this position
+		if defs.TrailDirections.directions.has(neighbor_value) and direction in defs.TrailDirections.directions[neighbor_value]:
+			available_directions.append(direction)
+	
+	# Check if we need to continue automatically or wait for choice
+	if available_directions.size() == 1:
+		# Continue automatically in the only available direction (includes original single-direction behavior)
+		var next_direction = available_directions[0]
 		allow_input = false
-		var timer = get_tree().create_timer(0.175 + randf_range(0, 0.075))
+		var timer = get_tree().create_timer(0.125 + randf_range(0, 0.075))
 		timer.timeout.connect(func():
 			navigate(next_direction, true)
 		)
 	else:
 		allow_input = true
+		if available_directions.size() > 1:
+			show_trail_choices(trail_position, available_directions)
 
 func is_draggable_item(cell_coords: Vector2i) -> bool:
 	var cell_value = str(cell_coords.x) + "," + str(cell_coords.y)
@@ -676,3 +739,63 @@ func get_draggable_object_atlas_coords(pos: Vector2i) -> Vector2i:
 	if draggable_objects:
 		return draggable_objects.get_cell_atlas_coords(pos)
 	return Vector2i(-1, -1)
+
+func get_tile_coords_for_directions(directions: Array) -> Vector2i:
+	if directions.is_empty():
+		return Vector2i(-1, -1)
+	
+	# Create sorted key from direction names
+	var dir_names = []
+	for direction in directions:
+		dir_names.append(get_direction_key(direction))
+	dir_names.sort()
+	var key = ",".join(dir_names)
+	
+	if defs.TrailDirections.tiles.has(key):
+		var coords_str = defs.TrailDirections.tiles[key]
+		var coords = coords_str.split(",")
+		return Vector2i(int(coords[0]), int(coords[1]))
+	
+	return Vector2i(-1, -1)
+
+func get_direction_key(direction: TileSet.CellNeighbor) -> String:
+	match direction:
+		TileSet.CELL_NEIGHBOR_TOP_SIDE:
+			return "UP"
+		TileSet.CELL_NEIGHBOR_BOTTOM_SIDE:
+			return "DOWN"
+		TileSet.CELL_NEIGHBOR_LEFT_SIDE:
+			return "LEFT"
+		TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
+			return "RIGHT"
+	return ""
+
+func show_trail_choices(start_position: Vector2i, directions: Array):
+	waiting_for_trail_choice = true
+	available_trail_directions = directions
+	allow_input = true
+	
+	# Create quest hints for each available direction
+	for direction in directions:
+		var target_pos = tilemaps[Layer.TRAILS].get_neighbor_cell(start_position, direction)
+		var hint = hint_scene.instantiate()
+		tilemaps[Layer.ITEMS].add_child(hint)
+		hint.z_index = 100
+		hint.position = target_pos * TILE_SIZE + Vector2i(8, 12)
+		match direction:
+			TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
+				hint.set_icon(31)
+			TileSet.CELL_NEIGHBOR_LEFT_SIDE:
+				hint.set_icon(30)
+			TileSet.CELL_NEIGHBOR_TOP_SIDE:
+				hint.set_icon(32)
+			TileSet.CELL_NEIGHBOR_BOTTOM_SIDE:
+				hint.set_icon(33)
+		active_trail_hints.append(hint)
+
+func clear_trail_choices():
+	waiting_for_trail_choice = false
+	available_trail_directions.clear()
+	for hint in active_trail_hints:
+		hint.queue_free()
+	active_trail_hints.clear()

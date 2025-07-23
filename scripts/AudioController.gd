@@ -355,6 +355,17 @@ const sounds_map: Dictionary[String, String] = {
 	"6,19": "footprints",
 	"5,20": "footprints",
 	"6,20": "footprints",
+	"35,12": "footprints",
+	"36,12": "footprints",
+	"37,12": "footprints",
+	"38,12": "footprints",
+	"39,12": "footprints",
+	"40,12": "footprints",
+	"41,12": "footprints",
+	"42,12": "footprints",
+	"43,12": "footprints",
+	"44,12": "footprints",
+	"45,12": "footprints",
 }
 
 func get_sound(bad_item: Vector2i, good_item: Vector2i) -> String:

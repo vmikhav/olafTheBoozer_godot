@@ -101,5 +101,34 @@ const DraggableItems = ["12,16", "13,16", "12,18", "14,16"]
 
 enum LevelType {BACKWARD, FORWARD}
 
-enum Layers {GROUND, FLOOR, WALLS, ITEMS, TREES, MOVABLE_ITEMS}
+enum Layers {
+	GROUND, FLOOR, WALLS, TRAILS, ITEMS, TREES, MOVABLE_ITEMS
+}
 enum Walls {WOOD, STONE, BRICK, CLAY, BUSH, FENCE}
+
+
+
+static func get_direction_key(direction: TileSet.CellNeighbor) -> String:
+	match direction:
+		TileSet.CELL_NEIGHBOR_TOP_SIDE:
+			return "UP"
+		TileSet.CELL_NEIGHBOR_BOTTOM_SIDE:
+			return "DOWN"
+		TileSet.CELL_NEIGHBOR_LEFT_SIDE:
+			return "LEFT"
+		TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
+			return "RIGHT"
+	return ""
+
+
+static func get_opposite_direction(direction: TileSet.CellNeighbor) -> TileSet.CellNeighbor:
+	match direction:
+		TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
+			return TileSet.CELL_NEIGHBOR_LEFT_SIDE
+		TileSet.CELL_NEIGHBOR_LEFT_SIDE:
+			return TileSet.CELL_NEIGHBOR_RIGHT_SIDE
+		TileSet.CELL_NEIGHBOR_BOTTOM_SIDE:
+			return TileSet.CELL_NEIGHBOR_TOP_SIDE
+		TileSet.CELL_NEIGHBOR_TOP_SIDE:
+			return TileSet.CELL_NEIGHBOR_BOTTOM_SIDE
+	return direction  # Default case, shouldn't happen

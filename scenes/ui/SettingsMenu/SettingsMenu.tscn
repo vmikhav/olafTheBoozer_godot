@@ -134,6 +134,15 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
+[node name="FakeDrinksButton" type="OptionButton" parent="SettingsPanel/MarginContainer"]
+visible = false
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "Beer"
+popup/item_0/id = 0
+popup/item_1/text = "Ginger Ale"
+popup/item_1/id = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="SettingsPanel/MarginContainer"]
 layout_mode = 2
 
@@ -343,6 +352,7 @@ text = "Close"
 
 [node name="InputHint" parent="SettingsPanel/MarginContainer/VBoxContainer/MarginContainer/CloseButton" instance=ExtResource("5_b7f2g")]
 layout_mode = 1
+anchors_preset = -1
 offset_left = 94.0
 offset_top = 34.0
 offset_right = 94.0

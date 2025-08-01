@@ -712,6 +712,14 @@ msgid "Back to Menu"
 msgstr ""
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Beer"
+msgstr ""
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Ginger Ale"
+msgstr ""
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Sounds:"
 msgstr ""
 
@@ -725,10 +733,6 @@ msgstr ""
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Drink:"
-msgstr ""
-
-#: scenes/ui/SettingsMenu/SettingsMenu.tscn
-msgid "Beer"
 msgstr ""
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn

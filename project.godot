@@ -37,6 +37,7 @@ runtime/balloon_path="res://scenes/ui/DialogueBalloon/DialogueBalloon3.tscn"
 
 window/size/viewport_width=720
 window/size/viewport_height=720
+window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/subwindows/embed_subwindows=false
@@ -50,7 +51,7 @@ movie_writer/mjpeg_quality=0.7
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/dropdown_parser/plugin.cfg")
 
 [input]
 

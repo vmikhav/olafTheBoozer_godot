@@ -17,7 +17,7 @@ func _ready():
 	]
 	interactive_zones = [
 	]
-	camera_limit = Rect2i(-75, -100, 300, 200)
+	camera_limit = Rect2i(-75, -100, 130, 200)
 	move_hero_to_position(hero_start_position)
 	init_map()
 	hero.set_orientation("right")

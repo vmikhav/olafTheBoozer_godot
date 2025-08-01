@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OlafTheBoozer-ggo2022\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-07-15 18:02+0300\n"
+"PO-Revision-Date: 2025-08-01 23:01+0300\n"
 "Last-Translator: Volodymyr Mikhav <mihaw.wolodymyr@gmail.com>\n"
 "Language-Team: English <http://weblate.hidalgocode.com/projects/olaf-the-"
 "boozer/dialogs/en/>\n"
@@ -1013,6 +1013,14 @@ msgid "Back to Menu"
 msgstr "Back to Menu"
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Beer"
+msgstr "Beer"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Ginger Ale"
+msgstr "Ginger Ale"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Sounds:"
 msgstr "Sounds:"
 
@@ -1027,10 +1035,6 @@ msgstr "Music:"
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Drink:"
 msgstr "Drink:"
-
-#: scenes/ui/SettingsMenu/SettingsMenu.tscn
-msgid "Beer"
-msgstr "Beer"
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Language:"
@@ -1778,9 +1782,6 @@ msgstr "Skip"
 #: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
 msgid "Response example"
 msgstr "Response example"
-
-#~ msgid "Ginger Ale"
-#~ msgstr "Ginger Ale"
 
 #~ msgid "English"
 #~ msgstr "English"

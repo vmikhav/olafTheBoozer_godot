@@ -1,0 +1,22 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://bs2y8sqryd5uh"]
+
+[ext_resource type="Texture2D" uid="uid://bbtx2n5kb3u3j" path="res://assets/images/shadow_tileset.png" id="1_6i527"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jg2t0"]
+texture = ExtResource("1_6i527")
+separation = Vector2i(1, 1)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+
+[resource]
+sources/0 = SubResource("TileSetAtlasSource_jg2t0")

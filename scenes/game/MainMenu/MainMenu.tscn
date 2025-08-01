@@ -78,7 +78,7 @@ grow_vertical = 2
 color = Color(0.13725491, 0.11764706, 0.15686275, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer"]
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -4.0
@@ -153,6 +153,7 @@ text = "Play"
 
 [node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer/Play" instance=ExtResource("10_d3jgr")]
 layout_mode = 1
+anchors_preset = -1
 offset_left = 300.0
 offset_top = 104.0
 offset_right = 300.0
@@ -176,6 +177,7 @@ text = "Settings"
 
 [node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer4/Settings" instance=ExtResource("10_d3jgr")]
 layout_mode = 1
+anchors_preset = -1
 offset_left = 200.0
 offset_top = 72.0
 offset_right = 200.0
@@ -201,6 +203,7 @@ text = "Exit"
 
 [node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2/Exit" instance=ExtResource("10_d3jgr")]
 layout_mode = 1
+anchors_preset = -1
 offset_left = 200.0
 offset_top = 72.0
 offset_right = 200.0
@@ -215,7 +218,7 @@ theme_override_constants/margin_left = 50
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-text = "v. 20250713-demo"
+text = "v. 20250801-demo"
 label_settings = SubResource("LabelSettings_h1r82")
 
 [node name="Socials" type="CenterContainer" parent="UiLayer"]

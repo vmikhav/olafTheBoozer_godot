@@ -98,6 +98,7 @@ stretch_mode = 4
 
 [node name="InputHint" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/MenuButton" instance=ExtResource("7_yp2d6")]
 layout_mode = 1
+anchors_preset = -1
 offset_left = 60.0
 offset_top = 60.0
 offset_right = 60.0
@@ -140,6 +141,7 @@ stretch_mode = 4
 
 [node name="InputHint" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer/UndoButton" instance=ExtResource("7_yp2d6")]
 layout_mode = 1
+anchors_preset = -1
 offset_left = 60.0
 offset_top = 60.0
 offset_right = 60.0
@@ -160,6 +162,7 @@ stretch_mode = 4
 
 [node name="InputHint" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer3/VBoxContainer/RestartButton" instance=ExtResource("7_yp2d6")]
 layout_mode = 1
+anchors_preset = -1
 offset_left = 60.0
 offset_top = 60.0
 offset_right = 60.0

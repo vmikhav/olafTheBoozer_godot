@@ -1006,6 +1006,14 @@ msgid "Back to Menu"
 msgstr "Назад до меню"
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Beer"
+msgstr "Пиво"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Ginger Ale"
+msgstr "Імбирне пиво"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Sounds:"
 msgstr "Звуки:"
 
@@ -1020,10 +1028,6 @@ msgstr "Музика:"
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Drink:"
 msgstr "Напій:"
-
-#: scenes/ui/SettingsMenu/SettingsMenu.tscn
-msgid "Beer"
-msgstr "Пиво"
 
 #: scenes/ui/SettingsMenu/SettingsMenu.tscn
 msgid "Language:"
@@ -1769,9 +1773,6 @@ msgstr "Пропустити"
 #: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
 msgid "Response example"
 msgstr "Приклад відповіді"
-
-#~ msgid "Ginger Ale"
-#~ msgstr "Імбирне пиво"
 
 #~ msgid "English"
 #~ msgstr "English"

@@ -78,7 +78,7 @@ grow_vertical = 2
 color = Color(0.13725491, 0.11764706, 0.15686275, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer"]
-anchors_preset = -1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -4.0
@@ -140,7 +140,7 @@ label_settings = SubResource("LabelSettings_c3bsr")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 30
 
 [node name="Play" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
@@ -164,13 +164,13 @@ hint_offset = Vector2(0, -16)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 10
 
 [node name="Settings" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer4"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
-focus_next = NodePath("../../MarginContainer2/Exit")
+focus_next = NodePath("../../MarginContainer5/Credits")
 focus_previous = NodePath("../../MarginContainer/Play")
 theme = ExtResource("6_c3bsr")
 text = "Settings"
@@ -184,20 +184,44 @@ offset_right = 200.0
 offset_bottom = 72.0
 hint_offset = Vector2(0, -8)
 
+[node name="MarginContainer5" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 10
+
+[node name="Credits" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer5"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 80)
+layout_mode = 2
+focus_next = NodePath("../../MarginContainer2/Exit")
+focus_previous = NodePath("../../MarginContainer4/Settings")
+theme = ExtResource("6_c3bsr")
+text = "Credits"
+
+[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer5/Credits" instance=ExtResource("10_d3jgr")]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 200.0
+offset_top = 72.0
+offset_right = 200.0
+offset_bottom = 72.0
+hint_offset = Vector2(0, -8)
+
 [node name="MarginContainer2" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 10
 
 [node name="Exit" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 80)
 layout_mode = 2
-focus_neighbor_top = NodePath("../../MarginContainer4/Settings")
+focus_neighbor_top = NodePath("../../MarginContainer5/Credits")
 focus_neighbor_bottom = NodePath("../../../../Socials/MarginContainer/HBoxContainer/Steam")
 focus_next = NodePath("../../../../Socials/MarginContainer/HBoxContainer/Steam")
-focus_previous = NodePath("../../MarginContainer4/Settings")
+focus_previous = NodePath("../../MarginContainer5/Credits")
 theme = ExtResource("6_c3bsr")
 text = "Exit"
 
@@ -218,7 +242,7 @@ theme_override_constants/margin_left = 50
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-text = "v. 20250801-demo"
+text = "v. 20250816-demo"
 label_settings = SubResource("LabelSettings_h1r82")
 
 [node name="Socials" type="CenterContainer" parent="UiLayer"]
@@ -233,7 +257,7 @@ size_flags_vertical = 8
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/Socials"]
 layout_mode = 2
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_bottom = 10
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/Socials/MarginContainer"]
 layout_mode = 2

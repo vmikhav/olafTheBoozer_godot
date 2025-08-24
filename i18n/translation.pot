@@ -13,6 +13,7 @@
 # res://trailer/WishlistDemo.tscn
 # res://scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
 # res://scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+# res://scenes/ui/Credits/Credits.tscn
 #
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
@@ -764,12 +765,16 @@ msgid "Play"
 msgstr ""
 
 #: scenes/game/MainMenu/MainMenu.tscn
+msgid "Credits"
+msgstr ""
+
+#: scenes/game/MainMenu/MainMenu.tscn
 #: trailer/WishlistDemo.tscn
 msgid "Exit"
 msgstr ""
 
 #: scenes/game/MainMenu/MainMenu.tscn
-msgid "v. 20250713-demo"
+msgid "v. 20250816-demo"
 msgstr ""
 
 #. TRANSLATORS: Ім’я персонажа
@@ -1253,4 +1258,49 @@ msgstr ""
 
 #: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
 msgid "Response example"
+msgstr ""
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Olaf the Boozer\n"
+"by Hidalgo Code"
+msgstr ""
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Idea and development:\n"
+"Volodymyr Mikhav"
+msgstr ""
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Story:\n"
+"Elizabeth Listik"
+msgstr ""
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Music:\n"
+"Deigineor"
+msgstr ""
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Sound effects:\n"
+"Anastasiia Mariuha"
+msgstr ""
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Art:\n"
+"Pita, LYASeeK, ansimuz,\n"
+"Krishna Palacio, pdshkb"
+msgstr ""
+
+#: scenes/ui/Credits/Credits.tscn
+msgid "Made with Godot"
+msgstr ""
+
+#: scenes/ui/Credits/Credits.tscn
+msgid "Back"
 msgstr ""

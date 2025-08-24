@@ -1,0 +1,189 @@
+[gd_scene load_steps=13 format=3 uid="uid://co3jlcy70vtu8"]
+
+[ext_resource type="Script" uid="uid://duf5ab20ndj4q" path="res://scenes/ui/Credits/Credits.gd" id="1_1bww1"]
+[ext_resource type="Texture2D" uid="uid://tra00nxobp22" path="res://assets/images/Outside castle/back.png" id="1_ac080"]
+[ext_resource type="Texture2D" uid="uid://c68b8nxud88e" path="res://assets/images/Outside castle/middle.png" id="2_1bww1"]
+[ext_resource type="Texture2D" uid="uid://b5k4ucg3lry0c" path="res://assets/images/Outside castle/front.png" id="3_3e0nb"]
+[ext_resource type="Texture2D" uid="uid://bmo4yjt51xnuv" path="res://assets/images/Outside castle/front2.png" id="4_et63b"]
+[ext_resource type="Texture2D" uid="uid://b6rc7nq7sc8kd" path="res://assets/images/Outside castle/front3.png" id="5_akjta"]
+[ext_resource type="Texture2D" uid="uid://daw5yhy2b3jje" path="res://assets/images/Outside castle/front4.png" id="6_2t8j6"]
+[ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="7_bsy88"]
+[ext_resource type="Theme" uid="uid://bw0f56ba8yukh" path="res://themes/wood_menu.tres" id="8_sm8s3"]
+[ext_resource type="PackedScene" uid="uid://bvomsgp50xmqo" path="res://scenes/ui/InputHint/InputHint.tscn" id="9_qe5jg"]
+[ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="10_v0wfx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4r8u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_et63b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_akjta")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2t8j6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3e0nb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_1bww1")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.13725491, 0.11764706, 0.15686275, 1)
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer/MarginContainer3"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer3/CenterContainer"]
+texture_filter = 1
+layout_mode = 2
+
+[node name="Back" type="Sprite2D" parent="CanvasLayer/MarginContainer3/CenterContainer/MarginContainer"]
+scale = Vector2(5, 5)
+texture = ExtResource("1_ac080")
+
+[node name="Middle" type="Sprite2D" parent="CanvasLayer/MarginContainer3/CenterContainer/MarginContainer"]
+scale = Vector2(5, 5)
+texture = ExtResource("2_1bww1")
+
+[node name="Front" type="Sprite2D" parent="CanvasLayer/MarginContainer3/CenterContainer/MarginContainer"]
+visible = false
+scale = Vector2(5, 5)
+texture = ExtResource("3_3e0nb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CanvasLayer/MarginContainer3/CenterContainer/MarginContainer"]
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_m4r8u")
+autoplay = "default"
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+theme = ExtResource("7_bsy88")
+theme_override_constants/margin_top = 50
+
+[node name="Panel" type="Panel" parent="CanvasLayer/MarginContainer"]
+custom_minimum_size = Vector2(500, 460)
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 341.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="Olaf" type="Label" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Olaf the Boozer
+by Hidalgo Code"
+horizontal_alignment = 1
+
+[node name="Idea" type="Label" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Idea and development:
+Volodymyr Mikhav"
+horizontal_alignment = 1
+
+[node name="Story" type="Label" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Story:
+Elizabeth Listik"
+horizontal_alignment = 1
+
+[node name="Music" type="Label" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Music:
+Deigineor"
+horizontal_alignment = 1
+
+[node name="Sounds" type="Label" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Sound effects:
+Anastasiia Mariuha"
+horizontal_alignment = 1
+
+[node name="Art" type="Label" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Art:
+Pita, LYASeeK, ansimuz,
+Krishna Palacio, pdshkb"
+horizontal_alignment = 1
+
+[node name="Godot" type="Label" parent="CanvasLayer/MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Made with Godot"
+horizontal_alignment = 1
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -705.0
+offset_right = 176.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 6
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 30
+
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer2/MarginContainer2"]
+custom_minimum_size = Vector2(250, 80)
+layout_mode = 2
+theme = ExtResource("8_sm8s3")
+theme_override_font_sizes/font_size = 24
+text = "Back"
+
+[node name="InputHint" parent="CanvasLayer/MarginContainer2/MarginContainer2/Button" instance=ExtResource("9_qe5jg")]
+layout_mode = 1
+offset_left = 250.0
+offset_top = 72.0
+offset_right = 250.0
+offset_bottom = 72.0
+hint_offset = Vector2(0, -8)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="CanvasLayer"]
+
+[node name="SceneTransition" parent="CanvasLayer" instance=ExtResource("10_v0wfx")]

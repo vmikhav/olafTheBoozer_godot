@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OlafTheBoozer-ggo2022\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-08-01 23:01+0300\n"
+"PO-Revision-Date: 2025-08-25 00:11+0300\n"
 "Last-Translator: Volodymyr Mikhav <mihaw.wolodymyr@gmail.com>\n"
 "Language-Team: English <http://weblate.hidalgocode.com/projects/olaf-the-"
 "boozer/dialogs/en/>\n"
@@ -1064,13 +1064,17 @@ msgstr "Demo"
 msgid "Play"
 msgstr "Play"
 
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Credits"
+msgstr "Credits"
+
 #: scenes/game/MainMenu/MainMenu.tscn trailer/WishlistDemo.tscn
 msgid "Exit"
 msgstr "Exit"
 
 #: scenes/game/MainMenu/MainMenu.tscn
-msgid "v. 20250713-demo"
-msgstr "v. 20250713-demo"
+msgid "v. 20250816-demo"
+msgstr "v. 20250816-demo"
 
 #. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
@@ -1782,6 +1786,64 @@ msgstr "Skip"
 #: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
 msgid "Response example"
 msgstr "Response example"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Olaf the Boozer\n"
+"by Hidalgo Code"
+msgstr ""
+"Olaf the Boozer\n"
+"by Hidalgo Code"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Idea and development:\n"
+"Volodymyr Mikhav"
+msgstr ""
+"Idea and development:\n"
+"Volodymyr Mikhav"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Story:\n"
+"Elizabeth Listik"
+msgstr ""
+"Story:\n"
+"Elizabeth Listik"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Music:\n"
+"Deigineor"
+msgstr ""
+"Music:\n"
+"Deigineor"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Sound effects:\n"
+"Anastasiia Mariuha"
+msgstr ""
+"Sound effects:\n"
+"Anastasiia Mariuha"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Art:\n"
+"Pita, LYASeeK, ansimuz,\n"
+"Krishna Palacio, pdshkb"
+msgstr ""
+"Art:\n"
+"Pita, LYASeeK, ansimuz,\n"
+"Krishna Palacio, pdshkb"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid "Made with Godot"
+msgstr "Made with Godot"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid "Back"
+msgstr "Back"
 
 #~ msgid "English"
 #~ msgstr "English"

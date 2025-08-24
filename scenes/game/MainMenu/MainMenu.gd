@@ -2,9 +2,10 @@ extends Node2D
 
 @onready var play_button: Button = %Play
 @onready var settings_button: Button = %Settings
+@onready var credits_button: Button = %Credits
 @onready var exit_button: Button = %Exit
 @onready var scene_transition = $UiLayer/SceneTransition
-@onready var settings_menu = $UiLayer/SettingsMenu#$SettingsLayer/SettingsMenu
+@onready var settings_menu = $UiLayer/SettingsMenu
 
 var settings_visible = false
 
@@ -15,6 +16,7 @@ func _ready():
 	play_button.grab_focus.call_deferred()
 	play_button.pressed.connect(start_game)
 	exit_button.pressed.connect(exit)
+	credits_button.pressed.connect(open_credits)
 	settings_button.pressed.connect(open_settings)
 	settings_menu.close.connect(close_settings)
 	if OS.has_feature("web"):
@@ -31,6 +33,9 @@ func start_game():
 		levels = ["Tutorial0"],
 		#levels = ["Tutorial0", "Kitchen", "Library", "Cellar", "Tavern"],
 	})
+
+func open_credits():
+	scene_transition.change_scene("res://scenes/ui/Credits/Credits.tscn", {})
 
 
 func open_settings():

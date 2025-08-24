@@ -155,6 +155,7 @@ func apply_dialogue_line() -> void:
 		is_waiting_for_input = true
 		balloon.focus_mode = Control.FOCUS_ALL
 		balloon.grab_focus()
+		await get_tree().create_timer(.15).timeout
 		input_hint.visible = true
 		input_hint.modulate.a = 0
 		await input_hint.position_hint()

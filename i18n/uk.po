@@ -1057,13 +1057,17 @@ msgstr "Демо"
 msgid "Play"
 msgstr "Грати"
 
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Credits"
+msgstr "Про авторів"
+
 #: scenes/game/MainMenu/MainMenu.tscn trailer/WishlistDemo.tscn
 msgid "Exit"
 msgstr "Вийти"
 
 #: scenes/game/MainMenu/MainMenu.tscn
-msgid "v. 20250713-demo"
-msgstr "v. 20250713-demo"
+msgid "v. 20250816-demo"
+msgstr "v. 20250816-demo"
 
 #. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/SawmillBackyard/sawmill.dialogue
@@ -1773,6 +1777,64 @@ msgstr "Пропустити"
 #: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
 msgid "Response example"
 msgstr "Приклад відповіді"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Olaf the Boozer\n"
+"by Hidalgo Code"
+msgstr ""
+"Olaf the Boozer\n"
+"від Hidalgo Code"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Idea and development:\n"
+"Volodymyr Mikhav"
+msgstr ""
+"Ідея та розробка:\n"
+"Volodymyr Mikhav"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Story:\n"
+"Elizabeth Listik"
+msgstr ""
+"Історія:\n"
+"Elizabeth Listik"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Music:\n"
+"Deigineor"
+msgstr ""
+"Музика:\n"
+"Deigineor"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Sound effects:\n"
+"Anastasiia Mariuha"
+msgstr ""
+"Звукові ефекти:\n"
+"Anastasiia Mariuha"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Art:\n"
+"Pita, LYASeeK, ansimuz,\n"
+"Krishna Palacio, pdshkb"
+msgstr ""
+"Графіка:\n"
+"Pita, LYASeeK, ansimuz,\n"
+"Krishna Palacio, pdshkb"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid "Made with Godot"
+msgstr "Зроблено з Godot"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid "Back"
+msgstr "Назад"
 
 #~ msgid "English"
 #~ msgstr "English"

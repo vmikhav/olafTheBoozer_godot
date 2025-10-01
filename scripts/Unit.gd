@@ -12,6 +12,7 @@ const ghost_colors = {
 var orientation: String = 'right'
 var sprite: AnimatedSprite2D
 var emote: Sprite2D
+var emote2: Sprite2D
 var can_produce_sounds = true
 var available_sounds = ["olaf_hiccup_idle"]
 var last_sound = -1
@@ -19,6 +20,7 @@ var mode: String = LevelDefinitions.UnitTypeName[LevelDefinitions.UnitType.DEMOL
 var move_tween: Tween
 var is_dead := false
 var is_moving := false
+var is_ghost := false
 var can_reset_animation := false
 var expected_position: Vector2
 
@@ -32,6 +34,8 @@ func set_mode(params):
 	mode = params[0]
 	sprite.play(mode + "_idle")
 	emote.visible = false
+	emote2.visible = false
+	is_ghost = false
 	var sounds_old = can_produce_sounds
 	can_produce_sounds = params[1]
 	if not sounds_old and can_produce_sounds:
@@ -65,6 +69,7 @@ func play_idle_sound():
 		get_tree().create_timer(randf_range(4, 10), false).timeout.connect(play_idle_sound)
 
 func make_ghost(type: LevelDefinitions.GhostType = LevelDefinitions.GhostType.MEMORY) -> void:
+	is_ghost = true
 	sprite.material.set_shader_parameter("status_color", ghost_colors[type])
 	sprite.material.set_shader_parameter("status_intensity", 1.0)
 	sprite.material.set_shader_parameter("transparency", 0.85)
@@ -72,6 +77,11 @@ func make_ghost(type: LevelDefinitions.GhostType = LevelDefinitions.GhostType.ME
 	can_produce_sounds = false
 	if type == LevelDefinitions.GhostType.ENEMY:
 		is_dead = true
+		emote2.visible = true
+		emote2.region_rect = Rect2i(Vector2i(40, 27), Vector2i(8, 9))
+	if type == LevelDefinitions.GhostType.ENEMY_SPAWN:
+		emote2.visible = true
+		emote2.region_rect = Rect2i(Vector2i(48, 27), Vector2i(8, 9))
 
 func make_dead():
 	can_produce_sounds = false
@@ -79,6 +89,7 @@ func make_dead():
 	sprite.play(mode + "_idle_dead")
 
 func make_follower():
+	emote2.visible = false
 	sprite.play(mode + "_die", -1.5, true)
 	await sprite.animation_finished
 	sprite.play(mode + ("_walk" if is_moving else "_idle"))

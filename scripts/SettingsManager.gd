@@ -1,6 +1,6 @@
 extends Node
 
-const languages: Array[String] = ['en', 'uk']
+const languages: Array[String] = ['en', 'de', 'uk', 'zh_CN']
 
 var settings: SettingsResource = SettingsResource.new() as SettingsResource
 var game_progress: GameProgressResource = GameProgressResource.new() as GameProgressResource

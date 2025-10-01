@@ -19,12 +19,12 @@ var level_progress_report: LevelProgressReport
 
 var level_index = 0
 var levels = [
+	"SawmillDemon",
+	"TavernKitchen",
 	"SawmillYard",
 	"Cellar",
 	"TavernWarehouse",
-	"SawmillDemon",
 	"TutorialBarrel",
-	"TavernKitchen",
 	"TavernTutorial",
 	"Kitchen",
 	"Library",
@@ -97,6 +97,8 @@ func start_replay():
 	level.replay()
 
 func move_hero(direction: String):
+	if in_intro:
+		return
 	if direction == "step_left":
 		level.navigate(TileSet.CELL_NEIGHBOR_LEFT_SIDE)
 	if direction == "step_right":

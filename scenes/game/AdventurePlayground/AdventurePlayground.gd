@@ -13,8 +13,8 @@ var is_level_finished: bool = false
 
 var level_index = 0
 var levels = [
-	"CleanedTavern",
 	"StartTavern",
+	"CleanedTavern",
 	"RepairedTavern"
 ]
 

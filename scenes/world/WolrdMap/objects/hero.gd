@@ -14,18 +14,22 @@ var current_path: Path2D
 var speed = 40  # Adjust as needed
 var follow = false
 var orientation: StringName = "right"
+var _last_position: Vector2
 signal follow_comlete
 
 func _process(delta):
 	if follow:
-		var oldPosition = global_position
-		global_position = global_position.lerp(path_follow.global_position, delta * 5).ceil()
-		if oldPosition.x > global_position.x and orientation == "right":
+		var new_position = global_position
+
+		# Check movement direction only
+		if new_position.x < _last_position.x and orientation == "right":
 			orientation = "left"
 			flip(true)
-		elif oldPosition.x < global_position.x and orientation == "left":
+		elif new_position.x > _last_position.x and orientation == "left":
 			orientation = "right"
 			flip(false)
+
+		_last_position = new_position
 
 func navigate_to(path: Path2D, target: Vector2i):
 	if path is Path2D:
@@ -43,9 +47,18 @@ func navigate_to(path: Path2D, target: Vector2i):
 		_move_along_path(target_offset)
 
 func _move_along_path(target_offset: float):
-	var duration = abs(path_follow.progress - target_offset) / speed
+	var curve := current_path.curve
+	_last_position = global_position
+	var start_distance := curve.get_closest_offset(current_path.to_local(global_position))
+	var end_distance := target_offset
+	var duration = abs(start_distance - end_distance) / speed
+	
 	var tween = create_tween()
-	tween.tween_method(self._update_character_position, path_follow.progress, target_offset, duration)
+	tween.tween_method(
+		func(distance: float):
+			var pos = curve.sample_baked(distance)
+			global_position = current_path.to_global(pos)
+	, start_distance, end_distance, duration)
 	tween.finished.connect(func() :
 		follow = false
 		path_follow.reparent(self)

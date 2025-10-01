@@ -120,9 +120,9 @@ theme_override_constants/margin_bottom = 15
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("7_wytv3")
 theme_override_font_sizes/normal_font_size = 18
-text = "Thank you for playing Olaf the Boozer demo!
+text = "Thank you for playing Olaf and the Crowning Hangover demo!
 
-I hope you felt puzzled and curious - Get ready to reeval more of what really happened with Olaf when the full release comes later this year.
+I hope you felt puzzled and curious - Get ready to reeval more of what really happened with Olaf when the full release comes Q3 2026.
 
 If you have any feedback, I would love to hear it. Please, leave a review on Steam and add game to wishlist!"
 fit_content = true

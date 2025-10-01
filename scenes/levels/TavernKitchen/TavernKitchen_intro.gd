@@ -5,20 +5,16 @@ const TILE_SIZE = 48
 @onready var hero: DemolitonistSprite = $CanvasLayer/CenterContainer/MarginContainer/Hero
 @onready var check: Sprite2D = $CanvasLayer/CenterContainer/MarginContainer/Check
 @onready var check2: Sprite2D = $CanvasLayer/CenterContainer/MarginContainer/Check2
-@onready var villager: DemolitonistSprite = $CanvasLayer/CenterContainer/MarginContainer/Villager
 @onready var villager2: DemolitonistSprite = $CanvasLayer/CenterContainer/MarginContainer/Villager2
 @onready var villager3: DemolitonistSprite = $CanvasLayer/CenterContainer/MarginContainer/Villager3
 @onready var timer: Timer = $CanvasLayer/Timer
 
 func _ready() -> void:
 	hero.set_mode([defs.UnitTypeName[defs.UnitType.WORKER], false])
-	villager.set_mode([defs.UnitTypeName[defs.UnitType.PEASANT], false])
 	villager2.set_mode([defs.UnitTypeName[defs.UnitType.PEASANT], false])
 	villager3.set_mode([defs.UnitTypeName[defs.UnitType.PEASANT], false])
-	villager.make_ghost(defs.GhostType.ENEMY_SPAWN)
 	villager2.make_ghost(defs.GhostType.ENEMY)
 	villager3.make_ghost(defs.GhostType.ENEMY_SPAWN)
-	villager.set_orientation('right')
 	villager2.set_orientation('right')
 	villager3.set_orientation('right')
 
@@ -28,8 +24,6 @@ func play(init: bool = false):
 	if init:
 		await timer.timeout
 		await timer.timeout
-	await timer.timeout
-	hero.position.x += TILE_SIZE
 	await timer.timeout
 	hero.position.x += TILE_SIZE
 	await timer.timeout
@@ -55,6 +49,9 @@ func play(init: bool = false):
 	await timer.timeout
 	hero.position.x += TILE_SIZE
 	villager2.position.x += TILE_SIZE
+	await timer.timeout
+	hero.position.x += TILE_SIZE
+	villager2.position.x += TILE_SIZE
 	villager3.visible = false
 	check2.visible = true
 	splash = splash_scene.instantiate() as Node2D
@@ -69,8 +66,7 @@ func play(init: bool = false):
 
 func reset():
 	villager3.visible = true
-	villager.position.x = TILE_SIZE * 2.5
-	villager2.position.x = TILE_SIZE * 4.5
+	villager2.position.x = TILE_SIZE * 3.5
 	villager2.set_mode([defs.UnitTypeName[defs.UnitType.PEASANT], false])
 	villager2.make_ghost(defs.GhostType.ENEMY)
 	villager3.position.x = TILE_SIZE * 6.5

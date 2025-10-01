@@ -165,7 +165,7 @@ theme_override_constants/separation = 10
 
 [node name="SFXLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SoundsContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 30)
+custom_minimum_size = Vector2(160, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Sounds:"
@@ -189,7 +189,7 @@ theme_override_constants/separation = 10
 
 [node name="VoicesLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/VoicesContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 30)
+custom_minimum_size = Vector2(160, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Voices:"
@@ -215,7 +215,7 @@ theme_override_constants/separation = 10
 
 [node name="MusicLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/MusicContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 30)
+custom_minimum_size = Vector2(160, 30)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Music:"
@@ -243,7 +243,7 @@ layout_mode = 2
 
 [node name="DrinkLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/DrinkContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Drink:"
@@ -280,7 +280,7 @@ layout_mode = 2
 
 [node name="LanguageLabel" type="Label" parent="SettingsPanel/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/LanguageContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.129412, 0.129412, 0.129412, 1)
 text = "Language:"
@@ -298,7 +298,7 @@ focus_previous = NodePath("../../DrinkContainer/DrinkDropdown")
 text = "Select..."
 alignment = 0
 script = ExtResource("3_fhx3p")
-items = Array[String](["English", "Українська"])
+items = Array[String](["English", "Deutsch", "Українська", "简体中文"])
 dropdown_button_style = ExtResource("4_su5ui")
 dropdown_button_hover_style = ExtResource("4_su5ui")
 dropdown_button_pressed_style = ExtResource("4_su5ui")
@@ -342,6 +342,7 @@ theme_override_constants/margin_top = 15
 
 [node name="CloseButton" type="Button" parent="SettingsPanel/MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8

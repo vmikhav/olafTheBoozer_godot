@@ -51,7 +51,7 @@ scale = Vector2(3, 3)
 
 [node name="Check" type="Sprite2D" parent="CanvasLayer/CenterContainer/MarginContainer"]
 visible = false
-position = Vector2(216, -9)
+position = Vector2(168, -9)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_4thx2")
 
@@ -61,13 +61,9 @@ position = Vector2(312, -9)
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_4thx2")
 
-[node name="Villager" parent="CanvasLayer/CenterContainer/MarginContainer" instance=ExtResource("3_jwb1n")]
-position = Vector2(120, 48)
-scale = Vector2(3, 3)
-
 [node name="Villager2" parent="CanvasLayer/CenterContainer/MarginContainer" instance=ExtResource("3_jwb1n")]
 z_index = 1
-position = Vector2(216, 48)
+position = Vector2(168, 48)
 scale = Vector2(3, 3)
 
 [node name="Villager3" parent="CanvasLayer/CenterContainer/MarginContainer" instance=ExtResource("3_jwb1n")]

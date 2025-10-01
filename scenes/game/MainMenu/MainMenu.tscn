@@ -37,14 +37,14 @@ animations = [{
 
 [sub_resource type="LabelSettings" id="LabelSettings_n41tu"]
 font = ExtResource("1_87rnb")
-font_size = 50
+font_size = 40
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(4, 4)
 
 [sub_resource type="LabelSettings" id="LabelSettings_c3bsr"]
 font = ExtResource("1_87rnb")
-font_size = 40
+font_size = 30
 shadow_size = 10
 shadow_color = Color(0, 0, 0, 1)
 shadow_offset = Vector2(5, 6)
@@ -117,24 +117,28 @@ autoplay = "default"
 layout_mode = 2
 alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+[node name="CenterContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Label" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("1_87rnb")
 theme_override_font_sizes/font_size = 0
-text = "Olaf the Boozer"
+text = "Olaf and 
+the Crowning Hangover"
 label_settings = SubResource("LabelSettings_n41tu")
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer"]
 layout_mode = 2
-theme_override_constants/margin_top = 120
+theme_override_constants/margin_top = 110
 
 [node name="Label2" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer"]
 layout_mode = 2
 text = "Demo"
 label_settings = SubResource("LabelSettings_c3bsr")
+horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -242,7 +246,7 @@ theme_override_constants/margin_left = 50
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
-text = "v. 20250816-demo"
+text = "v. 20250916-demo"
 label_settings = SubResource("LabelSettings_h1r82")
 
 [node name="Socials" type="CenterContainer" parent="UiLayer"]
@@ -272,7 +276,7 @@ focus_next = NodePath("../Bsky")
 focus_previous = NodePath("../../../../MarginContainer/VBoxContainer/MarginContainer2/Exit")
 focus_mode = 2
 action_mode = 0
-uri = "https://store.steampowered.com/app/3001110/Olaf_the_Boozer/"
+uri = "https://store.steampowered.com/app/3001110"
 
 [node name="Sprite2D" type="Sprite2D" parent="UiLayer/Socials/MarginContainer/HBoxContainer/Steam"]
 scale = Vector2(4, 4)

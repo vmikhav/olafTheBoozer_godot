@@ -31,6 +31,7 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_constants/separation = 20
 
@@ -49,10 +50,10 @@ text = "Continue"
 
 [node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/RestoreButton" instance=ExtResource("3_ikkp5")]
 layout_mode = 1
-offset_left = 226.0
-offset_top = 34.0
-offset_right = 226.0
-offset_bottom = 34.0
+offset_left = 122.0
+offset_top = 42.0
+offset_right = 122.0
+offset_bottom = 42.0
 
 [node name="RestartButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -61,10 +62,10 @@ text = "Restart"
 
 [node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/RestartButton" instance=ExtResource("3_ikkp5")]
 layout_mode = 1
-offset_left = 226.0
-offset_top = 34.0
-offset_right = 226.0
-offset_bottom = 34.0
+offset_left = 122.0
+offset_top = 42.0
+offset_right = 122.0
+offset_bottom = 42.0
 
 [node name="SkipButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -73,10 +74,10 @@ text = "Skip Level"
 
 [node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/SkipButton" instance=ExtResource("3_ikkp5")]
 layout_mode = 1
-offset_left = 226.0
-offset_top = 34.0
-offset_right = 226.0
-offset_bottom = 34.0
+offset_left = 122.0
+offset_top = 42.0
+offset_right = 122.0
+offset_bottom = 42.0
 
 [node name="SettingsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -85,10 +86,10 @@ text = "Settings"
 
 [node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/SettingsButton" instance=ExtResource("3_ikkp5")]
 layout_mode = 1
-offset_left = 226.0
-offset_top = 34.0
-offset_right = 226.0
-offset_bottom = 34.0
+offset_left = 122.0
+offset_top = 42.0
+offset_right = 122.0
+offset_bottom = 42.0
 
 [node name="PanelContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -107,10 +108,10 @@ text = "Back to Menu"
 
 [node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/WorldButton" instance=ExtResource("3_ikkp5")]
 layout_mode = 1
-offset_left = 206.0
-offset_top = 34.0
-offset_right = 206.0
-offset_bottom = 34.0
+offset_left = 102.0
+offset_top = 42.0
+offset_right = 102.0
+offset_bottom = 42.0
 
 [node name="SettingsMenu" parent="." instance=ExtResource("3_ruogs")]
 visible = false

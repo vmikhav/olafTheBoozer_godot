@@ -13,8 +13,9 @@ _data = {
 point_count = 8
 
 [sub_resource type="Curve2D" id="Curve2D_b5ipe"]
+bake_interval = 3.0
 _data = {
-"points": PackedVector2Array(-0.670069, 1.22846, 0.670069, -1.22846, 294, -123, -13.178, 2.79195, 13.178, -2.79195, 307, -139, -25.9093, -0.111678, 25.9093, 0.111678, 346, -120, -24.3458, 6.81236, 24.3458, -6.81236, 373, -135, 0, 0, 0, 0, 428, -132)
+"points": PackedVector2Array(-9.183291, 0.55280745, 9.183291, -0.55280745, 298, -122, -12.772609, 2.251428, 12.772609, -2.251428, 311, -135, -25.9093, -0.111678, 25.9093, 0.111678, 346, -120, -24.3458, 6.81236, 24.3458, -6.81236, 373, -135, 0, 0, 0, 0, 418, -141)
 }
 point_count = 5
 
@@ -46,7 +47,7 @@ metadata/_edit_use_anchors_ = true
 curve = SubResource("Curve2D_cm0vb")
 
 [node name="Path2Sawmill" type="Path2D" parent="."]
-position = Vector2(0, -5)
+position = Vector2(-1, -1)
 curve = SubResource("Curve2D_b5ipe")
 
 [node name="City" type="Area2D" parent="."]

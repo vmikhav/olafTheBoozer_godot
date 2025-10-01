@@ -121,6 +121,10 @@ text = "Restart"
 
 [node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer/RestartButton" instance=ExtResource("6_8vxwy")]
 layout_mode = 1
+offset_left = 140.0
+offset_top = 45.0
+offset_right = 140.0
+offset_bottom = 45.0
 
 [node name="MarginContainer2" type="MarginContainer" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -139,3 +143,7 @@ text = "Next"
 
 [node name="InputHint" parent="PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/MarginContainer2/NextButton" instance=ExtResource("6_8vxwy")]
 layout_mode = 1
+offset_left = 140.0
+offset_top = 45.0
+offset_right = 140.0
+offset_bottom = 45.0

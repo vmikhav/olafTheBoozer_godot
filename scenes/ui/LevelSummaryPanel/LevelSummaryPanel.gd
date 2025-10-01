@@ -68,7 +68,7 @@ func fill_progress_bar():
 		return
 	var tween = create_tween()
 	var time = level_report.score * 0.04
-	tween.tween_property(progress_bar, "value", level_report.score, time).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tween.tween_property(progress_bar, "value", level_report.score, time).from(0).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	progress_bar.value_changed.connect(adjuct_cups_state)
 	is_progress_bar_change_connected = true
 

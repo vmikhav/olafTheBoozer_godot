@@ -136,6 +136,7 @@ func apply_dialogue_line() -> void:
 	# Show our balloon
 	balloon.show()
 	will_hide_balloon = false
+	balloon.grab_focus()
 
 	dialogue_label.show()
 	if not dialogue_line.text.is_empty():

@@ -3,6 +3,9 @@
 extends DialogueLabel
 
 @export var short_pause_at_characters: String = ","
+@export var cjk_speed_multiplier: float = 0.4
+@export var cjk_comma_pause: float = 0.2
+@export var cjk_period_pause: float = 0.4
 
 # Store word boundaries for word-by-word display
 var _word_boundaries: Array = []
@@ -27,6 +30,14 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 	
 	# Handle pauses at the current position
 	var additional_waiting_seconds: float = _get_pause(_internal_char_counter)
+	
+	if _internal_char_counter > 0:
+		var prev_char = get_parsed_text()[_internal_char_counter - 1]
+		if _is_cjk_punctuation(prev_char):
+			if _is_cjk_sentence_boundary(prev_char):
+				additional_waiting_seconds += cjk_period_pause
+			else:
+				additional_waiting_seconds += cjk_comma_pause
 	
 	# Pause on characters like "."
 	if _internal_char_counter > 0 and get_parsed_text()[_internal_char_counter - 1] in pause_at_characters.split():
@@ -68,8 +79,12 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 	# Move to the next character internally
 	_internal_char_counter += 1
 	
+	var speed = _get_speed(_internal_char_counter - 1)
+	if _internal_char_counter - 1 < parsed_text.length() and _is_cjk_character(parsed_text[_internal_char_counter - 1]):
+		speed *= cjk_speed_multiplier
+	
 	# Add proper waiting time
-	seconds_needed += seconds_per_step * (1.0 / _get_speed(_internal_char_counter - 1))
+	seconds_needed += seconds_per_step * (1.0 / speed)
 	if seconds_needed > delta:
 		_waiting_seconds += seconds_needed
 	else:
@@ -97,6 +112,57 @@ func _is_abbreviation(period_index: int) -> bool:
 				return true
 	return false
 
+# Check if a character is a CJK character (Chinese, Japanese, Korean)
+func _is_cjk_character(character: String) -> bool:
+	if character.is_empty():
+		return false
+	
+	var code = character.unicode_at(0)
+	
+	# CJK Unified Ideographs
+	if code >= 0x4E00 and code <= 0x9FFF:
+		return true
+	# CJK Unified Ideographs Extension A
+	if code >= 0x3400 and code <= 0x4DBF:
+		return true
+	# CJK Compatibility Ideographs
+	if code >= 0xF900 and code <= 0xFAFF:
+		return true
+	# CJK Unified Ideographs Extension B-F
+	if code >= 0x20000 and code <= 0x2EBEF:
+		return true
+	
+	return false
+
+func _is_cjk_punctuation(character: String) -> bool:
+	if character.is_empty():
+		return false
+	
+	var code = character.unicode_at(0)
+	
+	# CJK Symbols and Punctuation
+	if code >= 0x3000 and code <= 0x303F:
+		return true
+	# Halfwidth and Fullwidth Forms (includes fullwidth punctuation)
+	if code >= 0xFF00 and code <= 0xFFEF:
+		return true
+	
+	# Common CJK punctuation characters
+	var cjk_punct = ["。", "，", "、", "；", "：", "？", "！", "…", "—", "·", 
+					 "「", "」", "『", "』", "（", "）", "《", "》", "〈", "〉"]
+	
+	return character in cjk_punct
+
+# Check if CJK punctuation is a sentence boundary (period-like)
+func _is_cjk_sentence_boundary(character: String) -> bool:
+	if character.is_empty():
+		return false
+	
+	# Sentence-ending punctuation
+	var sentence_endings = ["。", "？", "！", "…"]
+	
+	return character in sentence_endings
+
 # Parse the text into words and store their boundaries
 func _parse_words() -> void:
 	_word_boundaries.clear()
@@ -117,6 +183,17 @@ func _parse_words() -> void:
 			in_bbcode = false
 			continue
 		elif in_bbcode:
+			continue
+		
+		# Check if this is a CJK character
+		if _is_cjk_character(character):
+			# End any current word
+			if in_word:
+				_word_boundaries.append([word_start, i - 1])
+				in_word = false
+			
+			# Treat each CJK character as its own word
+			_word_boundaries.append([i, i])
 			continue
 		
 		# Determine word boundaries

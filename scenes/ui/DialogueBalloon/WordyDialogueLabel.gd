@@ -29,15 +29,15 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 		if _is_awaiting_mutation: return
 	
 	# Handle pauses at the current position
-	var additional_waiting_seconds: float = _get_pause(_internal_char_counter)
+	var waiting_seconds: float = seconds_per_pause_step if _should_auto_pause() else 0
 	
 	if _internal_char_counter > 0:
 		var prev_char = get_parsed_text()[_internal_char_counter - 1]
 		if _is_cjk_punctuation(prev_char):
 			if _is_cjk_sentence_boundary(prev_char):
-				additional_waiting_seconds += cjk_period_pause
+				waiting_seconds += cjk_period_pause
 			else:
-				additional_waiting_seconds += cjk_comma_pause
+				waiting_seconds += cjk_comma_pause
 	
 	# Pause on characters like "."
 	if _internal_char_counter > 0 and get_parsed_text()[_internal_char_counter - 1] in pause_at_characters.split():
@@ -53,15 +53,14 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 			
 		if should_pause:
 			if get_parsed_text()[_internal_char_counter - 1] in short_pause_at_characters.split():
-				additional_waiting_seconds += seconds_per_pause_step / 3
+				waiting_seconds += seconds_per_pause_step / 3
 			else:
-				additional_waiting_seconds += seconds_per_pause_step
+				waiting_seconds += seconds_per_pause_step
 	
 	# Handle explicit waits
-	if _last_wait_index != _internal_char_counter and additional_waiting_seconds > 0:
+	if _last_wait_index != _internal_char_counter and waiting_seconds > 0:
 		_last_wait_index = _internal_char_counter
-		_waiting_seconds += additional_waiting_seconds
-		paused_typing.emit(_get_pause(_internal_char_counter))
+		_waiting_seconds += waiting_seconds
 		return
 	
 	# Find which word we're currently in

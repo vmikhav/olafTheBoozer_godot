@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OlafTheBoozer-ggo2022\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-10-01 20:16+0300\n"
+"PO-Revision-Date: 2025-10-06 22:14+0300\n"
 "Last-Translator: Volodymyr Mikhav <mihaw.wolodymyr@gmail.com>\n"
 "Language-Team: English <http://weblate.hidalgocode.com/projects/olaf-the-"
 "boozer/dialogs/en/>\n"
@@ -1031,6 +1031,11 @@ msgstr "Skip Level"
 #: scenes/game/MainMenu/MainMenu.tscn
 msgid "Settings"
 msgstr "Settings"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Add to Wishlist!"
+msgstr "Add to Wishlist!"
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
 msgid "Back to Menu"

@@ -40,17 +40,6 @@ const UnitTypeName = {
 
 const Demons = ["demoness", "imp", "succub"]
 
-#const TrailDirections = {
-#	side = [
-#		TileSet.CELL_NEIGHBOR_BOTTOM_SIDE,
-#		TileSet.CELL_NEIGHBOR_TOP_SIDE,
-#		TileSet.CELL_NEIGHBOR_LEFT_SIDE,
-#		TileSet.CELL_NEIGHBOR_RIGHT_SIDE
-#	],
-#	#5,19 up 6,19 down 5,20 right 6,20 left
-#	backward_tile = ["5,19", "6,19", "5,20", "6,20"],
-#	forward_tile = ["6,19", "5,19", "6,20", "5,20"],
-#}
 const TrailDirections = {
 	directions = {
 		"6,19": [TileSet.CELL_NEIGHBOR_TOP_SIDE],

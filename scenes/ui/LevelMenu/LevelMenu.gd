@@ -4,6 +4,7 @@ extends MarginContainer
 @onready var restart_button = $PanelContainer/MarginContainer/VBoxContainer/RestartButton as Button
 @onready var skip_button = $PanelContainer/MarginContainer/VBoxContainer/SkipButton as Button
 @onready var settings_button = $PanelContainer/MarginContainer/VBoxContainer/SettingsButton as Button
+@onready var wishlist_button = $PanelContainer/MarginContainer/VBoxContainer/WishlistButton as Button
 @onready var world_button = $PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/WorldButton as Button
 @onready var background = $ColorRect as ColorRect
 @onready var settings_menu = $SettingsMenu
@@ -26,6 +27,7 @@ func _ready():
 	world_button.pressed.connect(exit_level)
 	settings_button.pressed.connect(open_settings)
 	settings_menu.close.connect(close_settings)
+	wishlist_button.pressed.connect(open_steam)
 	timer.timeout.connect(func():
 		allow_hotkey_close = true
 	)
@@ -74,6 +76,9 @@ func restart_level():
 func skip_level():
 	skip.emit()
 	close_modal()
+
+func open_steam():
+	OS.shell_open("https://store.steampowered.com/app/3001110")
 
 func close_modal():
 	var tween = create_tween()

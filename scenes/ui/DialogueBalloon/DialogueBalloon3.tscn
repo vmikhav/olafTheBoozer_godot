@@ -150,11 +150,11 @@ theme_override_font_sizes/normal_font_size = 18
 text = "Dialogue..."
 script = ExtResource("6_i450q")
 short_pause_at_characters = ","
-cjk_speed_multiplier = null
-cjk_comma_pause = null
-cjk_period_pause = null
+cjk_speed_multiplier = 0.4
+cjk_comma_pause = 0.2
+cjk_period_pause = 0.4
 pause_at_characters = ".?!,"
-seconds_per_pause_step = 0.35000000000582077
+seconds_per_pause_step = 0.1
 
 [node name="BaloonInputHint" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue" instance=ExtResource("7_i450q")]
 unique_name_in_owner = true
@@ -186,9 +186,9 @@ text = "Skip"
 [node name="InputHint" parent="HSplitContainer/HSplitContainer/Balloon/SkipButton" instance=ExtResource("7_i450q")]
 layout_mode = 1
 offset_left = 165.0
-offset_top = 27.0
+offset_top = 31.0
 offset_right = 165.0
-offset_bottom = 27.0
+offset_bottom = 31.0
 action_name = "ui_skip_dialogue"
 show_only_when_focused = false
 hint_offset = Vector2(-5, -5)
@@ -227,9 +227,9 @@ z_index = 5
 y_sort_enabled = true
 layout_mode = 1
 offset_left = 581.0
-offset_top = 34.0
+offset_top = 42.0
 offset_right = 581.0
-offset_bottom = 34.0
+offset_bottom = 42.0
 
 [node name="Control" type="Control" parent="HSplitContainer/HSplitContainer"]
 layout_mode = 2

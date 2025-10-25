@@ -13,7 +13,7 @@ var waiting_for_trail_choice: bool = false
 var available_trail_directions = []
 
 
-func process_trails(neighbor_pos: Vector2i, history_item: Dictionary) -> bool:
+func process_trails(neighbor_pos: Vector2i, history_item: HistoryItem) -> bool:
 	var trail_neighbor_cell = trails_layer.get_cell_atlas_coords(neighbor_pos)
 	var came_from_direction = defs.get_opposite_direction(history_item.direction)
 	if trail_neighbor_cell.x != -1:
@@ -46,13 +46,13 @@ func process_trails(neighbor_pos: Vector2i, history_item: Dictionary) -> bool:
 	return true
 
 
-func handle_trails_reversal(history_item: Dictionary, next_history_item: Dictionary, hero_position: Vector2i, manual: bool):
+func handle_trails_reversal(history_item: HistoryItem, next_history_item: HistoryItem, hero_position: Vector2i, manual: bool):
 	clear_trail_choices()
 	if history_item.trails.size():
 		restore_trails(history_item.trails)
 		
 		# Check if this was a choice point and we're doing manual rollback
-		if manual and history_item.has("is_trail_choice_point") and history_item.is_trail_choice_point:
+		if manual and history_item.is_trail_choice_point:
 			# Stop rollback here and show choices again if it's a multi-direction tile
 			var came_from_direction = defs.get_opposite_direction(next_history_item.direction)
 			var available_directions = []

@@ -1028,6 +1028,11 @@ msgid "Settings"
 msgstr "Налаштування"
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Add to Wishlist!"
+msgstr "Додати до Бажаного!"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
 msgid "Back to Menu"
 msgstr "Назад до меню"
 

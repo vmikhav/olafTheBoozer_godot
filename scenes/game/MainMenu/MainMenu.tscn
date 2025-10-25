@@ -64,12 +64,12 @@ region = Rect2(102, 182, 16, 16)
 atlas = ExtResource("8_bvnvu")
 region = Rect2(22, 22, 16, 16)
 
-[node name="MainMenu" type="Node2D"]
+[node name="MainMenu" type="Node2D" unique_id=417216980]
 script = ExtResource("1_7fekw")
 
-[node name="UiLayer" type="CanvasLayer" parent="."]
+[node name="UiLayer" type="CanvasLayer" parent="." unique_id=949951056]
 
-[node name="ColorRect" type="ColorRect" parent="UiLayer"]
+[node name="ColorRect" type="ColorRect" parent="UiLayer" unique_id=151206076]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -77,7 +77,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.13725491, 0.11764706, 0.15686275, 1)
 
-[node name="MarginContainer" type="MarginContainer" parent="UiLayer"]
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer" unique_id=1126040818]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -88,39 +88,40 @@ offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CenterContainer" type="CenterContainer" parent="UiLayer/MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="UiLayer/MarginContainer" unique_id=27598107]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/CenterContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/CenterContainer" unique_id=5276728]
 texture_filter = 1
 layout_mode = 2
 
-[node name="Back" type="Sprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer"]
+[node name="Back" type="Sprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer" unique_id=1008848709]
 scale = Vector2(5, 5)
 texture = ExtResource("2_xfymh")
 
-[node name="Middle" type="Sprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer"]
+[node name="Middle" type="Sprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer" unique_id=2086568237]
 scale = Vector2(5, 5)
 texture = ExtResource("3_rdpox")
 
-[node name="Front" type="Sprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer"]
+[node name="Front" type="Sprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer" unique_id=467611439]
 visible = false
 scale = Vector2(4, 4)
 texture = ExtResource("4_6jrop")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UiLayer/MarginContainer/CenterContainer/MarginContainer" unique_id=417783600]
 scale = Vector2(5, 5)
 sprite_frames = SubResource("SpriteFrames_krrbd")
 autoplay = "default"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/MarginContainer" unique_id=565814895]
 layout_mode = 2
+theme_override_constants/separation = 2
 alignment = 1
 
-[node name="CenterContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+[node name="CenterContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer" unique_id=777590184]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer"]
+[node name="Label" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer" unique_id=202452815]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_fonts/font = ExtResource("1_87rnb")
@@ -130,23 +131,23 @@ the Crowning Hangover"
 label_settings = SubResource("LabelSettings_n41tu")
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer" unique_id=1929797521]
 layout_mode = 2
 theme_override_constants/margin_top = 110
 
-[node name="Label2" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer"]
+[node name="Label2" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/CenterContainer/MarginContainer" unique_id=913826833]
 layout_mode = 2
 text = "Demo"
 label_settings = SubResource("LabelSettings_c3bsr")
 horizontal_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer" unique_id=141281480]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_top = 30
+theme_override_constants/margin_top = 10
 
-[node name="Play" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer"]
+[node name="Play" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer" unique_id=938880064]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(300, 120)
 layout_mode = 2
@@ -155,7 +156,7 @@ theme = ExtResource("6_c3bsr")
 theme_override_font_sizes/font_size = 30
 text = "Play"
 
-[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer/Play" instance=ExtResource("10_d3jgr")]
+[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer/Play" unique_id=1426175463 instance=ExtResource("10_d3jgr")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 300.0
@@ -164,63 +165,83 @@ offset_right = 300.0
 offset_bottom = 104.0
 hint_offset = Vector2(0, -16)
 
-[node name="MarginContainer4" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer4" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer" unique_id=27200002]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_top = 10
 
-[node name="Settings" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer4"]
+[node name="Settings" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer4" unique_id=558050094]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 80)
+custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
-focus_next = NodePath("../../MarginContainer5/Credits")
+focus_next = NodePath("../../MarginContainer6/Wishlist")
 focus_previous = NodePath("../../MarginContainer/Play")
 theme = ExtResource("6_c3bsr")
 text = "Settings"
 
-[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer4/Settings" instance=ExtResource("10_d3jgr")]
+[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer4/Settings" unique_id=1575382252 instance=ExtResource("10_d3jgr")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 200.0
-offset_top = 72.0
+offset_top = 62.0
 offset_right = 200.0
-offset_bottom = 72.0
+offset_bottom = 62.0
 hint_offset = Vector2(0, -8)
 
-[node name="MarginContainer5" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer6" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer" unique_id=832230890]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_top = 10
 
-[node name="Credits" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer5"]
+[node name="Wishlist" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer6" unique_id=997022602]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 80)
+custom_minimum_size = Vector2(500, 80)
+layout_mode = 2
+focus_next = NodePath("../../MarginContainer5/Credits")
+focus_previous = NodePath("../../MarginContainer4/Settings")
+theme = ExtResource("6_c3bsr")
+text = "Add to Wishlist!"
+
+[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer6/Wishlist" unique_id=1307880168 instance=ExtResource("10_d3jgr")]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 500.0
+offset_top = 72.0
+offset_right = 500.0
+offset_bottom = 72.0
+hint_offset = Vector2(0, -8)
+
+[node name="MarginContainer5" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer" unique_id=1464380807]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Credits" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer5" unique_id=2078766907]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
 focus_next = NodePath("../../MarginContainer2/Exit")
-focus_previous = NodePath("../../MarginContainer4/Settings")
+focus_previous = NodePath("../../MarginContainer6/Wishlist")
 theme = ExtResource("6_c3bsr")
 text = "Credits"
 
-[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer5/Credits" instance=ExtResource("10_d3jgr")]
+[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer5/Credits" unique_id=1660365835 instance=ExtResource("10_d3jgr")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 200.0
-offset_top = 72.0
+offset_top = 62.0
 offset_right = 200.0
-offset_bottom = 72.0
+offset_bottom = 62.0
 hint_offset = Vector2(0, -8)
 
-[node name="MarginContainer2" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer" unique_id=876834707]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/margin_top = 10
 
-[node name="Exit" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2"]
+[node name="Exit" type="Button" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2" unique_id=467831579]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 80)
+custom_minimum_size = Vector2(200, 70)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../MarginContainer5/Credits")
 focus_neighbor_bottom = NodePath("../../../../Socials/MarginContainer/HBoxContainer/Steam")
@@ -229,27 +250,27 @@ focus_previous = NodePath("../../MarginContainer5/Credits")
 theme = ExtResource("6_c3bsr")
 text = "Exit"
 
-[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2/Exit" instance=ExtResource("10_d3jgr")]
+[node name="InputHint" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer2/Exit" unique_id=124946402 instance=ExtResource("10_d3jgr")]
 layout_mode = 1
 anchors_preset = -1
 offset_left = 200.0
-offset_top = 72.0
+offset_top = 62.0
 offset_right = 200.0
-offset_bottom = 72.0
+offset_bottom = 62.0
 hint_offset = Vector2(0, -8)
 
-[node name="MarginContainer3" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="UiLayer/MarginContainer/VBoxContainer" unique_id=356306714]
 layout_mode = 2
 theme_override_constants/margin_left = 50
 
-[node name="Version" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer3"]
+[node name="Version" type="Label" parent="UiLayer/MarginContainer/VBoxContainer/MarginContainer3" unique_id=1259840219]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
 text = "v. 20250916-demo"
 label_settings = SubResource("LabelSettings_h1r82")
 
-[node name="Socials" type="CenterContainer" parent="UiLayer"]
+[node name="Socials" type="CenterContainer" parent="UiLayer" unique_id=443359347]
 texture_filter = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -259,16 +280,16 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_vertical = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="UiLayer/Socials"]
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/Socials" unique_id=1407393686]
 layout_mode = 2
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/Socials/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/Socials/MarginContainer" unique_id=1965386166]
 layout_mode = 2
 theme_override_constants/separation = 25
 alignment = 1
 
-[node name="Steam" type="LinkButton" parent="UiLayer/Socials/MarginContainer/HBoxContainer"]
+[node name="Steam" type="LinkButton" parent="UiLayer/Socials/MarginContainer/HBoxContainer" unique_id=453266835]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../../../MarginContainer/VBoxContainer/MarginContainer2/Exit")
@@ -278,12 +299,12 @@ focus_mode = 2
 action_mode = 0
 uri = "https://store.steampowered.com/app/3001110"
 
-[node name="Sprite2D" type="Sprite2D" parent="UiLayer/Socials/MarginContainer/HBoxContainer/Steam"]
+[node name="Sprite2D" type="Sprite2D" parent="UiLayer/Socials/MarginContainer/HBoxContainer/Steam" unique_id=722909718]
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_bvnvu")
 centered = false
 
-[node name="Bsky" type="LinkButton" parent="UiLayer/Socials/MarginContainer/HBoxContainer"]
+[node name="Bsky" type="LinkButton" parent="UiLayer/Socials/MarginContainer/HBoxContainer" unique_id=1095711557]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../../../MarginContainer/VBoxContainer/MarginContainer2/Exit")
@@ -293,12 +314,12 @@ focus_mode = 2
 action_mode = 0
 uri = "https://bsky.app/profile/vmikhav.bsky.social"
 
-[node name="Sprite2D" type="Sprite2D" parent="UiLayer/Socials/MarginContainer/HBoxContainer/Bsky"]
+[node name="Sprite2D" type="Sprite2D" parent="UiLayer/Socials/MarginContainer/HBoxContainer/Bsky" unique_id=93398955]
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_ho80n")
 centered = false
 
-[node name="Discord" type="LinkButton" parent="UiLayer/Socials/MarginContainer/HBoxContainer"]
+[node name="Discord" type="LinkButton" parent="UiLayer/Socials/MarginContainer/HBoxContainer" unique_id=174592714]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 focus_neighbor_top = NodePath("../../../../MarginContainer/VBoxContainer/MarginContainer2/Exit")
@@ -308,14 +329,14 @@ focus_mode = 2
 action_mode = 0
 uri = "https://discord.gg/yfGh8Y86"
 
-[node name="Sprite2D" type="Sprite2D" parent="UiLayer/Socials/MarginContainer/HBoxContainer/Discord"]
+[node name="Sprite2D" type="Sprite2D" parent="UiLayer/Socials/MarginContainer/HBoxContainer/Discord" unique_id=1608033972]
 scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_h1r82")
 centered = false
 
-[node name="SceneTransition" parent="UiLayer" instance=ExtResource("4_lkwgi")]
+[node name="SceneTransition" parent="UiLayer" unique_id=1102741998 instance=ExtResource("4_lkwgi")]
 
-[node name="SettingsMenu" parent="UiLayer" instance=ExtResource("14_d3jgr")]
+[node name="SettingsMenu" parent="UiLayer" unique_id=979793166 instance=ExtResource("14_d3jgr")]
 visible = false
 z_index = 20
 size_flags_horizontal = 3

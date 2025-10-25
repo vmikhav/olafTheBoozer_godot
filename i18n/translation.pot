@@ -729,6 +729,12 @@ msgstr ""
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn
 #: scenes/ui/LevelMenu/LevelMenu.tscn
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Add to Wishlist!"
+msgstr ""
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn
+#: scenes/ui/LevelMenu/LevelMenu.tscn
 msgid "Back to Menu"
 msgstr ""
 

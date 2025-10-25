@@ -4,62 +4,72 @@
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_u61g3"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_gfldb"]
 
-[node name="TutorialBarrel" type="Node2D"]
+[node name="TutorialBarrel" type="Node2D" unique_id=1047254082]
 script = ExtResource("1_bn5q5")
 
-[node name="Ground" type="TileMapLayer" parent="."]
+[node name="Ground" type="TileMapLayer" parent="." unique_id=1521106080]
 y_sort_enabled = true
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAGAAIAAAAhAAEAAAAGAAMAAAAgAAAAAAAGAAQAAAAjAAIAAAAHAAIAAAAhAAEAAAAHAAMAAAAgAAEAAAAHAAQAAAAhAAEAAAAIAAIAAAAhAAEAAAAIAAMAAAAgAAEAAAAIAAQAAAAgAAEAAAAJAAIAAAAhAAEAAAAJAAMAAAAhAAEAAAAJAAQAAAAhAAEAAAABAP7/AAAgAAEAAAABAP//AAAgAAEAAAABAAAAAAAjAAIAAAABAAEAAAAhAAEAAAACAP7/AAAgAAIAAAACAP//AAAjAAEAAAACAAAAAAAgAAAAAAACAAEAAAAgAAAAAAADAP7/AAAjAAEAAAADAP//AAAhAAEAAAADAAAAAAAjAAEAAAADAAEAAAAgAAEAAAAEAP7/AAAgAAAAAAAEAP//AAAjAAEAAAAEAAAAAAAgAAEAAAAEAAEAAAAhAAEAAAAFAP7/AAAhAAEAAAAFAP//AAAgAAAAAAAFAAAAAAAjAAEAAAAFAAEAAAAgAAIAAAAGAP7/AAAjAAIAAAAGAP//AAAgAAEAAAAGAAAAAAAhAAEAAAAGAAEAAAAjAAEAAAAHAP7/AAAjAAIAAAAHAP//AAAgAAEAAAAHAAAAAAAgAAAAAAAHAAEAAAAgAAEAAAAIAP7/AAAjAAEAAAAIAP//AAAgAAAAAAAIAAAAAAAjAAEAAAAIAAEAAAAjAAIAAAAJAP7/AAAgAAEAAAAJAP//AAAjAAIAAAAJAAAAAAAgAAAAAAAJAAEAAAAgAAAAAAA=")
 tile_set = ExtResource("2_u61g3")
 
-[node name="Floor" type="TileMapLayer" parent="."]
+[node name="Floor" type="TileMapLayer" parent="." unique_id=1930233528]
 z_index = 1
 texture_filter = 1
 tile_set = ExtResource("2_u61g3")
 
-[node name="Walls" type="TileMapLayer" parent="."]
+[node name="PressPlates" type="TileMapLayer" parent="." unique_id=807662142]
+z_index = 1
+texture_filter = 1
+tile_set = ExtResource("2_u61g3")
+
+[node name="Liquids" type="TileMapLayer" parent="." unique_id=1043753972]
+z_index = 1
+texture_filter = 1
+tile_set = ExtResource("2_u61g3")
+
+[node name="Walls" type="TileMapLayer" parent="." unique_id=100794496]
 z_index = 2
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAJAAIAAAAzAAIAAAABAP7/AAA0AAEAAAABAP//AAAzAAMAAAACAP7/AAA1AAAAAAADAP7/AAA1AAAAAAAEAP7/AAA1AAAAAAAFAP7/AAA1AAAAAAAGAP7/AAA1AAAAAAAGAAEAAAA1AAEAAAAGAAQAAAA0AAIAAAAHAP7/AAA1AAAAAAAHAAQAAAA1AAAAAAAIAP7/AAA1AAAAAAAIAAQAAAA1AAAAAAAJAP7/AAA1AAEAAAAJAP//AAAzAAIAAAAJAAAAAAAzAAIAAAAJAAEAAAAzAAIAAAAJAAMAAAAzAAIAAAAJAAQAAAA1AAIAAAABAAAAAAAFAAoAAAABAAEAAAA0AAIAAAACAAEAAAA1AAAAAAADAAEAAAA1AAAAAAAEAAEAAAA1AAAAAAAFAAEAAAA1AAAAAAAGAAIAAAAzAAIAAAAGAAMAAAAzAAIAAAA=")
 tile_set = ExtResource("2_u61g3")
 
-[node name="Trails" type="TileMapLayer" parent="."]
+[node name="Trails" type="TileMapLayer" parent="." unique_id=373546352]
 z_index = 3
 texture_filter = 1
 tile_set = ExtResource("2_u61g3")
 
-[node name="Items" type="TileMapLayer" parent="."]
+[node name="Items" type="TileMapLayer" parent="." unique_id=747423416]
 z_index = 3
 y_sort_enabled = true
 texture_filter = 1
 tile_set = ExtResource("2_u61g3")
 
-[node name="Demolitonist" parent="Items" instance=ExtResource("3_gfldb")]
+[node name="Demolitonist" parent="Items" unique_id=2051540804 instance=ExtResource("3_gfldb")]
 z_index = 3
 z_as_relative = false
 position = Vector2(41, 45)
 
-[node name="Trees" type="TileMapLayer" parent="."]
+[node name="Trees" type="TileMapLayer" parent="." unique_id=451115694]
 z_index = 4
 y_sort_enabled = true
 texture_filter = 1
 tile_map_data = PackedByteArray("AAADAP7/AAAgAAoAAAAGAP7/AAAgAAoAAAA=")
 tile_set = ExtResource("2_u61g3")
 
-[node name="BadItems" type="TileMapLayer" parent="."]
+[node name="BadItems" type="TileMapLayer" parent="." unique_id=1975239838]
 z_index = 6
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAEAAAAAAAIABIAAAA=")
 tile_set = ExtResource("2_u61g3")
 
-[node name="GoodItems" type="TileMapLayer" parent="."]
+[node name="GoodItems" type="TileMapLayer" parent="." unique_id=383682624]
 z_index = 6
 texture_filter = 1
 tile_map_data = PackedByteArray("AAAEAAAAAAAMABAAAAA=")
 tile_set = ExtResource("2_u61g3")
 
-[node name="MovingItems" type="TileMapLayer" parent="."]
+[node name="MovingItems" type="TileMapLayer" parent="." unique_id=109148750]
 modulate = Color(1, 0.392157, 0.392157, 0.392157)
 z_index = 6
 texture_filter = 1

@@ -4,6 +4,15 @@ class_name DialogueBalloon3 extends CanvasLayer
 @export var max_dialogue_width_inches: float = 13.3333  # Maximum width in physical inches
 @export var min_scale_factor: float = 0.7  # Minimum scale to maintain readability
 
+## The dialogue resource
+@export var dialogue_resource: DialogueResource
+
+## Start from a given title when using balloon as a [Node] in a scene.
+@export var start_from_title: String = ""
+
+## If running as a [Node] in a scene then auto start the dialogue.
+@export var auto_start: bool = false
+
 ## The action to use for advancing the dialogue
 @export var next_action: StringName = &"ui_accept"
 
@@ -11,9 +20,6 @@ class_name DialogueBalloon3 extends CanvasLayer
 @export var skip_action: StringName = &"ui_cancel"
 
 @export var skip_all_action: StringName = &"ui_skip_dialogue"
-
-## The dialogue resource
-var resource: DialogueResource
 
 ## Temporary game states
 var temporary_game_states: Array = []
@@ -39,7 +45,10 @@ var dialogue_line: DialogueLine:
 		else:
 			# The dialogue has finished so close the balloon
 			will_free = true
-			queue_free()
+			if owner == null:
+				queue_free()
+			else:
+				hide()
 	get:
 		return dialogue_line
 
@@ -74,6 +83,11 @@ func _ready() -> void:
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
 	add_child(mutation_cooldown)
 	
+	if auto_start:
+		if not is_instance_valid(dialogue_resource):
+			assert(false, DMConstants.get_error_message(DMConstants.ERR_MISSING_RESOURCE_FOR_AUTOSTART))
+		start()
+	
 	dialogue_label.spoke.connect(func(letter: String, letter_index: int, speed: float):
 		if letter_index == 0:
 			SpeechController.set_character(dialogue_line.character)
@@ -95,19 +109,24 @@ func _notification(what: int) -> void:
 	if what == NOTIFICATION_TRANSLATION_CHANGED and _locale != TranslationServer.get_locale() and is_instance_valid(dialogue_label):
 		_locale = TranslationServer.get_locale()
 		var visible_ratio = dialogue_label.visible_ratio
-		self.dialogue_line = await resource.get_next_dialogue_line(dialogue_line.id)
+		dialogue_line = await dialogue_resource.get_next_dialogue_line(dialogue_line.id)
 		if visible_ratio < 1:
 			dialogue_label.skip_typing()
 
 
 ## Start some dialogue
-func start(dialogue_resource: DialogueResource, title: String, extra_game_states: Array = []) -> void:
+func start(with_dialogue_resource: DialogueResource = null, title: String = "", extra_game_states: Array = []) -> void:
 	if not is_node_ready():
 		await ready
+	will_free = false
 	temporary_game_states = [self] + extra_game_states
 	is_waiting_for_input = false
-	resource = dialogue_resource
-	self.dialogue_line = await resource.get_next_dialogue_line(title, temporary_game_states)
+	if is_instance_valid(with_dialogue_resource):
+		dialogue_resource = with_dialogue_resource
+	if not title.is_empty():
+		start_from_title = title
+	dialogue_line = await dialogue_resource.get_next_dialogue_line(start_from_title, temporary_game_states)
+	show()
 
 
 ## Apply any changes to the balloon given a new [DialogueLine].
@@ -165,7 +184,7 @@ func apply_dialogue_line() -> void:
 
 ## Go to the next line
 func next(next_id: String) -> void:
-	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
+	dialogue_line = await dialogue_resource.get_next_dialogue_line(next_id, temporary_game_states)
 
 
 #region Signals

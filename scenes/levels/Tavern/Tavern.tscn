@@ -27,6 +27,7 @@ tile_set = ExtResource("2_7ao0h")
 [node name="Liquids" type="TileMapLayer" parent="." unique_id=810407712]
 z_index = 1
 texture_filter = 1
+tile_map_data = PackedByteArray("AAAJAAEAAAArAA4AAAAJAAMAAAArABAAAAAJAAIAAAArAA8AAAAIAAEAAAAqAA4AAAAHAAEAAAApAA4AAAAHAAIAAAAtAA8AAAAGAAIAAAApAA4AAAAGAAMAAAApABAAAAAHAAMAAAAqABAAAAAIAAMAAAAqABAAAAAIAAIAAAAtAA8AAAA=")
 tile_set = ExtResource("2_7ao0h")
 
 [node name="Walls" type="TileMapLayer" parent="." unique_id=746638822]

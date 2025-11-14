@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Olaf the Boozer"
+config/name="Olaf and the Crowning Hangover"
 run/main_scene="res://scenes/game/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.6")
 boot_splash/image="uid://bx54w8m34c4t0"

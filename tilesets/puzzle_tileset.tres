@@ -3128,6 +3128,7 @@ texture = ExtResource("1_axr5e")
 42:20/0 = 0
 41:20/0 = 0
 40:20/0 = 0
+45:15/0 = 0
 
 [resource]
 sources/0 = SubResource("TileSetAtlasSource_45jpu")

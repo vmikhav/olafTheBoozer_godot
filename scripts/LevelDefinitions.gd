@@ -19,7 +19,8 @@ enum UnitType {
 	SUCCUB,
 	VILLAGER_WOMAN,
 	WORKER,
-	ORC_VETERAN
+	ORC_VETERAN,
+	REAPER,
 }
 
 const UnitTypeName = {
@@ -36,6 +37,7 @@ const UnitTypeName = {
 	UnitType.VILLAGER_WOMAN: "villagerWoman",
 	UnitType.WORKER: "worker",
 	UnitType.ORC_VETERAN: "orcVeteran",
+	UnitType.REAPER: "reaper",
 }
 
 const Demons = ["demoness", "imp", "succub"]
@@ -87,6 +89,25 @@ const TrailDirections = {
 }
 
 const DraggableItems = ["12,16", "13,16", "12,18", "14,16"]
+const SlipperyTiles = [
+	"38,14", "39,14", "40,14", "41,14", "42,14", "43,14", "44,14", "45,14", "46,14",
+	"38,15", "39,15", "40,15", "41,15", "42,15", "43,15", "44,15", "45,15", "46,15",
+	"38,16", "39,16", "40,16", "41,16", "42,16", "43,16", "44,16", "45,16", "46,16",
+	"38,18", "39,18", "40,18", "41,18", "42,18", "43,18", "44,18",
+	"38,19", "39,19", "40,19", "41,19", "42,19",
+	"38,20", "39,20", "40,20", "41,20", "42,20",
+	"38,21", "39,21", "40,21", "41,21", "42,21",
+]
+var Levers = [
+	{ "off": Vector2i(32,12), "on": Vector2i(34,12) }
+]
+var PressPlates = [
+	{ "off": Vector2i(33,14), "on": Vector2i(34,14) },
+	{ "off": Vector2i(35,14), "on": Vector2i(36,14) },
+	{ "off": Vector2i(33,15), "on": Vector2i(34,15) },
+	{ "off": Vector2i(35,15), "on": Vector2i(36,15) },
+	{ "off": Vector2i(33,16), "on": Vector2i(34,16) },
+]
 
 enum LevelType {BACKWARD, FORWARD}
 

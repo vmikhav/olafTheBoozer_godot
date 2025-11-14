@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OlafTheBoozer-ggo2022\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-10-06 22:14+0300\n"
+"PO-Revision-Date: 2025-11-06 20:18+0200\n"
 "Last-Translator: Volodymyr Mikhav <mihaw.wolodymyr@gmail.com>\n"
 "Language-Team: English <http://weblate.hidalgocode.com/projects/olaf-the-"
 "boozer/dialogs/en/>\n"
@@ -31,6 +31,12 @@ msgstr ""
 msgctxt "dialogue"
 msgid "Олаф"
 msgstr "Olaf"
+
+#. TRANSLATORS: Ім’я персонажа
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "dialogue"
+msgid "СМЕРТЬ"
+msgstr "DEATH"
 
 #. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
@@ -58,6 +64,102 @@ msgid ""
 msgstr ""
 "Where am I? What happened? Damn it… I can’t remember a thing! Looks like I "
 "overdid it last night…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЗАЧЕКАЙ_ХТО_ТИ_7D6732"
+msgid "Зачекай… Хто ти?"
+msgstr "Wait… Who are you?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "Я_СМЕРТЬ_4A1C28"
+msgid "Я — СМЕРТЬ."
+msgstr "I AM DEATH."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "АГА_КОСА_ЗДАЄТЬСЯ_ВИДАЛА_ТЕБЕ_008E6C"
+msgid "…Ага. Коса, здається, видала тебе."
+msgstr "…Right. The scythe sort of gave it away."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЗАЗВИЧАЙ_СМЕРТНІ_БАЧАТЬ_МЕНЕ_Л_7E60ED"
+msgid "ЗАЗВИЧАЙ СМЕРТНІ БАЧАТЬ МЕНЕ ЛИШЕ ОДИН РАЗ."
+msgstr "USUALLY, MORTALS SEE ME ONLY ONCE."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "АЛЕ_МИНУЛА_НІЧ_БУЛА_ЦІКАВОЮ_80B46B"
+msgid "АЛЕ МИНУЛА НІЧ БУЛА… ЦІКАВОЮ."
+msgstr "BUT LAST NIGHT WAS… INTERESTING."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "У_ТЕБЕ_Є_УГОДА_ЯКУ_ТРЕБА_ВИКОН_4954DF"
+msgid "У ТЕБЕ Є УГОДА, ЯКУ ТРЕБА ВИКОНАТИ. І ТИ… ЗАГУБИВ ЩОСЬ ВАЖЛИВЕ."
+msgstr ""
+"YOU HAD A DEAL TO KEEP. AND NOW YOU’VE GONE AND MISPLACED SOMETHING… "
+"IMPORTANT."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "БУЛО_Б_ШКОДА_ЯКБИ_ТВОЯ_ІСТОРІЯ_75A5D9"
+msgid "БУЛО Б ШКОДА, ЯКБИ ТВОЯ ІСТОРІЯ ЗАКІНЧИЛАСЯ ЧЕРЕЗ ТАКУ ДРІБНИЦЮ."
+msgstr "IT WOULD BE A SHAME IF YOUR STORY ENDED OVER A TECHNICALITY."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "А_МЕНІ_ЦІКАВО_ЧИ_ВСТИГНЕШ_C0B2E1"
+msgid "А МЕНІ… ЦІКАВО, ЧИ ВСТИГНЕШ."
+msgstr "AND I AM… CURIOUS HOW IT WILL UNFOLD."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ТОЖ_Я_ВИРІШИВ_ЗРОБИТИ_ТОБІ_ПОС_58F170"
+msgid "ТОЖ Я ВИРІШИВ ЗРОБИТИ ТОБІ ПОСЛУГУ."
+msgstr "SO I HAVE DECIDED TO DO YOU A FAVOR."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ПОСЛУГУ_ВІД_СМЕРТІ_ЦЕ_ЗАСПОКОЮ_66EE14"
+msgid "Послугу? Від Смерті? Це… заспокоює."
+msgstr "A favor. From Death. That’s… reassuring."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "Я_ДАВ_ТОБІ_ЗДІБНІСТЬ_ВІДТВОРЮВ_9AFE03"
+msgid ""
+"Я ДАВ ТОБІ ЗДІБНІСТЬ ВІДТВОРЮВАТИ ПОДІЇ МИНУЛОЇ НОЧІ, КРОК ЗА КРОКОМ — "
+"ПОЧИНАЮЧИ З КІНЦЯ."
+msgstr ""
+"I HAVE GRANTED YOU THE ABILITY TO RECALL THE EVENTS OF LAST NIGHT, STEP BY "
+"STEP — BEGINNING AT THE END."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЗНАЙДИ_ТЕ_ЩО_ВТРАТИВ_ВСТИГНИ_Д_176C2C"
+msgid "ЗНАЙДИ ТЕ, ЩО ВТРАТИВ. ВСТИГНИ ДО СВОГО ТЕРМІНУ."
+msgstr "FIND WHAT YOU LOST. MAKE YOUR DEADLINE."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "І_НАМАГАЙСЯ_НЕ_ПРИЙТИ_ДО_МЕНЕ_BDA3DE"
+msgid "І НАМАГАЙСЯ НЕ ПРИЙТИ ДО МЕНЕ ЗНОВУ НАДТО ШВИДКО."
+msgstr "AND TRY NOT TO MAKE OUR NEXT MEETING SO SOON."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "О_ЦЕ_ДУЖЕ_ЛЮБ_ЯЗНО_З_ТВОГО_БОК_DB5E87"
+msgid "О. Це… дуже люб’язно з твого боку."
+msgstr "Oh. That’s… very considerate of you."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "Я_НАМАГАЮСЯ_A38702"
+msgid "Я НАМАГАЮСЯ."
+msgstr "I TRY TO BE."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "У_ТЕБЕ_МАЛО_ЧАСУ_027F06"
+msgid "У ТЕБЕ МАЛО ЧАСУ."
+msgstr "YOU ARE RUNNING OUT OF TIME."
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ТИ_МАЄШ_НА_УВАЗІ_В_ПЕРЕНОСНОМУ_0F6EF4"
+msgid "Ти маєш на увазі… в переносному сенсі, так?"
+msgstr "You mean… metaphorically, right?"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "НІ_D8D68D"
+msgid "НІ."
+msgstr "NO."
 
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "tb3fda6061e"

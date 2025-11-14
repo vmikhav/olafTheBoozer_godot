@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OlafTheBoozer-ggo2022\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2025-10-06 22:15+0300\n"
+"PO-Revision-Date: 2025-11-06 20:29+0200\n"
 "Last-Translator: Gemini AI\n"
 "Language-Team: Chinese (Simplified) <>\n"
 "Language: zh_CN\n"
@@ -30,6 +30,12 @@ msgstr ""
 msgctxt "dialogue"
 msgid "Олаф"
 msgstr "奥拉夫"
+
+#. TRANSLATORS: Ім’я персонажа
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "dialogue"
+msgid "СМЕРТЬ"
+msgstr "死神"
 
 #. TRANSLATORS: Ім’я персонажа
 #: scenes/adventures/StartTavern/start_tavern.dialogue
@@ -55,6 +61,98 @@ msgctxt "t113c272c47"
 msgid ""
 "Де я? Що сталося? Трясця… Нічого не пам’ятаю! Таки здається вчора перебрав…"
 msgstr "我在哪？发生什么事了？该死的……我什么都不记得了！看来我昨晚是喝大了……"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЗАЧЕКАЙ_ХТО_ТИ_7D6732"
+msgid "Зачекай… Хто ти?"
+msgstr "等一下……你是谁？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "Я_СМЕРТЬ_4A1C28"
+msgid "Я — СМЕРТЬ."
+msgstr "我是死神。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "АГА_КОСА_ЗДАЄТЬСЯ_ВИДАЛА_ТЕБЕ_008E6C"
+msgid "…Ага. Коса, здається, видала тебе."
+msgstr "……好吧，镰刀已经说明了一切。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЗАЗВИЧАЙ_СМЕРТНІ_БАЧАТЬ_МЕНЕ_Л_7E60ED"
+msgid "ЗАЗВИЧАЙ СМЕРТНІ БАЧАТЬ МЕНЕ ЛИШЕ ОДИН РАЗ."
+msgstr "凡人通常只会见我一次。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "АЛЕ_МИНУЛА_НІЧ_БУЛА_ЦІКАВОЮ_80B46B"
+msgid "АЛЕ МИНУЛА НІЧ БУЛА… ЦІКАВОЮ."
+msgstr "不过昨晚……挺有意思的。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "У_ТЕБЕ_Є_УГОДА_ЯКУ_ТРЕБА_ВИКОН_4954DF"
+msgid "У ТЕБЕ Є УГОДА, ЯКУ ТРЕБА ВИКОНАТИ. І ТИ… ЗАГУБИВ ЩОСЬ ВАЖЛИВЕ."
+msgstr "你有一份契约要完成，可你……弄丢了很重要的东西。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "БУЛО_Б_ШКОДА_ЯКБИ_ТВОЯ_ІСТОРІЯ_75A5D9"
+msgid "БУЛО Б ШКОДА, ЯКБИ ТВОЯ ІСТОРІЯ ЗАКІНЧИЛАСЯ ЧЕРЕЗ ТАКУ ДРІБНИЦЮ."
+msgstr "如果你的故事因为这么点小事就结束，那可太可惜了。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "А_МЕНІ_ЦІКАВО_ЧИ_ВСТИГНЕШ_C0B2E1"
+msgid "А МЕНІ… ЦІКАВО, ЧИ ВСТИГНЕШ."
+msgstr "而且我也想看看，你接下来会怎么做。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ТОЖ_Я_ВИРІШИВ_ЗРОБИТИ_ТОБІ_ПОС_58F170"
+msgid "ТОЖ Я ВИРІШИВ ЗРОБИТИ ТОБІ ПОСЛУГУ."
+msgstr "所以，我决定给你一个小小的恩惠。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ПОСЛУГУ_ВІД_СМЕРТІ_ЦЕ_ЗАСПОКОЮ_66EE14"
+msgid "Послугу? Від Смерті? Це… заспокоює."
+msgstr "来自死神的恩惠。这听起来……真让人安心。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "Я_ДАВ_ТОБІ_ЗДІБНІСТЬ_ВІДТВОРЮВ_9AFE03"
+msgid ""
+"Я ДАВ ТОБІ ЗДІБНІСТЬ ВІДТВОРЮВАТИ ПОДІЇ МИНУЛОЇ НОЧІ, КРОК ЗА КРОКОМ — "
+"ПОЧИНАЮЧИ З КІНЦЯ."
+msgstr "我赐给你一种能力，可以一步一步回忆昨晚的事情——从结局开始。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЗНАЙДИ_ТЕ_ЩО_ВТРАТИВ_ВСТИГНИ_Д_176C2C"
+msgid "ЗНАЙДИ ТЕ, ЩО ВТРАТИВ. ВСТИГНИ ДО СВОГО ТЕРМІНУ."
+msgstr "找到你失去的东西。赶在期限之前完成。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "І_НАМАГАЙСЯ_НЕ_ПРИЙТИ_ДО_МЕНЕ_BDA3DE"
+msgid "І НАМАГАЙСЯ НЕ ПРИЙТИ ДО МЕНЕ ЗНОВУ НАДТО ШВИДКО."
+msgstr "尽量别这么快再见到我。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "О_ЦЕ_ДУЖЕ_ЛЮБ_ЯЗНО_З_ТВОГО_БОК_DB5E87"
+msgid "О. Це… дуже люб’язно з твого боку."
+msgstr "哦。这……真是太体贴了。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "Я_НАМАГАЮСЯ_A38702"
+msgid "Я НАМАГАЮСЯ."
+msgstr "我尽力而为。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "У_ТЕБЕ_МАЛО_ЧАСУ_027F06"
+msgid "У ТЕБЕ МАЛО ЧАСУ."
+msgstr "你的时间不多了。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ТИ_МАЄШ_НА_УВАЗІ_В_ПЕРЕНОСНОМУ_0F6EF4"
+msgid "Ти маєш на увазі… в переносному сенсі, так?"
+msgstr "你是说……比喻意义上的吧？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "НІ_D8D68D"
+msgid "НІ."
+msgstr "不是。"
 
 #: scenes/adventures/StartTavern/start_tavern.dialogue
 msgctxt "tb3fda6061e"
@@ -959,7 +1057,7 @@ msgstr "设置"
 #: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
 #: scenes/game/MainMenu/MainMenu.tscn
 msgid "Add to Wishlist!"
-msgstr "添加至愿望单"
+msgstr "添加至愿望单!"
 
 #: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
 msgid "Back to Menu"

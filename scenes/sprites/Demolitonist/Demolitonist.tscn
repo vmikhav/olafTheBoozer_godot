@@ -1,4 +1,4 @@
-[gd_scene load_steps=223 format=3 uid="uid://bx2syps2qmyxq"]
+[gd_scene load_steps=242 format=3 uid="uid://bx2syps2qmyxq"]
 
 [ext_resource type="Script" uid="uid://bsenh15febpxy" path="res://scenes/sprites/Demolitonist/Demolitonist.gd" id="1_6ytke"]
 [ext_resource type="Texture2D" uid="uid://bmnac0sq8kbk6" path="res://assets/sprites/MiniDwarfDemolitionist.png" id="1_vj30r"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://cqhkjn0me6yoc" path="res://assets/sprites/MiniDwarfGrenadier.png" id="7_uh3u2"]
 [ext_resource type="Texture2D" uid="uid://chjvd327fna5e" path="res://assets/sprites/MiniOldMan.png" id="9_widac"]
 [ext_resource type="Texture2D" uid="uid://j3btm8clyoug" path="res://assets/sprites/MiniOrcVeteran.png" id="10_ecsst"]
+[ext_resource type="Texture2D" uid="uid://di2ilj5ptujw3" path="res://assets/sprites/MiniReaper.png" id="13_widac"]
 [ext_resource type="Texture2D" uid="uid://b4vdxout501v0" path="res://assets/sprites/emotes_pixel_style2.png" id="17_uh3u2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uh3u2"]
@@ -601,6 +602,78 @@ region = Rect2(128, 32, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbiiw"]
 atlas = ExtResource("4_jk1qc")
 region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mb234"]
+atlas = ExtResource("13_widac")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m4gyc"]
+atlas = ExtResource("13_widac")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ueldi"]
+atlas = ExtResource("13_widac")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2trq"]
+atlas = ExtResource("13_widac")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hlfkb"]
+atlas = ExtResource("13_widac")
+region = Rect2(128, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0hac"]
+atlas = ExtResource("13_widac")
+region = Rect2(160, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsc6r"]
+atlas = ExtResource("13_widac")
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjl37"]
+atlas = ExtResource("13_widac")
+region = Rect2(32, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfkga"]
+atlas = ExtResource("13_widac")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ciwgt"]
+atlas = ExtResource("13_widac")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3apqq"]
+atlas = ExtResource("13_widac")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b37nr"]
+atlas = ExtResource("13_widac")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3jday"]
+atlas = ExtResource("13_widac")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iw6xt"]
+atlas = ExtResource("13_widac")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_denm1"]
+atlas = ExtResource("13_widac")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10d7h"]
+atlas = ExtResource("13_widac")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05hje"]
+atlas = ExtResource("13_widac")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rami8"]
+atlas = ExtResource("13_widac")
+region = Rect2(160, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rcamj"]
 atlas = ExtResource("5_2gnmb")
@@ -1448,6 +1521,80 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_mb234")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m4gyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ueldi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s2trq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hlfkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0hac")
+}],
+"loop": false,
+"name": &"reaper_die",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsc6r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjl37")
+}],
+"loop": false,
+"name": &"reaper_hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfkga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ciwgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3apqq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b37nr")
+}],
+"loop": true,
+"name": &"reaper_idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3jday")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iw6xt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_denm1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10d7h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05hje")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rami8")
+}],
+"loop": true,
+"name": &"reaper_walk",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_rcamj")
 }, {
 "duration": 1.0,
@@ -1689,19 +1836,19 @@ animations = [{
 [sub_resource type="AtlasTexture" id="AtlasTexture_1fwfx"]
 atlas = ExtResource("17_uh3u2")
 
-[node name="Demolitonist" type="Node2D"]
+[node name="Demolitonist" type="Node2D" unique_id=1234339548]
 light_mask = 3
 y_sort_enabled = true
 script = ExtResource("1_6ytke")
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="AnimatedSprite2D" parent="." unique_id=796917514]
 texture_filter = 1
 material = SubResource("ShaderMaterial_uh3u2")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_4ybha")
-animation = &"blacksmithB_idle"
+animation = &"worker_idle"
 
-[node name="Emote" type="Sprite2D" parent="."]
+[node name="Emote" type="Sprite2D" parent="." unique_id=445480548]
 visible = false
 z_index = 3
 texture_filter = 1
@@ -1710,7 +1857,7 @@ texture = ExtResource("3_vl4hx")
 region_enabled = true
 region_rect = Rect2(128, 16, 16, 16)
 
-[node name="Emote2" type="Sprite2D" parent="."]
+[node name="Emote2" type="Sprite2D" parent="." unique_id=1762894300]
 visible = false
 modulate = Color(1, 1, 1, 0.78431374)
 z_index = 3

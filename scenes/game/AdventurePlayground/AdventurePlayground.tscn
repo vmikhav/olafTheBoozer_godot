@@ -12,14 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="12_penv2"]
 [ext_resource type="PackedScene" uid="uid://c78sgpd3kkbu2" path="res://scenes/ui/NavController/NavController.tscn" id="13_nbkt7"]
 
-[node name="AdventurePlayground" type="Node2D"]
+[node name="AdventurePlayground" type="Node2D" unique_id=2034203996]
 process_mode = 1
 script = ExtResource("1_302fe")
 
-[node name="Background" type="CanvasLayer" parent="."]
+[node name="Background" type="CanvasLayer" parent="." unique_id=459264705]
 layer = -1
 
-[node name="TextureRect" type="TextureRect" parent="Background"]
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=2067580149]
 modulate = Color(0.821788, 0.821789, 0.821788, 1)
 texture_filter = 1
 anchors_preset = 15
@@ -30,15 +30,15 @@ grow_vertical = 2
 texture = ExtResource("2_ah7wg")
 stretch_mode = 6
 
-[node name="TouchCamera" parent="." instance=ExtResource("2_rvieo")]
+[node name="TouchCamera" parent="." unique_id=1126135988 instance=ExtResource("2_rvieo")]
 zoom = Vector2(3, 3)
 editor_draw_drag_margin = true
 min_zoom = 2.0
 max_zoom = 5.0
 
-[node name="UiLayer" type="CanvasLayer" parent="."]
+[node name="UiLayer" type="CanvasLayer" parent="." unique_id=653627218]
 
-[node name="HSplitContainer" type="HSplitContainer" parent="UiLayer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="UiLayer" unique_id=1403564726]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -49,18 +49,18 @@ split_offset = -700
 dragging_enabled = false
 dragger_visibility = 1
 
-[node name="Control" type="Control" parent="UiLayer/HSplitContainer"]
+[node name="Control" type="Control" parent="UiLayer/HSplitContainer" unique_id=1204286400]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSplitContainer" type="HSplitContainer" parent="UiLayer/HSplitContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="UiLayer/HSplitContainer" unique_id=1133196736]
 layout_mode = 2
 size_flags_horizontal = 3
 split_offset = 1400
 dragging_enabled = false
 dragger_visibility = 1
 
-[node name="HudContainer" type="MarginContainer" parent="UiLayer/HSplitContainer/HSplitContainer"]
+[node name="HudContainer" type="MarginContainer" parent="UiLayer/HSplitContainer/HSplitContainer" unique_id=1375483908]
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("3_0hwy5")
@@ -70,17 +70,17 @@ theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer" unique_id=1881083918]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer" unique_id=745830545]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer" unique_id=289163808]
 layout_mode = 2
 
-[node name="MenuButton" type="TextureButton" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer"]
+[node name="MenuButton" type="TextureButton" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer" unique_id=1608593562]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
@@ -92,7 +92,7 @@ texture_pressed = ExtResource("5_tabh6")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="InputHint" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/MenuButton" instance=ExtResource("7_0tonn")]
+[node name="InputHint" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer/MarginContainer/MenuButton" unique_id=1261782900 instance=ExtResource("7_0tonn")]
 layout_mode = 1
 offset_left = 60.0
 offset_top = 60.0
@@ -101,32 +101,32 @@ offset_bottom = 60.0
 action_name = "toggle_menu"
 show_only_when_focused = false
 
-[node name="MarginContainer2" type="MarginContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer" unique_id=55359943]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer" unique_id=1954365340]
 layout_mode = 2
 size_flags_vertical = 3
 alignment = 2
 
-[node name="NavButtons" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer2" instance=ExtResource("9_6rhoj")]
+[node name="NavButtons" parent="UiLayer/HSplitContainer/HSplitContainer/HudContainer/VBoxContainer/HBoxContainer2" unique_id=1541969800 instance=ExtResource("9_6rhoj")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Control" type="Control" parent="UiLayer/HSplitContainer/HSplitContainer"]
+[node name="Control" type="Control" parent="UiLayer/HSplitContainer/HSplitContainer" unique_id=1423507658]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="SceneTransitionRect" parent="UiLayer" instance=ExtResource("12_penv2")]
+[node name="SceneTransitionRect" parent="UiLayer" unique_id=862634154 instance=ExtResource("12_penv2")]
 
-[node name="NavController" parent="." instance=ExtResource("13_nbkt7")]
+[node name="NavController" parent="." unique_id=1501917413 instance=ExtResource("13_nbkt7")]
 actions_to_track = Array[String](["step_up", "step_left", "step_right", "step_down"])
 
-[node name="MenuLayer" type="CanvasLayer" parent="."]
+[node name="MenuLayer" type="CanvasLayer" parent="." unique_id=126023718]
 layer = 102
 visible = false
 
-[node name="AdventureMenu" parent="MenuLayer" instance=ExtResource("7_62e5o")]
+[node name="AdventureMenu" parent="MenuLayer" unique_id=182738878 instance=ExtResource("7_62e5o")]
 process_mode = 2
 z_index = 200

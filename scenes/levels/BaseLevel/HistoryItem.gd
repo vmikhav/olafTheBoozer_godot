@@ -9,6 +9,13 @@ var direction: TileSet.CellNeighbor = -1
 var trails: Array[Dictionary] = []  # {position: Vector2i, cell: Vector2i}
 var is_trail_choice_point: bool = false
 
+# Slippery floor data
+var slid: bool = false
+var slide_path: Array = []
+
+# Trigger state snapshot
+var trigger_state: Dictionary = {}
+
 # Item collection data
 var bad_item: Vector2i = Vector2i(-1, -1)
 var bad_item_alt: int = -1
@@ -47,9 +54,14 @@ func has_ghost() -> bool:
 func has_dragged_item() -> bool:
 	return dragged_item.x != Vector2i.MAX.x
 
+func has_slide() -> bool:
+	return slid
+
+func has_trigger_state() -> bool:
+	return not trigger_state.is_empty()
 
 func is_simple_step() -> bool:
-	return not has_bad_item() and not has_ghost() and trails.is_empty() and not has_dragged_item()
+	return not has_bad_item() and not has_ghost() and trails.is_empty() and not has_dragged_item() and not has_slide()
 
 
 func set_item_collection(bad_coords: Vector2i, bad_alt: int, good_coords: Vector2i, good_alt: int) -> void:

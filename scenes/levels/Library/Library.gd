@@ -16,5 +16,6 @@ func _ready():
 		{position = Vector2i(6, 11), type = defs.GhostType.MEMORY, mode = defs.UnitType.WORKER},
 	]
 	move_hero_to_position(hero_start_position)
+	camera_limit = Rect2i(40, 0, 350, 280)
 	init_map()
 	next_scene = ["res://scenes/game/AdventurePlayground/AdventurePlayground.tscn", {levels = ["StartTavern"]}]

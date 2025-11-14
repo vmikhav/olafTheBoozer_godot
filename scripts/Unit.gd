@@ -113,18 +113,25 @@ func hit():
 	await sprite.animation_finished
 	sprite.play(mode + "_idle")
 
-func move(new_position: Vector2) -> void:
+func move(new_position: Vector2, animation: String = "walk") -> void:
 	var diff = abs(expected_position.x - new_position.x) + abs(expected_position.y - new_position.y)
-	if diff == 16:
+	var animation_suffix := "_walk"
+	var move_duration := MOVE_DURATION
+	var can_display_animation:bool = diff == 16
+	if animation == "slide":
+		can_display_animation = true
+		animation_suffix = "_hit"
+		move_duration = maxf(MOVE_DURATION * diff / 24, MOVE_DURATION)
+	if can_display_animation:
 		can_reset_animation = true
 		if !is_dead and !is_moving:
-			sprite.play(mode + "_walk")
+			sprite.play(mode + animation_suffix)
 		if move_tween and move_tween.is_running():
 			move_tween.stop()
 	
 		# Create and start new movement tween
 		move_tween = create_tween()
-		move_tween.tween_property(self, "position", new_position, MOVE_DURATION).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+		move_tween.tween_property(self, "position", new_position, move_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 		move_tween.finished.connect(_on_move_finished)
 		is_moving = true
 	else:

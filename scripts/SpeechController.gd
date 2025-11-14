@@ -19,6 +19,11 @@ var characters = {
 		"volume": 1.0,
 		"delay": 2
 	},
+	"СМЕРТЬ": {
+		"voice_type": "Low_v2_15_3",
+		"volume": 1.0,
+		"delay": 2
+	},
 	"Торвін Круторіг": {
 		"voice_type": "Low_v2_15_1",
 		"volume": 1.0,

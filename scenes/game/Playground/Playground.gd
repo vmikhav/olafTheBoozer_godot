@@ -20,13 +20,13 @@ var level_progress_report: LevelProgressReport
 var level_index = 0
 var levels = [
 	"Tavern",
+	"TavernTutorial",
 	"Cellar",
 	"SawmillDemon",
 	"TavernKitchen",
 	"SawmillYard",
 	"TavernWarehouse",
 	"TutorialBarrel",
-	"TavernTutorial",
 	"Kitchen",
 	"Library",
 ]
@@ -121,6 +121,8 @@ func load_level(level_name: String):
 		exit_levels()
 		return
 	level = load(path).instantiate() as BaseLevel
+	level.sfx_signal.connect(play_sfx)
+	level.music_signal.connect(play_music)
 	add_child(level)
 	level.process_mode = PROCESS_MODE_PAUSABLE	
 	camera.set_target(level.hero)
@@ -194,6 +196,12 @@ func get_level_path(_name: String) -> String:
 func get_level_intro_path(_name: String) -> String:
 	var level_name = _name
 	return "res://scenes/levels/" + level_name + "/" + level_name + "_intro.tscn"
+
+func play_sfx(key: String):
+	AudioController.play_sfx(key)
+
+func play_music(key: String):
+	AudioController.play_music(key)
 
 func play_intro(init: bool = true):
 	var intro_path := get_level_intro_path(current_level_name)

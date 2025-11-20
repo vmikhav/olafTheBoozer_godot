@@ -8,7 +8,7 @@ enum Layer {
 	GROUND, FLOOR, PRESS_PLATES, LIQUIDS, WALLS, TRAILS, ITEMS, TREES, BAD_ITEMS, GOOD_ITEMS, MOVABLE_ITEMS
 }
 
-var defs = LevelDefinitions
+var defs := LevelDefinitions
 
 var splash_scene: PackedScene = preload("res://scenes/sprites/Splash/Splash.tscn")
 var puff_scene: PackedScene = preload("res://scenes/sprites/Puff/Puff.tscn")
@@ -51,6 +51,8 @@ var has_replay: bool
 
 signal items_progress_signal(items_count: int)
 signal ghosts_progress_signal(ghosts_count: int)
+signal sfx_signal(key: String)
+signal music_signal(key: String)
 signal level_finished
 
 
@@ -80,6 +82,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 		init_progress_report()
 		init_draggable_objects()
 		init_triggers()
+		history[0].trigger_state = triggers_controller.get_state_snapshot()
 		for item in tail:
 			item.unit.queue_free()
 		last_active_tail_item = -1
@@ -95,7 +98,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 			move_unit_to_position(ghosts[i].unit, ghosts[i].position)
 	for pos in bad_items:
 		update_cell(pos, tilemaps[source].get_cell_atlas_coords(pos), tilemaps[source].get_cell_alternative_tile(pos))
-	AudioController.play_music(music_key)
+	music_signal.emit(music_key)
 
 func init_draggable_objects():
 	if draggable_objects:
@@ -130,8 +133,17 @@ func init_triggers():
 		var trigger = Trigger.new(lever_data.id, Trigger.TriggerType.LEVER, lever_data.position)
 		
 		# Set visual tiles - either from tile_set or custom tiles
-		if lever_data.has("tile_set"):
-			var tile_set = defs.Levers[lever_data.tile_set]
+		if lever_data.has("tile_off") and lever_data.has("tile_on"):
+			trigger.set_visual_tiles(
+				Layer.WALLS,
+				lever_data.tile_off,
+				lever_data.tile_on,
+				lever_data.get("alt", 0)
+			)
+			if lever_data.has("tile_mid"):
+				trigger.tile_mid = lever_data.tile_mid
+		else:
+			var tile_set = defs.Levers[lever_data.tile_set if lever_data.has("tile_set") else 0]
 			if tile_set:
 				trigger.set_visual_tiles(
 					Layer.WALLS,
@@ -139,13 +151,8 @@ func init_triggers():
 					tile_set.on,
 					tile_set.get("alt", 0)
 				)
-		elif lever_data.has("tile_off") and lever_data.has("tile_on"):
-			trigger.set_visual_tiles(
-				Layer.WALLS,
-				lever_data.tile_off,
-				lever_data.tile_on,
-				lever_data.get("alt", 0)
-			)
+				if tile_set.has("mid"):
+					trigger.tile_mid = tile_set.mid
 		
 		if lever_data.has("pressed") and lever_data.pressed:
 			trigger.toggle_lever()
@@ -163,8 +170,15 @@ func init_triggers():
 		var trigger = Trigger.new(plate_data.id, Trigger.TriggerType.PRESS_PLATE, plate_data.position)
 		
 		# Set visual tiles - either from tile_set or custom tiles
-		if plate_data.has("tile_set"):
-			var tile_set = defs.PressPlates[plate_data.tile_set]
+		if plate_data.has("tile_off") and plate_data.has("tile_on"):
+			trigger.set_visual_tiles(
+				Layer.PRESS_PLATES,
+				plate_data.tile_off,
+				plate_data.tile_on,
+				plate_data.get("alt", 0)
+			)
+		else:
+			var tile_set = defs.PressPlates[plate_data.tile_set if plate_data.has("tile_set") else 0]
 			if tile_set:
 				trigger.set_visual_tiles(
 					Layer.PRESS_PLATES,
@@ -172,15 +186,8 @@ func init_triggers():
 					tile_set.on,
 					tile_set.get("alt", 0)
 				)
-		elif plate_data.has("tile_off") and plate_data.has("tile_on"):
-			trigger.set_visual_tiles(
-				Layer.PRESS_PLATES,
-				plate_data.tile_off,
-				plate_data.tile_on,
-				plate_data.get("alt", 0)
-			)
 		
-		if plate_data.has("pressed") and plate_data.pressed:
+		if (plate_data.has("pressed") and plate_data.pressed) or !is_empty_cell(Layer.ITEMS, plate_data.position):
 			trigger.press()
 		
 		for changeset_id in plate_data.get("changesets", []):
@@ -201,12 +208,14 @@ func init_triggers():
 	
 	# Load changesets
 	for cs_data in get_level_changesets():
-		var changeset = Changeset.new(cs_data.id, cs_data.get("description", ""))
+		var changeset = Changeset.new(cs_data.id, cs_data.get("description", ""), cs_data.get("mode", 0))
 		for change in cs_data.get("changes", []):
 			if change.old_coords == null:
 				change.old_coords = tilemaps[change.layer].get_cell_atlas_coords(change.position)
+				change.old_alt = tilemaps[change.layer].get_cell_alternative_tile(change.position)
 			if change.new_coords == null:
 				change.new_coords = tilemaps[change.layer].get_cell_atlas_coords(change.position)
+				change.new_alt = tilemaps[change.layer].get_cell_atlas_coords(change.position)
 			changeset.add_cell_change(
 				change.position,
 				change.layer,
@@ -216,6 +225,8 @@ func init_triggers():
 				change.get("new_alt", 0)
 			)
 		triggers_controller.add_changeset(changeset)
+	
+	triggers_controller.map_changesets_to_triggers()
 
 func get_level_levers() -> Array:
 	return []
@@ -238,7 +249,7 @@ func restart():
 	hero.set_mode(hero_play_type)
 	ghosts_progress_signal.emit(ghosts_progress)
 	items_progress_signal.emit(level_items_progress)
-	AudioController.play_music(music_key)
+	music_signal.emit(music_key)
 
 func move_unit_to_position(unit: Unit, new_position: Vector2i):
 	unit.move(new_position * TILE_SIZE + TILE_OFFSET)
@@ -283,7 +294,9 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 	var history_item = HistoryItem.new(neighbor_pos, direction)
 	
 	if neighbor_pos in lever_positions:
-		handle_lever_bump(neighbor_pos)
+		handle_lever_bump(neighbor_pos, history_item)
+		save_history_item(history_item)
+		play_sfx_by_history(history_item)
 		return
 	
 	# Handle trail choice mode
@@ -326,31 +339,51 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 
 	move_hero_to_position(neighbor_pos, history_item)
 	
+	update_all_press_plates(history_item)
 	history_item.trigger_state = triggers_controller.get_state_snapshot()
-	check_press_plates(neighbor_pos, history_item)
 	
 	save_history_item(history_item)
 	play_sfx_by_history(history_item)
 
 	check_level_completion()
 
-func handle_lever_bump(lever_pos: Vector2i):
+func handle_lever_bump(lever_pos: Vector2i, history_item: HistoryItem):
 	var lever_id = lever_positions[lever_pos]
 	triggers_controller.toggle_lever(lever_id)
-	hero.hit()
-	AudioController.play_sfx("lever")
+	hero.repair()
+	history_item.is_lever_used = true
+	history_item.position = hero_position
+	history_item.trigger_state = triggers_controller.get_state_snapshot()
 
-func check_press_plates(pos: Vector2i, history_item: HistoryItem):
-	if pos in press_plate_positions:
-		var plate_id = press_plate_positions[pos]
-		triggers_controller.activate_press_plate(plate_id)
-		# Update trigger state after activation
-		history_item.trigger_state = triggers_controller.get_state_snapshot()
+func is_position_occupied(pos: Vector2i) -> bool:
+	# Check if hero is at position
+	if hero_position == pos:
+		return true
+	
+	# Check if any tail unit is at position
+	for tail_item in tail:
+		if tail_item.position == pos:
+			return true
+	
+	# Check if draggable object is at position (active or inactive)
+	if draggable_objects and draggable_objects.has_object_at(pos):
+		return true
+	
+	return false
 
-func check_press_plate_deactivation(pos: Vector2i):
-	if pos in press_plate_positions:
-		var plate_id = press_plate_positions[pos]
-		triggers_controller.deactivate_press_plate(plate_id)
+func update_all_press_plates(history_item: HistoryItem):
+	# Check all press plate positions and update their state
+	for plate_pos in press_plate_positions.keys():
+		var plate_id = press_plate_positions[plate_pos]
+		var should_be_pressed = is_position_occupied(plate_pos)
+		var trigger = triggers_controller.get_trigger(plate_id)
+		
+		if trigger and trigger.is_activated != should_be_pressed:
+			history_item.is_press_plate_changed = true
+			if should_be_pressed:
+				triggers_controller.activate_press_plate(plate_id)
+			else:
+				triggers_controller.deactivate_press_plate(plate_id)
 
 func can_move_to(neighbor_pos: Vector2i, history_item: HistoryItem) -> Dictionary:
 	if is_empty_cell(Layer.GROUND, neighbor_pos):
@@ -453,7 +486,8 @@ func process_item_collection(neighbor_pos: Vector2i, history_item: HistoryItem):
 		items_progress_signal.emit(level_items_progress)
 		
 		if neighbor_pos in item_trigger_positions:
-			triggers_controller.trigger_item_effect(item_trigger_positions[neighbor_pos])
+			var trigger_id = item_trigger_positions[neighbor_pos]
+			triggers_controller.trigger_item_effect(trigger_id)
 			# Update trigger state after item trigger
 			history_item.trigger_state = triggers_controller.get_state_snapshot()
 
@@ -472,7 +506,6 @@ func update_tail(history_item: HistoryItem):
 	
 	if history_item.tail_changed and tail.size() > 0:
 		var removed_item_pos = tail[0].position
-		check_press_plate_deactivation(removed_item_pos)
 
 func should_add_bot_to_tail() -> bool:
 	return history.size() and history[-1].has_ghost() and history[-1].ghost_type == defs.GhostType.ENEMY
@@ -569,6 +602,8 @@ func step_back(manual: bool = false):
 	
 	if history_item.has_trigger_state():
 		triggers_controller.restore_state_snapshot(history[-1].trigger_state)
+	if history_item.is_lever_used:
+		return
 	
 	trails_controller.handle_trails_reversal(history_item, history[-1], hero_position, manual)
 	handle_item_reversal(history_item)
@@ -659,22 +694,28 @@ func replay():
 			step_back()
 
 func play_sfx_by_history(history_item: HistoryItem):
+	if history_item.is_lever_used:
+		sfx_signal.emit("lever")
+		return
+	if history_item.is_press_plate_changed:
+		sfx_signal.emit("press_plate")
+		#return
 	if history_item.has_ghost():
-		AudioController.play_sfx("pickup")
+		sfx_signal.emit("pickup")
 		return
 	if history_item.has_bad_item():
-		AudioController.play_sfx_by_tiles(history_item.bad_item, history_item.good_item)
+		sfx_signal.emit(AudioController.get_sound(history_item.bad_item, history_item.good_item))
 		return
 	if history_item.trails.size():
-		AudioController.play_sfx_by_tiles(history_item.trails[0].cell)
+		sfx_signal.emit(AudioController.get_sound(history_item.trails[0].cell, Vector2i(-1, -1)))
 		return
 	if history_item.has_dragged_item():
-		AudioController.play_sfx("barrel_roll")
+		sfx_signal.emit("barrel_roll")
 		return
 	if history_item.has_slide():
-		AudioController.play_sfx("slide")
+		sfx_signal.emit("slide")
 		return
-	AudioController.play_sfx("step")
+	sfx_signal.emit("step")
 
 func save_history_item(item: HistoryItem):
 	var size = history.size()

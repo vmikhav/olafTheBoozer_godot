@@ -42,6 +42,10 @@ func has_active_object_at(grid_pos: Vector2i) -> bool:
 	var obj = get_object_at(grid_pos)
 	return obj != null and obj.is_active()
 
+func has_object_at(grid_pos: Vector2i) -> bool:
+	var obj = get_object_at(grid_pos)
+	return obj != null
+
 # Get all grid positions that have objects
 func get_used_cells() -> Array[Vector2i]:
 	var used_cells: Array[Vector2i] = []

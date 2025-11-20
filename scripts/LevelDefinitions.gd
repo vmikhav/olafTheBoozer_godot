@@ -98,10 +98,10 @@ const SlipperyTiles = [
 	"38,20", "39,20", "40,20", "41,20", "42,20",
 	"38,21", "39,21", "40,21", "41,21", "42,21",
 ]
-var Levers = [
-	{ "off": Vector2i(32,12), "on": Vector2i(34,12) }
+const Levers = [
+	{ "off": Vector2i(32,12), "mid": Vector2i(33,12), "on": Vector2i(34,12) }
 ]
-var PressPlates = [
+const PressPlates = [
 	{ "off": Vector2i(33,14), "on": Vector2i(34,14) },
 	{ "off": Vector2i(35,14), "on": Vector2i(36,14) },
 	{ "off": Vector2i(33,15), "on": Vector2i(34,15) },

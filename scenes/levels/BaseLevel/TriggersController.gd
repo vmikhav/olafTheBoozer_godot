@@ -4,8 +4,8 @@ class_name TriggersController
 var defs = LevelDefinitions
 var level: BaseLevel
 
-var triggers: Dictionary = {} # String -> Trigger
-var changesets: Dictionary = {} # String -> Changeset
+var triggers: Dictionary[String, Trigger] = {} # String -> Trigger
+var changesets: Dictionary[String, Changeset] = {} # String -> Changeset
 var applied_changesets: Array[String] = [] # Track which changesets are currently applied
 
 ## Add a trigger to the controller
@@ -20,13 +20,22 @@ func add_changeset(changeset: Changeset):
 func get_trigger(trigger_id: String) -> Trigger:
 	return triggers.get(trigger_id)
 
+func map_changesets_to_triggers() -> void:
+	for changeset: Changeset in changesets.values():
+		changeset.trigger_ids.clear()
+	
+	for trigger: Trigger in triggers.values():
+		for id in trigger.changesets:
+			if id in changesets:
+				changesets[id].trigger_ids.append(trigger.id)
+
 ## Get a changeset by ID
 func get_changeset(changeset_id: String) -> Changeset:
 	return changesets.get(changeset_id)
 
 ## Handle lever bump - toggle state and check for activation
 func toggle_lever(lever_id: String) -> Array[String]:
-	var trigger = triggers.get(lever_id)
+	var trigger: Trigger = triggers.get(lever_id)
 	if not trigger or trigger.trigger_type != Trigger.TriggerType.LEVER:
 		return []
 	
@@ -36,11 +45,11 @@ func toggle_lever(lever_id: String) -> Array[String]:
 
 ## Handle press plate activation
 func activate_press_plate(plate_id: String) -> Array[String]:
-	var trigger = triggers.get(plate_id)
+	var trigger: Trigger = triggers.get(plate_id)
 	if not trigger or trigger.trigger_type != Trigger.TriggerType.PRESS_PLATE:
 		return []
 	
-	if trigger.is_pressed:
+	if trigger.is_activated:
 		return []  # Already pressed
 	
 	trigger.press()
@@ -49,11 +58,11 @@ func activate_press_plate(plate_id: String) -> Array[String]:
 
 ## Handle press plate deactivation
 func deactivate_press_plate(plate_id: String) -> Array[String]:
-	var trigger = triggers.get(plate_id)
+	var trigger: Trigger = triggers.get(plate_id)
 	if not trigger or trigger.trigger_type != Trigger.TriggerType.PRESS_PLATE:
 		return []
 	
-	if not trigger.is_pressed:
+	if not trigger.is_activated:
 		return []  # Already released
 	
 	trigger.release()
@@ -62,25 +71,23 @@ func deactivate_press_plate(plate_id: String) -> Array[String]:
 
 ## Handle item trigger (when bad item converts to good)
 func trigger_item_effect(item_trigger_id: String) -> Array[String]:
-	var trigger = triggers.get(item_trigger_id)
+	var trigger: Trigger = triggers.get(item_trigger_id)
 	if not trigger or trigger.trigger_type != Trigger.TriggerType.ITEM_TRIGGER:
 		return []
 	
+	trigger.is_activated = true
 	return evaluate_triggers()
 
 ## Evaluate all triggers and apply/remove changesets
 func evaluate_triggers() -> Array[String]:
 	var activated_changesets: Array[String] = []
 	
-	# Check all triggers
-	for trigger_id in triggers.keys():
-		var trigger: Trigger = triggers[trigger_id]
-		var trigger_states: Array[bool] = [trigger.get_state()]
-		
-		if trigger.should_activate(trigger_states):
-			for changeset_id in trigger.changesets:
-				if not changeset_id in activated_changesets:
-					activated_changesets.append(changeset_id)
+	for changeset: Changeset in changesets.values():
+		var trigger_states: Array[bool]
+		for trigger_id in changeset.trigger_ids:
+			trigger_states.append(triggers[trigger_id].get_state())
+		if changeset.should_activate(trigger_states):
+			activated_changesets.append(changeset.id)
 	
 	# Apply new changesets and rollback removed ones
 	apply_changesets(activated_changesets)
@@ -108,10 +115,8 @@ func apply_changesets(target_changesets: Array[String]):
 func reset():
 	for trigger in triggers.values():
 		match trigger.trigger_type:
-			Trigger.TriggerType.LEVER:
-				trigger.lever_state = false
-			Trigger.TriggerType.PRESS_PLATE:
-				trigger.is_pressed = false
+			Trigger.TriggerType.LEVER, Trigger.TriggerType.PRESS_PLATE:
+				trigger.is_activated = false
 		trigger.update_visual(level)
 	
 	# Rollback all changesets
@@ -134,9 +139,9 @@ func get_state_snapshot() -> Dictionary:
 		var trigger = triggers[trigger_id]
 		match trigger.trigger_type:
 			Trigger.TriggerType.LEVER:
-				snapshot["lever_states"][trigger_id] = trigger.lever_state
+				snapshot["lever_states"][trigger_id] = trigger.is_activated
 			Trigger.TriggerType.PRESS_PLATE:
-				snapshot["plate_states"][trigger_id] = trigger.is_pressed
+				snapshot["plate_states"][trigger_id] = trigger.is_activated
 	
 	return snapshot
 
@@ -152,13 +157,13 @@ func restore_state_snapshot(snapshot: Dictionary):
 	for trigger_id in snapshot.get("lever_states", {}).keys():
 		var trigger = triggers.get(trigger_id)
 		if trigger:
-			trigger.lever_state = snapshot["lever_states"][trigger_id]
+			trigger.is_activated = snapshot["lever_states"][trigger_id]
 			trigger.update_visual(level)
 	
 	for trigger_id in snapshot.get("plate_states", {}).keys():
 		var trigger = triggers.get(trigger_id)
 		if trigger:
-			trigger.is_pressed = snapshot["plate_states"][trigger_id]
+			trigger.is_activated = snapshot["plate_states"][trigger_id]
 			trigger.update_visual(level)
 	
 	# Apply/rollback changesets to match target state

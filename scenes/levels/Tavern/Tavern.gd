@@ -19,19 +19,41 @@ func _ready():
 	init_map()
 
 func get_level_item_trigers() -> Array:
+	return []
+	#return [
+	#	{
+	#		"id": "barrel_1",
+	#		"position": Vector2i(8, 2),
+	#		"changesets": ["drain_puddles"]
+	#	}
+	#]
+
+func get_level_levers() -> Array:
 	return [
 		{
-			"id": "barrel_1",
-			"position": Vector2i(8, 2),
+			"id": "lever_1",
+			"position": Vector2i(10, 5),
 			"changesets": ["drain_puddles"]
 		}
 	]
+
+func get_level_press_plates() -> Array:
+	return [
+		{
+			"id": "plate_1",
+			"tile_set": 0,
+			"position": Vector2i(8, 5),
+			"changesets": ["drain_puddles"]
+		}
+	]
+
 
 func get_level_changesets() -> Array:
 	return [
 		{
 			"id": "drain_puddles",
 			"description": "Drain puddles",
+			"mode": 1,
 			"changes": [
 				{
 					"position": Vector2i(7, 1),
@@ -99,6 +121,18 @@ func get_level_changesets() -> Array:
 					"old_coords": null,
 					"new_coords": Vector2i(-1, -1)
 				},
+			]
+		},
+		{
+			"id": "add_barrel",
+			"description": "Add barrel",
+			"changes": [
+				{
+					"position": Vector2i(8, 2),
+					"layer": BaseLevel.Layer.ITEMS,
+					"old_coords": Vector2i(-1, -1),
+					"new_coords": Vector2i(8, 20)
+				}
 			]
 		}
 	]

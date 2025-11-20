@@ -15,6 +15,8 @@ var slide_path: Array = []
 
 # Trigger state snapshot
 var trigger_state: Dictionary = {}
+var is_lever_used: bool = false
+var is_press_plate_changed: bool = false
 
 # Item collection data
 var bad_item: Vector2i = Vector2i(-1, -1)
@@ -57,11 +59,14 @@ func has_dragged_item() -> bool:
 func has_slide() -> bool:
 	return slid
 
+func has_lever() -> bool:
+	return is_lever_used
+
 func has_trigger_state() -> bool:
 	return not trigger_state.is_empty()
 
 func is_simple_step() -> bool:
-	return not has_bad_item() and not has_ghost() and trails.is_empty() and not has_dragged_item() and not has_slide()
+	return not has_bad_item() and not has_ghost() and trails.is_empty() and not has_dragged_item() and not has_lever()
 
 
 func set_item_collection(bad_coords: Vector2i, bad_alt: int, good_coords: Vector2i, good_alt: int) -> void:

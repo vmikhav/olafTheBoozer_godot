@@ -113,6 +113,12 @@ func hit():
 	await sprite.animation_finished
 	sprite.play(mode + "_idle")
 
+func repair():
+	can_reset_animation = false
+	sprite.play(mode + "_repair_2")
+	await sprite.animation_finished
+	sprite.play(mode + "_idle")
+
 func move(new_position: Vector2, animation: String = "walk") -> void:
 	var diff = abs(expected_position.x - new_position.x) + abs(expected_position.y - new_position.y)
 	var animation_suffix := "_walk"

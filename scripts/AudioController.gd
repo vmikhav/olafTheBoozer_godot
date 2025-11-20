@@ -219,10 +219,10 @@ var sfx: Dictionary[String, Array] = {
 		Audio.new("res://assets/sfx/as_pс_so_olaf_soul_8.wav"),
 	],
 	"lever": [
-		Audio.new("res://assets/sfx/sfx_olaf_lever.wav"),
+		Audio.new("res://assets/sfx/sfx_olaf_lever.wav", 0.75),
 	],
 	"press_plate": [
-		Audio.new("res://assets/sfx/sfx_olaf_wood.wav"),
+		Audio.new("res://assets/sfx/sfx_olaf_wood.wav", 0.5),
 	],
 	"mouse_moving": [
 		Audio.new("res://assets/sfx/as_ui_so_mouse_moving_1.wav", 0.5),

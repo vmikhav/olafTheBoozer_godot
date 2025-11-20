@@ -1811,6 +1811,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_x3x4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ycb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nislw")
+}],
+"loop": false,
+"name": &"worker_repair_2",
+"speed": 9.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_s5qh5")
 }, {
 "duration": 1.0,
@@ -1846,7 +1860,7 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_uh3u2")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_4ybha")
-animation = &"worker_idle"
+animation = &"worker_repair_2"
 
 [node name="Emote" type="Sprite2D" parent="." unique_id=445480548]
 visible = false

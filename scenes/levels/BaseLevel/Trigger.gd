@@ -10,6 +10,7 @@ var id: String
 @export var trigger_type: TriggerType
 var position: Vector2i
 var changesets: Array[String] = [] ## IDs of changesets to apply
+var connected_levers: Array = []
 
 # Visual state management
 var layer: int = -1  ## Which layer to update visual state on

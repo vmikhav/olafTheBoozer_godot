@@ -19,21 +19,20 @@ func _ready():
 	init_map()
 
 func get_level_item_trigers() -> Array:
-	return []
-	#return [
-	#	{
-	#		"id": "barrel_1",
-	#		"position": Vector2i(8, 2),
-	#		"changesets": ["drain_puddles"]
-	#	}
-	#]
+	return [
+		{
+			"id": "barrel_1",
+			"position": Vector2i(8, 2),
+			"changesets": ["drain_puddles"]
+		}
+	]
 
 func get_level_levers() -> Array:
 	return [
 		{
 			"id": "lever_1",
 			"position": Vector2i(10, 5),
-			"changesets": ["drain_puddles"]
+			"changesets": ["remove_gate"]
 		}
 	]
 
@@ -42,8 +41,9 @@ func get_level_press_plates() -> Array:
 		{
 			"id": "plate_1",
 			"tile_set": 0,
+			"connected_levers": ["lever_1"],
 			"position": Vector2i(8, 5),
-			"changesets": ["drain_puddles"]
+			"changesets": ["remove_gate"]
 		}
 	]
 
@@ -124,14 +124,20 @@ func get_level_changesets() -> Array:
 			]
 		},
 		{
-			"id": "add_barrel",
-			"description": "Add barrel",
+			"id": "remove_gate",
+			"description": "Remove gate",
 			"changes": [
 				{
-					"position": Vector2i(8, 2),
-					"layer": BaseLevel.Layer.ITEMS,
-					"old_coords": Vector2i(-1, -1),
-					"new_coords": Vector2i(8, 20)
+					"position": Vector2i(10, 7),
+					"layer": BaseLevel.Layer.WALLS,
+					"old_coords": null,
+					"new_coords": Vector2i(-1, -1),
+				},
+				{
+					"position": Vector2i(10, 7),
+					"layer": BaseLevel.Layer.TREES,
+					"old_coords": null,
+					"new_coords": Vector2i(-1, -1),
 				}
 			]
 		}

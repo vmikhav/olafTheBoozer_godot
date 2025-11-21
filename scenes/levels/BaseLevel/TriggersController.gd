@@ -40,6 +40,12 @@ func toggle_lever(lever_id: String) -> Array[String]:
 		return []
 	
 	trigger.toggle_lever()
+	for id in trigger.connected_levers:
+		var sub_trigger: Trigger = triggers.get(id)
+		if not sub_trigger or sub_trigger.trigger_type != Trigger.TriggerType.LEVER:
+			continue
+		sub_trigger.toggle_lever()
+		sub_trigger.update_visual(level)
 	trigger.update_visual(level)
 	return evaluate_triggers()
 
@@ -53,6 +59,12 @@ func activate_press_plate(plate_id: String) -> Array[String]:
 		return []  # Already pressed
 	
 	trigger.press()
+	for id in trigger.connected_levers:
+		var sub_trigger: Trigger = triggers.get(id)
+		if not sub_trigger or sub_trigger.trigger_type != Trigger.TriggerType.LEVER:
+			continue
+		sub_trigger.toggle_lever()
+		sub_trigger.update_visual(level)
 	trigger.update_visual(level)
 	return evaluate_triggers()
 

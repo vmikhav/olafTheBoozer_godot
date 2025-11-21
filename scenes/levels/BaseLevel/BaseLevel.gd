@@ -157,6 +157,9 @@ func init_triggers():
 		if lever_data.has("pressed") and lever_data.pressed:
 			trigger.toggle_lever()
 		
+		if lever_data.has("connected_levers"):
+			trigger.connected_levers = lever_data.connected_levers
+		
 		for changeset_id in lever_data.get("changesets", []):
 			trigger.add_changeset(changeset_id)
 		triggers_controller.add_trigger(trigger)
@@ -189,6 +192,9 @@ func init_triggers():
 		
 		if (plate_data.has("pressed") and plate_data.pressed) or !is_empty_cell(Layer.ITEMS, plate_data.position):
 			trigger.press()
+		
+		if plate_data.has("connected_levers"):
+			trigger.connected_levers = plate_data.connected_levers
 		
 		for changeset_id in plate_data.get("changesets", []):
 			trigger.add_changeset(changeset_id)

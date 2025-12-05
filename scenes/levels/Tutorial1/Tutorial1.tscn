@@ -10,7 +10,7 @@ script = ExtResource("1_vhlxw")
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1839681521]
 y_sort_enabled = true
 texture_filter = 1
-tile_map_data = PackedByteArray("AAAAAAEAAAAcAAAAAAABAAEAAAAdAAAAAAACAAEAAAAcAAAAAAACAAIAAAAcAAEAAAADAAEAAAAfAAEAAAADAAIAAAAfAAAAAAADAAMAAAAdAAAAAAD+/wEAAAAcAAEAAAD//wEAAAAdAAEAAAACAAAAAAAfAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAEAAAAcAAAAAAABAAEAAAAdAAAAAAACAAEAAAAcAAAAAAADAAEAAAAfAAEAAAADAAIAAAAfAAAAAAADAAMAAAAdAAAAAAD+/wEAAAAcAAEAAAD//wEAAAAdAAEAAAACAAAAAAAfAAAAAAA=")
 tile_set = ExtResource("2_8a6yq")
 
 [node name="Floor" type="TileMapLayer" parent="." unique_id=1712831810]

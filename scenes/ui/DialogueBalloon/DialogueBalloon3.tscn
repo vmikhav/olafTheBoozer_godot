@@ -67,12 +67,12 @@ MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
 Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
 
-[node name="DialogueBalloon" type="CanvasLayer"]
+[node name="DialogueBalloon" type="CanvasLayer" unique_id=1094047892]
 layer = 100
 script = ExtResource("1_mswvj")
 skip_action = &"ui_skip_text"
 
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=153990553]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -82,23 +82,23 @@ split_offset = -640
 dragging_enabled = false
 dragger_visibility = 1
 
-[node name="Control" type="Control" parent="HSplitContainer"]
+[node name="Control" type="Control" parent="HSplitContainer" unique_id=1335214324]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer"]
+[node name="HSplitContainer" type="HSplitContainer" parent="HSplitContainer" unique_id=1321906702]
 layout_mode = 2
 size_flags_horizontal = 3
 split_offset = 1280
 dragging_enabled = false
 dragger_visibility = 1
 
-[node name="Balloon" type="Control" parent="HSplitContainer/HSplitContainer"]
+[node name="Balloon" type="Control" parent="HSplitContainer/HSplitContainer" unique_id=1580974848]
 unique_name_in_owner = true
 layout_mode = 2
 theme = SubResource("Theme_qq3yp")
 
-[node name="Panel" type="Panel" parent="HSplitContainer/HSplitContainer/Balloon"]
+[node name="Panel" type="Panel" parent="HSplitContainer/HSplitContainer/Balloon" unique_id=722432659]
 clip_children = 2
 layout_mode = 1
 anchors_preset = 12
@@ -114,7 +114,7 @@ grow_vertical = 0
 mouse_filter = 1
 theme = ExtResource("2_55qjb")
 
-[node name="Dialogue" type="MarginContainer" parent="HSplitContainer/HSplitContainer/Balloon/Panel"]
+[node name="Dialogue" type="MarginContainer" parent="HSplitContainer/HSplitContainer/Balloon/Panel" unique_id=597173555]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -122,10 +122,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue" unique_id=2074478743]
 layout_mode = 2
 
-[node name="CharacterLabel" type="RichTextLabel" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue/VBoxContainer"]
+[node name="CharacterLabel" type="RichTextLabel" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue/VBoxContainer" unique_id=773113601]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
@@ -138,7 +138,7 @@ text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue/VBoxContainer" instance=ExtResource("4_qmi0o")]
+[node name="DialogueLabel" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue/VBoxContainer" unique_id=930410273 instance=ExtResource("4_qmi0o")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -156,7 +156,7 @@ cjk_period_pause = 0.4
 pause_at_characters = ".?!,"
 seconds_per_pause_step = 0.1
 
-[node name="BaloonInputHint" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue" instance=ExtResource("7_i450q")]
+[node name="BaloonInputHint" parent="HSplitContainer/HSplitContainer/Balloon/Panel/Dialogue" unique_id=2103207207 instance=ExtResource("7_i450q")]
 unique_name_in_owner = true
 visible = false
 z_index = 20
@@ -164,7 +164,7 @@ layout_mode = 2
 show_only_when_focused = false
 hint_offset = Vector2(-25, -5)
 
-[node name="SkipButton" type="Button" parent="HSplitContainer/HSplitContainer/Balloon"]
+[node name="SkipButton" type="Button" parent="HSplitContainer/HSplitContainer/Balloon" unique_id=1230217718]
 custom_minimum_size = Vector2(170, 0)
 layout_mode = 1
 anchors_preset = 2
@@ -183,7 +183,7 @@ theme_override_font_sizes/font_size = 12
 shortcut_in_tooltip = false
 text = "Skip"
 
-[node name="InputHint" parent="HSplitContainer/HSplitContainer/Balloon/SkipButton" instance=ExtResource("7_i450q")]
+[node name="InputHint" parent="HSplitContainer/HSplitContainer/Balloon/SkipButton" unique_id=501664651 instance=ExtResource("7_i450q")]
 layout_mode = 1
 offset_left = 165.0
 offset_top = 31.0
@@ -193,7 +193,7 @@ action_name = "ui_skip_dialogue"
 show_only_when_focused = false
 hint_offset = Vector2(-5, -5)
 
-[node name="Responses" type="MarginContainer" parent="HSplitContainer/HSplitContainer/Balloon"]
+[node name="Responses" type="MarginContainer" parent="HSplitContainer/HSplitContainer/Balloon" unique_id=579913098]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -207,7 +207,7 @@ offset_bottom = -203.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="ResponsesMenu" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/Balloon/Responses" node_paths=PackedStringArray("response_template")]
+[node name="ResponsesMenu" type="VBoxContainer" parent="HSplitContainer/HSplitContainer/Balloon/Responses" unique_id=2109096654 node_paths=PackedStringArray("response_template")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
@@ -216,13 +216,13 @@ theme_override_constants/separation = 2
 script = ExtResource("6_twqlo")
 response_template = NodePath("ResponseExample")
 
-[node name="ResponseExample" type="Button" parent="HSplitContainer/HSplitContainer/Balloon/Responses/ResponsesMenu"]
+[node name="ResponseExample" type="Button" parent="HSplitContainer/HSplitContainer/Balloon/Responses/ResponsesMenu" unique_id=136008733]
 layout_mode = 2
 theme_override_font_sizes/font_size = 16
 text = "Response example"
 autowrap_mode = 3
 
-[node name="InputHint" parent="HSplitContainer/HSplitContainer/Balloon/Responses/ResponsesMenu/ResponseExample" instance=ExtResource("7_i450q")]
+[node name="InputHint" parent="HSplitContainer/HSplitContainer/Balloon/Responses/ResponsesMenu/ResponseExample" unique_id=384505928 instance=ExtResource("7_i450q")]
 z_index = 5
 y_sort_enabled = true
 layout_mode = 1
@@ -231,7 +231,7 @@ offset_top = 42.0
 offset_right = 581.0
 offset_bottom = 42.0
 
-[node name="Control" type="Control" parent="HSplitContainer/HSplitContainer"]
+[node name="Control" type="Control" parent="HSplitContainer/HSplitContainer" unique_id=864605295]
 layout_mode = 2
 size_flags_horizontal = 3
 

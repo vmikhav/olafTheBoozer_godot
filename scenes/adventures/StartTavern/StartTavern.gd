@@ -22,7 +22,7 @@ func _ready():
 		{positions = [Vector2i(0, -2),Vector2i(1, -2),Vector2i(0, -1),Vector2i(1, -1)], hint_position = Vector2i(1, -1), hint_type = 8, active = StoryProgress.tavern_flashback and !StoryProgress.janitor_resqued, callback = janitor_quest},
 		{positions = [Vector2i(-3, -6)], hint_position = Vector2i(-3, -6), hint_type = 8, active = false, callback = kitchen_door_label},
 	]
-	camera_limit = Rect2i(-304, -192, 608, 352)
+	camera_limit = Rect2i(-128, -166, 224, 310)
 	move_hero_to_position(hero_start_position)
 	init_map()
 	
@@ -112,3 +112,6 @@ func kitchen_door_lockpick():
 	allow_input = true
 	need_stop_music = false
 	finish_level()
+
+func get_characters() -> Dictionary[String, Unit]:
+	return {"olaf": hero, "torvin": characters[0].unit}

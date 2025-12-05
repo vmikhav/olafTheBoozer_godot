@@ -30,6 +30,7 @@ var is_waiting_for_input: bool = false
 ## See if we are running a long mutation and should hide the balloon
 var will_hide_balloon: bool = false
 var will_free: bool = false
+var is_skipping_all: bool = false
 
 ## A dictionary to store any ephemeral variables
 var locals: Dictionary = {}
@@ -134,12 +135,24 @@ func apply_dialogue_line() -> void:
 	# If the node isn't ready yet then none of the labels will be ready yet either
 	if not is_node_ready():
 		await ready
+
 	input_hint.visible = false
 	skip_button.visible = false
 
 	mutation_cooldown.stop()
 
 	is_waiting_for_input = false
+
+
+	if dialogue_line.tags.size() > 0 and not is_skipping_all:
+		for tag in dialogue_line.tags:
+			var parts = tag.split(":", false)
+			if not parts.is_empty() and parts[0].begins_with("cam"):
+				dialogue_label.hide()
+				responses_menu.hide()
+				balloon.hide()
+				await get_tree().create_timer(.5).timeout
+
 	balloon.focus_mode = Control.FOCUS_ALL
 	balloon.grab_focus()
 
@@ -158,6 +171,7 @@ func apply_dialogue_line() -> void:
 	balloon.grab_focus()
 
 	dialogue_label.show()
+	call_deferred("adjust_dialogue_size")
 	if not dialogue_line.text.is_empty():
 		dialogue_label.type_out()
 		await dialogue_label.finished_typing
@@ -258,6 +272,7 @@ func adjust_dialogue_size():
 
 func skip_dialog() -> void:
 	visible = false
+	is_skipping_all = true
 	# Process through all lines
 	while not will_free:
 		if dialogue_line.responses.size() > 0:
@@ -265,3 +280,4 @@ func skip_dialog() -> void:
 			await next(dialogue_line.responses[0].next_id)
 		else:
 			await next(dialogue_line.next_id)
+	is_skipping_all = false

@@ -68,6 +68,9 @@ func deactivate_hint(index: int) -> void:
 	if "hint" in interactive_zones[index]:
 		interactive_zones[index].hint.visible = false
 
+func get_characters() -> Dictionary[String, Unit]:
+	return {}
+
 func move_unit_to_position(unit: Unit, new_position: Vector2i):
 	unit.move(new_position * TILE_SIZE + TILE_OFFSET)
 

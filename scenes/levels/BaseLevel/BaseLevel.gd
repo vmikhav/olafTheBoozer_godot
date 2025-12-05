@@ -14,6 +14,7 @@ var splash_scene: PackedScene = preload("res://scenes/sprites/Splash/Splash.tscn
 var puff_scene: PackedScene = preload("res://scenes/sprites/Puff/Puff.tscn")
 var draggable_scene: PackedScene = preload("res://scenes/sprites/DraggableObject/DraggableObject.tscn")
 var puff_displayed := false
+var can_display_puffs := true
 
 # parameters from an implemented scene
 var music_key: String = "olaf_gameplay"
@@ -53,6 +54,7 @@ signal items_progress_signal(items_count: int)
 signal ghosts_progress_signal(ghosts_count: int)
 signal sfx_signal(key: String)
 signal music_signal(key: String)
+signal level_loaded
 signal level_finished
 
 
@@ -99,6 +101,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 	for pos in bad_items:
 		update_cell(pos, tilemaps[source].get_cell_atlas_coords(pos), tilemaps[source].get_cell_alternative_tile(pos))
 	music_signal.emit(music_key)
+	level_loaded.emit()
 
 func init_draggable_objects():
 	if draggable_objects:
@@ -279,7 +282,7 @@ func is_empty_cell(layer: Layer, cell_position: Vector2i) -> bool:
 
 func skip_step():
 	hero.hit()
-	AudioController.play_sfx("bump")
+	sfx_signal.emit("bump")
 
 func update_cell(pos: Vector2i, new_value: Vector2i, alternative: int, layer: Layer = Layer.ITEMS):
 	if new_value.x == -1:
@@ -287,9 +290,9 @@ func update_cell(pos: Vector2i, new_value: Vector2i, alternative: int, layer: La
 	else:
 		tilemaps[layer].set_cell(pos, 0, new_value, alternative)
 
-func navigate(direction: TileSet.CellNeighbor, skip_check = false):
+func navigate(direction: TileSet.CellNeighbor, skip_check = false) -> bool:
 	if not allow_input and not skip_check:
-		return
+		return false
 
 	if direction == TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
 		hero.set_orientation('right')
@@ -303,7 +306,7 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		handle_lever_bump(neighbor_pos, history_item)
 		save_history_item(history_item)
 		play_sfx_by_history(history_item)
-		return
+		return true
 	
 	# Handle trail choice mode
 	if trails_controller.waiting_for_trail_choice:
@@ -312,7 +315,7 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 			trails_controller.clear_trail_choices()
 		elif not skip_check:
 			skip_step()
-			return
+			return false
 	
 	var slippery_result = slippery_controller.move_on_slippery(hero_position, direction, last_active_tail_item >= 0)
 	if slippery_result.slid:
@@ -323,16 +326,16 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 		history_item.position = neighbor_pos
 	elif not slippery_result.can_move:
 		skip_step()
-		return
+		return false
 
 	var can_move_result = can_move_to(neighbor_pos, history_item)
 	if not can_move_result.can_move:
-		return
+		return false
 	
 	neighbor_pos = can_move_result.new_position
 
 	if not trails_controller.process_trails(neighbor_pos, history_item):
-		return
+		return false
 	
 	var draggable_item = check_for_draggable_item(direction)
 	if draggable_item != Vector2i.MAX:
@@ -352,6 +355,7 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false):
 	play_sfx_by_history(history_item)
 
 	check_level_completion()
+	return true
 
 func handle_lever_bump(lever_pos: Vector2i, history_item: HistoryItem):
 	var lever_id = lever_positions[lever_pos]
@@ -585,7 +589,7 @@ func finish_level():
 	allow_input = false
 	level_finished.emit()
 	get_tree().create_timer(0.5).timeout.connect(func():
-		AudioController.play_sfx("dropdown_menu")
+		sfx_signal.emit("dropdown_menu")
 		if has_replay:
 			hero.set_mode(hero_replay_type)
 	)
@@ -725,7 +729,7 @@ func play_sfx_by_history(history_item: HistoryItem):
 
 func save_history_item(item: HistoryItem):
 	var size = history.size()
-	if item.is_simple_step() and size >= 2:
+	if can_display_puffs and item.is_simple_step() and size >= 2:
 		if history[size-1].is_simple_step() and history[size-2].position == item.position:
 			history.pop_back()
 			return
@@ -800,13 +804,15 @@ func calc_score() -> int:
 		) * 100)
 
 func display_splash(tile_pos: Vector2) -> void:
+	if not can_display_puffs:
+		return
 	var splash = splash_scene.instantiate() as Node2D
 	add_child(splash)
 	splash.z_index = 50
 	splash.position = (tile_pos + Vector2(0.5, 0.5)) * TILE_SIZE
 
 func display_puff(tile_pos: Vector2) -> void:
-	if puff_displayed:
+	if puff_displayed or not can_display_puffs:
 		return
 	puff_displayed = true
 	var puff = puff_scene.instantiate() as Node2D

@@ -186,7 +186,9 @@ var sfx: Dictionary[String, Array] = {
 		Audio.new("res://assets/sfx/as_pс_so_olaf_footprints_6.wav"),
 	],
 	"slide": [
-		Audio.new("res://assets/sfx/sfx_olaf_water_step.wav", 0.75),
+		Audio.new("res://assets/sfx/sfx_water_slip_01.wav", 0.75),
+		Audio.new("res://assets/sfx/sfx_water_slip_02.wav", 0.75),
+		#Audio.new("res://assets/sfx/sfx_olaf_water_step.wav", 0.75),
 	],
 	"wood_impact": [
 		Audio.new("res://assets/sfx/as_pr_so_wood_impact_1.wav"),

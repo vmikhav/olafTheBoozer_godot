@@ -5,5 +5,5 @@ extends Unit
 func _ready():
 	sprite = $Sprite
 	emote = $Emote
-	emote2 = $Emote2
+	emote_small = $EmoteSmall
 	init()

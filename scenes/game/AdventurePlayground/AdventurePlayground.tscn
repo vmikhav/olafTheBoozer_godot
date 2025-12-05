@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://2gngn40cold4"]
+[gd_scene load_steps=13 format=3 uid="uid://2gngn40cold4"]
 
 [ext_resource type="Script" uid="uid://1n7pftc673xb" path="res://scenes/game/AdventurePlayground/AdventurePlayground.gd" id="1_302fe"]
 [ext_resource type="Texture2D" uid="uid://dxw54ee33wbrm" path="res://assets/images/back.png" id="2_ah7wg"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bvomsgp50xmqo" path="res://scenes/ui/InputHint/InputHint.tscn" id="7_0tonn"]
 [ext_resource type="PackedScene" uid="uid://d2v243r8fsbr1" path="res://scenes/ui/LevelMenu/AdventureMenu.tscn" id="7_62e5o"]
 [ext_resource type="PackedScene" uid="uid://p41vq4676q75" path="res://scenes/ui/NavButtons/NavButtons.tscn" id="9_6rhoj"]
+[ext_resource type="Script" uid="uid://dbfmab0wx7via" path="res://scenes/ui/DialogueCameraController/DialogueCameraController.gd" id="12_0gbu6"]
 [ext_resource type="PackedScene" uid="uid://dbfh1alqkfy2t" path="res://scenes/ui/SceneTransition/SceneTransition.tscn" id="12_penv2"]
 [ext_resource type="PackedScene" uid="uid://c78sgpd3kkbu2" path="res://scenes/ui/NavController/NavController.tscn" id="13_nbkt7"]
 
@@ -35,6 +36,9 @@ zoom = Vector2(3, 3)
 editor_draw_drag_margin = true
 min_zoom = 2.0
 max_zoom = 5.0
+
+[node name="DialogueCamera" type="Camera2D" parent="." unique_id=1137478883]
+zoom = Vector2(3, 3)
 
 [node name="UiLayer" type="CanvasLayer" parent="." unique_id=653627218]
 
@@ -130,3 +134,15 @@ visible = false
 [node name="AdventureMenu" parent="MenuLayer" unique_id=182738878 instance=ExtResource("7_62e5o")]
 process_mode = 2
 z_index = 200
+
+[node name="DialogueCameraController" type="Node2D" parent="." unique_id=105400688 node_paths=PackedStringArray("main_camera", "dialogue_camera")]
+script = ExtResource("12_0gbu6")
+main_camera = NodePath("../TouchCamera")
+dialogue_camera = NodePath("../DialogueCamera")
+transition_duration = 0.6
+transition_ease = 0
+close_zoom = Vector2(3.8, 3.8)
+medium_zoom = Vector2(3.2, 3.2)
+wide_zoom = Vector2(2.8, 2.8)
+normal_zoom = Vector2(3, 3)
+metadata/_custom_type_script = "uid://dbfmab0wx7via"

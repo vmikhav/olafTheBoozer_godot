@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var camera = $TouchCamera as TouchCamera
+@onready var camera_controller: DialogueCameraController = $DialogueCameraController
 @onready var nav_buttons = %NavButtons
 @onready var menu_button = %MenuButton as TextureButton
 @onready var transition_rect = $UiLayer/SceneTransitionRect
@@ -13,7 +14,7 @@ var is_level_finished: bool = false
 
 var level_index = 0
 var levels = [
-	"Tutorial0",
+	#"Tutorial0",
 	"StartTavern",
 	"CleanedTavern",
 	"RepairedTavern"
@@ -73,6 +74,10 @@ func load_level(level_name: String):
 	camera.set_limits(level.camera_limit)
 	level.level_finished.connect(on_level_finished)
 	prepare_ui_for_level()
+	camera_controller.reset_characters()
+	var characters: Dictionary[String, Unit] = level.get_characters()
+	for key in characters:
+		camera_controller.register_character(key, characters[key])
 
 func prepare_ui_for_level():
 	camera.set_drag_offset(Vector2(0, 0))

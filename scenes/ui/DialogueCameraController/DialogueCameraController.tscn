@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cct6lyyfq5k7f"]
+
+[ext_resource type="Script" uid="uid://dbfmab0wx7via" path="res://scenes/ui/DialogueCameraController/DialogueCameraController.gd" id="1_ig50t"]
+
+[node name="DialogueCameraController" type="Node2D" unique_id=1476758121]
+script = ExtResource("1_ig50t")

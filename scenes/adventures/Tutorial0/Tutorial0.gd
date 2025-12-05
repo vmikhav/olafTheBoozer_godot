@@ -1,6 +1,7 @@
 extends BaseAdventure
 
 var first_dialogue = preload("res://scenes/adventures/StartTavern/start_tavern.dialogue")
+@onready var olaf: Unit = $Items/Demolitonist
 @onready var reaper: DemolitonistSprite = $Items/Reaper
 
 # Called when the node enters the scene tree for the first time.
@@ -50,6 +51,9 @@ func intro():
 	await tween.finished
 	await get_tree().create_timer(0.5).timeout
 	finish_level()
+
+func get_characters() -> Dictionary[String, Unit]:
+	return {"olaf": olaf}
 
 func set_reaper_transparancy(value: float):
 	reaper.sprite.material.set_shader_parameter("transparency", value);

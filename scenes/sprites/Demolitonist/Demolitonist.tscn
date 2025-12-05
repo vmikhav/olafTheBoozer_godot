@@ -1871,7 +1871,7 @@ texture = ExtResource("3_vl4hx")
 region_enabled = true
 region_rect = Rect2(128, 16, 16, 16)
 
-[node name="Emote2" type="Sprite2D" parent="." unique_id=1762894300]
+[node name="EmoteSmall" type="Sprite2D" parent="." unique_id=1762894300]
 visible = false
 modulate = Color(1, 1, 1, 0.78431374)
 z_index = 3

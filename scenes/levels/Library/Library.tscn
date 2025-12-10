@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://dux3lq8gfpmt8"]
+[gd_scene load_steps=5 format=4 uid="uid://dux3lq8gfpmt8"]
 
 [ext_resource type="Script" uid="uid://bfqrurigrk8p5" path="res://scenes/levels/Library/Library.gd" id="1_bvhyt"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_psyqe"]
+[ext_resource type="Resource" uid="uid://blbk5eaue0gr2" path="res://scenes/levels/Library/Library.tres" id="2_ysnr6"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_ublfx"]
 
 [node name="Library" type="Node2D" unique_id=1233322201]
 script = ExtResource("1_bvhyt")
+level_data = ExtResource("2_ysnr6")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=971665624]
 y_sort_enabled = true

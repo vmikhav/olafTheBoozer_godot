@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=10 format=3 uid="uid://b5bse4t8r442n"]
+
+[ext_resource type="Script" uid="uid://derqluum4reuq" path="res://resources/Changeset.gd" id="1_dj83a"]
+[ext_resource type="Script" uid="uid://b6txe1yuan4kl" path="res://resources/GhostData.gd" id="2_a2ff1"]
+[ext_resource type="Script" uid="uid://dr42rnusvb6wa" path="res://resources/LevelData.gd" id="3_shj84"]
+[ext_resource type="Script" uid="uid://cq7p6ru88x6ak" path="res://resources/TeleportData.gd" id="4_fm8kq"]
+[ext_resource type="Script" uid="uid://cxgfyhayvwn3c" path="res://resources/Trigger.gd" id="5_os6kx"]
+
+[sub_resource type="Resource" id="Resource_dj83a"]
+script = ExtResource("2_a2ff1")
+position = Vector2i(5, 6)
+mode = 5
+metadata/_custom_type_script = "uid://b6txe1yuan4kl"
+
+[sub_resource type="Resource" id="Resource_a2ff1"]
+script = ExtResource("2_a2ff1")
+position = Vector2i(11, 5)
+metadata/_custom_type_script = "uid://b6txe1yuan4kl"
+
+[sub_resource type="Resource" id="Resource_shj84"]
+script = ExtResource("2_a2ff1")
+position = Vector2i(13, 8)
+mode = 2
+metadata/_custom_type_script = "uid://b6txe1yuan4kl"
+
+[sub_resource type="Resource" id="Resource_fm8kq"]
+script = ExtResource("2_a2ff1")
+position = Vector2i(18, 6)
+metadata/_custom_type_script = "uid://b6txe1yuan4kl"
+
+[resource]
+script = ExtResource("3_shj84")
+hero_start_position = Vector2i(11, 10)
+camera_limit = Rect2i(0, 0, 450, 200)
+ghosts = Array[ExtResource("2_a2ff1")]([SubResource("Resource_dj83a"), SubResource("Resource_a2ff1"), SubResource("Resource_shj84"), SubResource("Resource_fm8kq")])
+metadata/_custom_type_script = "uid://dr42rnusvb6wa"

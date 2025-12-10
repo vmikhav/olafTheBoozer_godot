@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://btyr1cu2knrxh"]
+[gd_scene load_steps=5 format=4 uid="uid://btyr1cu2knrxh"]
 
 [ext_resource type="Script" uid="uid://bb4bjqh7b61da" path="res://scenes/levels/SawmillWorkshop/SawmillWorkshop.gd" id="1_aqplb"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_nrl4d"]
+[ext_resource type="Resource" uid="uid://bvcifwyhiuy4c" path="res://scenes/levels/SawmillWorkshop/SawmillWorkshop.tres" id="2_xaffn"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_xaffn"]
 
 [node name="SawmillWorkshop" type="Node2D" unique_id=1107130475]
 script = ExtResource("1_aqplb")
+level_data = ExtResource("2_xaffn")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=764820350]
 y_sort_enabled = true

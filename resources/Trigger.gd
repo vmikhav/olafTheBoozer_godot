@@ -6,28 +6,23 @@ class_name Trigger
 
 enum TriggerType { LEVER, PRESS_PLATE, ITEM_TRIGGER }
 
-var id: String
+@export var id: String
 @export var trigger_type: TriggerType
-var position: Vector2i
-var changesets: Array[String] = [] ## IDs of changesets to apply
-var connected_levers: Array = []
+@export var position: Vector2i
+@export var changesets: Array[String] = [] ## IDs of changesets to apply
+@export var connected_levers: Array[String] = []
 
-# Visual state management
-var layer: int = -1  ## Which layer to update visual state on
-var tile_off: Vector2i = Vector2i(-1, -1)  ## Tile coords when inactive
-var tile_mid: Vector2i = Vector2i(-1, -1)
-var tile_on: Vector2i = Vector2i(-1, -1)   ## Tile coords when active
-var tile_alt: int = 0  ## Alternative tile index
+@export_category("Visual state management")
+@export var layer: BaseLevel.Layer = BaseLevel.Layer.PRESS_PLATES
+@export var tile_off: Vector2i = Vector2i(-1, -1)  ## Tile coords when inactive
+@export var tile_mid: Vector2i = Vector2i(-1, -1)
+@export var tile_on: Vector2i = Vector2i(-1, -1)   ## Tile coords when active
+@export var tile_off_alt: int = 0
+@export var tile_mid_alt: int = 0
+@export var tile_on_alt: int = 0
+@export var tile_set: int = -1
 
-var is_activated: bool = false
-
-# Item trigger-specific (when bad item converts to good)
-var target_item_coords: Vector2i = Vector2i(-1, -1)
-
-func _init(p_id: String = "", p_type: TriggerType = TriggerType.LEVER, p_pos: Vector2i = Vector2i.ZERO):
-	id = p_id
-	trigger_type = p_type
-	position = p_pos
+@export var is_activated: bool = false
 
 ## Add a changeset to this trigger
 func add_changeset(changeset_id: String):
@@ -35,11 +30,12 @@ func add_changeset(changeset_id: String):
 		changesets.append(changeset_id)
 
 ## Set visual appearance tiles
-func set_visual_tiles(p_layer: int, off_coords: Vector2i, on_coords: Vector2i, alt: int = 0):
+func set_visual_tiles(p_layer: BaseLevel.Layer, off_coords: Vector2i, on_coords: Vector2i, alt_on: int = 0, alt_off: int = 0):
 	layer = p_layer
 	tile_off = off_coords
 	tile_on = on_coords
-	tile_alt = alt
+	tile_on_alt = alt_on
+	tile_off_alt = alt_off
 
 ## Toggle lever state
 func toggle_lever() -> bool:
@@ -87,6 +83,6 @@ func update_visual(level: BaseLevel):
 	var current_tile = get_current_tile()
 	if trigger_type == TriggerType.LEVER:
 		if tile_mid.x >= 0:
-			level.update_cell(position, tile_mid, tile_alt, layer)
+			level.update_cell(position, tile_mid, tile_mid_alt, layer)
 			await level.get_tree().create_timer(.05).timeout
-	level.update_cell(position, current_tile, tile_alt, layer)
+	level.update_cell(position, current_tile, tile_on_alt if is_activated else tile_off_alt, layer)

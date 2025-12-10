@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://bhaaw6p11pycu"]
+[gd_scene load_steps=5 format=4 uid="uid://bhaaw6p11pycu"]
 
 [ext_resource type="Script" uid="uid://dt211syl8w20o" path="res://scenes/levels/SawmillDemon/SawmillDemon.gd" id="1_run2o"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_aj2rk"]
+[ext_resource type="Resource" uid="uid://dj3lacd1p78ua" path="res://scenes/levels/SawmillDemon/SawmillDemon.tres" id="2_s1fln"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_s1fln"]
 
 [node name="SawmillDemon" type="Node2D" unique_id=1477885154]
 script = ExtResource("1_run2o")
+level_data = ExtResource("2_s1fln")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1854677092]
 y_sort_enabled = true

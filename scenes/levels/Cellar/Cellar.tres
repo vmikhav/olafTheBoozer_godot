@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=7 format=3 uid="uid://bb208giw0smoe"]
+
+[ext_resource type="Script" uid="uid://derqluum4reuq" path="res://resources/Changeset.gd" id="1_w8avy"]
+[ext_resource type="Script" uid="uid://b6txe1yuan4kl" path="res://resources/GhostData.gd" id="2_ukap0"]
+[ext_resource type="Script" uid="uid://dr42rnusvb6wa" path="res://resources/LevelData.gd" id="3_h213y"]
+[ext_resource type="Script" uid="uid://cq7p6ru88x6ak" path="res://resources/TeleportData.gd" id="4_6i0m2"]
+[ext_resource type="Script" uid="uid://cxgfyhayvwn3c" path="res://resources/Trigger.gd" id="5_8yysc"]
+
+[sub_resource type="Resource" id="Resource_w8avy"]
+script = ExtResource("2_ukap0")
+position = Vector2i(2, -1)
+metadata/_custom_type_script = "uid://b6txe1yuan4kl"
+
+[resource]
+script = ExtResource("3_h213y")
+hero_start_position = Vector2i(2, 2)
+camera_limit = Rect2i(0, -80, 256, 256)
+ghosts = Array[ExtResource("2_ukap0")]([SubResource("Resource_w8avy")])
+metadata/_custom_type_script = "uid://dr42rnusvb6wa"

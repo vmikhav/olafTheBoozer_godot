@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=12 format=3 uid="uid://bnwmqht8g5y6t"]
+
+[ext_resource type="Script" uid="uid://derqluum4reuq" path="res://resources/Changeset.gd" id="1_1kdrs"]
+[ext_resource type="Script" uid="uid://b6txe1yuan4kl" path="res://resources/GhostData.gd" id="2_46445"]
+[ext_resource type="Script" uid="uid://djj610637hame" path="res://resources/CellChangeset.gd" id="2_ugqfo"]
+[ext_resource type="Script" uid="uid://dr42rnusvb6wa" path="res://resources/LevelData.gd" id="3_ugqfo"]
+[ext_resource type="Script" uid="uid://cq7p6ru88x6ak" path="res://resources/TeleportData.gd" id="4_4x78p"]
+[ext_resource type="Script" uid="uid://cxgfyhayvwn3c" path="res://resources/Trigger.gd" id="5_u62wh"]
+
+[sub_resource type="Resource" id="Resource_4x78p"]
+script = ExtResource("2_ugqfo")
+position = Vector2i(-3, 0)
+layer = 4
+old_coords = Vector2i(-2, -1)
+metadata/_custom_type_script = "uid://djj610637hame"
+
+[sub_resource type="Resource" id="Resource_u62wh"]
+script = ExtResource("2_ugqfo")
+position = Vector2i(-2, 0)
+layer = 4
+old_coords = Vector2i(-2, -1)
+metadata/_custom_type_script = "uid://djj610637hame"
+
+[sub_resource type="Resource" id="Resource_aqxli"]
+script = ExtResource("1_1kdrs")
+id = "remove_gate"
+description = "Remove gate"
+cell_changes = Array[ExtResource("2_ugqfo")]([SubResource("Resource_4x78p"), SubResource("Resource_u62wh")])
+metadata/_custom_type_script = "uid://derqluum4reuq"
+
+[sub_resource type="Resource" id="Resource_tach4"]
+script = ExtResource("2_46445")
+position = Vector2i(0, 2)
+metadata/_custom_type_script = "uid://b6txe1yuan4kl"
+
+[sub_resource type="Resource" id="Resource_yv7d3"]
+script = ExtResource("5_u62wh")
+id = "plate_1"
+trigger_type = 1
+position = Vector2i(-1, -1)
+changesets = Array[String](["remove_gate"])
+tile_set = 1
+metadata/_custom_type_script = "uid://cxgfyhayvwn3c"
+
+[resource]
+script = ExtResource("3_ugqfo")
+hero_start_position = Vector2i(-2, -2)
+camera_limit = Rect2i(-120, -80, 300, 200)
+ghosts = Array[ExtResource("2_46445")]([SubResource("Resource_tach4")])
+triggers = Array[ExtResource("5_u62wh")]([SubResource("Resource_yv7d3")])
+changesets = Array[ExtResource("1_1kdrs")]([SubResource("Resource_aqxli")])
+metadata/_custom_type_script = "uid://dr42rnusvb6wa"

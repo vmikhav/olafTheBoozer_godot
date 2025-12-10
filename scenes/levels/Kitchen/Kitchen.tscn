@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://bes6isemuwp5c"]
+[gd_scene load_steps=5 format=4 uid="uid://bes6isemuwp5c"]
 
 [ext_resource type="Script" uid="uid://bnigd7jhkbv70" path="res://scenes/levels/Kitchen/Kitchen.gd" id="1_17jfl"]
+[ext_resource type="Resource" uid="uid://b5bse4t8r442n" path="res://scenes/levels/Kitchen/Kitchen.tres" id="2_h077e"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_vb35a"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_t4r4q"]
 
 [node name="Kitchen" type="Node2D" unique_id=339914363]
 script = ExtResource("1_17jfl")
+level_data = ExtResource("2_h077e")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=611594436]
 y_sort_enabled = true

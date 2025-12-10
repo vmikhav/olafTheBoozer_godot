@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://dv2fftuc2m7lb"]
+[gd_scene load_steps=5 format=4 uid="uid://dv2fftuc2m7lb"]
 
 [ext_resource type="Script" uid="uid://cy5p4r5qw4w66" path="res://scenes/levels/Cellar/Cellar.gd" id="1_mu7k0"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_5u8he"]
+[ext_resource type="Resource" uid="uid://bb208giw0smoe" path="res://scenes/levels/Cellar/Cellar.tres" id="2_abr5q"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_4053v"]
 
 [node name="Cellar" type="Node2D" unique_id=1462368666]
 script = ExtResource("1_mu7k0")
+level_data = ExtResource("2_abr5q")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=782056351]
 y_sort_enabled = true

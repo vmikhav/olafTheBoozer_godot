@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://c70f5nhdgx08m"]
+[gd_scene load_steps=5 format=4 uid="uid://c70f5nhdgx08m"]
 
 [ext_resource type="Script" uid="uid://ccejr0qdpvt6n" path="res://scenes/levels/TutorialBarrel/TutorialBarrel.gd" id="1_bn5q5"]
+[ext_resource type="Resource" uid="uid://cvk5i20ba7o8n" path="res://scenes/levels/TutorialBarrel/TutorialBarrel.tres" id="2_gfldb"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_u61g3"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_gfldb"]
 
 [node name="TutorialBarrel" type="Node2D" unique_id=1047254082]
 script = ExtResource("1_bn5q5")
+level_data = ExtResource("2_gfldb")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1521106080]
 y_sort_enabled = true

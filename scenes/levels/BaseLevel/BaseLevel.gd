@@ -9,6 +9,7 @@ enum Layer {
 }
 
 var defs := LevelDefinitions
+@export var level_data: LevelData
 
 var splash_scene: PackedScene = preload("res://scenes/sprites/Splash/Splash.tscn")
 var puff_scene: PackedScene = preload("res://scenes/sprites/Puff/Puff.tscn")
@@ -45,6 +46,8 @@ var last_active_tail_item = -1
 var lever_positions: Dictionary = {} # Vector2i -> String (lever_id)
 var press_plate_positions: Dictionary = {} # Vector2i -> String (plate_id)
 var item_trigger_positions: Dictionary = {} # Vector2i -> String (item_id)
+var _stored_triggers: Array[Trigger] = []
+var _stored_changesets: Array[Changeset] = []
 var history: Array[HistoryItem] = []
 var is_history_replay: bool = false
 var progress_report: LevelProgressReport
@@ -131,123 +134,64 @@ func init_triggers():
 	press_plate_positions.clear()
 	item_trigger_positions.clear()
 	
-	# Load levers
-	for lever_data in get_level_levers():
-		var trigger = Trigger.new(lever_data.id, Trigger.TriggerType.LEVER, lever_data.position)
-		
-		# Set visual tiles - either from tile_set or custom tiles
-		if lever_data.has("tile_off") and lever_data.has("tile_on"):
-			trigger.set_visual_tiles(
-				Layer.WALLS,
-				lever_data.tile_off,
-				lever_data.tile_on,
-				lever_data.get("alt", 0)
-			)
-			if lever_data.has("tile_mid"):
-				trigger.tile_mid = lever_data.tile_mid
-		else:
-			var tile_set = defs.Levers[lever_data.tile_set if lever_data.has("tile_set") else 0]
-			if tile_set:
-				trigger.set_visual_tiles(
-					Layer.WALLS,
-					tile_set.off,
-					tile_set.on,
-					tile_set.get("alt", 0)
-				)
-				if tile_set.has("mid"):
-					trigger.tile_mid = tile_set.mid
-		
-		if lever_data.has("pressed") and lever_data.pressed:
-			trigger.toggle_lever()
-		
-		if lever_data.has("connected_levers"):
-			trigger.connected_levers = lever_data.connected_levers
-		
-		for changeset_id in lever_data.get("changesets", []):
-			trigger.add_changeset(changeset_id)
+	for trigger in _stored_triggers:
 		triggers_controller.add_trigger(trigger)
-		lever_positions[lever_data.position] = trigger.id
-		
-		# Set initial visual state
-		trigger.update_visual(self)
+		if trigger.trigger_type == Trigger.TriggerType.LEVER:
+			lever_positions[trigger.position] = trigger.id
+			if trigger.tile_on.x == -1 and trigger.tile_off.x == -1 and trigger.tile_set == -1:
+				trigger.tile_set = 0
+			if trigger.tile_set >=0:
+				var tile_set = defs.Levers[trigger.tile_set]
+				if tile_set:
+					trigger.set_visual_tiles(
+						Layer.WALLS,
+						tile_set.off,
+						tile_set.on,
+						tile_set.get("alt", 0)
+					)
+					if tile_set.has("mid"):
+						trigger.tile_mid = tile_set.mid
+			trigger.update_visual(self)
+		elif trigger.trigger_type == Trigger.TriggerType.PRESS_PLATE:
+			press_plate_positions[trigger.position] = trigger.id
+			if trigger.tile_on.x == -1 and trigger.tile_off.x == -1 and trigger.tile_set == -1:
+				trigger.tile_set = 0
+			if trigger.tile_set >=0:
+				var tile_set = defs.PressPlates[trigger.tile_set]
+				if tile_set:
+					trigger.set_visual_tiles(
+						Layer.PRESS_PLATES,
+						tile_set.off,
+						tile_set.on,
+						tile_set.get("alt", 0)
+					)
+			if trigger.is_activated or !is_empty_cell(Layer.ITEMS, trigger.position) or hero_position == trigger.position:
+				trigger.is_activated = true
+			trigger.update_visual(self)
+		elif trigger.trigger_type == Trigger.TriggerType.ITEM_TRIGGER:
+			item_trigger_positions[trigger.position] = trigger.id
 	
-	# Load press plates
-	for plate_data in get_level_press_plates():
-		var trigger = Trigger.new(plate_data.id, Trigger.TriggerType.PRESS_PLATE, plate_data.position)
-		
-		# Set visual tiles - either from tile_set or custom tiles
-		if plate_data.has("tile_off") and plate_data.has("tile_on"):
-			trigger.set_visual_tiles(
-				Layer.PRESS_PLATES,
-				plate_data.tile_off,
-				plate_data.tile_on,
-				plate_data.get("alt", 0)
-			)
-		else:
-			var tile_set = defs.PressPlates[plate_data.tile_set if plate_data.has("tile_set") else 0]
-			if tile_set:
-				trigger.set_visual_tiles(
-					Layer.PRESS_PLATES,
-					tile_set.off,
-					tile_set.on,
-					tile_set.get("alt", 0)
-				)
-		
-		if (plate_data.has("pressed") and plate_data.pressed) or !is_empty_cell(Layer.ITEMS, plate_data.position):
-			trigger.press()
-		
-		if plate_data.has("connected_levers"):
-			trigger.connected_levers = plate_data.connected_levers
-		
-		for changeset_id in plate_data.get("changesets", []):
-			trigger.add_changeset(changeset_id)
-		triggers_controller.add_trigger(trigger)
-		press_plate_positions[plate_data.position] = trigger.id
-		
-		# Set initial visual state
-		trigger.update_visual(self)
-	
-	for item_data in get_level_item_trigers():
-		var trigger = Trigger.new(item_data.id, Trigger.TriggerType.ITEM_TRIGGER, item_data.position)
-		
-		for changeset_id in item_data.get("changesets", []):
-			trigger.add_changeset(changeset_id)
-		triggers_controller.add_trigger(trigger)
-		item_trigger_positions[item_data.position] = trigger.id
-	
-	# Load changesets
-	for cs_data in get_level_changesets():
-		var changeset = Changeset.new(cs_data.id, cs_data.get("description", ""), cs_data.get("mode", 0))
-		for change in cs_data.get("changes", []):
-			if change.old_coords == null:
+	for changeset in _stored_changesets:
+		triggers_controller.add_changeset(changeset)
+		for change in changeset.cell_changes:
+			if change.old_coords.x == -2:
 				change.old_coords = tilemaps[change.layer].get_cell_atlas_coords(change.position)
 				change.old_alt = tilemaps[change.layer].get_cell_alternative_tile(change.position)
-			if change.new_coords == null:
+			if change.new_coords.x == -2:
 				change.new_coords = tilemaps[change.layer].get_cell_atlas_coords(change.position)
-				change.new_alt = tilemaps[change.layer].get_cell_atlas_coords(change.position)
-			changeset.add_cell_change(
-				change.position,
-				change.layer,
-				change.old_coords,
-				change.new_coords,
-				change.get("old_alt", 0),
-				change.get("new_alt", 0)
-			)
-		triggers_controller.add_changeset(changeset)
+				change.new_alt = tilemaps[change.layer].get_cell_alternative_tile(change.position)
 	
 	triggers_controller.map_changesets_to_triggers()
 
-func get_level_levers() -> Array:
-	return []
-
-func get_level_press_plates() -> Array:
-	return []
-
-func get_level_item_trigers() -> Array:
-	return []
-
-func get_level_changesets() -> Array:
-	return []
+func load_from_resource(data: LevelData):
+	level_type = data.level_type
+	hero_start_position = data.hero_start_position
+	ghosts = data.ghosts
+	teleports = data.teleports
+	camera_limit = data.camera_limit
+	
+	_stored_triggers = data.triggers
+	_stored_changesets = data.changesets
 
 func restart():
 	is_history_replay = false
@@ -657,12 +601,12 @@ func restore_ghost(history_item: HistoryItem):
 	
 	history_item.ghost.make_ghost(history_item.ghost_type)
 	history_item.ghost.visible = true
-	ghosts.push_back({
-		position = history_item.ghost_position,
-		type = history_item.ghost_type,
-		mode = history_item.ghost_mode,
-		unit = history_item.ghost,
-	})
+	var ghost = GhostData.new()
+	ghost.position = history_item.ghost_position
+	ghost.type = history_item.ghost_type
+	ghost.mode = history_item.ghost_mode
+	ghost.unit = history_item.ghost
+	ghosts.push_back(ghost)
 
 func restore_enemy_spawn_ghost(history_item: HistoryItem):
 	for item in tail:

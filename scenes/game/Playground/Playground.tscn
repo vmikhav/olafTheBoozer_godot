@@ -51,9 +51,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-split_offset = -700
+split_offsets = PackedInt32Array(-700)
 dragging_enabled = false
 dragger_visibility = 1
+split_offset = -700
 
 [node name="Control" type="Control" parent="UiLayer/HSplitContainer" unique_id=272034060]
 layout_mode = 2
@@ -62,6 +63,7 @@ size_flags_horizontal = 3
 [node name="HSplitContainer" type="HSplitContainer" parent="UiLayer/HSplitContainer" unique_id=1065211104]
 layout_mode = 2
 size_flags_horizontal = 3
+split_offsets = PackedInt32Array(1400)
 split_offset = 1400
 
 [node name="HudContainer" type="MarginContainer" parent="UiLayer/HSplitContainer/HSplitContainer" unique_id=1110953653]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=4 uid="uid://dkbip8st6rlvk"]
+[gd_scene load_steps=15 format=4 uid="uid://dkbip8st6rlvk"]
 
 [ext_resource type="Script" uid="uid://djywvwou4kq28" path="res://scenes/levels/Tutorial0/Tutorial0.gd" id="1_pimk5"]
+[ext_resource type="Resource" uid="uid://hbmexxoj1m8l" path="res://scenes/levels/Tutorial0/Tutorial0.tres" id="2_blsm7"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_p2yry"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_g4qxb"]
 [ext_resource type="Texture2D" uid="uid://dfnbg5i0yj6dl" path="res://assets/images/input_prompts.png" id="4_f05pw"]
@@ -44,6 +45,7 @@ region = Rect2(0, 85, 16, 16)
 
 [node name="Tutorial0" type="Node2D" unique_id=431351558]
 script = ExtResource("1_pimk5")
+level_data = ExtResource("2_blsm7")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=1505285677]
 y_sort_enabled = true

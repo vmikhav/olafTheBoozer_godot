@@ -3,7 +3,7 @@ extends Resource
 
 # Basic movement data
 var position: Vector2i
-var direction: TileSet.CellNeighbor = -1
+var direction: TileSet.CellNeighbor
 
 # Trail data
 var trails: Array[Dictionary] = []  # {position: Vector2i, cell: Vector2i}

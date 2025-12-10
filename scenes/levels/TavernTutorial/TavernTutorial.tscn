@@ -1,11 +1,13 @@
-[gd_scene load_steps=4 format=4 uid="uid://lix6iem5d0ce"]
+[gd_scene load_steps=5 format=4 uid="uid://lix6iem5d0ce"]
 
 [ext_resource type="Script" uid="uid://dbg5nhuujbco5" path="res://scenes/levels/TavernTutorial/TavernTutorial.gd" id="1_7xgat"]
+[ext_resource type="Resource" uid="uid://dd3iv060dkhw3" path="res://scenes/levels/TavernTutorial/TavernTutorial.tres" id="2_5xirq"]
 [ext_resource type="TileSet" uid="uid://bkacfi56tmg8i" path="res://tilesets/puzzle_tileset.tres" id="2_oo3bk"]
 [ext_resource type="PackedScene" uid="uid://bx2syps2qmyxq" path="res://scenes/sprites/Demolitonist/Demolitonist.tscn" id="3_qb2ki"]
 
 [node name="TavernTutorial" type="Node2D" unique_id=1864347108]
 script = ExtResource("1_7xgat")
+level_data = ExtResource("2_5xirq")
 
 [node name="Ground" type="TileMapLayer" parent="." unique_id=492551207]
 y_sort_enabled = true

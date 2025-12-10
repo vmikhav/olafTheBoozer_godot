@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=9 format=3 uid="uid://dd3iv060dkhw3"]
+
+[ext_resource type="Script" uid="uid://derqluum4reuq" path="res://resources/Changeset.gd" id="1_364vu"]
+[ext_resource type="Script" uid="uid://b6txe1yuan4kl" path="res://resources/GhostData.gd" id="2_bg8nl"]
+[ext_resource type="Script" uid="uid://dr42rnusvb6wa" path="res://resources/LevelData.gd" id="3_rwgdg"]
+[ext_resource type="Script" uid="uid://cq7p6ru88x6ak" path="res://resources/TeleportData.gd" id="4_2f25s"]
+[ext_resource type="Script" uid="uid://cxgfyhayvwn3c" path="res://resources/Trigger.gd" id="5_f0w4f"]
+
+[sub_resource type="Resource" id="Resource_364vu"]
+script = ExtResource("2_bg8nl")
+position = Vector2i(3, 1)
+mode = 2
+metadata/_custom_type_script = "uid://b6txe1yuan4kl"
+
+[sub_resource type="Resource" id="Resource_bg8nl"]
+script = ExtResource("2_bg8nl")
+position = Vector2i(-7, 1)
+mode = 5
+metadata/_custom_type_script = "uid://b6txe1yuan4kl"
+
+[sub_resource type="Resource" id="Resource_rwgdg"]
+script = ExtResource("2_bg8nl")
+position = Vector2i(1, -2)
+metadata/_custom_type_script = "uid://b6txe1yuan4kl"
+
+[resource]
+script = ExtResource("3_rwgdg")
+hero_start_position = Vector2i(-2, 0)
+camera_limit = Rect2i(-304, -192, 608, 352)
+ghosts = Array[ExtResource("2_bg8nl")]([SubResource("Resource_364vu"), SubResource("Resource_bg8nl"), SubResource("Resource_rwgdg")])
+metadata/_custom_type_script = "uid://dr42rnusvb6wa"

@@ -37,8 +37,8 @@ func _ready() -> void:
 		elif next_location == "tavern":
 			go_to_tavern()
 		#scene_transaction.change_scene("res://scenes/game/AdventurePlayground/AdventurePlayground.tscn", {
-		#	levels = ["StartTavern"],
-		#	#levels = ["Tutorial0", "Kitchen", "Library", "Cellar", "Tavern"],
+		#	levels = ["Demo/StartTavern"],
+		#	#levels = ["Demo/Tutorial0", "Demo/Kitchen", "Demo/Library", "Demo/Cellar", "Demo/Tavern"],
 		#})
 	)
 
@@ -47,7 +47,7 @@ func go_to_sawmill():
 	await hero.follow_comlete
 	await get_tree().create_timer(1).timeout
 	scene_transaction.change_scene("res://scenes/game/Playground/Playground.tscn", {
-		levels = ["SawmillYard"],
+		levels = ["Demo/SawmillYard"],
 	})
 
 func go_to_tavern():
@@ -55,5 +55,5 @@ func go_to_tavern():
 	await $Hero.follow_comlete
 	await get_tree().create_timer(1).timeout
 	scene_transaction.change_scene("res://scenes/game/AdventurePlayground/AdventurePlayground.tscn", {
-		levels = ["RepairedTavern"],
+		levels = ["Demo/RepairedTavern"],
 	})

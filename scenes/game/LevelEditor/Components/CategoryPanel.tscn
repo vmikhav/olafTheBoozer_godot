@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://qehfqtimbc43"]
+
+[node name="CategoryPanel" type="FoldableContainer" unique_id=702565206]
+
+[node name="TileGrid" type="GridContainer" parent="." unique_id=711521628]
+layout_mode = 2
+columns = 3

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://lvb3j1kc2j51"]
+
+[ext_resource type="Script" uid="uid://c1hploycaciq2" path="res://scenes/game/LevelEditor/Components/EditorGrid.gd" id="1_3wsgm"]
+
+[node name="EditorGrid" type="Node2D" unique_id=1282998110]
+script = ExtResource("1_3wsgm")

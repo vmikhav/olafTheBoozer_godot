@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bsdod48r55hxb"]
+
+[ext_resource type="Script" uid="uid://dxlay1jfsfknh" path="res://scenes/game/LevelEditor/Components/EditorCursor.gd" id="1_e5jkn"]
+
+[node name="EditorCursor" type="Node2D" unique_id=234361172]
+script = ExtResource("1_e5jkn")

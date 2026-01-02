@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://mh2ofd0aqjkw"]
+
+[ext_resource type="Script" uid="uid://ikvcb60nd1vd" path="res://scenes/game/LevelEditor/Components/TilePalette.gd" id="1_x5b04"]
+
+[node name="TilePalette" type="VBoxContainer" unique_id=412744814]
+script = ExtResource("1_x5b04")
+
+[node name="PaletteLabel" type="Label" parent="." unique_id=1619071806]
+layout_mode = 2
+text = "Tile Palette"
+
+[node name="HSeparator" type="HSeparator" parent="." unique_id=983231850]
+layout_mode = 2
+
+[node name="CategoryDropdown" type="OptionButton" parent="." unique_id=1904408926]
+layout_mode = 2
+
+[node name="SearchBar" type="LineEdit" parent="." unique_id=371679800]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=867631143]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TileGrid" type="GridContainer" parent="ScrollContainer" unique_id=1233305982]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+columns = 4

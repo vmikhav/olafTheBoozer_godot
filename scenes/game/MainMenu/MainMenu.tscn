@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://df525dujavlyd"]
+[gd_scene format=3 uid="uid://df525dujavlyd"]
 
 [ext_resource type="Script" uid="uid://crsmg8g5yemts" path="res://scenes/game/MainMenu/MainMenu.gd" id="1_7fekw"]
 [ext_resource type="FontFile" uid="uid://b24q2b3mx6mx7" path="res://assets/fonts/press-start-2p-v6.woff2" id="1_87rnb"]

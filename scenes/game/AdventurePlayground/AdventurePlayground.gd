@@ -14,10 +14,10 @@ var is_level_finished: bool = false
 
 var level_index = 0
 var levels = [
-	#"Tutorial0",
-	"StartTavern",
-	"CleanedTavern",
-	"RepairedTavern"
+	"Demo/Tutorial0",
+	"Demo/StartTavern",
+	"Demo/CleanedTavern",
+	"Demo/RepairedTavern"
 ]
 
 # Called when the node enters the scene tree for the first time.
@@ -62,7 +62,10 @@ func load_level(level_name: String):
 	if level != null:
 		level.queue_free()
 	is_level_finished = false
-	var path := "res://scenes/adventures/" + level_name + "/" + level_name + ".tscn"
+	var parts = level_name.split("/")
+	var bucket = parts[0] as String
+	var inner_name = parts[1] as String
+	var path = "res://scenes/adventures/" + bucket + "/" + inner_name + "/" + inner_name + ".tscn"
 	if !ResourceLoader.exists(path):
 		push_error("Level " + level_name + " not found")
 		exit_levels()

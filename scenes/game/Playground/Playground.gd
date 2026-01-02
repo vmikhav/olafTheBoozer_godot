@@ -19,17 +19,17 @@ var level_progress_report: LevelProgressReport
 
 var level_index = 0
 var levels = [
-	#"Tutorial0",
-	"Tavern",
-	"TavernTutorial",
-	"Cellar",
-	"SawmillDemon",
-	"TavernKitchen",
-	"SawmillYard",
-	"TavernWarehouse",
-	"TutorialBarrel",
-	"Kitchen",
-	"Library",
+	#"Demo/Tutorial0",
+	"Demo/Tavern",
+	"Demo/TavernTutorial",
+	"Demo/Cellar",
+	"Demo/SawmillDemon",
+	"Demo/TavernKitchen",
+	"Demo/SawmillYard",
+	"Demo/TavernWarehouse",
+	"Demo/TutorialBarrel",
+	"Demo/Kitchen",
+	"Demo/Library",
 ]
 var next_scene: Array = []
 
@@ -191,12 +191,16 @@ func close_menu():
 	get_tree().paused = false
 
 func get_level_path(_name: String) -> String:
-	var level_name = _name
-	return "res://scenes/levels/" + level_name + "/" + level_name + ".tscn"
+	var parts = _name.split("/")
+	var bucket = parts[0] as String
+	var inner_name = parts[1] as String
+	return "res://scenes/levels/" + bucket + "/" + inner_name + "/" + inner_name + ".tscn"
 
 func get_level_intro_path(_name: String) -> String:
-	var level_name = _name
-	return "res://scenes/levels/" + level_name + "/" + level_name + "_intro.tscn"
+	var parts = _name.split("/")
+	var bucket = parts[0] as String
+	var inner_name = parts[1] as String
+	return "res://scenes/levels/" + bucket + "/" + inner_name + "/" + inner_name + "_intro.tscn"
 
 func play_sfx(key: String):
 	AudioController.play_sfx(key)

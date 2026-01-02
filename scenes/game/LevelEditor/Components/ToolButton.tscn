@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://8s3wopmlhx56"]
+
+[node name="ToolButton" type="Button" unique_id=272753310]
+custom_minimum_size = Vector2(56, 56)
+toggle_mode = true

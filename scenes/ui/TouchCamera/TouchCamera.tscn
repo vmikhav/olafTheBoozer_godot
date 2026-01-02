@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ias8gsdjebhw"]
+[gd_scene format=3 uid="uid://ias8gsdjebhw"]
 
 [ext_resource type="Script" uid="uid://4v1wh7fy8lj5" path="res://scenes/ui/TouchCamera/TouchCamera.gd" id="1_6mwe6"]
 
-[node name="TouchCamera" type="Camera2D"]
+[node name="TouchCamera" type="Camera2D" unique_id=850416879]
 script = ExtResource("1_6mwe6")
 
-[node name="ResetTimer" type="Timer" parent="."]
+[node name="ResetTimer" type="Timer" parent="." unique_id=220847696]

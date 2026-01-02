@@ -28,7 +28,7 @@ var ghosts = []
 var teleports = []
 var camera_limit := Rect2i(-1000000, -1000000, 2000000, 2000000)
 var level_type : LevelDefinitions.LevelType = LevelDefinitions.LevelType.BACKWARD
-var next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["Tutorial0"]}]
+var next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["Demo/Tutorial0"]}]
 
 # local variables
 var hero_position: Vector2i

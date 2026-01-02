@@ -6,6 +6,7 @@ extends Camera2D
 @export var touch_sensitivity: float = 1.0
 @export var wheel_zoom_sensitivity: float = 0.1
 @export var pinch_zoom_sensitivity: float = 0.02
+@export var ignore_input: bool = false
 
 @export_group("Zoom Settings")
 @export var min_zoom: float = 1
@@ -138,6 +139,7 @@ func get_clamped_position(pos: Vector2) -> Vector2:
 	return clamped_pos
 
 func _unhandled_input(event: InputEvent) -> void:
+	if ignore_input: return
 	match event:
 		var e when e is InputEventScreenTouch:
 			handle_touch(e)

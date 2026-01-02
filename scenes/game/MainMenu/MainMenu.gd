@@ -49,8 +49,8 @@ func start_game():
 	#scene_transition.change_scene("res://scenes/game/Intro/Intro.tscn")
 	#scene_transition.change_scene("res://scenes/world/WolrdMap/WorldMapInteractive.tscn")
 	scene_transition.change_scene("res://scenes/game/AdventurePlayground/AdventurePlayground.tscn", {
-		levels = ["Tutorial0"],
-		#levels = ["Tutorial0", "Kitchen", "Library", "Cellar", "Tavern"],
+		levels = ["Demo/Tutorial0"],
+		#levels = ["Demo/Tutorial0", "Demo/Kitchen", "Demo/Library", "Demo/Cellar", "Demo/Tavern"],
 	})
 
 func open_credits():

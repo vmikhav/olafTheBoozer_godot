@@ -69,14 +69,14 @@ func _move_along_path(target_offset: float):
 func _update_character_position(new_offset: float):
 	path_follow.progress = new_offset
 
-func play(name: StringName = &"", custom_speed: float = 1.0, from_end: bool = false):
-	shadow.play(name, custom_speed, from_end)
-	base.play(name, custom_speed, from_end)
-	body.play(name, custom_speed, from_end)
-	legs.play(name, custom_speed, from_end)
-	shoes.play(name, custom_speed, from_end)
-	beard.play(name, custom_speed, from_end)
-	hair.play(name, custom_speed, from_end)
+func play(_name: StringName = &"", custom_speed: float = 1.0, from_end: bool = false):
+	shadow.play(_name, custom_speed, from_end)
+	base.play(_name, custom_speed, from_end)
+	body.play(_name, custom_speed, from_end)
+	legs.play(_name, custom_speed, from_end)
+	shoes.play(_name, custom_speed, from_end)
+	beard.play(_name, custom_speed, from_end)
+	hair.play(_name, custom_speed, from_end)
 
 func flip(_value: bool):
 	shadow.flip_h = _value

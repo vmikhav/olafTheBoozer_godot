@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://duxweqkm65myi"]
-
-[ext_resource type="Script" uid="uid://c7j38cq127w7o" path="res://scenes/game/LevelSolver/LevelSolver.gd" id="1_dg0ym"]
-
-[node name="LevelSolver" type="Node2D" unique_id=1542362184]
-script = ExtResource("1_dg0ym")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d3mrdy6u0wq1"]
+
+[ext_resource type="Script" uid="uid://e5q74ly2jq8c" path="res://scenes/game/LevelEditor/Components/LayerPanel.gd" id="1_w6ej8"]
+
+[node name="LayerPanel" type="VBoxContainer" unique_id=819830182]
+script = ExtResource("1_w6ej8")
+
+[node name="LayerLabel" type="Label" parent="." unique_id=78834374]
+layout_mode = 2
+text = "Layers"
+
+[node name="HSeparator" type="HSeparator" parent="." unique_id=1089845171]
+layout_mode = 2
+
+[node name="LayerList" type="VBoxContainer" parent="." unique_id=621493158]
+layout_mode = 2

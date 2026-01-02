@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://2gngn40cold4"]
+[gd_scene format=3 uid="uid://2gngn40cold4"]
 
 [ext_resource type="Script" uid="uid://1n7pftc673xb" path="res://scenes/game/AdventurePlayground/AdventurePlayground.gd" id="1_302fe"]
 [ext_resource type="Texture2D" uid="uid://dxw54ee33wbrm" path="res://assets/images/back.png" id="2_ah7wg"]
@@ -49,9 +49,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-split_offset = -700
+split_offsets = PackedInt32Array(-700)
 dragging_enabled = false
 dragger_visibility = 1
+split_offset = -700
 
 [node name="Control" type="Control" parent="UiLayer/HSplitContainer" unique_id=1204286400]
 layout_mode = 2
@@ -60,9 +61,10 @@ size_flags_horizontal = 3
 [node name="HSplitContainer" type="HSplitContainer" parent="UiLayer/HSplitContainer" unique_id=1133196736]
 layout_mode = 2
 size_flags_horizontal = 3
-split_offset = 1400
+split_offsets = PackedInt32Array(1400)
 dragging_enabled = false
 dragger_visibility = 1
+split_offset = 1400
 
 [node name="HudContainer" type="MarginContainer" parent="UiLayer/HSplitContainer/HSplitContainer" unique_id=1375483908]
 unique_name_in_owner = true

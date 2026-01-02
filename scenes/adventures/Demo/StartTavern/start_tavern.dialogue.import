@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://vp6jhrnew26b"
+path="res://.godot/imported/start_tavern.dialogue-06fa775bbfd75372e571f46fc2ed7168.tres"
+
+[deps]
+
+source_file="res://scenes/adventures/Demo/StartTavern/start_tavern.dialogue"
+dest_files=["res://.godot/imported/start_tavern.dialogue-06fa775bbfd75372e571f46fc2ed7168.tres"]
+
+[params]
+
+defaults=true

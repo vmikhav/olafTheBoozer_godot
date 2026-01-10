@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://bpynnapmnly67"
+path="res://.godot/imported/stables.dialogue-6041abcb96183f1c05b31af22f347b0d.tres"
+
+[deps]
+
+source_file="res://scenes/adventures/Stables/stables.dialogue"
+dest_files=["res://.godot/imported/stables.dialogue-6041abcb96183f1c05b31af22f347b0d.tres"]
+
+[params]
+
+defaults=true

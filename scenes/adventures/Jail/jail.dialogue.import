@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://n5t6des2m64x"
+path="res://.godot/imported/jail.dialogue-b4c8b189e34412789d89be7c863a15eb.tres"
+
+[deps]
+
+source_file="res://scenes/adventures/Jail/jail.dialogue"
+dest_files=["res://.godot/imported/jail.dialogue-b4c8b189e34412789d89be7c863a15eb.tres"]
+
+[params]
+
+defaults=true

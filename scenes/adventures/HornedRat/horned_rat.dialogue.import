@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://dhuixt37e2kdq"
+path="res://.godot/imported/horned_rat.dialogue-a2b42987f47d0974938c3761f72f3aef.tres"
+
+[deps]
+
+source_file="res://scenes/adventures/HornedRat/horned_rat.dialogue"
+dest_files=["res://.godot/imported/horned_rat.dialogue-a2b42987f47d0974938c3761f72f3aef.tres"]
+
+[params]
+
+defaults=true

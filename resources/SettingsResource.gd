@@ -12,4 +12,5 @@ var music_volume: float = -6
 var music_muted: bool = false
 var touch_control: bool = false
 var language: String = "en"
+var dialogue_mode: int = 0
 var uid: String = "1"

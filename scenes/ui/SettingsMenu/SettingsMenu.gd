@@ -7,6 +7,7 @@ extends MarginContainer
 @onready var music_slider: HSlider = %MusicSlider
 @onready var drink_dropdown: CustomDropdown = %DrinkDropdown
 @onready var language_dropdown: CustomDropdown = %LanguageDropdown
+@onready var dialogue_dropdown: CustomDropdown = %DialogueDropdown
 @onready var touch_checkbox: CheckButton = %TouchCheckButton
 @onready var close_button: Button = %CloseButton
 @onready var background: ColorRect = $ColorRect
@@ -26,12 +27,14 @@ func _ready():
 	music_slider.value = db_to_linear(SettingsManager.settings.music_volume)
 	drink_dropdown.selected_index = 1 if SettingsManager.settings.burps_muted else 0
 	language_dropdown.selected_index = SettingsManager.get_language_index()
+	dialogue_dropdown.selected_index = SettingsManager.settings.dialogue_mode
 	touch_checkbox.button_pressed = SettingsManager.get_touch_control()
 	sfx_slider.value_changed.connect(update_sfx_volume)
 	voices_slider.value_changed.connect(update_voice_volume)
 	music_slider.value_changed.connect(update_music_volume)
 	drink_dropdown.item_selected.connect(update_drink)
 	language_dropdown.item_selected.connect(update_language)
+	dialogue_dropdown.item_selected.connect(update_dialogue_mode)
 	touch_checkbox.pressed.connect(update_touch_control)
 	close_button.pressed.connect(close_modal)
 	
@@ -44,6 +47,7 @@ func _ready():
 	music_slider.focus_entered.connect(reset_label_highlight.bind(%MusicLabel))
 	drink_dropdown.focus_entered.connect(reset_label_highlight.bind(%DrinkLabel))
 	language_dropdown.focus_entered.connect(reset_label_highlight.bind(%LanguageLabel))
+	dialogue_dropdown.focus_entered.connect(reset_label_highlight.bind(%DialogueLabel))
 	touch_checkbox.focus_entered.connect(reset_label_highlight.bind(%TouchLabel))
 	close_button.focus_entered.connect(reset_label_highlight)
 	
@@ -83,6 +87,9 @@ func update_drink(value: int):
 
 func update_language(value: int):
 	SettingsManager.update_language(value)
+
+func update_dialogue_mode(value: int):
+	SettingsManager.update_dialogue_mode(value)
 
 func update_touch_control():
 	SettingsManager.update_touch_control(touch_checkbox.button_pressed)

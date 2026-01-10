@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://ffwxlj40oocb"
+path="res://.godot/imported/wig_shop.dialogue-cc28aeac1863ed2298ae12d04c16e338.tres"
+
+[deps]
+
+source_file="res://scenes/adventures/WigShop/wig_shop.dialogue"
+dest_files=["res://.godot/imported/wig_shop.dialogue-cc28aeac1863ed2298ae12d04c16e338.tres"]
+
+[params]
+
+defaults=true

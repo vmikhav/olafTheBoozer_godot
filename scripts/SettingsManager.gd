@@ -25,6 +25,7 @@ func _ready():
 	update_music_mute(settings.music_muted)
 	update_voice_mute(settings.voice_muted)
 	update_language(get_language_index())
+	update_dialogue_mode(settings.dialogue_mode)
 	skip_save = false
 
 func update_sfx_mute(value: bool):
@@ -97,6 +98,12 @@ func update_language(value: int):
 		value = 0
 	settings.language = languages[value]
 	TranslationServer.set_locale(settings.language)
+	save_settings()
+
+func update_dialogue_mode(value: int):
+	if value < 0 or value >= 2:
+		value = 0
+	settings.dialogue_mode = value
 	save_settings()
 
 func save_settings():

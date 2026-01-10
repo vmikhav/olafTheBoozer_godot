@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cq5em4h4ty1ed"
+path="res://.godot/imported/mansion.dialogue-190bfac43dcd2d2feab3c2880698c8c5.tres"
+
+[deps]
+
+source_file="res://scenes/adventures/Mansion/mansion.dialogue"
+dest_files=["res://.godot/imported/mansion.dialogue-190bfac43dcd2d2feab3c2880698c8c5.tres"]
+
+[params]
+
+defaults=true

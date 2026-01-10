@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://cp0rljr35qd0"
+path="res://.godot/imported/elves_settlement.dialogue-226f779f87df2381a9415eb41c3acb08.tres"
+
+[deps]
+
+source_file="res://scenes/adventures/ElvesSettlement/elves_settlement.dialogue"
+dest_files=["res://.godot/imported/elves_settlement.dialogue-226f779f87df2381a9415eb41c3acb08.tres"]
+
+[params]
+
+defaults=true

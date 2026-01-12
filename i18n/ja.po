@@ -1,0 +1,1443 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: OlafTheBoozer-ggo2022\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2026-01-11 19:29+0200\n"
+"Last-Translator: \n"
+"Language-Team: Japanese\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.7\n"
+
+#. TRANSLATORS: Ім’я персонажа
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "dialogue"
+msgid "Олаф"
+msgstr "オラフ"
+
+#. TRANSLATORS: Ім’я персонажа
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "dialogue"
+msgid "СМЕРТЬ"
+msgstr "死神"
+
+#. TRANSLATORS: Ім’я персонажа
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "dialogue"
+msgid "Торвін Круторіг"
+msgstr "トルヴィン・クラッグアイアン"
+
+#. TRANSLATORS: Ім’я персонажа
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "dialogue"
+msgid ""
+msgstr " "
+
+#. TRANSLATORS: Ім’я персонажа
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "dialogue"
+msgid "Клім"
+msgstr "クリム"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t113c272c47"
+msgid "Де я? Що сталося? Трясця… Нічого не пам’ятаю! Таки здається вчора перебрав…"
+msgstr "ここはどこだ？何が起きた？畜生…何も思い出せねぇ！昨夜はちとやりすぎちまったようだな…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЗАЧЕКАЙ_ХТО_ТИ_7D6732"
+msgid "Зачекай… Хто ти?"
+msgstr "待て…てめぇ、誰だ？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "Я_СМЕРТЬ_4A1C28"
+msgid "Я — СМЕРТЬ."
+msgstr "私は「死」だ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "АГА_КОСА_ЗДАЄТЬСЯ_ВИДАЛА_ТЕБЕ_008E6C"
+msgid "…Ага. Коса, здається, видала тебе."
+msgstr "…へっ。その大鎌を見りゃ、なんとなく察しはつくがな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЗАЗВИЧАЙ_СМЕРТНІ_БАЧАТЬ_МЕНЕ_Л_7E60ED"
+msgid "ЗАЗВИЧАЙ СМЕРТНІ БАЧАТЬ МЕНЕ ЛИШЕ ОДИН РАЗ."
+msgstr "通常、定命の者が私を目にするのは一度きりだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "АЛЕ_МИНУЛА_НІЧ_БУЛА_ЦІКАВОЮ_80B46B"
+msgid "АЛЕ МИНУЛА НІЧ БУЛА… ЦІКАВОЮ."
+msgstr "だが、昨夜は…興味深かった。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "У_ТЕБЕ_Є_УГОДА_ЯКУ_ТРЕБА_ВИКОН_4954DF"
+msgid "У ТЕБЕ Є УГОДА, ЯКУ ТРЕБА ВИКОНАТИ. І ТИ… ЗАГУБИВ ЩОСЬ ВАЖЛИВЕ."
+msgstr "お前には果たすべき契約がある。だが…何か重要なものを失くしたようだな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "БУЛО_Б_ШКОДА_ЯКБИ_ТВОЯ_ІСТОРІЯ_75A5D9"
+msgid "БУЛО Б ШКОДА, ЯКБИ ТВОЯ ІСТОРІЯ ЗАКІНЧИЛАСЯ ЧЕРЕЗ ТАКУ ДРІБНИЦЮ."
+msgstr "そんな些細なことでお前の物語が終わるのは、少々惜しい。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "А_МЕНІ_ЦІКАВО_ЧИ_ВСТИГНЕШ_C0B2E1"
+msgid "А МЕНІ… ЦІКАВО, ЧИ ВСТИГНЕШ."
+msgstr "私は…お前がどう転ぶか興味があるのだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ТОЖ_Я_ВИРІШИВ_ЗРОБИТИ_ТОБІ_ПОС_58F170"
+msgid "ТОЖ Я ВИРІШИВ ЗРОБИТИ ТОБІ ПОСЛУГУ."
+msgstr "ゆえに、ひとつ情けをかけてやることにした。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ПОСЛУГУ_ВІД_СМЕРТІ_ЦЕ_ЗАСПОКОЮ_66EE14"
+msgid "Послугу? Від Смерті? Це… заспокоює."
+msgstr "情け？死神様がか？そいつは…ありがてぇ話だな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "Я_ДАВ_ТОБІ_ЗДІБНІСТЬ_ВІДТВОРЮВ_9AFE03"
+msgid "Я ДАВ ТОБІ ЗДІБНІСТЬ ВІДТВОРЮВАТИ ПОДІЇ МИНУЛОЇ НОЧІ, КРОК ЗА КРОКОМ — ПОЧИНАЮЧИ З КІНЦЯ."
+msgstr "お前に、昨夜の出来事を一歩ずつ、終わりから順に思い出す能力を授けよう。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЗНАЙДИ_ТЕ_ЩО_ВТРАТИВ_ВСТИГНИ_Д_176C2C"
+msgid "ЗНАЙДИ ТЕ, ЩО ВТРАТИВ. ВСТИГНИ ДО СВОГО ТЕРМІНУ."
+msgstr "失ったものを見つけ出せ。期限に間に合わせるのだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "І_НАМАГАЙСЯ_НЕ_ПРИЙТИ_ДО_МЕНЕ_BDA3DE"
+msgid "І НАМАГАЙСЯ НЕ ПРИЙТИ ДО МЕНЕ ЗНОВУ НАДТО ШВИДКО."
+msgstr "そして、あまり早く私のもとへ戻って来ぬよう励むことだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "О_ЦЕ_ДУЖЕ_ЛЮБ_ЯЗНО_З_ТВОГО_БОК_DB5E87"
+msgid "О. Це… дуже люб’язно з твого боку."
+msgstr "お、おう。そいつは…随分なご配慮痛み入るぜ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "Я_НАМАГАЮСЯ_A38702"
+msgid "Я НАМАГАЮСЯ."
+msgstr "そのつもりだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "У_ТЕБЕ_МАЛО_ЧАСУ_027F06"
+msgid "У ТЕБЕ МАЛО ЧАСУ."
+msgstr "時間がないぞ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ТИ_МАЄШ_НА_УВАЗІ_В_ПЕРЕНОСНОМУ_0F6EF4"
+msgid "Ти маєш на увазі… в переносному сенсі, так?"
+msgstr "それって…比喩的な意味だよな、おい？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "НІ_D8D68D"
+msgid "НІ."
+msgstr "いいや。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tb3fda6061e"
+msgid "Сподіваюсь, тобі соромно за те, що ти тут накоїв минулої ночі, друже!"
+msgstr "昨夜ここでしでかしたことを、反省してるといいんだがな、兄弟！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t47ed6a1069"
+msgid "Останнє слово Торвін промовляє з особливою різкістю. Він дивиться на тебе з-під лоба, старанно протираючи ганчіркою напівзламану барну стійку."
+msgstr "トルヴィンは最後の言葉を殊更に鋭く言い放つ。彼は眉をひそめてお前を睨みつけながら、ぼろ布で半壊したカウンターを丹念に拭いている。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ta20fa9ce91"
+msgid "Перепрошую, та я нічого не пам’ятаю."
+msgstr "悪いが、何も覚えちゃいねぇんだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t02868a0da3"
+msgid "Ха! Мені ніколи не соромно! Особливо за те, чого я не пам’ятаю!"
+msgstr "ハッ！俺に「恥」なんて言葉はねぇ！特に、覚えちゃいねぇことについてはな！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t7065160959"
+msgid "А? Хто? Я? За що?"
+msgstr "あ？誰が？俺か？何をしたって？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "te71e8ffa05"
+msgid "То тобі пам’ять відшибло? А з іншого боку, чого я дивуюсь! Когось іншого така кількість випитого відправила б на той світ. А в тебе всього-на-всього провал в пам’яті… Так чи інакше, я тобі злиняти не дам! Ти мені заплатиш за весь той розгардіяш, що ви тут вночі наробили."
+msgstr "記憶が飛んだってのか？ま、驚くことじゃねぇか！あれだけ飲みゃ、普通ならあの世行きだが、お前ときたら記憶喪失ですむとはな…。どのみち、トンズラはさせねぇぞ！お前らが昨夜ここでやらかした騒ぎのツケは、きっちり払ってもらうからな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t12b6980f97"
+msgid "Ви бачите кілька пляшок пива, які стоять тут ще від учора"
+msgstr "昨日から放置されたままのビール瓶が数本見える"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t335e3bf4b0"
+msgid "Агов, друже! Та скільки можна? Трясця, правду кажуть: п’яниця – проспиться, а дурень – ніколи…"
+msgstr "おい、お前！いつまで寝てんだ？まったく、「酔っ払いは醒めるが、馬鹿は一生治らねぇ」とはよく言ったもんだ…。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t4a406cc786"
+msgid "Випити"
+msgstr "飲む"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t3c5513291e"
+msgid "Залишити як є"
+msgstr "そのままにする"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t6af4a5afe1"
+msgid "У каміні Ви знаходите напівзгорілий лежачий жужмом папірець. Видно лише кінець: '…амовлення має бути виконане не пізніше дня сонцестояння за дві години до коронації. У випадку будь-якого відхилення від термінів виконавець буде негайно страчений'"
+msgstr "暖炉の中に、半分焦げた紙くずが落ちているのを見つけた。辛うじて読めるのは最後の一文だけだ。「…注文の品は夏至の日、戴冠式の2時間前までに必ず納品すること。期限を少しでも過ぎた場合、請負人は即刻処刑されるものとする。」"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tb6bf3de2c8"
+msgid "Але ж я не один це все розгромив!"
+msgstr "だが、俺一人で全部壊したわけじゃねぇだろ！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tc9c0cff070"
+msgid "Твоя правда. Але ти єдиний, з кого я можу спитати, друже! Інші бовдури змогли допетрати, що їх чекає, тому ще вночі втекли. Ти єдиний, хто залишився тут ночувати. І ні розбудити, ні звести зі світу! Ось ми й чекали, поки сам оговтаєшся."
+msgstr "ご名答。だが、責任を取れるのはお前しか残ってねぇんだよ、兄弟！他のマヌケどもはヤバいと察して夜のうちに逃げ出しやがった。お前だけがここで高いびきかいてたんだ。叩いても起きねぇし、動かせもしねぇ！だからこうして、お前が自分で起きるのを待ってたってわけだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t06241b004f"
+msgid "Дідько… Здається, я вляпався по самі вуса."
+msgstr "畜生…こりゃ髭の先までどっぷり浸かっちまったな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t5bd99f66c8"
+msgid "Ну я цим бевзеням ще таку прочуханку влаштую! Коли згадаю, як вони виглядали…"
+msgstr "あのバカどもめ、ただじゃおかねぇぞ！あいつらの顔を思い出せさえすればな…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t1e33823696"
+msgid "Зате мені гарно спалося."
+msgstr "おかげでよく眠れたぜ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tf18ce4b5de"
+msgid "Ага. То що, як розплачуватись будеш?"
+msgstr "そうかい。で、どうやって落とし前をつけるつもりだ？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t13dec8972c"
+msgid "Здається, я вчора все пропив. У кишенях зовсім порожньо."
+msgstr "昨夜全部飲んじまったみたいだ。ポケットはすっからかんだよ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t9e18e9a53c"
+msgid "Тоді нічого іншого не залишається. Я кличу вартових. Хай вже вони розбираються з тобою."
+msgstr "なら仕方ねぇ。衛兵を呼ぶ。あとはあいつらに任せるとするか。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t72644c82cc"
+msgid "Зачекай! Я можу все прибрати й полагодити! Я рукатий!"
+msgstr "待て！俺が片付けて直す！腕には自信があるんだ！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tf99dd49d5f"
+msgid "Та годі заливати! Мені потрібно, щоб все було рівно так, як було до цієї ночі. Це не так вже й просто."
+msgstr "ふん、誰が信じるかよ！昨夜の前と寸分違わず元通りにしなきゃなんねぇんだぞ。並大抵のことじゃねぇ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tc0267e167f"
+msgid "Але я все зроблю!"
+msgstr "だが、必ずやってみせる！誓う！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t85d52e7790"
+msgid "Хм, обіцяєш?"
+msgstr "ふむ、約束するか？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tebc6157c46"
+msgid "Обіцяю!"
+msgstr "約束する！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t057eda89c2"
+msgid "Вір мені! Я найвідповідальніший з усіх, кого ти коли-небудь бачив."
+msgstr "信じてくれ！俺ほど責任感のあるドワーフはいねぇぞ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ta26229f8cf"
+msgid "Ну… так."
+msgstr "まあ…そうだな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t5060265dd7"
+msgid "Що ж, добре, друже. Вірю. Але, щоб ти точно нікуди не втік і зробив все, як належно, я тобі ось, що розповім: є у мене дещо дуже важливе для тебе, хоч ти, здається, й сам про це забув. Поверну, тільки якщо зробиш все, як домовлялись."
+msgstr "よかろう、信じてやる。だがな、お前が逃げ出さず、仕事をきっちりこなすように一つ言っておくことがある。俺は、お前にとって「とてつもなく重要なもの」を預かってる。どうやらお前はそれすら忘れてるようだがな。約束を果たしたら返してやるよ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t64bda4f058"
+msgid "І ти мені не скажеш, що там?"
+msgstr "それが何かは教えてくれねぇのか？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t583b25071d"
+msgid "Ні. Хочу подивитись, як будеш стрибати від щастя, коли зрозумієш, від чого я тебе уберіг. А тепер досить базікати. Іди й берись до справи. Для початку, визволи-но малюка Кліма з кухні."
+msgstr "ああ、教えねぇよ。俺がお前を何から救ってやったかを知って、飛び上がって喜ぶマヌケ面が見たいからな。さあ無駄口は終わりだ。とっとと仕事にかかれ。まずは、チビのクリムを台所から出してやれ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tdbabd2416e"
+msgid "Кого-кого?"
+msgstr "誰だって？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t93d281443a"
+msgid "Нашого прибиральника, якого ви вночі затягнули у свої ігри, а потім заперли на кухні. Як розберешся з Клімом, повертайся."
+msgstr "ウチの清掃係だ。お前らが昨夜遊びに巻き込んで、そのまま台所に閉じ込めたんだよ。左のドアの向こうだ。クリムをどうにかしたら戻ってこい。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t2722d346ef"
+msgid "Дістань Кліма з кухні."
+msgstr "台所からクリムを救出する。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t6183ce8d2f"
+msgid "Ти бачиш перед собою простенькі дерев’яні двері, на яких висить табличка: “Кухня. Стороннім вхід заборонений”"
+msgstr "目の前に質素な木の扉がある。札には『厨房。関係者以外立入禁止』と書かれている。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t475d7d355c"
+msgid "Ти бачиш перед собою простенькі дерев’яні двері, на яких висить табличка: “Кухня. Стороннім вхід заборонений”. Що зробиш?"
+msgstr "目の前に質素な木の扉がある。札には『厨房。関係者以外立入禁止』と書かれている。どうする？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t0331b696a7"
+msgid "Постукати у двері."
+msgstr "扉をノックする。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t027e9c4570"
+msgid "Вдарити по дверях ногою."
+msgstr "扉を蹴り飛ばす。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t49c0783756"
+msgid "Закричати “Агов, невільнику!”"
+msgstr "「おい、囚人！」と叫ぶ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t55ca8dcd6f"
+msgid "Так-так? Хто там?"
+msgstr "はいはい？どなたです？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tdd207fdd73"
+msgid "Мене звати Олаф."
+msgstr "オラフ様だ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t6bf8a78c06"
+msgid "Це неважливо. Скажи краще, як ти туди попав, бовдуре?"
+msgstr "誰でもいいだろ。それより、なんでそんなとこに入ったんだ、マヌケ？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tdeff80ddeb"
+msgid "Це я."
+msgstr "俺だ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tdc4a7de79f"
+msgid "Пане Олафе, то це ви? Ви нарешті прокинулись? Як чудово! Тепер ви зможете мене звільнити! Знаєте, ми любо з вами грали в ночі, але зараз мені вже трохи не так весело. Не могли б ви відкрити двері, будь ласка? У вас мав би бути ключ, чи не так?"
+msgstr "オラフ様、あなたですか？やっと目が覚めたんですね！あぁ、よかった！これで出られます！あの、昨夜は楽しく遊びましたけど、今はちょっと笑えない状況でして…。扉を開けていただけませんか？鍵はオラフ様がお持ちのはずですので。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t94a9c55dd9"
+msgid "Кхм, маю тобі зізнатись… Я нічого не пам’ятаю з минулої ночі."
+msgstr "んー、正直に言うとだな…昨夜のことはさっぱり覚えてねぇんだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ta8585c5858"
+msgid "Правда? Це ж треба… Дозвольте тоді нагадати. Десь опівночі ви закрили мене тут, сказали, що це квест. Необхідно за годину вийти з кімнати, щоб перемогти. Та я трохи не впорався. Ви не пам’ятаєте цього?"
+msgstr "本当ですか？それはまた…では僭越ながら思い出させて差し上げます。真夜中頃、あなたは「これはクエストだ」と言って私をここに閉じ込めました。「1時間以内に脱出すればクリアだ」と。ですが、私は失敗してしまいまして…。覚えておいでではないですか？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t55759fffd6"
+msgid "Ні, аж ніяк. І я гадки не маю, де знайти ключ, про який ти говориш."
+msgstr "いや、全然。お前が言ってる鍵がどこにあるのかも検討がつかん。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t30f453c64d"
+msgid "Хм, пане, а ви ніде його в кишенях не залишали?"
+msgstr "ふむ…旦那様、ポケットの中などには入っておりませんか？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tca54b0b120"
+msgid "Мої кишені порожні, хлопче."
+msgstr "ポケットは空っぽだ、小僧。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tf8950a49b6"
+msgid "Це погані новини, пане. Не могли б ви пошукати в банній кімнаті? Це сусіднє приміщення."
+msgstr "それは困りましたね…。浴場を探してみてはいただけませんか？隣の部屋です。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "НАСКІЛЬКИ_Я_ВАС_ЧУВ_ВНОЧІ_КРІЗ_5953A3"
+msgid "Наскільки я вас чув вночі крізь двері, після того, як зачинити мене тут, ви пішли з іншими гістьми в баню. Здається хотіли зіграти в те, хто довше протримається під водою не дихаючи. Можливо, знімаючи одяг, ви десь там залишили ключі?"
+msgstr "扉越しに聞こえた様子では、私を閉じ込めた後、あなたは他の客と浴場へ向かわれました。「誰が一番長く水に潜っていられるか」を競うとかで。もしかすると、服を脱いだ時に鍵を置き忘れたのでは？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t03c1836cac"
+msgid "О, звучить весело, гарно я придумав! Та мабуть, не будемо зараз про це. Значить, банна кімната? Добре, я перевірю. Почекай тут."
+msgstr "おぉ、楽しそうじゃねぇか！俺のナイスアイデアだな！…ま、今はその話はいいか。浴場だな？よし、見てきてやる。待ってろ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t632496390c"
+msgid "Авжеж, пане. Де ж мені ще чекати..?"
+msgstr "もちろんです、旦那様。他に待つ場所もありませんので…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t8da260d6ac"
+msgid "Агов, хлопче! Я знайшов ключ."
+msgstr "おい小僧！鍵を見つけたぞ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t020ea62b4c"
+msgid "Чудово, пане! Відкривайте двері."
+msgstr "素晴らしいです！さあ、開けてください。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "td3c4173033"
+msgid "Ти вставляєш ключ і намагаєшся повернути його у замку, але механізм не піддається. Ти докладаєш додаткових зусиль. Ключ зрушується лише зовсім трохи. Ти докладаєш ще більше зусиль, аж раптом ключ ламається. У твоїх руках залишається лише його половина. Інша застрягла всередині."
+msgstr "鍵を差し込み回そうとするが、びくともしない。さらに力を込める。鍵はほんの少し動いた。さらに強く力を込めると、突然鍵が折れてしまった。手元には半分の鍵が残り、もう半分は鍵穴の中に詰まってしまった。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t24b6af8dbf"
+msgid "Кліме?"
+msgstr "クリム？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t0c0d4c2907"
+msgid "Кліме?"
+msgstr "おい、クリム？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t1b95aedb5b"
+msgid "Так?"
+msgstr "はい？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "td535e773bc"
+msgid "Я здається зламав ключ."
+msgstr "鍵を折っちまったみてぇだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "taaf01a9e38"
+msgid "Ти чуєш довгу паузу."
+msgstr "長い沈黙が流れる。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t4aa1dff0a5"
+msgid "Так-так, пане Олафе, я тут. Просто трохи, кхм, засмутився. Є інший варіант, якщо вже ви… якщо вже так сталося. У нас на другому поверсі має бути скринька з інструментами для різної дрібної роботи. У тому числі там має бути відмичка. Ви зможете дістати її?"
+msgstr "はい…はい、オラフ様、聞いております。ただ少々…その、ショックでして。ですが別の手があります、もし本当に…そうなってしまったのなら。2階に修理用の道具箱があるはずです。そこにピッキングツールも入っているかと。取ってきていただけますか？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t748e2c4a75"
+msgid "Так, звичайно. Коли у мене щось не виходило?"
+msgstr "ああ、任せろ。俺にできねぇことがあったか？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t60270ae1c3"
+msgid "Авжеж! Можеш покластися на мене! Я найнадійний дварф з усіх."
+msgstr "もちろんだ！大船に乗ったつもりでいろ！俺は世界一頼りになるドワーフだからな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t5c202d4f74"
+msgid "Якщо Торвін спитає, це ти замок зламав!"
+msgstr "もしトルヴィンに聞かれたら、鍵を壊したのはお前ってことにしとけよ！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t0b49f9d0de"
+msgid "Ви дотепний, пане! Усе обов’язково вийде. Я вірю у вас!"
+msgstr "冗談がお上手ですね！きっとうまくいきます。信じていますよ！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t51879b6279"
+msgid "Ти підходиш до дверей і чуєш, як звідти лунає тихий невмілий спів Кліма. З уривків тексту ти розумієш, що це дуже відома у всіх корчмах і тавернах  “Пісня несправедливо ув’язненого”. Ходять чутки, її написав бард, якого посадили на три дні за ґрати через пісню про слизькі коліна короля."
+msgstr "扉に近づくと、中からクリムの下手くそな鼻歌が聞こえてくる。歌詞の断片から、それが酒場で有名な『無実の囚人の歌』だとわかる。王様の膝がツルツルだという歌を歌って3日間投獄された吟遊詩人が作った、という噂の歌だ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "td970a228e8"
+msgid ""
+"В’язниця мене не змінила,\n"
+"В’язниця мене не зламала,\n"
+"Помий, люба, дай мені мила\n"
+"Щоб ти мою пику впізнала."
+msgstr ""
+"牢屋ごときじゃ俺は変わらねぇ\n"
+"牢屋ごときじゃ心は折れねぇ\n"
+"おーい母ちゃん、石鹸をくれ\n"
+"顔を洗わなきゃ誰だかわからねぇ"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t8df00b4d1b"
+msgid "Кліме, я повернувся."
+msgstr "クリム、戻ったぞ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t108eee147e"
+msgid "Гарно співаєш, хлопче."
+msgstr "いい歌声じゃねぇか、小僧。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t99ae1f2b70"
+msgid "А таку знаєш? Хто реве, як зранку кобилиці, той живе з відбитком ніг на пиці."
+msgstr "こういうのは知ってるか？『朝から馬みてぇにいななく奴は、顔面に靴跡つけて生きることになる』ってな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tba3bdddb14"
+msgid "О! Пане Олафе, ви повернулись! Вибачте за мій спів, не втримався. Як все пройшло?"
+msgstr "おっ！オラフ様、お戻りでしたか！すみません、つい歌ってしまいました。どうでしたか？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t7210962e72"
+msgid "Я знайшов відмичку. Зараз відкрию двері."
+msgstr "ピッキングツールを見つけた。今開けるぞ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "td49d735585"
+msgid "Усе трохи не так просто, пане."
+msgstr "そう簡単にはいかないようですね、旦那様。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t0071dce617"
+msgid "Тобто?"
+msgstr "どういうことだ？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t9c92859e11"
+msgid "Відкрийте двері, і ви побачите."
+msgstr "開けていただければわかります。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tb8b64bc0d4"
+msgid "Твоїм рукам добре знайома робота з інструментами. Трохи покрутивши в замку відмичку, ти швидко знаходиш потрібне положення. Двері відгукуються таким бажаним клацанням і привітно відкриваються перед тобою. Всередині ти помічаєш Клема, пришпиленого до стіни за комір."
+msgstr "お前の手は道具の扱いに慣れている。鍵穴の中で少しガチャガチャやると、すぐに手応えがあった。カチャリという心地よい音と共に、扉が開く。中には、襟首を壁に釘付けにされたクリムの姿があった。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t21c72f60e4"
+msgid "Дякую, пане, що допомогли мені! Тепер, коли я вільний, маю повернутись до роботи. Може не варто було вас підганяти…"
+msgstr "ありがとうございます、助かりました！自由になったからには仕事に戻らねば…あぁ、仕事に…。あなたを急かすべきじゃなかったかもしれませんね…。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t5c931a6620"
+msgid "Хто б міг подумати, що у створіння розміром з бочку вміщається вміст семи таких бочок…"
+msgstr "樽サイズの体に、樽7つ分の中身が入るとは誰も思わねぇよな…。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tde1ec4a7ae"
+msgid "Молодець, друже, гарна робота. Упевнений, малюк Клім цього не забуде. Він у нас хлопчина сентиментальний."
+msgstr "よくやったな、兄弟。クリムのやつ、一生恩に着るだろうよ。あいつは涙脆いからな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t5d0c43ac99"
+msgid "Мені трохи незручно перед ним. Малюк провів цілу ніч прибитим до стіни через мій нічний дудліж!"
+msgstr "少し悪いことしちまったな。俺の酔っ払いの悪ふざけで、一晩中壁に張り付けにされちまったんだからな！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tc8d38a66eb"
+msgid "Це лікується хорошою п’янкою!"
+msgstr "いい酒を飲みゃ、そんな罪悪感も治るさ！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tb8edca35a3"
+msgid "Що правда, то правда. Я теж помітив, що він септи… семти… сентамета… Так."
+msgstr "確かにな。俺もあいつが、せんち…せんて…センチメンタルだってのは気付いてたぜ。うん。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t1be9635c2d"
+msgid "Хоч би що там було, повернемось до справи. Наступним твоїм завданням буде навести ладу в підвалі."
+msgstr "ま、ともかくだ、仕事に戻るぞ。次の仕事は地下室の片付けだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tbca0e12d21"
+msgid "У підвалі? А там що було?"
+msgstr "地下室？あそこで何があったんだ？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t2cd24248b3"
+msgid "Коли в цій залі закінчилася випивка, ти сказав, що підеш у підвал, вичищати наші тамтешні запаси. Ніхто не спромігся тебе зупинити. Тепер всі підвальні приміщення схожі на поле бойових дій. Тобі треба повернути всі бочки на місця і навести там лад. Як закінчиш – повертайся до мене."
+msgstr "ホールの酒が切れた時、お前が「地下の在庫を飲み干してやる」って言い出してな。誰も止められなかったんだよ。おかげで地下は戦場みてぇな惨状だ。樽を元の場所に戻して、片付けてこい。終わったら戻ってきな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tfbc9bd1895"
+msgid "У підвалі все знов на своїх місцях, Торвіне!"
+msgstr "地下室は元通りだぜ、トルヴィン！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t278b431d6c"
+msgid "Так швидко? Гарна робота, друже. Що ж, тоді залишилось розібратись з цією залою. Тут багато зламаних столів і лав."
+msgstr "もうか？いい仕事だ、兄弟。よし、残るはこのホールだ。壊れたテーブルやベンチが山ほどあるぞ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t0de59b2339"
+msgid "Як це сталося? Хоча не впевнений, що насправді хочу знати…"
+msgstr "どうしてこうなったんだ？…いや、本当は知りたくもねぇが…。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "te72c71c328"
+msgid "Спочатку ти сидів доволі тихо. Ви з хлопцями грали за столом у “філе з п’ятьма пальцями”."
+msgstr "最初は大人しくしてたんだよ。お前と連中で、テーブルで「ファイブ・フィンガー・フィレ（指の間をナイフで突く度胸試し）」をやってたんだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tb55eb8eda8"
+msgid "Ти опускаєш очі на руки та помічаєш на пальцях з десяток свіжих порізів. Що ж, мабуть, штрикати ножем поміж пальців на п’яну голову таки не найкраще рішення…"
+msgstr "ふと自分の手を見ると、指に十数個の真新しい切り傷がある。なるほど、酔っ払って指の間をナイフで突っつくのは、賢い選択じゃなかったらしい…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t1131fd19a0"
+msgid "Але потім ти сказав, що тобі набридло сидіти на одному місці, тож ви почали грали у квача."
+msgstr "だがそのうち「じっとしてるのは飽きた」とか言い出して、鬼ごっこを始めたんだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "РОЗУМІЄШ_МОЇ_МЕБЛІ_ВИЯВИЛИСЬ_Н_0B0946"
+msgid "Розумієш, мої меблі виявились не готовими до того, щоб по них гопцювало юрмище людей, орків та дварфів. Тож тобі доведеться це все полагодити. Інструменти знайдеш на складі. Тільки цейво. Там трохи безлад, тому прийдеться добряче пошукати."
+msgstr "わかるだろ？ウチの家具は、人間やらオークやらドワーフの群れが飛び跳ねるようにはできてねぇんだよ。だからお前に全部直してもらう。道具は倉庫にある。ただな、あそこも少し散らかってるから、よく探さねぇといかんぞ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "td187bfe015"
+msgid "Як знайдеш інструменти і полагодиш меблі, підходь до мене."
+msgstr "道具を見つけて家具を直したら、俺のところへ来い。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t1a90a7f2a7"
+msgid "Справився? Гаразд, друже. Я майже готовий тебе пробачити. Втомився?"
+msgstr "終わったか？よし、兄弟。許してやってもいい気分になってきたぜ。疲れたか？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t8ba6d0c822"
+msgid "Анітрохи! Фізична праця допомагає швидше протверезіти."
+msgstr "全然！体を動かしたおかげで酔いが早く冷めたぜ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ta88a22726e"
+msgid "Та я вже не дочекаюсь, як звільнюсь від тебе!"
+msgstr "お前と縁が切れるのが待ち遠しいだけさ！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t7e79306b60"
+msgid "Я б чогось випив, якщо чесно."
+msgstr "正直言うと、一杯やりたい気分だ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t8e72eea441"
+msgid "Розумію, друже! У будь-якому разі у мене для тебе залишилось тільки одне завдання. Проте, маю визнати, воно буде найскладнішим. Тобі треба відремонтувати цю барну стійку. Моє дорогоцінне робоче місце! І не думай, що його можна полагодити так же ж просто, як інші столи в залі."
+msgstr "わかるぜ、兄弟！ともかく、残る仕事はあと一つだ。だが言っとくが、これが一番厄介だぞ。このバーカウンターを修理してもらう。俺の大事な商売道具だ！ホールのテーブルを直すほど簡単だとは思わねぇことだな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t2ac2669897"
+msgid "Цю стільницю виготовляли спеціально під моє замовлення з високоякісної деревини. З багаторічного дуба! Вирізали за допомогою новітніх деревообробних приладів з самого Рамаскору!"
+msgstr "この天板は最高級の木材を使った特注品なんだ。樹齢数百年のオーク材だぞ！ラマスコアから取り寄せた最新の木工機材で切り出したんだ！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЦЯ_СТІЛЬНИЦЯ_ПОКРИТА_ТОНКІШИМ_97BD6A"
+msgid "Ця стільниця покрита тонкішим шаром тандрійського лаку! Це справжній витвір мистецтва теслярської справи! Тож вона була дуже міцна і мала б служити мені ще багато років…"
+msgstr "タンドリア産のニスで薄くコーティングされててな！まさに大工仕事の芸術品だった！頑丈で、あと何年も使えるはずだったのによ…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t29397d725e"
+msgid "Овва, звучить, як дуже дорога штукенція."
+msgstr "へぇ、そりゃ随分と高そうな代物だな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t3a1e6c5ba3"
+msgid "Ха! Я зламав незламне! Внесу це в список своїх досягнень."
+msgstr "ハッ！俺は「壊れない物」を壊したってわけだ！武勇伝に加えとくぜ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "tf1a7fb2223"
+msgid "Ти дивний."
+msgstr "お前、変な奴だな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t759a3a2874"
+msgid "Ех, друже. Схоже ти так і не зрозумів, чому мені була так дорога ця стільниця. Але хай йому грець! Головне, що ти маєш винести з цієї розповіді, це те, що для ремонту стійки тобі потрібно дістати нову дуже особливу стільницю."
+msgstr "はぁ…兄弟。どうやらこの天板がどれだけ大事だったか、わかっちゃいねぇようだな。ま、いいさ！大事なのは、カウンターを直すには、代わりの「特別な天板」を手に入れなきゃならねぇってことだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t7ec92138c6"
+msgid "Замовити її можна тільки у неперевершеного майстра Гримлака Зватенбарга. Орка, що здатний на будь-яку роботу, що стосувалася б дерева. Від лісорубства до найтоншої слюсарської роботи! Я тобі навіть більше скажу: ви з ним навіть встигли познайомитись тут у корчмі вчора, але, б’юся на взаклад, ти не пам’ятаєш цього. Я правий?"
+msgstr "注文できるのは、比類なき職人、グリムラーク・ズワッテンバーグだけだ。木に関することなら伐採から繊細な細工まで何でもこなすオークだ！さらに言えば、お前らは昨夜この酒場で意気投合してたんだが…賭けてもいい、覚えちゃいねぇだろ？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t5ab80a7c0b"
+msgid "Правий. Але, коли ми з ним вже знайомі, діло має піти тільки швидше, так?"
+msgstr "正解だ。だが、もう知り合いなら話が早くていいじゃねぇか？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ta0c4efcb7d"
+msgid "Я б на твоєму місці не був у цьому таким впевненим, друже."
+msgstr "俺だったらそう楽観はしねぇけどな、兄弟。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t6963c5f7c4"
+msgid "Чому? Що сталося?"
+msgstr "なんでだ？何があった？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t2b3fd30d97"
+msgid "Слухай, я не знаю деталей. Але вночі я чув, як ви разом пішли до нього на лісопильню, що правда я так і не зрозумів, навіщо."
+msgstr "いいか、詳しいことは知らん。だが昨夜、二人で製材所へ行くって話してるのは聞いた。何しに行ったのかは知らんがな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "А_ЧЕРЕЗ_ПАРУ_ГОДИН_ВЖЕ_ДЕСЬ_ПІ_5BE256"
+msgid "А через пару годин, вже десь під ранок, ти повернувся один. Щось кричав про те, щоб я тобі ще наливав, бо в тебе горе. Щось між вами сталося, і тепер у тебе немає друга. Посварились, як я зрозумів. Є у мене підозра, що він буде не радий тебе бачити."
+msgstr "で、数時間後の明け方、お前は一人で戻ってきた。「悲しいからもっと酒をくれ」とか喚きながらな。何かがあったせいで、お前は友達を失ったってわけだ。喧嘩でもしたんだろ。あいつはお前に会えて喜ぶような状態じゃねぇと思うぜ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t69913f18c6"
+msgid "Я впевнений, сталося просто якесь непорозуміння. Ми поговоримо, і все буде добре! Тому чекай мене тут, Торвіне! Скоро я повернусь з твоєю любою деревиною, і ти залишиш мене нарешті у спокої!"
+msgstr "きっと何かの誤解さ。話せばわかる！だからここで待ってろ、トルヴィン！すぐにお前の大好きな木材を持って戻ってくる。そうすりゃ俺はやっと自由だ！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "t6c3439abc6"
+msgid "Хай так і буде, мій оптимістичний друже! Хай так і буде."
+msgstr "そうなることを祈るよ、楽天的な兄弟！そうなるとな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ОЛАФЕ_ДРУЖЕ_ТИ_ПОВЕРНУВСЯ_ДОВГ_17BEB8"
+msgid "Олафе, друже! Ти повернувся? Довго ж тебе не було. Я майже пішов за вартою…"
+msgstr "オラフ、兄弟！戻ったか？ずいぶん遅かったな。衛兵を呼びに行くところだったぞ…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ТИ_ПЕРЕДАЄШ_ТОРВІНУ_ЗРОБЛЕНУ_Г_8804B2"
+msgid "Ти передаєш Торвіну зроблену Гримлаком стільницю."
+msgstr "トルヴィンにグリムラークが作った天板を渡す。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "НАРЕШТІ_Я_ВІЛЬНИЙ_ТРИМАЙ_Я_ВИК_3E07CF"
+msgid "Нарешті! Я вільний! Тримай. Я виконав твоє прохання. Щоправда, захекався, як чорт! Земля йому тортурами, до речі…"
+msgstr "ついに！俺は自由だ！ほらよ。言われた通りにしたぞ。悪魔みたいにこき使われたがな！ちなみに、あいつが地獄に落ちますように…"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЗАРАЗ_НЕ_ЗРОЗУМІВ_ДРУЖЕ_CAC682"
+msgid "Зараз не зрозумів, друже."
+msgstr "最後のはよく聞こえなかったな、兄弟。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "НЕ_ЗВЕРТАЙ_УВАГИ_ТОБІ_ПІДХОДИТ_8DA673"
+msgid "Не звертай уваги. Тобі підходить стільниця?"
+msgstr "気にするな。天板はこれでいいか？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЩЕ_Б_ПАК_ГРИМЛАК_ПЕРЕВЕРШИВ_СА_0C73B5"
+msgid "Ще б пак! Гримлак перевершив сам себе! Вже не буду просити тебе її прибити, сам зроблю. Досить вже з тебе."
+msgstr "もちろんだ！グリムラークのやつ、最高の仕事をしやがった！取り付けろとは言わねぇよ、自分でやる。お前はもう十分やった。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "НУ_НАРЕШТІ_ХТОСЬ_ПОГОДИВСЯ_ЩО_C4EABE"
+msgid "Ну нарешті, хтось погодився, що з мене досить! Фух, це був страшенно довгий день. Спатиму без задніх ніг, згадуючи то все, як страшний сон. Тільки, Торвіне?"
+msgstr "やっと俺が十分やったと認める奴が現れたか！ふぅ、なんて長い一日だったんだ。泥のように眠って、全部悪い夢だったと思って忘れてやる。なあ、トルヴィン？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ЩО_63A3F1"
+msgid "Що?"
+msgstr "なんだ？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "НЕ_ВИКОРИСТОВУЙ_ДЛЯ_ЦІЄЇ_СТІЛЬ_EF62D1"
+msgid "Не використовуй для цієї стільниці звичайні цвяхи. Краще візьми приховані кріплення з шерійського сплаву. Шкода таку роботу паршивими матеріалами псувати."
+msgstr "この天板に普通の釘は使うなよ。シェリア合金の隠し留め具を使ったほうがいい。安物を使ってこんな傑作を台無しにするのは罪だからな。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ТИ_БАЧИШ_ЯК_ОБЛИЧЧЯ_ТОРВІНА_ВИ_E267DA"
+msgid "Ти бачиш, як обличчя Торвіна витягується, а потім потихеньку пом’якшується."
+msgstr "トルヴィンは呆気にとられた顔をしたが、次第に表情を緩ませた。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ОВВА_ТА_ТИ_СХОЖЕ_УСВІДОМИВ_ЦІН_10B400"
+msgid "Овва! Та ти схоже усвідомив цінність чужої роботи! Радий чути! Отож, ти більш ніж заслужив отримати свій приз."
+msgstr "おやおや！どうやら職人の仕事の価値ってのがわかるようになったみたいだな！嬉しいぜ！なら、お前はこいつを受け取るに十分値するってことだ。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ТОРВІН_НАХИЛЯЄТЬСЯ_ЩОБ_ДІСТАТИ_B1DB78"
+msgid "Торвін нахиляється, щоб дістати щось з-за барної стійки, і вже через мить перед тобою опиняється невелика вишукано оброблена скринька."
+msgstr "トルヴィンはカウンターの裏から何かを取り出すと、精巧な細工が施された小さな箱を目の前に置いた。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ПОКРИТА_ТОНКИМ_ШАРОМ_ЗОЛОТА_З_0CDE60"
+msgid "Покрита тонким шаром золота, з тонкою вирізкою по всій поверхні, вона сяє в мерехтливому світлі ліхтарів. Зверху ти бачиш бирку з охайно виведеним написом “Для Короля”. Раптом спогади затоплюють твою голову, і ти перелякано хапаєшся за волосся."
+msgstr "薄く金を施され、全面に繊細な彫刻が刻まれたその箱は、ランプの光を受けて輝いている。上には「王へ」と丁寧に書かれた札が付いている。突然、記憶が奔流のように蘇り、お前は恐怖で頭を抱えた。"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ТРЯСЦЯ_ЯК_Я_МІГ_ПРО_ЦЕ_ЗАБУТИ_587892"
+msgid "Трясця! Як я міг про це забути?!"
+msgstr "なんてこった！どうしてこれを忘れてたんだ！？"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ХЕ_ХЕ_ПРИБЛИЗНО_ТАКОЇ_РЕАКЦІЇ_C7FC4E"
+msgid "Хе-хе, приблизно такої реакції я й очікував!"
+msgstr "へっへっへ、まさに期待通りの反応だ！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ТОРВІНЕ_ДРУЖЕ_ТИ_МЕНЕ_ВРЯТУВАВ_95629F"
+msgid "Торвіне, друже, ти мене врятував! Якби я загубив цю скриню, мене б точно стратили!"
+msgstr "トルヴィン、兄弟、恩に着るぜ！もしこの箱を失くしてたら、俺は間違いなく処刑されてた！"
+
+#: scenes/adventures/StartTavern/start_tavern.dialogue
+msgctxt "ТИ_ВІДКРИВАЄШ_СКРИНЬКУ_І_РАПТО_6CC333"
+msgid "Ти відкриваєш скриньку, і раптом радість на твоєму обличчі зникає. Замість неї з’являється розпач. У тебе починає плисти перед очима, а по спині біжить холодний піт. Скринька порожня…"
+msgstr "箱を開けた瞬間、お前の顔から喜びが消え失せた。代わりに絶望が広がる。視界が歪み、背筋を冷たい汗が伝う。箱は空っぽだった…"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+msgid "Pause"
+msgstr "ポーズ"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+msgid "Continue"
+msgstr "続ける"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "Restart"
+msgstr "やり直す"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+msgid "Skip Level"
+msgstr "レベルをスキップ"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Settings"
+msgstr "設定"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Add to Wishlist!"
+msgstr "ウィッシュリストに追加！"
+
+#: scenes/ui/LevelMenu/AdventureMenu.tscn scenes/ui/LevelMenu/LevelMenu.tscn
+msgid "Back to Menu"
+msgstr "メニューに戻る"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Beer"
+msgstr "ビール"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Ginger Ale"
+msgstr "ジンジャーエール"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Sounds:"
+msgstr "効果音:"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Voices:"
+msgstr "ボイス:"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Music:"
+msgstr "音楽:"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Drink:"
+msgstr "飲み物:"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Language:"
+msgstr "言語:"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Select..."
+msgstr "選択..."
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Touch Control:"
+msgstr "タッチ操作:"
+
+#: scenes/ui/SettingsMenu/SettingsMenu.tscn
+msgid "Close"
+msgstr "閉じる"
+
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid ""
+"Olaf and \n"
+"the Crowning Hangover"
+msgstr ""
+"オラフと \n"
+"王冠の二日酔い"
+
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Demo"
+msgstr "デモ"
+
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Play"
+msgstr "プレイ"
+
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "Credits"
+msgstr "クレジット"
+
+#: scenes/game/MainMenu/MainMenu.tscn trailer/WishlistDemo.tscn
+msgid "Exit"
+msgstr "終了"
+
+#: scenes/game/MainMenu/MainMenu.tscn
+msgid "v. 20250916-demo"
+msgstr "v. 20250916-demo"
+
+#. TRANSLATORS: Ім’я персонажа
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "dialogue"
+msgid "Гримлак Зватенбарг"
+msgstr "グリムラーク・ズワッテンバーグ"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "t4b878b42a2"
+msgid "Обійшовши майже всю територію лісопильні, ти раптом чуєш чиюсь брудну лайку, що лунає з-за майстерні. Незнайомий голос звучить трохи втомлено, так ніби репетує паплюжні прокльони вже не першу годину."
+msgstr "製材所の敷地をほぼ一周したところで、作業場の裏から汚い罵り声が聞こえてきた。その知らない声は、何時間も罵倒を叫び続けているかのように、少し疲れているようだ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "tdcf15b9d22"
+msgid "Ти бачиш величезну колоду з-під якої стирчать чиїсь зеленуваті ноги. Затерті, чорні від бруду чоботи видають у своєму власникові чоловіка, що вже багато років займається важкою фізичною працею."
+msgstr "巨大な丸太の下から、緑がかった足が突き出ているのが見える。擦り切れ、泥で黒ずんだブーツは、持ち主が長年重労働に従事してきた男であることを物語っている。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЩО_Ж_ХОЧА_Б_Я_ЙОГО_НЕ_ВБИВ_405E39"
+msgid "Що ж, хоча б я його не вбив…"
+msgstr "ま、少なくとも殺しちゃいねぇようだな…"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "КОЛОДУ_ЙОМУ_В_СРАКУ_І_ЩОБ_ПОТ_6A7A59"
+msgid "…Колоду йому в сраку! І щоб потім ще два дні дристало! Ай, бісовий син, за що мені це..?"
+msgstr "…あの野郎のケツに丸太をブチ込んでやる！そんで2日間垂れ流しになりやがれ！あぁ、畜生め、なんで俺がこんな目に…？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЗДАЄТЬСЯ_ГРИМЛАК_ЗАЙНЯТИЙ_ЛАЯН_479003"
+msgid "Здається Гримлак, зайнятий лаянням, тебе навіть не помітив. Що зробиш?"
+msgstr "グリムラークは悪態をつくのに忙しく、お前に気付いていないようだ。どうする？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПРИВІТАТИСЬ_64767A"
+msgid "Привітатись"
+msgstr "挨拶する"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПНУТИ_КОЛОДУ_12442A"
+msgid "Пнути колоду"
+msgstr "丸太を蹴る"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПНУТИ_НОГУ_818931"
+msgid "Пнути ногу"
+msgstr "足を蹴る"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "НОГИ_ГРИМЛАКА_ПЕРЕЛЯКАНО_ЗДРИГ_ACF60A"
+msgid "Ноги Гримлака перелякано здригнулись."
+msgstr "グリムラークの足が驚いてビクついた。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТРЯСЦЯ_ТВОЇЙ_МАТЕРІ_ХТО_ЦЕ_ТАМ_7DB37B"
+msgid "Трясця твоїй матері! Хто це там? Допоможи вилізти!"
+msgstr "なんてこった！そこにいるのは誰だ？出るのを手伝え！"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "Ти обходиш колоду так, щоб Гримлак тебе побачив."
+msgid "Ти обходиш колоду так, щоб Гримлак тебе побачив."
+msgstr "お前はグリムラークから見える位置へ回り込んだ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "АХ_ТО_ЦЕ_ТИ_ВИЛУПОК_ЙДИ_ГЕТЬ_Т_259BD3"
+msgid "Ах то це ти, вилупок! Йди геть, твоя допомога мені не потрібна!"
+msgstr "あぁ、てめぇか、クソガキが！失せろ、てめぇの手助けなんぞ要らねぇよ！"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ГРИМЛАК_ЗВАТЕНБАРГ_702458"
+msgid "Гримлак Зватенбарг?"
+msgstr "グリムラーク・ズワッテンバーグか？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТИ_ДУРНИЙ_ХТО_Ж_ЩЕ_970C91"
+msgid "Ти дурний? Хто ж ще?"
+msgstr "バカか？他に誰がいるんだよ？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "СХОЖЕ_ЗА_ВСЕ_МИ_ЗНАЙОМІ_АЛЕ_СП_7A31A8"
+msgid "Схоже за все, ми знайомі, але справа в тому, що я нічого не пам’ятаю з минулої ночі."
+msgstr "どうやら知り合いみたいだが、実は昨夜のことは何も覚えてねぇんだ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "НЕ_БЗДИ_НАГОВОРИВ_МЕНІ_ВЧОРА_П_F8D18B"
+msgid "Не бзди! Наговорив мені вчора погань усіляку, а тепер навіть не пам’ятаєш цього? Іди звідси, я не збираюсь няньчитись з п'янюгою, який навіть за свої слова не відповідає! Краще врізати дуба, ніж мати з тобою справу, вишкребок."
+msgstr "ふざけんな！昨日は散々酷いこと言いやがって、それを覚えてねぇだと？とっとと消えろ、吐いた言葉に責任も持てねぇ酔っ払いの相手なんざ御免だ！てめぇと関わるくらいなら死んだほうがマシだ、このクズが。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТОРВІН_ПОПЕРЕДЖАВ_СЛУХАЙ_А_ЦЮ_935F2D"
+msgid "Торвін попереджав… Слухай, а цю колоду хоча б не я на тебе зронив?"
+msgstr "トルヴィンが言ってた通りか…なあ、その丸太を落としたのは、まさか俺じゃねぇよな？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЩЕ_Б_ТИ_ТАКЕ_УЧИНИВ_Я_Б_ТОБІ_В_3489FA"
+msgid "Ще б ти таке учинив! Я б тобі всі ребра за таке вирівняв! Ні. Я сам у тому винний, щоб мені срака по шву розійшлася… Зранку взявся до роботи, та з похмілля не втримав колоду. От лежу тепер десь зо дві години."
+msgstr "てめぇがやっただと！？もしそうなら肋骨全部へし折ってやるよ！いや…俺の不注意だ、クソッタレめ…。朝から仕事を始めたんだが、二日酔いで丸太を支えきれなかったんだ。ここ2時間ばかりこのザマだよ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЧУЄШ_НЕ_ЗНАЮ_ЩО_ТАМ_ВНОЧІ_ТРАП_A45A5D"
+msgid "Чуєш, не знаю, що там вночі трапилось, але зараз мені потрібна твоя допомога. Якщо я тебе дістану з-під колоди, зможеш стільницю зробити?"
+msgstr "なあ、昨夜何があったかは知らねぇが、今俺はお前の助けが必要なんだ。もし丸太をどかして助けてやったら、天板を作ってくれるか？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "АГОВ_СХИБЛЕНИЙ_ТИ_ВЗАГАЛІ_ЧУВ_B7E4F5"
+msgid "Агов, схиблений! Ти взагалі чув, що я тобі тільки що казав? Я з тобою ніякої справи мати не буду!"
+msgstr "おい、頭沸いてんのか！今俺が言ったこと聞いてたか？てめぇと関わる気はねぇって言ったんだよ！"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "Я_Ж_НАВІТЬ_НЕ_ЗНАЮ_ЗА_ЩО_ТИ_ЗЛ_94EA9C"
+msgid "Я ж навіть не знаю, за що ти злишся на мене!"
+msgstr "俺はなんでお前が怒ってるのかすら知らねぇんだぞ！"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ГРИМЛАК_ВІДВЕРТАЄТЬСЯ_І_МОВЧИТ_FC55AB"
+msgid "Гримлак відвертається і мовчить."
+msgstr "グリムラークは顔を背け、黙り込んだ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ДІДЬКО_ДАВАЙ_ПО_ІНШОМУ_ТИ_РОЗК_D79A28"
+msgid "Дідько, давай по-іншому. Ти розкажеш, що трапилося, якщо я визволю тебе звідси?"
+msgstr "畜生、じゃあこうしよう。助けてやったら、何があったか話してくれるか？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ГРИМЛАК_ДОВГО_ДУМАЄ_ПЕРЕД_ТИМ_6EC9C6"
+msgid "Гримлак довго думає, перед тим як тобі відповісти. По його обличчю видно, що він зважує усі “за” і “проти”."
+msgstr "グリムラークは答える前に長いこと考え込んだ。損得を天秤にかけているのが顔を見て取れる。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "КУРВА_ГАРАЗД_ДОМОВИЛИСЬ_АЛЕ_НЕ_9560FD"
+msgid "Курва, гаразд. Домовились. Але не очікуй, що я тебе після того пробачу, вдуплив?"
+msgstr "クソッ、わかったよ。取引だ。だがその後で俺がてめぇを許すなんて期待すんなよ、わかったか？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ВДУПЛИВ_989C93"
+msgid "Вдуплив."
+msgstr "わかった。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПОДИВИМОСЬ_ЩО_ТИ_СКАЖЕШ_ПОТІМ_DA5177"
+msgid "Подивимось, що ти скажеш потім."
+msgstr "後で何て言うか見ものだな。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ОТО_ТИ_НУДЯГА_1036BF"
+msgid "Ото ти нудяга."
+msgstr "しっけぇ野郎だ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТОДІ_СЛУХАЙ_ДОВБНЮ_ЩОБ_ПІДНЯТИ_348867"
+msgid "Тоді слухай, довбню. Щоб підняти цю колоду, тобі знадобиться домкрат. Вночі ти намагався підняти мою майстерню. Казав, що хочеш там заховатись, щоб потім когось налякати."
+msgstr "ならよく聞け、ウスノロ。この丸太を持ち上げるにはジャッキが必要だ。昨夜てめぇは俺の作業小屋を持ち上げようとしたんだ。「下に隠れて誰かを脅かしてやる」とか言ってな。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЯК_МОЖЕШ_СОБІ_УЯВИТИ_У_ТЕБЕ_НЕ_506E10"
+msgid "Як можеш собі уявити, у тебе не вийшло. Я сказав повернути домкрат на місце у майстерню. Але де саме ти його залишив, я не знаю."
+msgstr "ご想像の通り、失敗したわけだが。俺はジャッキを作業場に戻せと言った。だがてめぇがどこに置いたのかまでは知らん。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "І_ЩО_МЕНІ_РОБИТИ_92C6AB"
+msgid "І що мені робити?"
+msgstr "で、俺はどうすりゃいい？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЙТИ_І_ШУКАТИ_ДУРБЕЦАЛО_ДЕСЬ_ВО_DBFBD6"
+msgid "Йти і шукати, дурбецало! Десь він же має бути."
+msgstr "探しに行けよ、間抜け！どっかにあるはずだ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТРЕБА_СПРОБУВАТИ_ЗГАДАТИ_ЩО_Я_5FADE0"
+msgid "Треба спробувати згадати, що я робив там минулої ночі…"
+msgstr "昨夜あそこで何をしたか、思い出さねぇと…"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПРИНІС_ЙОЛОПЕ_ДАВАЙ_ВИТЯГУЙ_МЕ_67E237"
+msgid "Приніс, йолопе? Давай витягуй мене звідси."
+msgstr "持ってきたか、ボンクラ？さっさとここから出しやがれ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТИ_ВСТАВЛЯЄШ_ДОМКРАТ_ПІД_КОЛОД_09CAD2"
+msgid "Ти вставляєш домкрат під колоду. Буквально за декілька хвилин вона підіймається достатньо високо, щоб Гримлак зміг вилізти зі своєї пастки. Він вайлувато обтрушує себе від пилу та задоволено вирівнюється."
+msgstr "お前は丸太の下にジャッキを差し込んだ。ほんの数分で丸太は高く持ち上がり、グリムラークは罠から這い出すことができた。彼は不器用に埃を払い、満足げに背筋を伸ばした。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПЕРЕД_ТОБОЮ_СТОЇТЬ_ВИСОКИЙ_СТО_E5C6BD"
+msgid "Перед тобою стоїть високий стожилий орк, з упевненою постаттю та серйозними очима. Тобі важко уявити, що такий чолов’яга міг би бути твоїм другом, але поступово ти починаєш пригадувати його обличчя. Здається, ви справді гарно проводили час, випиваючи разом спочатку у корчмі, а потім тут, на лісопильні."
+msgstr "目の前に、自信に満ちた立ち姿と真剣な眼差しをした、筋骨隆々の背の高いオークが立っている。こんな男が自分の友人だとは想像し難いが、徐々に彼の顔を思い出してきた。確かに昨夜、最初は酒場で、その後はここの製材所で一緒に飲んで楽しい時間を過ごしたようだ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЦВЯХ_МЕНІ_В_НОГУ_ТАК_ДІЙСНО_НА_58CD5C"
+msgid "Цвях мені в ногу! Так дійсно набагато краще. То що, дурбане, пам’ять до тебе так і не повернулась?"
+msgstr "足に釘が刺さったみてぇに痛かったぜ！あぁ、だいぶマシだ。で、ボンクラ、記憶は戻ったのか？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ХМ_Я_ПРИГАДАВ_ТВОЄ_ОБЛИЧЧЯ_АЛ_A78DF5"
+msgid "Хм, я пригадав твоє обличчя, але не більше."
+msgstr "んー、顔は思い出したけど、それだけだ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЩО_Ж_ПИКА_У_ТЕБЕ_І_СПРАВДІ_ЗН_33F78C"
+msgid "Що ж, пика у тебе і справді знайома."
+msgstr "まあ、確かにてめぇのツラには見覚えがある。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПРИГАДУЮ_ЩОСЬ_ЗЕЛЕНЕ_Є_ШАНС_Щ_154AA2"
+msgid "Пригадую, щось зелене. Є шанс, що це був ти."
+msgstr "緑色の何かは覚えてる。お前だった可能性はあるな。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТРЯСЦЯ_НУ_ДОБРЕ_Я_ВИКОНАЮ_СВОЮ_3007DF"
+msgid "Трясця. Ну добре. Я виконаю свою частину договору, а після цього ти здриснеш, втямив? Ось, як було діло. Ми з тобою познайомились у корчмі. Ти тоді запропонував влаштувати змагання на саму гучну відрижку, от я і доєднався."
+msgstr "チッ。わかったよ。約束通り話してやる。それが済んだら消え失せろ、いいな？こういうことだ。俺たちは酒場で会った。てめぇが一番デカいゲップを出した奴の勝ちって勝負を提案してきて、俺も乗ったんだ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ХА_ХА_ЦЕ_НА_МЕНЕ_СХОЖЕ_УПЕВНЕН_E22B4A"
+msgid "Ха-ха, це на мене схоже. Упевнений, я виграв."
+msgstr "ハハッ、俺らしいな。きっと俺が勝ったんだろ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ВИГРАВ_Я_ТЕЛЕПНЮ_АЛЕ_ЦЕ_НЕВАЖЛ_64B49F"
+msgid "Виграв я, телепню. Але це неважливо. У якийсь момент тобі наскучило сидіти в корчмі, і я на свою кляту голову запропонував тобі та іншим піти на лісопильню і продовжити гульбу тут. Було гучно й весело, хоча лісопильня сильно постраждала від нашої гульні."
+msgstr "勝ったのは俺だ、バカ垂れ。だがそんなこたぁどうでもいい。途中でてめぇが飽きてきて、俺が魔が差して製材所で飲み直そうなんて言っちまったんだ。どんちゃん騒ぎで楽しかったが、おかげで製材所はボロボロだ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "А_ПОТІМ_В_ОДИН_МОМЕНТ_МЕНЕ_ЯКО_B4338E"
+msgid "А потім в один момент мене, якогось дідька, потягнуло на відвертість, і я тобі зізнався, що мені подобається одна орчиня, яку я бачив у корчмі. А ти взяв і пожартував над цим! А щоб тебе підняло і три дні вертіло! Ти сказав, що на мій зелений писок тільки жаба клюне. Та й те, тільки тому, що вирішить, що я латаття."
+msgstr "そんで、どういう風の吹き回しか、俺が酒場で見かけたオークの娘に惚れてるって打ち明けちまったんだ。そしたらてめぇはそれを笑い者にしやがった！地獄へ落ちろ！「お前の緑のツラに惚れるのはカエルくらいだ。それもお前を水草と勘違いした時だけな」とか言いやがって。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТРЯСЦЯ_Я_ПРАВДА_ТАКЕ_СКАЗАВ_1B95BC"
+msgid "Трясця, я правда таке сказав?"
+msgstr "マジか、俺本当にそんなこと言ったのか？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ХА_А_Я_КУМЕДНИЙ_КОЛИ_П_ЯНИЙ_D7C27B"
+msgid "Ха! А я кумедний, коли п’яний."
+msgstr "ハッ！酔っ払った俺は面白いな。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "І_ТИ_ОБРАЗИВСЯ_НА_П_ЯНОГО_B9DD0A"
+msgid "І ти образився на п’яного?"
+msgstr "で、酔っ払いの言うことに腹立てたのか？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТА_ЦЕ_НЕ_ВСЕ_ПІЗНІШЕ_Я_РОЗПОВІ_2919C3"
+msgid "Та це не все! Пізніше я розповів історію про проклятого чорта, що живе у моїй хаті. Ця паскуда вже три роки не дає мені жити! А ти й над цим почав жартувати! Сказав, що це я просто своє відображення у дзеркалі бачу."
+msgstr "それだけじゃねぇ！その後、家に住み着いてる忌々しい悪魔の話をしたんだ。3年も俺を悩ませてるクソ野郎の話をな！そしたらてめぇはそれもネタにしやがった！「鏡に映った自分を見てるだけだろ」ってな。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "І_ТОДІ_НАДІ_МНОЮ_ВЖЕ_ВСІ_СМІЯЛ_656A18"
+msgid "І тоді наді мною вже всі сміялись, бісовий ти син! Далі я терпіти не став і прогнав усіх до нечистї матері. Ось так. Тепер розумієш, чому ти заслуговуєш добрячого прочухана?"
+msgstr "その場にいた全員が俺を笑いもんにしたんだ、このクソ野郎が！俺はキレて全員叩き出してやった。そういうわけだ。これでてめぇがボコボコにされるべき理由がわかったか？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "У_ТВОЇЙ_ГОЛОВІ_В_ЮНКО_ПРОНОСЯТ_EF8C3F"
+msgid "У твоїй голові в’юнко проносяться картинки гурми, що сидить на колодах і сміється з твоїх жартів. Поступово картинки починають домальовуватись, а спогади повертатись."
+msgstr "丸太に座って俺の冗談に爆笑する連中の映像が、頭の中を駆け巡る。徐々に映像が鮮明になり、記憶が戻ってくる。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ДІДЬКО_Я_ДІЙСНО_ТАКЕ_КАЗАВ_36CD40"
+msgid "Дідько, я дійсно таке казав…"
+msgstr "畜生、本当に言っちまったのか…"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЗГАДАВ_НАРЕШТІ_02EB62"
+msgid "Згадав нарешті?"
+msgstr "やっと、思い出したか？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "АГА_8124D2"
+msgid "Ага."
+msgstr "ああ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ВИНИКЛА_НЕЗРУЧНА_ПАУЗА_CFB70D"
+msgid "Виникла незручна пауза."
+msgstr "気まずい沈黙が流れる。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ГРХМ_А_ЦЕЙВО_У_ТЕБЕ_СПРАВДІ_ТУ_BFA288"
+msgid "Грхм, а цейво, у тебе справді тут живе чорт?"
+msgstr "コホン、あー、その、本当にお前のとこに悪魔が住み着いてるのか？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЩО_ТЕПЕР_ГОТОВИЙ_МЕНІ_ПОВІРИТИ_7EF40E"
+msgid "Що, тепер готовий мені повірити, бовдуре? Лячно стало? Припустимо, живе. Живе та капості безперестану робить… Їжу краде, інструменти ламає, погані сни насилає. Як я тільки не намагався позбавитись від тієї чорної сили, та все дарма, щоб він луснув!"
+msgstr "なんだ、今になって信じる気になったのか、マヌケ？怖くなったか？ああ、いるさ。住み着いて悪さばかりしやがる…飯は盗むわ、道具は壊すわ、悪夢は見せるわ。あの闇の力を追い払おうと色々試したが、全部無駄だった、あのクソッタレめ！"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЗНАЄШ_ЩО_Я_ЙОГО_ПРОЖЕНУ_C27119"
+msgid "Знаєш що? Я його прожену."
+msgstr "よし、わかった。俺が追い払ってやる。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПРОШУ_396241"
+msgid "Прошу?"
+msgstr "あ？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "КАЖУ_ВИТУРЮ_ЙОГО_У_МЕНЕ_ЗНАЄШ_F3BA06"
+msgid "Кажу, витурю його! У мене знаєш скільки колишніх? Я з цими чортами на раз-два розправляюсь!"
+msgstr "追い出してやるって言ったんだ！俺に元カノが何人いるか知ってるか？そういう「悪魔」の扱いには慣れてるんだよ！"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ХМ_ЧУЄШ_А_ЦЕ_ІДЕЯ_АБО_ТИ_ЙОГО_244A7C"
+msgid "Хм, чуєш, а це ідея. Або ти його виженеш, або він з тебе дух випустить. Я у будь-якому разі у виграші!"
+msgstr "ふん、なるほど、そりゃいい考えだ。てめぇが追い払うか、てめぇが殺されるか。どっちに転んでも俺には得しかねぇ！"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЩО_Ж_У_ТЕБЕ_Є_ПРИЧИНИ_МЕНЕ_НЕ_128977"
+msgid "Що ж, у тебе є причини мене не долюблювати…"
+msgstr "まあ、俺を嫌う理由はあるわな…"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТАК_СФОРМУЛЮВАВ_ЩО_Я_ВЖЕ_І_ЖА_595745"
+msgid "Так сформулював, що я вже і жалкую, що запропонував допомогу."
+msgstr "そう言われると、助けるって言ったのを後悔しちまいそうだ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ХА_ХА_A30EFD"
+msgid "Ха. Ха."
+msgstr "ハ、ハ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЩО_Ж_ТОДІ_СЛУХАЙ_ЙОГО_ЛІГВО_ЗН_18F7B3"
+msgid "Що ж, тоді слухай. Його лігво знаходиться десь у моєму будинку, але де саме я не тямлю. Тож тобі потрібно добряче обшукати хату, щоб знайти цю прокляту холеру."
+msgstr "よし、じゃあ聞け。奴の巣は家のどこかにあるが、場所まではわからん。だから家の中をくまなく探して、その疫病神を見つけ出すんだ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ОСЬ_ТРИМАЙ_ПАСТКИ_ВОНИ_ДЕБЕЛІ_BEDAB4"
+msgid "Ось, тримай пастки, вони дебелі, що твоя пика. Встанови їх у лігві, а як схопиш чорта, повертайся. І ще. Постарайся не померти. Я раптом усвідомив, що було б приємно дізнатись, що я помиляюсь стосовно тебе. Та й не хотілося б ще й труну тобі правити."
+msgstr "ほらよ、罠だ。てめぇの面の皮と同じくらい頑丈だぞ。巣に仕掛けて、捕まえたら戻ってこい。それと、死ぬんじゃねぇぞ。てめぇを見直すのも悪くねぇって気がしてきたからな。それに、てめぇの棺桶まで作りたかねぇ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЩО_Ж_ГРИМЛАКЕ_Я_ПОЗБАВИВСЯ_ВІД_3578D2"
+msgid "Що ж, Гримлаке, я позбавився від чорта, як і обіцяв."
+msgstr "よし、グリムラーク、約束通り悪魔を始末したぞ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ОТАКОЇ_ТИ_ВИЖИВ_І_НАВІТЬ_ПІЙМА_3B39F0"
+msgid "Отакої! Ти вижив і навіть піймав чорта? Щоб мене грім побив! Не можу повірити, що більше не доведеться починати ранок з прибирання недогризків, розкиданих цим довбаним чортом! Дідько, я… ну тойво… як же ж сказати..? Коротше, дякую тобі."
+msgstr "おいおい！生きてたのか、しかも悪魔を捕まえただと？たまげたな！あのクソ悪魔が散らかした食いカスの掃除から一日を始めなくて済むなんて！畜生、俺は…あー、その…なんだ…つまり、礼を言うぜ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "СПОДІВАЮСЬ_Я_ЗМІГ_ЗАГЛАДИТИ_С_F585C9"
+msgid "Сподіваюсь, я зміг загладити свою провину."
+msgstr "これで罪滅ぼしができたならいいんだが。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ОГО_ЯКІ_ТИ_СЛОВА_ЗНАЄШ_38CBB9"
+msgid "Ого, які ти слова знаєш."
+msgstr "へぇ、殊勝な心がけじゃねぇか。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЩО_У_ТЕБЕ_З_ОБЛИЧЧЯМ_НЕ_РОЗУМ_00B235"
+msgid "Що у тебе з обличчям? Не розумію, на зеленій шкірі не видно. Ти почервонів чи мені здається?"
+msgstr "なんだその顔は？緑色の肌じゃわからねぇな。赤面でもしてんのか？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "КХЕ_КХЕ_ТО_ЩО_ТАМ_У_ТЕБЕ_ЗІ_СТ_E8F939"
+msgid "Кхе-кхе. То що там у тебе зі стільницею? Нащо вона тобі? Я, якщо що, просто так питаю. Просто цікаво."
+msgstr "ゴホン、ゴホン。で、天板の話だったな？なんで必要なんだ？いや、別に深い意味はねぇ。ただの興味だ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЦЕ_ДЛЯ_ТОРВІНА_КРУТОРОГА_ЦІЄЇ_D6EA7E"
+msgid "Це для Торвіна Круторога. Цієї ночі я не тільки тобі насолити встиг. Уся корчма стоїть догори дриґом. Я зламав йому купу меблів й бочок. А ще покоцав барну стійку, яку він у тебе замовляв."
+msgstr "トルヴィン・クラッグアイアンのためだ。昨夜迷惑をかけたのはお前だけじゃなくてな。酒場をめちゃくちゃにしちまったんだ。家具や樽を壊して、おまけに奴がお前に注文したバーカウンターも傷つけちまった。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПАМ_ЯТАЮ_ПАМ_ЯТАЮ_ДУБ_ТАНДРІЙС_D12C9F"
+msgid "Пам’ятаю-пам’ятаю. Дуб, тандрійське покриття."
+msgstr "あー、覚えてるぜ。オーク材で、タンドリアニス仕上げのやつな。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ВОНО_САМЕ_ОТ_Я_І_ДУМАВ_ПРИЙТИ_180A10"
+msgid "Воно саме. От я і думав прийти до тебе, попросити зробити нову. А воно он як усе вийшло."
+msgstr "それだ。だからお前に頼んで新しいのを作ってもらおうと思ったんだよ。まあ、こんなことになっちまったが。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПОВИСЛА_ТИША_ГРИМЛАК_ВАЖКО_ВИД_B0EB3B"
+msgid "Повисла тиша. Гримлак важко видихнув."
+msgstr "沈黙が流れる。グリムラークは重いため息をついた。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ГАРАЗД_ОЛАФЕ_ЗРОБЛЮ_Я_ТОБІ_ТВО_F2CDAE"
+msgid "Гаразд, Олафе, зроблю я тобі твою стільницю. Що вже з тобою поробиш? Може ця вся історія стане для тебе хорошим, курва, уроком."
+msgstr "わかったよ、オラフ。天板を作ってやる。しょうがねぇ奴だ。今回のことが少しはいい教訓になりゃいいんだがな。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТІЛЬКИ_ТОЙВО_Є_ОДНА_ПРОБЛЕМА_Д_FE1801"
+msgid "Тільки тойво. Є одна проблема, для вирішення якої мені буде потрібна твоя допомога. Під час нічної гульби, ми поламали майже всю мою техніку. Я планував привести майстерню до ладу ще зранку, але клята колода завадила, а щоб їй було пусто. Зможеш полагодити?"
+msgstr "ただな、一つ問題がある。お前の手助けが必要だ。昨夜のドンチャン騒ぎで、機材をあらかた壊しちまったんだよ。朝イチで直すつもりだったんだが、あの忌々しい丸太のせいでな。修理できるか？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТАК_ЗВИЧАЙНО_УСЕ_ЩО_ЗАВГОДНО_E91D79"
+msgid "Так, звичайно! Усе, що завгодно, тільки б вже розібратись з цією історією…"
+msgstr "ああ、もちろん！何でもやるよ、この一件が片付くならな…"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ЗНОВУ_РЕМОНТ_АВЖЕЖ_E614E3"
+msgid "Знову ремонт, авжеж!"
+msgstr "また修理かよ、ついてねぇ！"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "КЛЯТА_СТІЛЬНИЦЯ_КЛЯТИЙ_РЕМОНТ_3B4526"
+msgid "Клята стільниця, клятий ремонт, кляте життя!"
+msgstr "クソ天板、クソ修理、クソったれな人生だ！"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "НУ_ГАРАЗД_ПОКЛИЧ_ЯК_ЗАКІНЧИШ_Я_70BFE5"
+msgid "Ну гаразд. Поклич, як закінчиш. Я прийду, і все тобі зроблю."
+msgstr "よし。終わったら呼んでくれ。そしたら俺が作ってやる。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ГРИМЛАКЕ_Я_ВСЕ_ПОЛАГОДИВ_14B841"
+msgid "Гримлаке? Я все полагодив."
+msgstr "グリムラーク？全部直したぞ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ПРАВДА_КУРВА_ТИ_ШВИДКО_ТОДІ_НЕ_4E874A"
+msgid "Правда? Курва, ти швидко! Тоді не будемо тягнути. Дай мені трохи часу, і я виріжу для тебе потрібну стільницю."
+msgstr "本当か？はえぇな、畜生！じゃあグズグズしてらんねぇ。少し時間をくれ、すぐに天板を切り出してやる。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ГРИМЛАК_ВЕДЕ_ТЕБЕ_НА_СКЛАД_ДЕ_E99B19"
+msgid "Гримлак веде тебе на склад, де відбирає найкращу з наявної у нього деревини. Разом ви проходите до рамаскорської пилки, де орк прискіпливо вирізає потрібну форму."
+msgstr "グリムラークは倉庫へお前を案内し、在庫の中で一番良い木材を選び出した。二人でラマスコア製の鋸へ向かい、オークは慎重に形を切り出していく。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ДАЛІ_ТИ_БАЧИШ_ЯК_ПЕНЗЛЕМ_ВІН_Д_C4B9C8"
+msgid "Далі ти бачиш, як пензлем він дбайливо покриває стільницю тандрійським лаком. Чекаючи, поки покриття підсохне, ви проводите годину за жартівливими теревенями, згадуючи минулу гулянку. Нарешті, замовлення готове."
+msgstr "それから彼は、刷毛で丁寧にタンドリアニスを塗っていく。乾くのを待つ間、お前たちは昨夜の騒ぎを笑い話にして1時間ほど過ごした。ついに、注文の品が完成した。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ОСЬ_ОЛАФЕ_ЗАБИРАЙ_СВОЮ_СТІЛЬНИ_0E8CD6"
+msgid "Ось, Олафе, забирай свою стільницю. Сподіваюсь ця прослужить довше, ніж її попередниця. Ти вже постарайся, добре? А тепер можеш чалапати, ти гарно сьогодні попрацював. Торвіну, цьому кремезному йолопу, також передавай привіт!"
+msgstr "ほらよオラフ、持っていきな。前より長持ちすることを祈るぜ。大事にしろよ、いいな？さあ、もう行っていいぞ。今日はよく働いたな。トルヴィンの頑固オヤジにもよろしく言っといてくれ！"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ДЯКУЮ_ТОБІ_І_ЩЕ_ГРИМЛАКЕ_FAFAE1"
+msgid "Дякую тобі. І ще, Гримлаке."
+msgstr "ありがとう。それと、グリムラーク。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ГА_886351"
+msgid "Га?"
+msgstr "あん？"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ТВІЙ_ЗЕЛЕНИЙ_ПИСОК_ГІДНИЙ_БУДЬ_C3CBFA"
+msgid "Твій зелений писок гідний будь-якої жінки, яка тобі тільки сподобається."
+msgstr "お前のその緑のツラは、お前が惚れたどんな女にも相応しいと思うぜ。"
+
+#: scenes/adventures/SawmillBackyard/sawmill.dialogue
+msgctxt "ДЯКУЮ_ОЛАФЕ_БУВАЙ_CE9E37"
+msgid "Дякую, Олафе. Бувай."
+msgstr "…ありがとな、オラフ。達者でな。"
+
+#: trailer/WishlistDemo.tscn
+msgid ""
+"Thank you for playing Olaf and the Crowning Hangover demo!\n"
+"\n"
+"I hope you felt puzzled and curious - Get ready to reeval more of what really happened with Olaf when the full release comes Q3 2026.\n"
+"\n"
+"If you have any feedback, I would love to hear it. Please, leave a review on Steam and add game to wishlist!"
+msgstr ""
+"『オラフと王冠の二日酔い』デモ版をプレイしていただきありがとうございます！\n"
+"\n"
+"謎解きと不思議な体験を楽しんでいただけたなら幸いです。2026年第3四半期のフルリリースで、オラフの身に本当に何が起きたのか、さらなる真実が明らかになります。\n"
+"\n"
+"フィードバックがあればぜひお聞かせください。Steamでのレビュー投稿とウィッシュリストへの追加をよろしくお願いします！"
+
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "Level Complete!"
+msgstr "レベルクリア！"
+
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "New Highscore!"
+msgstr "ハイスコア更新！"
+
+#: scenes/ui/LevelSummaryPanel/LevelSummaryPanel.tscn
+msgid "Next"
+msgstr "次へ"
+
+#: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+msgid "Character"
+msgstr "キャラクター"
+
+#: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+msgid "Dialogue..."
+msgstr "台詞..."
+
+#: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+msgid "Skip"
+msgstr "スキップ"
+
+#: scenes/ui/DialogueBalloon/DialogueBalloon3.tscn
+msgid "Response example"
+msgstr "返答例"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Olaf and the Crowning Hangover\n"
+"by Hidalgo Code"
+msgstr ""
+"オラフと王冠の二日酔い\n"
+"by Hidalgo Code"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Idea and development:\n"
+"Volodymyr Mikhav"
+msgstr ""
+"企画・開発：\n"
+"Volodymyr Mikhav"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Story:\n"
+"Elizabeth Listik"
+msgstr ""
+"シナリオ：\n"
+"Elizabeth Listik"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Music:\n"
+"Deigineor"
+msgstr ""
+"音楽：\n"
+"Deigineor"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Sound effects:\n"
+"Anastasiia Mariuha"
+msgstr ""
+"効果音：\n"
+"Anastasiia Mariuha"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid ""
+"Art:\n"
+"Pita, LYASeeK, ansimuz,\n"
+"Krishna Palacio, pdshkb"
+msgstr ""
+"アート：\n"
+"Pita, LYASeeK, ansimuz,\n"
+"Krishna Palacio, pdshkb"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid "Made with Godot"
+msgstr "Godot Engineで制作"
+
+#: scenes/ui/Credits/Credits.tscn
+msgid "Back"
+msgstr "戻る"

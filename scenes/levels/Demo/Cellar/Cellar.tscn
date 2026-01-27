@@ -77,3 +77,9 @@ z_index = 6
 texture_filter = 1
 tile_map_data = PackedByteArray("AAADAAAAAAAMABAAAAAFAAEAAAAMABAAAAAFAAIAAAAMABAAAAA=")
 tile_set = ExtResource("2_5u8he")
+
+[node name="ViewAreas" type="TileMapLayer" parent="." unique_id=1692149154]
+modulate = Color(1, 0.392157, 0.392157, 0.392157)
+z_index = 6
+texture_filter = 1
+tile_set = ExtResource("2_5u8he")

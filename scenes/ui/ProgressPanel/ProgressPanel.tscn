@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://ehd8l4wredkr"]
+[gd_scene format=3 uid="uid://ehd8l4wredkr"]
 
 [ext_resource type="Theme" uid="uid://yqpu1k43isuw" path="res://themes/kenney_rpg.tres" id="1_kruus"]
 [ext_resource type="Script" uid="uid://olsnfg8md3dq" path="res://scenes/ui/ProgressPanel/ProgressPanel.gd" id="2_ju3js"]
 [ext_resource type="PackedScene" uid="uid://car4s7r20herb" path="res://scenes/ui/LabeledProgressBar/LabeledProgressBar.tscn" id="3_17xl7"]
 
-[node name="Panel" type="Panel"]
+[node name="Panel" type="Panel" unique_id=206947311]
 custom_minimum_size = Vector2(150, 60)
 offset_right = 240.0
 offset_bottom = 50.0
@@ -12,7 +12,7 @@ mouse_filter = 2
 theme = ExtResource("1_kruus")
 script = ExtResource("2_ju3js")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=925468248]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -23,15 +23,15 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1706111217]
 layout_mode = 2
 
-[node name="Items" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_17xl7")]
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Ghosts" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_17xl7")]
+[node name="Ghosts" parent="MarginContainer/VBoxContainer" unique_id=2076136816 instance=ExtResource("3_17xl7")]
 layout_mode = 2
 style = "BlueProgressBar"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=1273844984]
+layout_mode = 2
+
+[node name="Items" parent="MarginContainer/VBoxContainer" unique_id=767929852 instance=ExtResource("3_17xl7")]
+layout_mode = 2

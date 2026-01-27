@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OlafTheBoozer-ggo2022\n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2026-01-12 10:06+0200\n"
+"PO-Revision-Date: 2026-01-12 16:34+0200\n"
 "Last-Translator: Volodymyr Mikhav <mihaw.wolodymyr@gmail.com>\n"
 "Language-Team: English <http://weblate.hidalgocode.com/projects/olaf-the-"
 "boozer/dialogs/en/>\n"
@@ -6629,7 +6629,7 @@ msgid ""
 msgstr ""
 "Look, three horses have run away. We'll go one at a time. I don't know how "
 "to find Wildcrackle, His Majesty's steed, yet. I need a little bit more time "
-"to think about it. For now, let's find Silver Joseph."
+"to think about it. For now, let's find Lightning Joe."
 
 #: scenes/adventures/Stables/stables.dialogue
 msgctxt "НА_ВІДМІНУ_ВІД_ІНШИХ_СЛІДИ_ПІД_31C2C7"
@@ -6638,14 +6638,14 @@ msgid ""
 "самої стайні. Тобі просто треба пройти цими слідами, знайти Йосипа, "
 "зазнуздати його і привести сюди."
 msgstr ""
-"Silver Joseph's hoofprints, unlike the others', begin right at the stable. "
-"All you need to do is follow the trail, find Joseph, put a harness on him, "
-"and bring him back."
+"Lightning Joe's hoofprints, unlike the others', begin right at the stable. "
+"All you need to do is follow the trail, find Joe, put a harness on him, and "
+"bring him back."
 
 #: scenes/adventures/Stables/stables.dialogue
 msgctxt "БЛИСКАВИЧНИЙ_ЙОСИП_ЗВУЧИТЬ_ТР_D92569"
 msgid "Блискавичний Йосип. Звучить трохи… незвично"
-msgstr "Silver Joseph. What an interesting name"
+msgstr "Lightning Joe. What an interesting name"
 
 #: scenes/adventures/Stables/stables.dialogue
 msgctxt "ЦЕ_Ж_ТРЕБА_БУТИ_НАСТІЛЬКИ_ДУР_497E47"
@@ -6655,7 +6655,7 @@ msgstr "What fool called his horse this name?"
 #: scenes/adventures/Stables/stables.dialogue
 msgctxt "НЕЗРІВНЯННИЙ_ОЛАФ_РОЗБЕРЕТЬСЯ_CCA7F1"
 msgid "Незрівнянний Олаф розбереться з Блискавичним Йосипом на раз-два!"
-msgstr "Dwarven Olaf will handle Silver Joseph before you can blink!"
+msgstr "Unmatched Olaf will have Lightning Joe back in no time!"
 
 #: scenes/adventures/Stables/stables.dialogue
 msgctxt "БУДЕШ_СМІЯТИСЬ_АЛЕ_ЦЕ_КІНЬ_ГРА_5D8CE3"
@@ -6668,7 +6668,7 @@ msgid ""
 "Он як! Графиня Софія-Амалія д’Амальон і її Блискавичний Йосип… Я з нею "
 "поговорю про це при наступній зустрічі."
 msgstr ""
-"Oh, really? Countess Sophia-Amalia d'Avignon and her Silver Joseph… I should "
+"Oh, really? Countess Sophia-Amalia d'Avignon and her Lightning Joe… I should "
 "definitely discuss it with her next time we meet."
 
 #: scenes/adventures/Stables/stables.dialogue

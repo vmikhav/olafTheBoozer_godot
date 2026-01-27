@@ -167,16 +167,20 @@ func restore_state_snapshot(snapshot: Dictionary):
 	
 	# Restore trigger states and visuals
 	for trigger_id in snapshot.get("lever_states", {}).keys():
-		var trigger = triggers.get(trigger_id)
+		var trigger = triggers.get(trigger_id) as Trigger
 		if trigger:
-			trigger.is_activated = snapshot["lever_states"][trigger_id]
-			trigger.update_visual(level)
+			var is_trigger_activated = snapshot["lever_states"][trigger_id]
+			if trigger.is_activated != is_trigger_activated:
+				trigger.is_activated = is_trigger_activated
+				trigger.update_visual(level)
 	
 	for trigger_id in snapshot.get("plate_states", {}).keys():
-		var trigger = triggers.get(trigger_id)
+		var trigger = triggers.get(trigger_id) as Trigger
 		if trigger:
-			trigger.is_activated = snapshot["plate_states"][trigger_id]
-			trigger.update_visual(level)
+			var is_plate_activated = snapshot["plate_states"][trigger_id]
+			if trigger.is_activated != is_plate_activated:
+				trigger.is_activated = is_plate_activated
+				trigger.update_visual(level)
 	
 	# Apply/rollback changesets to match target state
 	apply_changesets(target_changesets)

@@ -40,16 +40,16 @@ func intro():
 	allow_input = false
 	DialogueManager.show_dialogue_balloon(first_dialogue, "intro")
 	await DialogueManager.dialogue_ended
-	var tween = create_tween()
-	tween.tween_method(set_reaper_transparancy, 0.0, 1.0, .25);
-	await tween.finished
-	await get_tree().create_timer(0.5).timeout
-	DialogueManager.show_dialogue_balloon(first_dialogue, "death_speech")
-	await DialogueManager.dialogue_ended
-	tween = create_tween()
-	tween.tween_method(set_reaper_transparancy, 1.0, 0.0, .25);
-	await tween.finished
-	await get_tree().create_timer(0.5).timeout
+	#var tween = create_tween()
+	#tween.tween_method(set_reaper_transparancy, 0.0, 1.0, .25);
+	#await tween.finished
+	#await get_tree().create_timer(0.5).timeout
+	#DialogueManager.show_dialogue_balloon(first_dialogue, "death_speech")
+	#await DialogueManager.dialogue_ended
+	#tween = create_tween()
+	#tween.tween_method(set_reaper_transparancy, 1.0, 0.0, .25);
+	#await tween.finished
+	#await get_tree().create_timer(0.5).timeout
 	finish_level()
 
 func get_characters() -> Dictionary[String, Unit]:

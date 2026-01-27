@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=10 format=3 uid="uid://blbk5eaue0gr2"]
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://blbk5eaue0gr2"]
 
 [ext_resource type="Script" uid="uid://derqluum4reuq" path="res://resources/Changeset.gd" id="1_1prqk"]
 [ext_resource type="Script" uid="uid://b6txe1yuan4kl" path="res://resources/GhostData.gd" id="2_n50we"]
+[ext_resource type="Script" uid="uid://cfwgj6edkr74v" path="res://resources/PatrolData.gd" id="3_53ret"]
 [ext_resource type="Script" uid="uid://dr42rnusvb6wa" path="res://resources/LevelData.gd" id="3_i0p8a"]
 [ext_resource type="Script" uid="uid://cq7p6ru88x6ak" path="res://resources/TeleportData.gd" id="4_8nlv1"]
 [ext_resource type="Script" uid="uid://cxgfyhayvwn3c" path="res://resources/Trigger.gd" id="5_f2uyl"]

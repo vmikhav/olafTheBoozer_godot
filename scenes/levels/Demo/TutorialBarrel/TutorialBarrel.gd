@@ -3,7 +3,7 @@ extends BaseLevel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	tilemaps = [
-		$Ground, $Floor, $PressPlates, $Liquids, $Walls, $Trails, $Items, $Trees, $BadItems, $GoodItems, $MovingItems,
+		$Ground, $Floor, $PressPlates, $Liquids, $Walls, $Trails, $Items, $Trees, $BadItems, $GoodItems, $MovingItems, $ViewAreas,
 	]
 	hero = $Items/Demolitonist
 	

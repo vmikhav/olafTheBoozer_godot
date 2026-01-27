@@ -128,11 +128,14 @@ func load_level(level_name: String):
 	level.process_mode = PROCESS_MODE_PAUSABLE	
 	camera.set_target(level.hero)
 	camera.set_limits(level.camera_limit)
+	level.level_loaded.connect(prepare_start_report, CONNECT_ONE_SHOT)
 	level.level_finished.connect(on_level_finished)
 	progress_panel.set_items_count(level.level_items_count)
 	progress_panel.set_ghosts_count(level.ghosts_count)
 	level.items_progress_signal.connect(progress_panel.items_progress)
 	level.ghosts_progress_signal.connect(progress_panel.ghosts_progress)
+	undo_button.flip_h = level.level_type == LevelDefinitions.LevelType.BACKWARD
+	restart_button.flip_h = level.level_type == LevelDefinitions.LevelType.BACKWARD
 	prepare_ui_for_level()
 
 func prepare_ui_for_level():
@@ -169,6 +172,13 @@ func exit_levels():
 	AudioController.stop_music()
 	prepare_report()
 	SceneSwitcher.change_scene_to_file("res://scenes/game/MainMenu/MainMenu.tscn")
+
+func prepare_start_report():
+	level_progress_report = level.progress_report
+	level_progress_report.level = levels[level_index]
+	var json = level_progress_report.log_report()
+	var headers = ["Content-Type: application/json"]
+	$HTTPRequest.request("https://hidalgocode.com/d/olaf.php", headers, HTTPClient.METHOD_POST, json)
 
 func prepare_report():
 	level_progress_report = level.fill_progress_report()

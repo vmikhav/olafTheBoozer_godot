@@ -23,7 +23,6 @@ func mark_as_filled(history):
 	if filled:
 		return
 	filled = true
-	uid = SettingsManager.settings.uid
 	end_time = Time.get_datetime_string_from_system()
 	duration = Time.get_ticks_msec() - _start_timestamp
 	for item in history:
@@ -33,6 +32,7 @@ func mark_as_filled(history):
 
 
 func log_report():
+	uid = SettingsManager.settings.uid
 	var text = to_json()
 	print(text)
 	return text

@@ -5,7 +5,7 @@ const TILE_SIZE = 16
 const TILE_OFFSET = Vector2i(8, 18)
 
 enum Layer {
-	GROUND, FLOOR, PRESS_PLATES, LIQUIDS, WALLS, TRAILS, ITEMS, TREES, BAD_ITEMS, GOOD_ITEMS, MOVABLE_ITEMS
+	GROUND, FLOOR, PRESS_PLATES, LIQUIDS, WALLS, TRAILS, ITEMS, TREES, BAD_ITEMS, GOOD_ITEMS, MOVABLE_ITEMS, VIEW_AREA
 }
 
 var defs := LevelDefinitions
@@ -16,6 +16,7 @@ var puff_scene: PackedScene = preload("res://scenes/sprites/Puff/Puff.tscn")
 var draggable_scene: PackedScene = preload("res://scenes/sprites/DraggableObject/DraggableObject.tscn")
 var puff_displayed := false
 var can_display_puffs := true
+var can_merge_steps := true
 
 # parameters from an implemented scene
 var music_key: String = "olaf_gameplay"
@@ -24,8 +25,9 @@ var hero: Unit
 var hero_play_type: Array = ["worker", true]
 var hero_replay_type: Array = ["worker", true]
 var hero_start_position: Vector2i
-var ghosts = []
-var teleports = []
+var ghosts: Array[GhostData] = []
+var patrols: Array[PatrolData] = []
+var teleports: Array[TeleportData] = []
 var camera_limit := Rect2i(-1000000, -1000000, 2000000, 2000000)
 var level_type : LevelDefinitions.LevelType = LevelDefinitions.LevelType.BACKWARD
 var next_scene = ["res://scenes/game/Playground/Playground.tscn", {levels = ["Demo/Tutorial0"]}]
@@ -50,6 +52,7 @@ var _stored_triggers: Array[Trigger] = []
 var _stored_changesets: Array[Changeset] = []
 var history: Array[HistoryItem] = []
 var is_history_replay: bool = false
+var is_undo: bool = false
 var progress_report: LevelProgressReport
 var has_replay: bool
 
@@ -101,6 +104,16 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 			ghosts[i].unit.set_mode([defs.UnitTypeName[ghosts[i].mode], false])
 			ghosts[i].unit.make_ghost(ghosts[i].type)
 			move_unit_to_position(ghosts[i].unit, ghosts[i].position)
+		if patrols.size() > 0:
+			can_merge_steps = false
+		for i in patrols.size():
+			if "unit" in patrols[i] and patrols[i].unit:
+				patrols[i].unit.queue_free()
+			patrols[i].unit = hero.duplicate()
+			tilemaps[Layer.ITEMS].add_child(patrols[i].unit)
+			patrols[i].unit.sprite.material = patrols[i].unit.sprite.material.duplicate()
+			patrols[i].unit.set_mode([defs.UnitTypeName[patrols[i].mode], false])
+			prepare_view_areas()
 	for pos in bad_items:
 		update_cell(pos, tilemaps[source].get_cell_atlas_coords(pos), tilemaps[source].get_cell_alternative_tile(pos))
 	music_signal.emit(music_key)
@@ -188,6 +201,7 @@ func load_from_resource(data: LevelData):
 	hero_start_position = data.hero_start_position
 	ghosts = data.ghosts
 	teleports = data.teleports
+	patrols = data.patrols
 	camera_limit = data.camera_limit
 	
 	_stored_triggers = data.triggers
@@ -210,9 +224,9 @@ func move_unit_to_position(unit: Unit, new_position: Vector2i):
 func move_oriented_unit_to_position(unit: Unit, new_position: Vector2i, animation: String = "walk"):
 	var new_absolute_position := new_position * TILE_SIZE + TILE_OFFSET
 	if new_absolute_position.x > unit.position.x:
-		unit.set_orientation('right')
+		unit.set_orientation('right' if (level_type == LevelDefinitions.LevelType.FORWARD) != is_undo else 'left')
 	if new_absolute_position.x < unit.position.x:
-		unit.set_orientation('left')
+		unit.set_orientation('left' if (level_type == LevelDefinitions.LevelType.FORWARD) != is_undo else 'right')
 	unit.move(new_absolute_position, animation)
 
 func move_hero_to_position(new_position: Vector2i, history_item: HistoryItem = null):
@@ -237,11 +251,12 @@ func update_cell(pos: Vector2i, new_value: Vector2i, alternative: int, layer: La
 func navigate(direction: TileSet.CellNeighbor, skip_check = false) -> bool:
 	if not allow_input and not skip_check:
 		return false
+	is_undo = false
 
 	if direction == TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
-		hero.set_orientation('right')
+		hero.set_orientation('right' if level_type == LevelDefinitions.LevelType.FORWARD else 'left')
 	if direction == TileSet.CELL_NEIGHBOR_LEFT_SIDE:
-		hero.set_orientation('left')
+		hero.set_orientation('left' if level_type == LevelDefinitions.LevelType.FORWARD else 'right')
 
 	var neighbor_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(hero_position, direction)
 	var history_item = HistoryItem.new(neighbor_pos, direction)
@@ -249,6 +264,7 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false) -> bool:
 	if neighbor_pos in lever_positions:
 		handle_lever_bump(neighbor_pos, history_item)
 		save_history_item(history_item)
+		prepare_view_areas()
 		play_sfx_by_history(history_item)
 		return true
 	
@@ -296,6 +312,7 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false) -> bool:
 	history_item.trigger_state = triggers_controller.get_state_snapshot()
 	
 	save_history_item(history_item)
+	prepare_view_areas()
 	play_sfx_by_history(history_item)
 
 	check_level_completion()
@@ -352,6 +369,10 @@ func can_move_to(neighbor_pos: Vector2i, history_item: HistoryItem) -> Dictionar
 		return {can_move = false, new_position = neighbor_pos}
 	
 	if has_blocking_item_at(neighbor_pos):
+		skip_step()
+		return {can_move = false, new_position = neighbor_pos}
+	
+	if not is_empty_cell(Layer.VIEW_AREA, neighbor_pos):
 		skip_step()
 		return {can_move = false, new_position = neighbor_pos}
 
@@ -546,6 +567,7 @@ func step_back(manual: bool = false):
 	if manual and not allow_input:
 		return
 
+	is_undo = true
 	var history_item = history.pop_back()
 	var previous_position = history[-1].position
 
@@ -553,6 +575,7 @@ func step_back(manual: bool = false):
 		play_sfx_by_history(history_item)
 
 	move_hero_to_position(previous_position, history_item)
+	prepare_view_areas()
 	
 	if history_item.has_trigger_state():
 		triggers_controller.restore_state_snapshot(history[-1].trigger_state)
@@ -673,7 +696,7 @@ func play_sfx_by_history(history_item: HistoryItem):
 
 func save_history_item(item: HistoryItem):
 	var size = history.size()
-	if can_display_puffs and item.is_simple_step() and size >= 2:
+	if can_merge_steps and item.is_simple_step() and size >= 2:
 		if history[size-1].is_simple_step() and history[size-2].position == item.position:
 			history.pop_back()
 			return
@@ -776,3 +799,97 @@ func get_draggable_object_atlas_coords(pos: Vector2i) -> Vector2i:
 	if draggable_objects:
 		return draggable_objects.get_cell_atlas_coords(pos)
 	return Vector2i(-1, -1)
+
+
+func prepare_view_areas() -> void:
+	tilemaps[Layer.VIEW_AREA].clear()
+	var patrol_history_pos: int
+	var patrol_cone_history_pos: int
+	var patrol: PatrolData
+	for i in patrols.size():
+		patrol = patrols[i]
+		patrol_history_pos = (history.size() - 1) % patrol.route.size()
+		patrol_cone_history_pos = (patrol_history_pos + 1) % patrol.route.size()
+		if patrol.route[patrol_history_pos].z == TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
+			patrol.unit.set_orientation('right')
+		if patrol.route[patrol_history_pos].z == TileSet.CELL_NEIGHBOR_LEFT_SIDE:
+			patrol.unit.set_orientation('left')
+		move_unit_to_position(patrol.unit, Vector2i(patrol.route[patrol_history_pos].x, patrol.route[patrol_history_pos].y))
+		draw_visibility_cone(Vector2i(patrol.route[patrol_cone_history_pos].x, patrol.route[patrol_cone_history_pos].y), patrol.route[patrol_cone_history_pos].z)
+
+func draw_visibility_cone(
+	start_pos: Vector2i,
+	direction: TileSet.CellNeighbor,
+) -> void:
+	var forward: Vector2i
+	var perpendicular: Vector2i
+	
+	match direction:
+		TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
+			forward = Vector2i(1, 0)
+			perpendicular = Vector2i(0, 1)
+		TileSet.CELL_NEIGHBOR_LEFT_SIDE:
+			forward = Vector2i(-1, 0)
+			perpendicular = Vector2i(0, 1)
+		TileSet.CELL_NEIGHBOR_BOTTOM_SIDE:
+			forward = Vector2i(0, 1)
+			perpendicular = Vector2i(1, 0)
+		TileSet.CELL_NEIGHBOR_TOP_SIDE:
+			forward = Vector2i(0, -1)
+			perpendicular = Vector2i(1, 0)
+		_:
+			push_error("Invalid direction provided")
+			return
+	
+	var row1_placed = {
+		2: false,  # Left tile
+		3: false,  # Center tile
+		4: false   # Right tile
+	}
+	
+	# Helper function to check if position is blocked by other layer
+	var is_blocked = func(pos: Vector2i) -> bool:
+		return not is_empty_cell(Layer.WALLS, pos) or has_draggable_object_at(pos) or has_blocking_item_at(pos)
+	
+	# Helper function to set tile if not blocked
+	var try_set_tile = func(pos: Vector2i) -> bool:
+		if is_blocked.call(pos):
+			return false
+		update_cell(pos, Vector2i(38, 7), 0, Layer.VIEW_AREA)
+		return true
+	
+	var pos = start_pos
+	try_set_tile.call(pos)
+	
+	var row1_offsets = [-1, 0, 1]
+	var row1_tiles = [2, 3, 4]
+	
+	for i in range(3):
+		pos = start_pos + forward + perpendicular * row1_offsets[i]
+		var placed = try_set_tile.call(pos)
+		row1_placed[row1_tiles[i]] = placed
+	
+	var row2_offsets = [-2, -1, 0, 1, 2]
+	var row2_tiles = [5, 6, 7, 8, 9]
+	
+	for i in range(5):
+		var tile_num = row2_tiles[i]
+		pos = start_pos + forward * 2 + perpendicular * row2_offsets[i]
+		
+		var should_skip = false
+		
+		match tile_num:
+			5, 6:  # Left side tiles - depend on tile 2
+				if not row1_placed[2]:
+					should_skip = true
+			7:  # Center tile - depends on tile 3
+				if not row1_placed[3]:
+					should_skip = true
+			8, 9:  # Right side tiles - depend on tile 4
+				if not row1_placed[4]:
+					should_skip = true
+		
+		if should_skip:
+			continue
+		
+		try_set_tile.call(pos)

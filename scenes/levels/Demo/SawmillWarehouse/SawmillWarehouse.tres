@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="LevelData" load_steps=12 format=3 uid="uid://bnwmqht8g5y6t"]
+[gd_resource type="Resource" script_class="LevelData" format=3 uid="uid://bnwmqht8g5y6t"]
 
 [ext_resource type="Script" uid="uid://derqluum4reuq" path="res://resources/Changeset.gd" id="1_1kdrs"]
 [ext_resource type="Script" uid="uid://b6txe1yuan4kl" path="res://resources/GhostData.gd" id="2_46445"]
 [ext_resource type="Script" uid="uid://djj610637hame" path="res://resources/CellChangeset.gd" id="2_ugqfo"]
 [ext_resource type="Script" uid="uid://dr42rnusvb6wa" path="res://resources/LevelData.gd" id="3_ugqfo"]
 [ext_resource type="Script" uid="uid://cq7p6ru88x6ak" path="res://resources/TeleportData.gd" id="4_4x78p"]
+[ext_resource type="Script" uid="uid://cfwgj6edkr74v" path="res://resources/PatrolData.gd" id="4_r8csq"]
 [ext_resource type="Script" uid="uid://cxgfyhayvwn3c" path="res://resources/Trigger.gd" id="5_u62wh"]
 
 [sub_resource type="Resource" id="Resource_4x78p"]

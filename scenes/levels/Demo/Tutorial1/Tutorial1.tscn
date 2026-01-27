@@ -76,3 +76,9 @@ modulate = Color(1, 0.392157, 0.392157, 0.392157)
 z_index = 6
 texture_filter = 1
 tile_set = ExtResource("2_8a6yq")
+
+[node name="ViewAreas" type="TileMapLayer" parent="." unique_id=1861611429]
+modulate = Color(1, 0.392157, 0.392157, 0.392157)
+z_index = 6
+texture_filter = 1
+tile_set = ExtResource("2_8a6yq")

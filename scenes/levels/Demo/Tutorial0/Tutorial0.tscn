@@ -113,6 +113,12 @@ z_index = 6
 texture_filter = 1
 tile_set = ExtResource("2_p2yry")
 
+[node name="ViewAreas" type="TileMapLayer" parent="." unique_id=665643913]
+modulate = Color(1, 0.392157, 0.392157, 0.392157)
+z_index = 6
+texture_filter = 1
+tile_set = ExtResource("2_p2yry")
+
 [node name="Hints" type="Node2D" parent="." unique_id=295071273]
 texture_filter = 1
 position = Vector2(60, 90)

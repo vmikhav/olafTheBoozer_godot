@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://djj610637hame" path="res://resources/CellChangeset.gd" id="2_6pfrc"]
 [ext_resource type="Script" uid="uid://b6txe1yuan4kl" path="res://resources/GhostData.gd" id="2_qyhit"]
 [ext_resource type="Script" uid="uid://dr42rnusvb6wa" path="res://resources/LevelData.gd" id="3_6pfrc"]
+[ext_resource type="Script" uid="uid://cfwgj6edkr74v" path="res://resources/PatrolData.gd" id="4_j7vbo"]
 [ext_resource type="Script" uid="uid://cq7p6ru88x6ak" path="res://resources/TeleportData.gd" id="4_mcqed"]
 [ext_resource type="Script" uid="uid://cxgfyhayvwn3c" path="res://resources/Trigger.gd" id="5_r1qcl"]
 
@@ -111,6 +112,11 @@ script = ExtResource("2_qyhit")
 position = Vector2i(-2, 8)
 metadata/_custom_type_script = "uid://b6txe1yuan4kl"
 
+[sub_resource type="Resource" id="Resource_7p78c"]
+script = ExtResource("4_j7vbo")
+route = Array[Vector3i]([Vector3i(11, 3, 8), Vector3i(11, 3, 0), Vector3i(12, 3, 0), Vector3i(13, 3, 0), Vector3i(13, 3, 8), Vector3i(12, 3, 8)])
+metadata/_custom_type_script = "uid://cfwgj6edkr74v"
+
 [sub_resource type="Resource" id="Resource_6pfrc"]
 script = ExtResource("4_mcqed")
 start = Vector2i(2, 6)
@@ -147,6 +153,7 @@ script = ExtResource("3_6pfrc")
 hero_start_position = Vector2i(7, 5)
 camera_limit = Rect2i(-304, -128, 608, 288)
 ghosts = Array[ExtResource("2_qyhit")]([SubResource("Resource_5baff"), SubResource("Resource_qyhit")])
+patrols = Array[ExtResource("4_j7vbo")]([SubResource("Resource_7p78c")])
 teleports = Array[ExtResource("4_mcqed")]([SubResource("Resource_6pfrc")])
 triggers = Array[ExtResource("5_r1qcl")]([SubResource("Resource_mcqed"), SubResource("Resource_r1qcl"), SubResource("Resource_n2jt0")])
 changesets = Array[ExtResource("1_5baff")]([SubResource("Resource_kv7lc"), SubResource("Resource_k3gx1")])

@@ -78,6 +78,10 @@ func move_on_slippery(start_pos: Vector2i, direction: TileSet.CellNeighbor, has_
 			result["can_move"] = false
 			return result # Path is blocked by item
 		
+		if not level.is_empty_cell(BaseLevel.Layer.VIEW_AREA, current_pos):
+			result["can_move"] = false
+			return result # Area is seen by guard
+		
 		if !is_slippery(current_pos):
 			break
 		

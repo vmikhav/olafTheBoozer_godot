@@ -34,7 +34,7 @@ var ghost_mode: int = -1
 var tail_changed: bool = false
 
 # Draggable item data
-var dragged_item: Vector2i = Vector2i.MAX
+var dragged_items: Array[DraggableHistoryItem] = []
 
 # Teleportation
 var teleported: bool = false
@@ -54,7 +54,7 @@ func has_ghost() -> bool:
 
 
 func has_dragged_item() -> bool:
-	return dragged_item.x != Vector2i.MAX.x
+	return dragged_items.size() > 0
 
 func has_slide() -> bool:
 	return slid

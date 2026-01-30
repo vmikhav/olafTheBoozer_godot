@@ -251,7 +251,12 @@ func set_drag_margins(margins: Vector4, offset: bool = false) -> void:
 	drag_bottom_margin = margins.w
 
 func set_drag_offset(_offset: Vector4) -> void:
-	set_drag_margins(active_margins + Vector4(_offset.x, _offset.y, _offset.z, _offset.w), true)
+	set_drag_margins(Vector4(
+		clampf(active_margins.x + _offset.x, 0, 1),
+		clampf(active_margins.y + _offset.y, 0, 1),
+		clampf(active_margins.z + _offset.z, 0, 1),
+		clampf(active_margins.w + _offset.w, 0, 1)),
+		 true)
 
 func set_limits(rect: Rect2i) -> void:
 	limits_rect = rect

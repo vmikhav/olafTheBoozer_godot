@@ -114,7 +114,7 @@ func init_map(source: Layer = Layer.BAD_ITEMS):
 			tilemaps[Layer.ITEMS].add_child(patrols[i].unit)
 			patrols[i].unit.sprite.material = patrols[i].unit.sprite.material.duplicate()
 			patrols[i].unit.set_mode([defs.UnitTypeName[patrols[i].mode], false])
-			prepare_view_areas()
+			prepare_view_areas(null)
 	for pos in bad_items:
 		update_cell(pos, tilemaps[source].get_cell_atlas_coords(pos), tilemaps[source].get_cell_alternative_tile(pos))
 	music_signal.emit(music_key)
@@ -264,10 +264,14 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false) -> bool:
 	var neighbor_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(hero_position, direction)
 	var history_item = HistoryItem.new(neighbor_pos, direction)
 	
+	
 	if neighbor_pos in lever_positions:
+		if not is_empty_cell(Layer.VIEW_AREA, hero_position):
+			skip_step()
+			return false
 		handle_lever_bump(neighbor_pos, history_item)
+		prepare_view_areas(history_item)
 		save_history_item(history_item)
-		prepare_view_areas()
 		play_sfx_by_history(history_item)
 		return true
 	
@@ -302,8 +306,8 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false) -> bool:
 	
 	var draggable_item = check_for_draggable_item(direction)
 	if draggable_item != Vector2i.MAX:
-		move_draggable_item(draggable_item, direction)
-		history_item.dragged_item = draggable_item
+		move_draggable_item(draggable_item, hero_position)
+		history_item.dragged_items.append(DraggableHistoryItem.new(draggable_item, hero_position))
 
 	process_item_collection(neighbor_pos, history_item)
 	update_tail(history_item)
@@ -311,11 +315,11 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false) -> bool:
 
 	move_hero_to_position(neighbor_pos, history_item)
 	
+	
+	prepare_view_areas(history_item)
 	update_all_press_plates(history_item)
 	history_item.trigger_state = triggers_controller.get_state_snapshot()
-	
 	save_history_item(history_item)
-	prepare_view_areas()
 	play_sfx_by_history(history_item)
 
 	check_level_completion()
@@ -586,11 +590,12 @@ func step_back(manual: bool = false):
 		play_sfx_by_history(history_item)
 
 	move_hero_to_position(previous_position, history_item)
-	prepare_view_areas()
 	
 	if history_item.has_trigger_state():
 		triggers_controller.restore_state_snapshot(history[-1].trigger_state)
 	if history_item.is_lever_used:
+		handle_dragged_item_reversal(history_item)
+		prepare_view_areas(null)
 		return
 	
 	trails_controller.handle_trails_reversal(history_item, history[-1], hero_position, manual)
@@ -598,6 +603,7 @@ func step_back(manual: bool = false):
 	handle_ghost_reversal(history_item)
 	handle_tail_reversal(history_item)
 	handle_dragged_item_reversal(history_item)
+	prepare_view_areas(null)
 
 	if not is_history_replay:
 		update_progress_signals()
@@ -728,16 +734,15 @@ func check_for_draggable_item(direction: TileSet.CellNeighbor) -> Vector2i:
 		return item_pos
 	return Vector2i.MAX
 
-func move_draggable_item(item_pos: Vector2i, direction: TileSet.CellNeighbor):
-	var item_coords = get_draggable_object_atlas_coords(item_pos)
-	var new_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(item_pos, direction)
+func move_draggable_item(item_pos: Vector2i, new_pos: Vector2i):
+	var item_atlas_coords = get_draggable_object_atlas_coords(item_pos)
 	
 	var old_movable = tilemaps[Layer.MOVABLE_ITEMS].get_cell_atlas_coords(item_pos)
 	var new_movable = tilemaps[Layer.MOVABLE_ITEMS].get_cell_atlas_coords(new_pos)
 	
-	if old_movable == item_coords:
+	if old_movable == item_atlas_coords:
 		ghosts_progress -= 1
-	if new_movable == item_coords:
+	if new_movable == item_atlas_coords:
 		ghosts_progress += 1
 		display_splash(new_pos)
 	ghosts_progress_signal.emit(ghosts_progress)
@@ -746,9 +751,9 @@ func move_draggable_item(item_pos: Vector2i, direction: TileSet.CellNeighbor):
 	draggable_objects.move_object_at(item_pos, new_pos)
 
 func handle_dragged_item_reversal(history_item: HistoryItem):
-	if history_item.has_dragged_item():
-		var item_pos = history_item.dragged_item
-		var new_pos = tilemaps[Layer.ITEMS].get_neighbor_cell(item_pos, history_item.direction)
+	for dragged_item in history_item.dragged_items:
+		var item_pos = dragged_item.from
+		var new_pos = dragged_item.to
 		var item_coords = get_draggable_object_atlas_coords(new_pos)
 		
 		var old_movable = tilemaps[Layer.MOVABLE_ITEMS].get_cell_atlas_coords(item_pos)
@@ -812,20 +817,40 @@ func get_draggable_object_atlas_coords(pos: Vector2i) -> Vector2i:
 	return Vector2i(-1, -1)
 
 
-func prepare_view_areas() -> void:
+func prepare_view_areas(history_item: HistoryItem) -> void:
 	tilemaps[Layer.VIEW_AREA].clear()
 	var patrol_history_pos: int
+	var patrol_previous_history_pos: int
 	var patrol_cone_history_pos: int
 	var patrol: PatrolData
+	var patrol_previous_pos: Vector2i
+	var patrol_new_pos: Vector2i
+	var index_offset: int = 0
+	
+	if not history_item:
+		index_offset = -1
+	
 	for i in patrols.size():
 		patrol = patrols[i]
-		patrol_history_pos = (history.size() - 1) % patrol.route.size()
+		patrol_history_pos = (history.size() + index_offset) % patrol.route.size()
+		patrol_previous_history_pos = (patrol_history_pos - 1 + patrol.route.size()) % patrol.route.size()
 		patrol_cone_history_pos = (patrol_history_pos + 1) % patrol.route.size()
 		if patrol.route[patrol_history_pos].z == TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
 			patrol.unit.set_orientation('right')
 		if patrol.route[patrol_history_pos].z == TileSet.CELL_NEIGHBOR_LEFT_SIDE:
 			patrol.unit.set_orientation('left')
-		move_unit_to_position(patrol.unit, Vector2i(patrol.route[patrol_history_pos].x, patrol.route[patrol_history_pos].y))
+		patrol_previous_pos = Vector2i(patrol.route[patrol_previous_history_pos].x, patrol.route[patrol_previous_history_pos].y)
+		patrol_new_pos = Vector2i(patrol.route[patrol_history_pos].x, patrol.route[patrol_history_pos].y)
+		
+		if history_item:
+			if has_draggable_object_at(patrol_new_pos):
+				move_draggable_item(patrol_new_pos, patrol_previous_pos)
+				if history_item.has_dragged_item() and history_item.dragged_items[0].to == patrol_new_pos:
+					history_item.dragged_items[0].to = patrol_previous_pos
+				else:
+					history_item.dragged_items.append(DraggableHistoryItem.new(patrol_new_pos, patrol_previous_pos))
+		
+		move_unit_to_position(patrol.unit, patrol_new_pos)
 		draw_visibility_cone(Vector2i(patrol.route[patrol_cone_history_pos].x, patrol.route[patrol_cone_history_pos].y), patrol.route[patrol_cone_history_pos].z)
 
 func draw_visibility_cone(

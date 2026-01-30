@@ -16,6 +16,6 @@ metadata/_custom_type_script = "uid://b6txe1yuan4kl"
 script = ExtResource("3_24cuu")
 level_type = 1
 hero_start_position = Vector2i(-2, -2)
-camera_limit = Rect2i(-96, -80, 250, 200)
+camera_limit = Rect2i(-128, -80, 250, 200)
 ghosts = Array[ExtResource("2_sb5r1")]([SubResource("Resource_fl2vx")])
 metadata/_custom_type_script = "uid://dr42rnusvb6wa"

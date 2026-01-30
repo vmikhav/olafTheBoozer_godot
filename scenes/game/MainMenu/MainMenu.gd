@@ -10,12 +10,6 @@ extends Node2D
 
 var settings_visible = false
 
-var base_size: Vector2
-var base_position: Vector2
-var idle_time := 0.0
-var idle_speed := 2.0 # how fast it “breathes”
-var idle_strength := 0.025 # how much it scales (5%)
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	AudioController.play_music('workshop')
@@ -32,16 +26,6 @@ func _ready():
 		exit_button.hide()
 	else:
 		get_window().grab_focus()
-	base_size = wishlist_button.size
-	base_position = wishlist_button.position
-	wishlist_button.pivot_offset = wishlist_button.size / 2
-
-func _process(delta: float) -> void:
-	# Apply gentle idle breathing animation when not hovered
-	idle_time += delta * idle_speed
-	var width_offset = max(base_size.x * sin(idle_time) * idle_strength, 0)
-	wishlist_button.size.x = base_size.x + width_offset
-	wishlist_button.position.x = base_position.x - (width_offset / 2)
 
 
 func start_game():

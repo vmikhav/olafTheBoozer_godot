@@ -28,6 +28,10 @@ extends Camera2D
 @export var zoom_dependent_speed: bool = true
 @export var pixel_perfect: bool = true
 
+var active_margins: Vector4
+var original_top_limit: int
+var original_rect_height: int
+
 # Internal variables
 var target: Node2D
 var events = {}
@@ -238,17 +242,21 @@ func center_on_target() -> void:
 		force_center = true
 		position = get_clamped_position(target.position + target_offset)
 
-func set_drag_margins(margins: Vector4) -> void:
+func set_drag_margins(margins: Vector4, offset: bool = false) -> void:
+	if not offset:
+		active_margins = margins
 	drag_left_margin = margins.x
 	drag_right_margin = margins.y
 	drag_top_margin = margins.z
 	drag_bottom_margin = margins.w
 
-func set_drag_offset(_offset: Vector2) -> void:
-	set_drag_margins(default_margins + Vector4(-_offset.x, _offset.x, -_offset.y, _offset.y))
+func set_drag_offset(_offset: Vector4) -> void:
+	set_drag_margins(active_margins + Vector4(_offset.x, _offset.y, _offset.z, _offset.w), true)
 
 func set_limits(rect: Rect2i) -> void:
 	limits_rect = rect
+	original_top_limit = rect.position.y
+	original_rect_height = rect.size.y
 	update_limits_by_zoom()
 
 func update_limits_by_zoom() -> void:
@@ -273,3 +281,14 @@ func update_limits_by_zoom() -> void:
 	limit_top = new_limit_pos.y
 	limit_right = new_limit_end.x
 	limit_bottom = new_limit_end.y
+
+
+func prepare_for_replay() -> void:
+	limits_rect.position.y -= 48
+	limits_rect.size.y += 48
+	update_limits_by_zoom()
+
+func reset_after_replay() -> void:
+	limits_rect.position.y = original_top_limit
+	limits_rect.size.y = original_rect_height
+	update_limits_by_zoom()

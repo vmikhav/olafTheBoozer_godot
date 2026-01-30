@@ -13,12 +13,14 @@ var orientation: String = 'right'
 var sprite: AnimatedSprite2D
 var emote: Sprite2D
 var emote_small: Sprite2D
+var emote_small_overlay: Sprite2D
 var can_produce_sounds = true
 var available_sounds = ["olaf_hiccup_idle"]
 var last_sound = -1
 var mode: String = LevelDefinitions.UnitTypeName[LevelDefinitions.UnitType.DEMOLITONIST]
 var move_tween: Tween
 var emote_tween: Tween
+var emote_small_tween: Tween
 var is_dead := false
 var is_moving := false
 var is_ghost := false
@@ -92,6 +94,12 @@ func reset_emote() -> void:
 		emote_tween.stop()
 	emote.visible = false
 
+func reset_emote_small() -> void:
+	if emote_small_tween and emote_small_tween.is_running():
+		emote_small_tween.stop()
+	emote_small.visible = false
+	emote_small_overlay.visible = false
+
 func make_ghost(type: LevelDefinitions.GhostType = LevelDefinitions.GhostType.MEMORY) -> void:
 	is_ghost = true
 	sprite.material.set_shader_parameter("status_color", ghost_colors[type])
@@ -131,9 +139,40 @@ func set_orientation(direction: String) -> void:
 		orientation = direction
 		sprite.flip_h = direction == 'left'
 
-func hit():
+func hit(direction: TileSet.CellNeighbor = TileSet.CELL_NEIGHBOR_TOP_RIGHT_CORNER):
 	can_reset_animation = false
 	sprite.play(mode + "_hit")
+	
+	var show_emote = false
+	match direction:
+		TileSet.CELL_NEIGHBOR_LEFT_SIDE:
+			show_emote = true
+			emote_small.region_rect = Rect2i(Vector2i(0, 27), Vector2i(8, 9))
+		TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
+			show_emote = true
+			emote_small.region_rect = Rect2i(Vector2i(8, 27), Vector2i(8, 9))
+		TileSet.CELL_NEIGHBOR_TOP_SIDE:
+			show_emote = true
+			emote_small.region_rect = Rect2i(Vector2i(16, 27), Vector2i(8, 9))
+		TileSet.CELL_NEIGHBOR_BOTTOM_SIDE:
+			show_emote = true
+			emote_small.region_rect = Rect2i(Vector2i(24, 27), Vector2i(8, 9))
+	
+	if show_emote:
+		emote_small.modulate.a8 = 0
+		emote_small.visible = true
+		emote_small_tween = create_tween()
+		emote_small_tween.tween_property(emote_small, "modulate", Color8(255, 255, 255, 255), 0.1)
+		emote_small_tween.tween_property(emote_small, "modulate", Color8(255, 255, 255, 255), 0.1)
+		emote_small_tween.tween_callback(func():
+			emote_small_overlay.visible = true
+		)
+		emote_small_tween.tween_property(emote_small, "modulate", Color8(255, 255, 255, 0), 0.15)
+		emote_small_tween.tween_callback(func():
+			emote_small.visible = false
+			emote_small_overlay.visible = false
+		)
+	
 	await sprite.animation_finished
 	sprite.play(mode + "_idle")
 

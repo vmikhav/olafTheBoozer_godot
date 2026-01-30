@@ -1,4 +1,4 @@
-[gd_scene load_steps=242 format=3 uid="uid://bx2syps2qmyxq"]
+[gd_scene format=3 uid="uid://bx2syps2qmyxq"]
 
 [ext_resource type="Script" uid="uid://bsenh15febpxy" path="res://scenes/sprites/Demolitonist/Demolitonist.gd" id="1_6ytke"]
 [ext_resource type="Texture2D" uid="uid://bmnac0sq8kbk6" path="res://assets/sprites/MiniDwarfDemolitionist.png" id="1_vj30r"]
@@ -1879,3 +1879,12 @@ texture_filter = 1
 texture = SubResource("AtlasTexture_1fwfx")
 region_enabled = true
 region_rect = Rect2(48, 27, 8, 9)
+
+[node name="EmoteSmallOverlay" type="Sprite2D" parent="." unique_id=78177695]
+visible = false
+modulate = Color(1, 1, 1, 0.6862745)
+z_index = 3
+texture_filter = 1
+texture = SubResource("AtlasTexture_1fwfx")
+region_enabled = true
+region_rect = Rect2(32, 27, 8, 9)

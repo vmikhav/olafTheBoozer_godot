@@ -55,6 +55,7 @@ var is_history_replay: bool = false
 var is_undo: bool = false
 var progress_report: LevelProgressReport
 var has_replay: bool
+var last_direction: TileSet.CellNeighbor
 
 signal items_progress_signal(items_count: int)
 signal ghosts_progress_signal(ghosts_count: int)
@@ -65,7 +66,7 @@ signal level_finished
 
 
 func init_map(source: Layer = Layer.BAD_ITEMS):
-	has_replay = level_type == LevelDefinitions.LevelType.BACKWARD
+	has_replay = true#level_type == LevelDefinitions.LevelType.BACKWARD
 	trails_controller.trails_layer = tilemaps[Layer.TRAILS]
 	trails_controller.hints_layer = tilemaps[Layer.ITEMS]
 	trails_controller.level = self
@@ -239,7 +240,7 @@ func is_empty_cell(layer: Layer, cell_position: Vector2i) -> bool:
 	return atlas_pos.x == -1
 
 func skip_step():
-	hero.hit()
+	hero.hit(last_direction)
 	sfx_signal.emit("bump")
 
 func update_cell(pos: Vector2i, new_value: Vector2i, alternative: int, layer: Layer = Layer.ITEMS):
@@ -252,7 +253,9 @@ func navigate(direction: TileSet.CellNeighbor, skip_check = false) -> bool:
 	if not allow_input and not skip_check:
 		return false
 	is_undo = false
+	last_direction = direction
 
+	hero.reset_emote_small()
 	if direction == TileSet.CELL_NEIGHBOR_RIGHT_SIDE:
 		hero.set_orientation('right' if level_type == LevelDefinitions.LevelType.FORWARD else 'left')
 	if direction == TileSet.CELL_NEIGHBOR_LEFT_SIDE:
@@ -339,6 +342,14 @@ func is_position_occupied(pos: Vector2i) -> bool:
 	# Check if draggable object is at position (active or inactive)
 	if draggable_objects and draggable_objects.has_object_at(pos):
 		return true
+	
+	var patrol_history_pos: int
+	var patrol: PatrolData
+	for i in patrols.size():
+		patrol = patrols[i]
+		patrol_history_pos = (history.size()) % patrol.route.size()
+		if pos.x == patrol.route[patrol_history_pos].x and pos.y == patrol.route[patrol_history_pos].y:
+			return true
 	
 	return false
 

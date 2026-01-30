@@ -6,4 +6,5 @@ func _ready():
 	sprite = $Sprite
 	emote = $Emote
 	emote_small = $EmoteSmall
+	emote_small_overlay = $EmoteSmallOverlay
 	init()
